@@ -1,4 +1,20 @@
+'use client'
+
+import { useCallback, useState } from "react"
+import { MenuHome, MenuMore } from '../navbar'
+
 const NavLink = () => {
+    const [isHomeOpen, setIsHomeOpen] = useState(false)
+    const [isMoreOpen, setIsMoreOpen] = useState(false)
+
+    const toggleHomeOpen = useCallback(() => {
+        setIsHomeOpen((value) => !value);
+    }, [])
+
+    const toggleMoreOpen = useCallback(() => {
+        setIsMoreOpen((value) => !value);
+    }, [])
+
     return (
         <div 
             className="
@@ -16,16 +32,49 @@ const NavLink = () => {
                     justify-between
                     "
                 >
-                    <div
-                        className="
-                        text-sm
-                        px-6
-                        hover:text-pink-500
-                        "
-                    >
-                        Home
+                    <div className="relative">
+                        <div
+                            onClick={toggleHomeOpen}
+                            className="
+                            text-sm
+                            px-6
+                            hover:text-pink-500
+                            "
+                        >
+                            Home
+                        </div>
+                        {isHomeOpen && (
+                            <div className="
+                                    absolute
+                                    w-[40px]
+                                    md:w-40
+                                    bg-white
+                                    overflow-hidden
+                                "
+                            >
+                                <div className="flex flex-col cursor-pointer">
+                                    <>
+                                        <MenuHome 
+                                            onClick={() => {}}
+                                            label='About us'
+                                        />
+                                        <MenuHome 
+                                            onClick={() => {}}
+                                            label='Category'
+                                        />
+                                        <MenuHome 
+                                            onClick={() => {}}
+                                            label='Job'
+                                        />
+                                    </>
+                                </div>
+                            </div>
+                        )}
                     </div>
-                    <div className="
+
+                    <div
+                        onClick={() => {}}
+                        className="
                         text-sm
                         px-6
                         hover:text-pink-500
@@ -33,7 +82,9 @@ const NavLink = () => {
                     >
                         Find work
                     </div>
-                    <div className="
+                    <div
+                        onClick={() => {}}
+                        className="
                         text-sm
                         px-6
                         hover:text-pink-500
@@ -41,7 +92,9 @@ const NavLink = () => {
                     >
                         Find Freelancers
                     </div>
-                    <div className="
+                    <div
+                        onClick={() => {}}
+                        className="
                         text-sm
                         px-6
                         hover:text-pink-500
@@ -49,7 +102,9 @@ const NavLink = () => {
                     >
                         Log In
                     </div>
-                    <div className="
+                    <div
+                        onClick={() => {}}
+                        className="
                         text-sm
                         px-6
                         hover:text-pink-500
@@ -57,13 +112,49 @@ const NavLink = () => {
                     >
                         Sign Up
                     </div>
-                    <div className="
-                        text-sm
-                        px-6
-                        hover:text-pink-500
-                        "
-                    >
-                        More
+
+                    <div className="relative">
+                        <div
+                            onClick={toggleMoreOpen}
+                            className="
+                            text-sm
+                            px-6
+                            hover:text-pink-500
+                            "
+                        >
+                            More
+                        </div>
+                        {isMoreOpen && (
+                            <div className="
+                                    absolute
+                                    w-[40px]
+                                    md:w-40
+                                    bg-white
+                                    overflow-hidden
+                                "
+                            >
+                                <div className="flex flex-col cursor-pointer">
+                                    <>
+                                        <MenuMore 
+                                            onClick={() => {}}
+                                            label='Policy'
+                                        />
+                                        <MenuMore
+                                            onClick={() => {}}
+                                            label='FAQ'
+                                        />
+                                        <MenuMore
+                                            onClick={() => {}}
+                                            label='Contract'
+                                        />
+                                        <MenuMore
+                                            onClick={() => {}}
+                                            label='Price list'
+                                        />
+                                    </>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
