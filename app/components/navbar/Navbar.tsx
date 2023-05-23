@@ -1,12 +1,11 @@
 import Container from '../Container'
-import Logo from './Logo'
+import { Logo, NavLink, Button } from '../navbar'
 
 const Navbar = () => {
     return (
         <div className="fixed w-full h-[900px] bg-pink-100">
             <div className="flex flex-row justify-center pt-8">
-                <div className="w-[90%] h-[100px] bg-white z-10 shadow-sm rounded-full">
-                    <div className="py-8">
+                <div className="w-[90%] h-[100px] bg-white z-10 shadow-lg rounded-full">
                         <Container>
                             <div className="
                                     flex
@@ -17,10 +16,11 @@ const Navbar = () => {
                                     md:gap-0
                                 "
                             >
-                                {/* <Logo /> */}
+                                <Logo />
+                                <NavLink />
+                                <Button />
                             </div>
                         </Container>
-                    </div>
                 </div>
             </div>
         </div>
