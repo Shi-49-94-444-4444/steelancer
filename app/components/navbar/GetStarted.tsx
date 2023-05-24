@@ -24,7 +24,7 @@ const GetStarted = () => {
                     >
                 <h1 className='
                         font-poppins 
-                        text-[25px] 
+                        text-[20px] 
                         leading-[30px] 
                         font-normal 
                         font-regular 

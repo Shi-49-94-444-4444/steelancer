@@ -7,8 +7,9 @@ const Button = () => {
                 <div
                     onClick={() => { }}
                     className="
+                    hidden
                     w-full
-                    md:w-auto
+                    md:block
                     text-sm
                     py-3
                     px-4

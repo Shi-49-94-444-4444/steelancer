@@ -3,8 +3,20 @@ import { Logo, NavLink, Button, Banner } from '../navbar'
 
 const Navbar = () => {
     return (
-        <div className="flex flex-row justify-center pt-8">
-            <div className="w-[90%] h-[100px] bg-white z-10 shadow-lg rounded-full">
+        <div className="
+                flex 
+                flex-row 
+                justify-center 
+                pt-8
+                "
+            >
+            <div className="
+                    w-[90%] 
+                    md:h-[100px] 
+                    bg-white 
+                    z-10 
+                    shadow-lg 
+                    rounded-full">
                 <Container>
                     <div className="
                                     flex

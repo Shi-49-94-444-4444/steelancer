@@ -5,6 +5,8 @@ import Image from 'next/image'
 const ImageCus = () => {
     return (
         <div className='
+            hidden
+            md:block
             relative 
             z-0 
             mt-20
