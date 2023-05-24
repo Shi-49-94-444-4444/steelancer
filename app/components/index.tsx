@@ -3,5 +3,5 @@ import ClientOnly from './ClientOnly'
 
 export { 
     Navbar,
-    ClientOnly
+    ClientOnly,
 }
