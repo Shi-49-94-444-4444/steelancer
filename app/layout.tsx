@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} style={{ overflowY: 'auto' }}>
-        <div className="fixed w-full h-[1000px] bg-pink-100">
+        <div className="w-full h-[900px] bg-pink-100">
           <ClientOnly>
             <Navbar />
             <Banner />

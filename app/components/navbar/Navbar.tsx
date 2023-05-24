@@ -1,5 +1,5 @@
 import Container from '../Container'
-import { Logo, NavLink, Button, Banner } from '../navbar'
+import { Logo, NavLink, Button } from '../navbar'
 
 const Navbar = () => {
     return (
@@ -8,6 +8,9 @@ const Navbar = () => {
                 flex-row 
                 justify-center 
                 pt-8
+                sticky
+                top-0
+                z-50
                 "
             >
             <div className="
