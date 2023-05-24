@@ -41,7 +41,13 @@ const GetStarted = () => {
                     you hire elite freelancers at a moments notice
                 </h1>
             </div>
-            <div className='flex flex-row w-full pt-20'>
+            <div className='
+                flex 
+                flex-row 
+                w-full 
+                pt-20
+                '
+            >
                 <button
                     onClick={() => { }}
                     className="

@@ -133,7 +133,12 @@ const NavLink = () => {
                                     overflow-hidden
                                 "
                             >
-                                <div className="flex flex-col cursor-pointer">
+                                <div className="
+                                    flex 
+                                    flex-col 
+                                    cursor-pointer
+                                    "
+                                >
                                     <>
                                         <MenuMore 
                                             onClick={() => {}}
