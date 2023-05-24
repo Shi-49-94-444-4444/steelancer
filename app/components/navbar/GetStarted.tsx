@@ -9,7 +9,7 @@ const GetStarted = () => {
                 <h1 className='
                     font-poppins 
                     font-bold 
-                    text-[65px]
+                    text-[60px]
                     '
                 >Are you looking for <br />Freelancers?
                 </h1>
@@ -24,7 +24,7 @@ const GetStarted = () => {
                     >
                 <h1 className='
                         font-poppins 
-                        text-[24px] 
+                        text-[25px] 
                         leading-[30px] 
                         font-normal 
                         font-regular 
