@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Container from '../Container';
-import { Logo, NavLink, Button } from '../navbar';
+import { Logo, NavLink, ButtonCus } from '../navbar';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -55,7 +55,7 @@ const Navbar = () => {
                     >
                         <Logo />
                         <NavLink />
-                        <Button />
+                        <ButtonCus />
                     </div>
                 </Container>
             </div>

@@ -1,6 +1,6 @@
 'use client'
 
-const Button = () => {
+const ButtonCus = () => {
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
@@ -30,4 +30,4 @@ const Button = () => {
     )
 }
 
-export default Button
+export default ButtonCus

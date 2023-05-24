@@ -1,7 +1,7 @@
 import Navbar from './Navbar'
 import Logo from './Logo'
 import NavLink from './NavLink'
-import Button from './Button'
+import ButtonCus from './ButtonCus'
 import MenuHome from './MenuHome'
 import MenuMore from './MenuMore'
 import Banner from './Banner'
@@ -12,7 +12,7 @@ export {
     Navbar, 
     Logo,
     NavLink,
-    Button,
+    ButtonCus,
     MenuHome,
     MenuMore,
     Banner,
