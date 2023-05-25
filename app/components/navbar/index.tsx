@@ -2,16 +2,12 @@ import Navbar from "./Navbar"
 import Logo from "./Logo"
 import NavLink from "./NavLink"
 import ButtonCus from "./ButtonCus"
-import MenuHome from "./MenuHome"
-import MenuMore from "./MenuMore"
-import Banner from "../body/Banner"
+import MenuItem from "./MenuItem"
 
 export {
     Navbar,
     Logo,
     NavLink,
     ButtonCus,
-    MenuHome,
-    MenuMore,
-    Banner,
+    MenuItem
 }

@@ -1,15 +1,11 @@
 'use client'
 
 import { useCallback, useState } from "react"
-import { MenuHome, MenuMore } from "../navbar"
+import { MenuItem } from "../navbar"
+import Link from 'next/link';
 
 const NavLink = () => {
-    const [isHomeOpen, setIsHomeOpen] = useState(false)
     const [isMoreOpen, setIsMoreOpen] = useState(false)
-
-    const toggleHomeOpen = useCallback(() => {
-        setIsHomeOpen((value) => !value);
-    }, [])
 
     const toggleMoreOpen = useCallback(() => {
         setIsMoreOpen((value) => !value);
@@ -34,85 +30,21 @@ const NavLink = () => {
                     text-sm
                 "
             >
-                <div className="relative">
-                    <div
-                        onClick={toggleHomeOpen}
-                        className="
-                            px-6
-                            hover:text-pink-500
-                        "
-                    >
-                        Home
-                    </div>
-                    {isHomeOpen && (
-                        <div className="
-                                absolute
-                                w-[40px]
-                                md:w-40
-                                bg-white
-                                overflow-hidden
-                            "
-                        >
-                            <div className="
-                                    flex 
-                                    flex-col 
-                                    cursor-pointer
-                                "
-                            >
-                                <>
-                                    <MenuHome
-                                        onClick={() => { }}
-                                        label="About us"
-                                    />
-                                    <MenuHome
-                                        onClick={() => { }}
-                                        label="Category"
-                                    />
-                                    <MenuHome
-                                        onClick={() => { }}
-                                        label="Job"
-                                    />
-                                </>
-                            </div>
-                        </div>
-                    )}
-                </div>
-                <div
-                    onClick={() => { }}
-                    className="
-                        px-6
-                        hover:text-pink-500
-                    "
-                >
+                <Link href="/" className="px-6 hover:text-pink-500">
+                    Home
+                </Link>
+                <Link href="/" className="px-6 hover:text-pink-500">
                     Find work
-                </div>
-                <div
-                    onClick={() => { }}
-                    className="
-                        px-6
-                        hover:text-pink-500
-                    "
-                >
+                </Link>
+                <Link href="/" className="px-6 hover:text-pink-500">
                     Find Freelancers
-                </div>
-                <div
-                    onClick={() => { }}
-                    className="
-                        px-6
-                        hover:text-pink-500
-                    "
-                >
-                    Log In
-                </div>
-                <div
-                    onClick={() => { }}
-                    className="
-                        px-6
-                        hover:text-pink-500
-                    "
-                >
-                    Sign Up
-                </div>
+                </Link>
+                <Link href="/" className="px-6 hover:text-pink-500">
+                    Log in
+                </Link>
+                <Link href="/" className="px-6 hover:text-pink-500">
+                    Sign up
+                </Link>
                 <div className="relative">
                     <div
                         onClick={toggleMoreOpen}
@@ -139,20 +71,20 @@ const NavLink = () => {
                                 "
                             >
                                 <>
-                                    <MenuMore
-                                        onClick={() => { }}
+                                    <MenuItem
+                                        href="/"
                                         label="Policy"
                                     />
-                                    <MenuMore
-                                        onClick={() => { }}
+                                    <MenuItem
+                                        href="/"
                                         label="FAQ"
                                     />
-                                    <MenuMore
-                                        onClick={() => { }}
+                                    <MenuItem
+                                        href="/"
                                         label="Contract"
                                     />
-                                    <MenuMore
-                                        onClick={() => { }}
+                                    <MenuItem
+                                        href="/"
                                         label="Price list"
                                     />
                                 </>

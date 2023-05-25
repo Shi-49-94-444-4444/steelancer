@@ -1,4 +1,4 @@
-import { quicks } from " @/app/constants"
+import { quicks } from "@/app/constants"
 import QuickBox from "../QuickBox"
 import Container from "../Container"
 import FormatCusSm from "../FormatCusSm"
