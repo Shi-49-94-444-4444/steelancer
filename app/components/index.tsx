@@ -1,7 +1,7 @@
 import ClientOnly from './ClientOnly'
 import { Navbar } from './navbar'
 import { Quick, Category, Recent, Banner } from './body'
-import Background from './BackgroundCus'
+import Background from './modal/BackgroundCus'
 
 export {
     Navbar,

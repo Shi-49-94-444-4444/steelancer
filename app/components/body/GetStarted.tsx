@@ -1,7 +1,7 @@
 'use client'
 
 import { BiSearch } from "react-icons/bi"
-import FormatCusSm from "../FormatCusSm"
+import FormatCusSm from "../format"
 
 const GetStarted = () => {
     return (
