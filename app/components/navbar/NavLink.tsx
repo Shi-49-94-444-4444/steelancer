@@ -77,7 +77,6 @@ const NavLink = () => {
                         </div>
                     )}
                 </div>
-
                 <div
                     onClick={() => { }}
                     className="
@@ -114,7 +113,6 @@ const NavLink = () => {
                 >
                     Sign Up
                 </div>
-
                 <div className="relative">
                     <div
                         onClick={toggleMoreOpen}

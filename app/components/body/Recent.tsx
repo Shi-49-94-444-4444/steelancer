@@ -1,7 +1,7 @@
 import Container from "../Container"
 import FormatCusSm from "../FormatCusSm"
 import { BsArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs"
-import { recents } from "../constants"
+import { recents } from " @/app/constants"
 import RecentBox from "../RecentBox"
 
 const Recent = () => {

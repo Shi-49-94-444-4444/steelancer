@@ -3,7 +3,7 @@
 import CategoryBox from "../CategoryBox"
 import Container from "../Container"
 import FormatCusMd from "../FormatCusMd"
-import { categories } from "../constants"
+import { categories } from "@/app/constants"
 import { ButtonCus } from "../body"
 
 const Category = () => {
