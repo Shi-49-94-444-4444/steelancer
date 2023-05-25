@@ -1,10 +1,13 @@
+'use client'
+
 import CategoryBox from "../CategoryBox"
 import Container from "../Container"
+import FormatCusMd from "../FormatCusMd"
 import { categories } from "../constants"
 
 const Category = () => {
     return (
-        <div className="px-20 py-20">
+        <FormatCusMd>
             <Container>
                 <div className="
                     flex 
@@ -22,9 +25,9 @@ const Category = () => {
                         "
                     >
                         <h1 className="
-                            font-poppins 
-                            font-normal 
-                            text-[50px] 
+                              
+                              
+                            text-5xl 
                             font-semibold
                             "
                         >
@@ -39,7 +42,7 @@ const Category = () => {
                         lg:grid-cols-4 
                         gap-4 
                         justify-center 
-                        pt-20
+                        mt-20
                         "
                     >
                         {categories.map((item) => (
@@ -50,9 +53,38 @@ const Category = () => {
                             />
                         ))}
                     </div>
+                    <div className="
+                        flex 
+                        flex-row 
+                        justify-center 
+                        items-center
+                        mt-10
+                        "
+                    >
+                        <button
+                            onClick={() => { }}
+                            className="
+                                text-sm
+                                px-10
+                                py-5
+                                bg-pink-500
+                                text-white
+                                font-semibold
+                                transition
+                                cursor-pointer
+                                hover:bg-pink-600
+                                rounded-[10px]
+                                text-[20px]
+                                whitespace-nowrap
+                            "
+                        >
+                            More Categories
+                        </button>
+                    </div>
+
                 </div>
             </Container>
-        </div>
+        </FormatCusMd>
     )
 }
 

@@ -4,9 +4,7 @@ import NavLink from './NavLink'
 import ButtonCus from './ButtonCus'
 import MenuHome from './MenuHome'
 import MenuMore from './MenuMore'
-import Banner from './Banner'
-import ImageCus from './ImageCus'
-import GetStarted from './GetStarted'
+import Banner from '../body/Banner'
 
 export { 
     Navbar, 
@@ -16,6 +14,4 @@ export {
     MenuHome,
     MenuMore,
     Banner,
-    ImageCus,
-    GetStarted
 }

@@ -30,13 +30,14 @@ const NavLink = () => {
                     flex-row
                     items-center
                     justify-between
+                    font-semibold
+                    text-sm
                     "
                 >
                     <div className="relative">
                         <div
                             onClick={toggleHomeOpen}
                             className="
-                            text-sm
                             px-6
                             hover:text-pink-500
                             "
@@ -75,7 +76,6 @@ const NavLink = () => {
                     <div
                         onClick={() => {}}
                         className="
-                        text-sm
                         px-6
                         hover:text-pink-500
                         "
@@ -85,7 +85,6 @@ const NavLink = () => {
                     <div
                         onClick={() => {}}
                         className="
-                        text-sm
                         px-6
                         hover:text-pink-500
                         "
@@ -95,7 +94,6 @@ const NavLink = () => {
                     <div
                         onClick={() => {}}
                         className="
-                        text-sm
                         px-6
                         hover:text-pink-500
                         "
@@ -105,7 +103,6 @@ const NavLink = () => {
                     <div
                         onClick={() => {}}
                         className="
-                        text-sm
                         px-6
                         hover:text-pink-500
                         "
@@ -117,7 +114,6 @@ const NavLink = () => {
                         <div
                             onClick={toggleMoreOpen}
                             className="
-                            text-sm
                             px-6
                             hover:text-pink-500
                             "

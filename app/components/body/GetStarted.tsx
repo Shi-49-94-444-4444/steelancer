@@ -1,13 +1,13 @@
 'use client'
 
 import { BiSearch } from 'react-icons/bi'
+import FormatCusSm from '../FormatCusSm'
 
 const GetStarted = () => {
     return (
-        <div className='px-20 py-20'>
+        <FormatCusSm>
             <div className='flex flex-row w-full'>
                 <h1 className='
-                    font-poppins 
                     font-bold 
                     text-[60px]
                     '
@@ -23,10 +23,9 @@ const GetStarted = () => {
                         '
                     >
                 <h1 className='
-                        font-poppins 
-                        text-[20px] 
+                        text-2xl 
                         leading-[30px] 
-                        font-normal 
+                          
                         font-regular 
                         text-gray-900 
                         text-opacity-60
@@ -84,7 +83,8 @@ const GetStarted = () => {
                             p-4 
                             bg-pink-500 
                             rounded-full 
-                            text-white ml-5
+                            text-white 
+                            ml-5
                             cursor-pointer
                             '
                             onClick={() => {}}
@@ -109,7 +109,7 @@ const GetStarted = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </FormatCusSm>
     )
 }
 

@@ -34,9 +34,7 @@ const QuickBox: React.FC<QuickBoxProps> = ({
                     <Icon size={50} />
                 </div>
                 <div className="
-                    font-poppins
                     font-semibold
-                    font-normal
                     text-[25px]
                     mt-5
                     "
@@ -44,11 +42,9 @@ const QuickBox: React.FC<QuickBoxProps> = ({
                     {label}
                 </div>
                 <div className="
-                    font-poppins
                     text-[20px]
                     text-[#9D9D9D]
                     text-center
-                    ml-5
                     "
                 >
                     {description}

@@ -37,9 +37,8 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
                     "
                 >
                     <div className="
-                        font-poppins 
                         font-semibold 
-                        font-normal 
+                          
                         text-white 
                         text-2xl 
                         text-center

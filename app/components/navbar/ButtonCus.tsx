@@ -4,7 +4,7 @@ const ButtonCus = () => {
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
-                <div
+                <button
                     onClick={() => { }}
                     className="
                     hidden
@@ -24,7 +24,7 @@ const ButtonCus = () => {
                     style={{ width: 'fit-content' }}
                 >
                     Post a project
-                </div>
+                </button>
             </div>
         </div>
     )

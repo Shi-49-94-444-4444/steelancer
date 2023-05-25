@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Navbar, ClientOnly, Banner, Quick, Category } from './components'
+import { Navbar, ClientOnly, Banner, Quick, Category, Recent } from './components'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,6 +25,7 @@ export default function RootLayout({
             <Banner />
             <Quick />
             <Category />
+            <Recent />
           </ClientOnly>
           {children}
         </div>

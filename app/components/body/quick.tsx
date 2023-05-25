@@ -1,10 +1,11 @@
 import { quicks } from "../constants"
 import QuickBox from '../QuickBox'
 import Container from "../Container"
+import FormatCusSm from "../FormatCusSm"
 
 const Quick = () => {
     return (
-        <div className="hidden md:block px-20">
+        <FormatCusSm>
             <div className="
                 flex 
                 flex-row 
@@ -43,7 +44,7 @@ const Quick = () => {
                     </Container>
                 </div>
             </div>
-        </div>
+        </FormatCusSm>
     )
 }
 

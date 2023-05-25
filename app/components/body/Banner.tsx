@@ -1,7 +1,7 @@
 'use client'
 
 import Container from '../Container'
-import { GetStarted, ImageCus } from '../navbar'
+import { GetStarted, ImageCus } from '../body'
 
 const Banner = () => {
     return (
