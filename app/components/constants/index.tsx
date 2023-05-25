@@ -40,3 +40,39 @@ export const quicks = [
         description: 'Apply or save and start working today'
     },
 ]
+
+export const categories = [
+    {
+        src: '/images/category_1.png',
+        label: 'Website Design',
+    },
+    {
+        src: '/images/category_2.png',
+        label: 'Commercial Website Bundle',
+    },
+    {
+        src: '/images/category_3.png',
+        label: 'Administration Website Bundle',
+    },
+    {
+        src: '/images/category_4.png',
+        label: 'Unity',
+    },
+    {
+        src: '/images/category_5.png',
+        label: '.NET',
+    },
+    {
+        src: '/images/category_6.png',
+        label: 'Java',
+    },
+    {
+        src: '/images/category_7.png',
+        label: 'PHP',
+    },
+    {
+        src: '/images/category_8.png',
+        label: 'ReactJs',
+    },
+    
+]

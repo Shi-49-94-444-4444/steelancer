@@ -1,13 +1,10 @@
-import { RiLockPasswordLine } from "react-icons/ri"
-import { AiOutlineFileSearch } from "react-icons/ai"
-import { MdOutlineSecurity } from "react-icons/md"
 import { quicks } from "../constants"
 import QuickBox from '../QuickBox'
 import Container from "../Container"
 
 const Quick = () => {
     return (
-        <div className="px-20">
+        <div className="hidden md:block px-20">
             <div className="
                 flex 
                 flex-row 

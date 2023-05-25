@@ -27,7 +27,8 @@ const Navbar = () => {
                     'pt-0' : 'pt-8'
                 } 
                 sticky 
-                top-0 z-50
+                top-0
+                z-50
                 `
             }
         >

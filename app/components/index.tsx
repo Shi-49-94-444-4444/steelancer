@@ -1,10 +1,11 @@
 import ClientOnly from './ClientOnly'
 import { Banner, Navbar } from './navbar'
-import { Quick } from './body'
+import { Quick, Category } from './body'
 
 export { 
     Navbar,
     ClientOnly,
     Banner,
-    Quick
+    Quick,
+    Category
 }

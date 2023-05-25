@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Navbar, ClientOnly, Banner, Quick } from './components'
+import { Navbar, ClientOnly, Banner, Quick, Category } from './components'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,11 +17,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} style={{ overflowY: 'auto' }}>
-        <div className="w-full h-[980px] bg-pink-100">
+        <div className="absolute inset-0 bg-cover bg-center w-full h-[980px]" style={{
+                backgroundImage: 'url("./images/background.png")',
+              }}>
           <ClientOnly>
             <Navbar />
             <Banner />
             <Quick />
+            <Category />
           </ClientOnly>
           {children}
         </div>
