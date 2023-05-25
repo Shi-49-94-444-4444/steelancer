@@ -11,7 +11,7 @@ const QuickBox: React.FC<QuickBoxProps> = ({
     label,
     description
 }) => {
-    return(
+    return (
         <div className="
                 flex
                 flex-col
@@ -21,35 +21,35 @@ const QuickBox: React.FC<QuickBoxProps> = ({
                 md:w-[250px]
                 shadow-sm
                 rounded-[10px]
-                "
-            >
-                <div className='
+            "
+        >
+            <div className='
                     p-4 
                     bg-blue-100 
                     rounded-full 
                     text-pink-300
                     cursor-pointer
-                    '
-                >
-                    <Icon size={50} />
-                </div>
-                <div className="
+                '
+            >
+                <Icon size={50} />
+            </div>
+            <div className="
                     font-semibold
                     text-[25px]
                     mt-5
-                    "
-                >
-                    {label}
-                </div>
-                <div className="
+                "
+            >
+                {label}
+            </div>
+            <div className="
                     text-[20px]
                     text-[#9D9D9D]
                     text-center
-                    "
-                >
-                    {description}
-                </div>
+                "
+            >
+                {description}
             </div>
+        </div>
     )
 }
 

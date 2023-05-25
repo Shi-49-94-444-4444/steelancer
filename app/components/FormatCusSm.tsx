@@ -4,8 +4,8 @@ interface FormatCusSmProps {
     children: React.ReactNode
 }
 
-const FormatCusSm: React.FC<FormatCusSmProps> = ({ 
-    children 
+const FormatCusSm: React.FC<FormatCusSmProps> = ({
+    children
 }) => {
     return (
         <div

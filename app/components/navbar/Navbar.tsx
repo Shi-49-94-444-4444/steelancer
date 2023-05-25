@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
-import Container from '../Container';
-import { Logo, NavLink, ButtonCus } from '../navbar';
+import React, { useState, useEffect } from "react";
+import Container from "../Container";
+import { Logo, NavLink, ButtonCus } from "../navbar";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -13,8 +13,8 @@ const Navbar = () => {
             setIsScrolled(scrollTop > 0);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
@@ -23,8 +23,8 @@ const Navbar = () => {
                 flex 
                 flex-row 
                 justify-center 
-                ${isScrolled ? 
-                    'pt-0' : 'pt-8'
+                ${isScrolled ?
+                    "pt-0" : "pt-8"
                 } 
                 sticky 
                 top-0
@@ -38,20 +38,20 @@ const Navbar = () => {
                     bg-white 
                     z-10 
                     shadow-lg 
-                    ${isScrolled ? 
-                        'rounded-none w-full' : 'rounded-full w-[90%]'
+                    ${isScrolled ?
+                        "rounded-none w-full" : "rounded-full w-[90%]"
                     }
                     `
                 }
             >
                 <Container>
                     <div className="
-                        flex 
-                        flex-row 
-                        items-center 
-                        justify-between 
-                        gap-3 
-                        md:gap-0
+                            flex 
+                            flex-row 
+                            items-center 
+                            justify-between 
+                            gap-3 
+                            md:gap-0
                         "
                     >
                         <Logo />
