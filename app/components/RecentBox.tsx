@@ -80,6 +80,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                         text-xl 
                         text-pink-300 
                         underline
+                        cursor-pointer
                     "
                 >
                     Apply now

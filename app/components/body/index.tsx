@@ -4,6 +4,7 @@ import Recent from "./Recent"
 import ImageCus from "./ImageCus"
 import GetStarted from "./GetStarted"
 import ButtonCus from "./ButtonCus"
+import Banner from "./Banner"
 
 export {
     Quick,
@@ -11,5 +12,6 @@ export {
     Recent,
     ImageCus,
     GetStarted,
-    ButtonCus
+    ButtonCus,
+    Banner
 }
