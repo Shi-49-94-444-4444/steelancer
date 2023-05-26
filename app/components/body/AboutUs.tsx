@@ -52,7 +52,13 @@ const AboutUs = () => {
                                 <span className="text-pink-300">Freelancers </span>
                                 Here
                             </h1>
-                            <h1 className="text-[#9D9D9D] text-xl mt-5 ml-20">
+                            <h1 className="
+                                    text-[#9D9D9D] 
+                                    text-xl 
+                                    mt-5 
+                                    ml-20
+                                "
+                            >
                                 Join the network of
                                 <span className="font-semibold"> 500+ high quality freelancers </span>
                                 and find the desired addition to your team today. With more than
