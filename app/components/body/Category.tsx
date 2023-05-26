@@ -1,8 +1,8 @@
 'use client'
 
-import CategoryBox from "../modal"
+import CategoryBox from "../CategoryBox"
 import Container from "../Container"
-import FormatCusMd from "../format"
+import FormatCusMd from "../FormatCusMd"
 import { categories } from "@/app/constants"
 import { ButtonCus } from "../body"
 
