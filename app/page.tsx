@@ -1,4 +1,4 @@
-import { Navbar, ClientOnly, Banner, Quick, Category, Recent, Background } from "./components"
+import { Navbar, ClientOnly, Banner, Quick, Category, Recent, Background, AboutUs } from "./components"
 
 export default function Home() {
   return (
@@ -9,6 +9,7 @@ export default function Home() {
         <Quick />
         <Category />
         <Recent />
+        <AboutUs />
       </Background>
     </ClientOnly>
   )

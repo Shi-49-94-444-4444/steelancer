@@ -1,6 +1,6 @@
 import ClientOnly from './ClientOnly'
 import { Navbar } from './navbar'
-import { Quick, Category, Recent, Banner } from './body'
+import { Quick, Category, Recent, Banner, AboutUs } from './body'
 import Background from './BackgroundCus'
 
 export {
@@ -10,5 +10,6 @@ export {
     Quick,
     Category,
     Recent,
-    Background
+    Background,
+    AboutUs
 }
