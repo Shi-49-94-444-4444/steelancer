@@ -24,12 +24,12 @@ const Quick = () => {
                     <Container>
                         <div className="
                                 flex 
-                                flex-row 
-                                gap-3
+                                flex-row
+                                gap-3 
                                 md:gap-0
                                 justify-between
-                                py-10
                                 items-center
+                                py-10
                             "
                         >
                             {quicks.map((item) => (

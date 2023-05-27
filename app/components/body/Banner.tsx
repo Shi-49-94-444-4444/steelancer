@@ -9,8 +9,7 @@ const Banner = () => {
             <div className="
                     flex 
                     flex-row 
-                    mt-20 
-                    mb-20
+                    my-20 
                 "
             >
                 <GetStarted />

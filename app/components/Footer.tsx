@@ -19,8 +19,7 @@ const Footer = () => {
                     <div className="
                             grid 
                             grid-cols-12 
-                            gap-3 
-                            md:gap-0 
+                            gap-10 
                             px-10
                         "
                     >
@@ -44,16 +43,17 @@ const Footer = () => {
                                     flex 
                                     flex-row 
                                     cursor-pointer
+                                    gap-5
                                 "
                             >
-                                <AiFillInstagram size={40} className="mr-5" />
-                                <BsTwitter size={40} className="mr-5" />
+                                <AiFillInstagram size={40} />
+                                <BsTwitter size={40} />
                                 <GrFacebookOption size={40} />
                             </div>
                         </div>
                         <div className="
                                 col-span-8 
-                                mt-20 
+                                mt-20
                                 px-20 
                                 py-10
                             "
@@ -64,82 +64,78 @@ const Footer = () => {
                                     justify-between
                                 "
                             >
-                                <div className="flex flex-col">
+                                <div className="flex flex-col gap-4">
                                     <h2 className="
                                             font-semibold 
                                             text-xl 
-                                            mb-4
                                         "
                                     >
                                         For Clients
                                     </h2>
-                                    <div className="mb-4">
+                                    <div>
                                         Find Freelancers
                                     </div>
-                                    <div className="mb-4">
+                                    <div>
                                         Post Project
                                     </div>
-                                    <div className="mb-4">
+                                    <div>
                                         Refund Policy
                                     </div>
-                                    <div className="mb-4">
+                                    <div>
                                         Privacy Policy
                                     </div>
                                 </div>
-                                <div className="flex flex-col">
+                                <div className="flex flex-col gap-4">
                                     <h2 className="
                                             font-semibold 
                                             text-xl 
-                                            mb-4
                                         "
                                     >
                                         For Freelancers
                                     </h2>
-                                    <div className="mb-4">
+                                    <div>
                                         Find Work
                                     </div>
-                                    <div className="mb-4">
+                                    <div>
                                         Create Account
                                     </div>
                                 </div>
-                                <div className="flex flex-col">
+                                <div className="flex flex-col gap-4">
                                     <h2 className="
                                             font-semibold 
                                             text-xl 
-                                            mb-4
                                         "
                                     >
                                         Contact Us
                                     </h2>
                                     <div className="
                                             flex 
-                                            flex-row 
-                                            mb-4
+                                            flex-row
+                                            gap-2 
                                         "
                                     >
-                                        <GrLocation className="mr-1 mt-1" />
+                                        <GrLocation className="mt-1" />
                                         <span>Ho Chi Minh City</span>
                                     </div>
                                     <div className="
                                             flex 
-                                            flex-row 
-                                            mb-4
+                                            flex-row
+                                            gap-2 
                                         "
                                     >
-                                        <TbPhoneCall className="mr-1 mt-1" />
+                                        <TbPhoneCall className="mt-1" />
                                         <span>+0000000</span>
                                     </div>
                                     <div className="
                                             flex 
                                             flex-row 
-                                            mb-4
+                                            gap-2 
                                         "
                                     >
-                                        <TfiEmail className="mr-1 mt-1" />
+                                        <TfiEmail className="mt-1" />
                                         <span>FreelanceX@gmail.com</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

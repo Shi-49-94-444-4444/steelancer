@@ -15,13 +15,13 @@ const QuickBox: React.FC<QuickBoxProps> = ({
         <div className="
                 flex
                 flex-col
-                justify-between
                 items-center
                 w-auto
                 md:w-[250px]
                 h-60
                 shadow-sm
                 rounded-12
+                gap-5
             "
         >
             <div className='
@@ -37,7 +37,6 @@ const QuickBox: React.FC<QuickBoxProps> = ({
             <div className="
                     font-semibold
                     text-3xl
-                    mt-5
                 "
             >
                 {label}
