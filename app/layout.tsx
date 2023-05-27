@@ -1,5 +1,6 @@
 import "./globals.css"
 import { Inter } from "next/font/google"
+import { Navbar, ClientOnly, Banner, Quick, Category, Recent, Background, AboutUs, Footer } from "./components"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -8,7 +9,7 @@ export const metadata = {
   description: 'Steelancer clone',
 }
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode
@@ -16,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} style={{ overflowY: 'auto' }}>
-          {children}
+        <ClientOnly>
+          <Background>
+            <Navbar />
+            {children}
+          </Background>
+        </ClientOnly>
       </body>
     </html>
   )
