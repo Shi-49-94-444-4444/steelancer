@@ -24,7 +24,7 @@ const Recent = () => {
                         <section>
                             <h1 className="
                                     text-3xl 
-                                    text-[#9D9D9D]
+                                    text-gray-cus
                                 "
                             >
                                 The latest freelance work!
@@ -35,7 +35,7 @@ const Recent = () => {
                                 "
                             >
                                 Recently Posted
-                                <span className="text-pink-300"> Works</span>
+                                <span className="text-pink-cus-tx"> Works</span>
                             </h1>
                         </section>
                         <div className="
@@ -47,10 +47,10 @@ const Recent = () => {
                             <BsArrowLeftCircleFill
                                 size={50}
                                 className="
-                                    text-pink-500 
+                                    text-pink-cus-bt 
                                     rounded-full
                                     hover:text-white
-                                    hover:bg-pink-500
+                                    hover:bg-pink-cus-bt
                                     cursor-pointer
                                     mr-4
                                 "
@@ -58,10 +58,10 @@ const Recent = () => {
                             <BsFillArrowRightCircleFill
                                 size={50}
                                 className="
-                                    text-pink-500 
+                                    text-pink-cus-bt 
                                     rounded-full
                                     hover:text-white
-                                    hover:bg-pink-500
+                                    hover:bg-pink-cus-bt
                                     cursor-pointer
                                 "
                             />
@@ -76,7 +76,7 @@ const Recent = () => {
                     >
                         <div className="
                                 w-full
-                                md:h-[450px]
+                                md:h-cus-4
                                 bg-white 
                                 z-10 
                             "

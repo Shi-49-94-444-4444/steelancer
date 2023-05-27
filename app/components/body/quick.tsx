@@ -14,11 +14,11 @@ const Quick = () => {
             >
                 <div className="
                         w-[90%] 
-                        md:h-[325px] 
+                        md:h-80
                         bg-white 
                         z-10 
                         shadow-lg 
-                        rounded-[10px]
+                        rounded-12
                     "
                 >
                     <Container>
@@ -27,9 +27,9 @@ const Quick = () => {
                                 flex-row 
                                 gap-3
                                 md:gap-0
-                                py-10
                                 justify-between
-                                mt-5
+                                py-10
+                                items-center
                             "
                         >
                             {quicks.map((item) => (

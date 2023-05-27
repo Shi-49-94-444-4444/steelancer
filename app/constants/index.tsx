@@ -27,7 +27,7 @@ export const quicks = [
     {
         icon: RiLockPasswordLine,
         label: 'Create Account',
-        description: 'First create an account and update your profile'
+        description: 'First create an account & update your profile'
     },
     {
         icon: AiOutlineFileSearch,
@@ -37,7 +37,7 @@ export const quicks = [
     {
         icon: MdOutlineSecurity,
         label: 'Save and apply',
-        description: 'Apply or save and start working today'
+        description: 'Apply or save and & working today'
     },
 ]
 

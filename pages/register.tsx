@@ -3,6 +3,13 @@ import Layout from "@/app/layout"
 import Container from "@/app/components/Container"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { IoMail } from 'react-icons/io5'
+import Select from "react-select"
+
+const options = [
+  { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },
+  { value: "Business", label: "Business" },
+  { value: "Freelancer", label: "Freelancer" },
+];
 
 const Register = () => {
   return (
@@ -32,14 +39,14 @@ const Register = () => {
                   <h1 className="
                       font-thin 
                       font-mono 
-                      text-pink-500 
-                      text-9xl
+                      text-pink-cus-bt 
+                      text-8xl
                     "
                   >
                     Register
                   </h1>
                 </div>
-                <form className="px-28 space-y-5">
+                <form className="px-28 space-y-5 pt-10">
                   <div className="
                       grid 
                       grid-cols-3 
@@ -47,8 +54,8 @@ const Register = () => {
                     "
                   >
                     <div className="col-span-1">
-                      <input 
-                        placeholder="First Name" 
+                      <input
+                        placeholder="First Name"
                         className="
                           px-3 
                           py-2 
@@ -58,12 +65,12 @@ const Register = () => {
                           border-2 
                           border-gray-400 
                           text-xl
-                        " 
+                        "
                       />
                     </div>
                     <div className="col-span-2">
-                      <input 
-                        placeholder="Last Name" 
+                      <input
+                        placeholder="Last Name"
                         className="
                           px-3 
                           py-2 
@@ -73,7 +80,7 @@ const Register = () => {
                           border-2 
                           border-gray-400 
                           text-xl
-                        " 
+                        "
                       />
                     </div>
                   </div>
@@ -84,55 +91,9 @@ const Register = () => {
                     "
                   >
                     <IoMail className="h-6 w-6 absolute left-3" />
-                    <input 
-                      type="email" 
-                      placeholder="Mail" 
-                      className="
-                        pl-14 
-                        pr-6 
-                        py-2 
-                        w-full 
-                        h-14 
-                        rounded-15 
-                        border-2 
-                        border-gray-400 
-                        text-xl
-                      " 
-                    />
-                  </div>
-                  <div className="
-                      relative 
-                      flex 
-                      items-center
-                    "
-                  >
-                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
-                    <input 
-                      type="password" 
-                      placeholder="Password" 
-                      className="
-                        pl-14 
-                        pr-6 
-                        py-2 
-                        w-full 
-                        h-14 
-                        rounded-15 
-                        border-2 
-                        border-gray-400 
-                        text-xl
-                      " 
-                    />
-                  </div>
-                  <div className="
-                      relative 
-                      flex 
-                      items-center
-                    "
-                  >
-                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
-                    <input 
-                      type="password" 
-                      placeholder="Confirm Password" 
+                    <input
+                      type="email"
+                      placeholder="Mail"
                       className="
                         pl-14 
                         pr-6 
@@ -146,24 +107,61 @@ const Register = () => {
                       "
                     />
                   </div>
-                  <select className="
-                      px-3 
-                      py-3 
-                      w-full 
-                      h-14 
-                      rounded-15 
-                      border-2 
-                      border-gray-400 
-                      text-xl
+                  <div className="
+                      relative 
+                      flex 
+                      items-center
                     "
                   >
-                    <option value="" selected disabled>Click Choose Role</option>
-                    <option value="role1">Business</option>
-                    <option value="role2">Freelancer</option>
-                  </select>
+                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      className="
+                        pl-14 
+                        pr-6 
+                        py-2 
+                        w-full 
+                        h-14 
+                        rounded-15 
+                        border-2 
+                        border-gray-400 
+                        text-xl
+                      "
+                    />
+                  </div>
+                  <div className="
+                      relative 
+                      flex 
+                      items-center
+                    "
+                  >
+                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
+                    <input
+                      type="password"
+                      placeholder="Confirm Password"
+                      className="
+                        pl-14 
+                        pr-6 
+                        py-2 
+                        w-full 
+                        h-14 
+                        rounded-15 
+                        border-2 
+                        border-gray-400 
+                        text-xl
+                      "
+                    />
+                  </div>
+                  <Select
+                    options={options}
+                    className="
+                          text-xl"
+                    isClearable
+                  />
                   <button className="
                       w-full 
-                      bg-pink-500 
+                      bg-pink-cus-bt 
                       rounded-50 
                       h-16 
                       text-xl 

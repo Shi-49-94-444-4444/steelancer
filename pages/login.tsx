@@ -33,14 +33,14 @@ const Login = () => {
                 >
                   <h1 className="
                       font-mono 
-                      text-pink-500 
-                      text-9xl
+                      text-pink-cus-bt 
+                      text-8xl
                     "
                   >
                     LOGIN
                   </h1>
                 </div>
-                <form className="px-28 space-y-5">
+                <form className="px-28 space-y-5 pt-10">
                   <div className="
                       relative 
                       flex 
@@ -100,7 +100,7 @@ const Login = () => {
                     />
                   </div>
                   <h1 className="
-                      text-pink-300 
+                      text-pink-cus-tx 
                       cursor-pointer
                     "
                   >
@@ -108,7 +108,7 @@ const Login = () => {
                   </h1>
                   <button className="
                       w-full 
-                      bg-pink-500 
+                      bg-pink-cus-bt 
                       rounded-50 
                       h-16 
                       text-xl 
@@ -121,7 +121,7 @@ const Login = () => {
                 </form>
                 <h1 className="
                     text-center 
-                    text-pink-500
+                    text-pink-cus-bt
                   "
                 >
                   Or

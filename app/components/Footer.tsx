@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div className="
                 w-full 
-                h-[500px] 
+                h-cus-3
                 bg-pink-cus-bg
             "
         >

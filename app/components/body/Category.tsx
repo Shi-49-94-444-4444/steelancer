@@ -31,7 +31,7 @@ const Category = () => {
                             "
                         >
                             <span>Choose Different </span>
-                            <span className="text-pink-300">Category</span>
+                            <span className="text-pink-cus-tx">Category</span>
                         </h1>
                     </div>
                     <div className="

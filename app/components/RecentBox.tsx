@@ -47,7 +47,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                     {label}
                 </h1>
                 <h1 className="
-                        text-[#9D9D9D] 
+                        text-gray-cus 
                         text-xl 
                         px-6 
                         text-center
@@ -78,7 +78,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                 </h1>
                 <h1 className="
                         text-xl 
-                        text-pink-300 
+                        text-pink-cus-tx 
                         underline
                         cursor-pointer
                     "

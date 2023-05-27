@@ -19,15 +19,16 @@ const QuickBox: React.FC<QuickBoxProps> = ({
                 items-center
                 w-auto
                 md:w-[250px]
+                h-60
                 shadow-sm
-                rounded-[10px]
+                rounded-12
             "
         >
             <div className='
                     p-4 
                     bg-blue-100 
                     rounded-full 
-                    text-pink-300
+                    text-pink-cus-tx
                     cursor-pointer
                 '
             >
@@ -35,15 +36,15 @@ const QuickBox: React.FC<QuickBoxProps> = ({
             </div>
             <div className="
                     font-semibold
-                    text-[25px]
+                    text-3xl
                     mt-5
                 "
             >
                 {label}
             </div>
             <div className="
-                    text-[20px]
-                    text-[#9D9D9D]
+                    text-2xl
+                    text-gray-cus
                     text-center
                 "
             >

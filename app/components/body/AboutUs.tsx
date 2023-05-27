@@ -12,7 +12,6 @@ const AboutUs = () => {
                         gap-3 
                         md:gap-0 
                         z-10
-                        mt-20
                     "
                 >
                     <div className="
@@ -28,7 +27,7 @@ const AboutUs = () => {
                             "
                         >
                             <span>ABOUT </span>
-                            <span className="text-pink-300">US</span>
+                            <span className="text-pink-cus-tx">US</span>
                         </h1>
                     </div>
                     <div className="
@@ -49,22 +48,22 @@ const AboutUs = () => {
                             <h1 className="text-5xl font-medium">
                                 Find The Best
                                 <br />
-                                <span className="text-pink-300">Freelancers </span>
+                                <span className="text-pink-cus-tx">Freelancers </span>
                                 Here
                             </h1>
                             <h1 className="
-                                    text-[#9D9D9D] 
+                                    text-gray-cus 
                                     text-xl 
                                     mt-5 
                                     ml-20
                                 "
                             >
                                 Join the network of
-                                <span className="font-semibold"> 500+ high quality freelancers </span>
+                                <span className="font-semibold text-gray-cus"> 500+ high quality freelancers </span>
                                 and find the desired addition to your team today. With more than
-                                <span className="font-semibold"> 300 freelance work </span>
+                                <span className="font-semibold text-gray-cus"> 300 freelance work </span>
                                 posted of various jobs and skill requirements,
-                                <span className="font-semibold"> SteelanceX </span>
+                                <span className="font-semibold text-gray-cus"> SteelanceX </span>
                                 is the best choice for your every need of IT and development.
                             </h1>
                         </section>

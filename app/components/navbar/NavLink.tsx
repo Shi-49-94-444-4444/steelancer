@@ -30,19 +30,19 @@ const NavLink = () => {
                     text-sm
                 "
             >
-                <Link href="/" className="px-6 hover:text-pink-500">
+                <Link href="/" className="px-6 hover:text-pink-cus-bt">
                     Home
                 </Link>
-                <Link href="/" className="px-6 hover:text-pink-500">
+                <Link href="/" className="px-6 hover:text-pink-cus-bt">
                     Find work
                 </Link>
-                <Link href="/" className="px-6 hover:text-pink-500">
+                <Link href="/" className="px-6 hover:text-pink-cus-bt">
                     Find Freelancers
                 </Link>
-                <Link href="/login" className="px-6 hover:text-pink-500" replace>
+                <Link href="/login" className="px-6 hover:text-pink-cus-bt" replace>
                     Log in
                 </Link>
-                <Link href="/register" className="px-6 hover:text-pink-500">
+                <Link href="/register" className="px-6 hover:text-pink-cus-bt">
                     Sign up
                 </Link>
                 <div className="relative">
@@ -50,7 +50,7 @@ const NavLink = () => {
                         onClick={toggleMoreOpen}
                         className="
                             px-6
-                            hover:text-pink-500
+                            hover:text-pink-cus-bt
                         "
                     >
                         More
@@ -58,7 +58,7 @@ const NavLink = () => {
                     {isMoreOpen && (
                         <div className="
                                 absolute
-                                w-[40px]
+                                w-10
                                 md:w-40
                                 bg-white
                                 overflow-hidden
