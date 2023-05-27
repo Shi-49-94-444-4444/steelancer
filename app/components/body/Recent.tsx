@@ -30,9 +30,8 @@ const Recent = () => {
                                 The latest freelance work!
                             </h1>
                             <h1 className="
-                                    font-medium
                                     text-5xl
-                                    font-regular
+                                    font-semibold
                                 "
                             >
                                 Recently Posted

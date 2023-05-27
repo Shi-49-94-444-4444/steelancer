@@ -41,7 +41,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                 <h1 className="
                         text-2xl 
                         font-semibold 
-                        text-regular
+                        font-normal
                     "
                 >
                     {label}

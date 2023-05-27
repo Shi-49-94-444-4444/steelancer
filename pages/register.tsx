@@ -2,11 +2,9 @@ import FormatCusMd from "@/app/components/FormatCusMd"
 import Layout from "@/app/layout"
 import Container from "@/app/components/Container"
 import { RiLockPasswordFill } from "react-icons/ri"
-import { FaFacebook } from 'react-icons/fa'
-import { FcGoogle } from 'react-icons/fc'
 import { IoMail } from 'react-icons/io5'
 
-const Login = () => {
+const Register = () => {
   return (
     <Layout>
       <FormatCusMd>
@@ -32,28 +30,60 @@ const Login = () => {
                   "
                 >
                   <h1 className="
+                      font-thin 
                       font-mono 
                       text-pink-500 
                       text-9xl
                     "
                   >
-                    LOGIN
+                    Register
                   </h1>
                 </div>
                 <form className="px-28 space-y-5">
+                  <div className="
+                      grid 
+                      grid-cols-3 
+                      gap-4
+                    "
+                  >
+                    <div className="col-span-1">
+                      <input 
+                        placeholder="First Name" 
+                        className="
+                          px-3 
+                          py-2 
+                          w-full 
+                          h-14 
+                          rounded-15 
+                          border-2 
+                          border-gray-400 
+                          text-xl
+                        " 
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      <input 
+                        placeholder="Last Name" 
+                        className="
+                          px-3 
+                          py-2 
+                          w-full 
+                          h-14 
+                          rounded-15 
+                          border-2 
+                          border-gray-400 
+                          text-xl
+                        " 
+                      />
+                    </div>
+                  </div>
                   <div className="
                       relative 
                       flex 
                       items-center
                     "
                   >
-                    <IoMail className="
-                        h-6 
-                        w-6 
-                        absolute 
-                        left-3
-                      " 
-                    />
+                    <IoMail className="h-6 w-6 absolute left-3" />
                     <input 
                       type="email" 
                       placeholder="Mail" 
@@ -61,9 +91,9 @@ const Login = () => {
                         pl-14 
                         pr-6 
                         py-2 
-                        w-full
+                        w-full 
                         h-14 
-                        rounded-15
+                        rounded-15 
                         border-2 
                         border-gray-400 
                         text-xl
@@ -76,13 +106,7 @@ const Login = () => {
                       items-center
                     "
                   >
-                    <RiLockPasswordFill className="
-                        h-6 
-                        w-6 
-                        absolute 
-                        left-3
-                      " 
-                    />
+                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
                     <input 
                       type="password" 
                       placeholder="Password" 
@@ -99,13 +123,44 @@ const Login = () => {
                       " 
                     />
                   </div>
-                  <h1 className="
-                      text-pink-300 
-                      cursor-pointer
+                  <div className="
+                      relative 
+                      flex 
+                      items-center
                     "
                   >
-                    Forgot password ?
-                  </h1>
+                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
+                    <input 
+                      type="password" 
+                      placeholder="Confirm Password" 
+                      className="
+                        pl-14 
+                        pr-6 
+                        py-2 
+                        w-full 
+                        h-14 
+                        rounded-15 
+                        border-2 
+                        border-gray-400 
+                        text-xl
+                      "
+                    />
+                  </div>
+                  <select className="
+                      px-3 
+                      py-3 
+                      w-full 
+                      h-14 
+                      rounded-15 
+                      border-2 
+                      border-gray-400 
+                      text-xl
+                    "
+                  >
+                    <option value="" selected disabled>Click Choose Role</option>
+                    <option value="role1">Business</option>
+                    <option value="role2">Freelancer</option>
+                  </select>
                   <button className="
                       w-full 
                       bg-pink-500 
@@ -116,25 +171,9 @@ const Login = () => {
                       text-white
                     "
                   >
-                    SIGN IN
+                    SIGN UP
                   </button>
                 </form>
-                <h1 className="
-                    text-center 
-                    text-pink-500
-                  "
-                >
-                  Or
-                </h1>
-                <div className="
-                    flex 
-                    flex-row 
-                    justify-center
-                  "
-                >
-                  <FaFacebook size={80} className="text-blue-500 cursor-pointer mr-20"/>
-                  <FcGoogle size={80} className="cursor-pointer"/>
-                </div>
               </div>
             </div>
           </div>
@@ -144,4 +183,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
