@@ -1,23 +1,22 @@
 import "./globals.css"
-import { Inter } from "next/font/google"
-
-const inter = Inter({ subsets: ['latin'] })
+import { Navbar, ClientOnly, Background } from "./components"
 
 export const metadata = {
   title: 'Steelancer',
   description: 'Steelancer clone',
 }
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className} style={{ overflowY: 'auto' }}>
-          {children}
-      </body>
-    </html>
+    <ClientOnly>
+      <Background>
+        <Navbar />
+        {children}
+      </Background>
+    </ClientOnly>
   )
 }

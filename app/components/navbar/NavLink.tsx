@@ -21,7 +21,7 @@ const NavLink = () => {
                 cursor-pointer
             "
         >
-            <div className="
+            <nav className="
                     flex
                     flex-row
                     items-center
@@ -39,7 +39,7 @@ const NavLink = () => {
                 <Link href="/" className="px-6 hover:text-pink-500">
                     Find Freelancers
                 </Link>
-                <Link href="/" className="px-6 hover:text-pink-500">
+                <Link href="/Login" className="px-6 hover:text-pink-500" replace>
                     Log in
                 </Link>
                 <Link href="/" className="px-6 hover:text-pink-500">
@@ -92,7 +92,7 @@ const NavLink = () => {
                         </div>
                     )}
                 </div>
-            </div>
+            </nav>
         </div>
     )
 }
