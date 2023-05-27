@@ -7,8 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'pink-cus-bt': '#FF1ED1',
+        'pink-cus-bg': '#ffddf8',
+        'pink-cus-tx': '#FF99EA',
+      },
+      borderRadius: {
+        '15': '15px',
+        '50': '50px'
+      },
+      spacing: {
+        '128': '32rem',
+        'cus-2': '40rem',
+      },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        sans: ['ui-sans-serif', 'system-ui'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -39,10 +39,10 @@ const NavLink = () => {
                 <Link href="/" className="px-6 hover:text-pink-500">
                     Find Freelancers
                 </Link>
-                <Link href="/Login" className="px-6 hover:text-pink-500" replace>
+                <Link href="/login" className="px-6 hover:text-pink-500" replace>
                     Log in
                 </Link>
-                <Link href="/" className="px-6 hover:text-pink-500">
+                <Link href="/register" className="px-6 hover:text-pink-500">
                     Sign up
                 </Link>
                 <div className="relative">

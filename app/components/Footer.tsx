@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="
                 w-full 
                 h-[500px] 
-                bg-pink-200
+                bg-pink-cus-bg
             "
         >
             <div className="px-10">

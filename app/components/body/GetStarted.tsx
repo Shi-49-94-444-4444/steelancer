@@ -31,7 +31,7 @@ const GetStarted = () => {
                             text-2xl 
                             leading-[30px] 
                             
-                            font-regular 
+                            font-normal 
                             text-gray-900 
                             text-opacity-60
                         "
