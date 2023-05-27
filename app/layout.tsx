@@ -1,8 +1,5 @@
 import "./globals.css"
-import { Inter } from "next/font/google"
-import { Navbar, ClientOnly, Banner, Quick, Category, Recent, Background, AboutUs, Footer } from "./components"
-
-const inter = Inter({ subsets: ['latin'] })
+import { Navbar, ClientOnly, Background } from "./components"
 
 export const metadata = {
   title: 'Steelancer',
@@ -15,15 +12,11 @@ export default function Layout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className} style={{ overflowY: 'auto' }}>
-        <ClientOnly>
-          <Background>
-            <Navbar />
-            {children}
-          </Background>
-        </ClientOnly>
-      </body>
-    </html>
+    <ClientOnly>
+      <Background>
+        <Navbar />
+        {children}
+      </Background>
+    </ClientOnly>
   )
 }
