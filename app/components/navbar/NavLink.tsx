@@ -33,10 +33,10 @@ const NavLink = () => {
                 <Link href="/" className="px-6 hover:text-pink-cus-bt">
                     Home
                 </Link>
-                <Link href="/" className="px-6 hover:text-pink-cus-bt">
+                <Link href="/list_business" className="px-6 hover:text-pink-cus-bt">
                     Find work
                 </Link>
-                <Link href="/" className="px-6 hover:text-pink-cus-bt">
+                <Link href="/list_freelancer" className="px-6 hover:text-pink-cus-bt">
                     Find Freelancers
                 </Link>
                 <Link href="/login" className="px-6 hover:text-pink-cus-bt" replace>

@@ -1,7 +1,7 @@
 import { quicks } from "@/app/constants"
 import QuickBox from "../QuickBox"
 import Container from "../Container"
-import FormatCusSm from "../FormatCusSm"
+import { FormatCusSm } from "../modal"
 
 const Quick = () => {
     return (
