@@ -1,6 +1,21 @@
-import { ClientOnly, Background, Input, FormatForm, FormatCusMd, FormatCusSm, SearchCus, FormatList} from './modal'
+import { 
+    ClientOnly, 
+    Background, 
+    Input, 
+    FormatForm, 
+    FormatCusMd, 
+    FormatCusSm, 
+    SearchCus, 
+    FormatList
+} from './modal'
 import { Navbar } from './navbar'
-import { Quick, Category, Recent, Banner, AboutUs } from './body'
+import {
+    Quick, 
+    Category, 
+    Recent, 
+    Banner, 
+    AboutUs 
+} from './body'
 import Footer from './Footer'
 import Container from './Container'
 import { MultiFilter, FilterForm } from './filter'

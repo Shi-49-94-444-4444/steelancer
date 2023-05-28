@@ -1,8 +1,21 @@
 'use client'
 
-import { Footer, FormatList, MultiFilter, SearchCus } from "@/app/components"
+import { 
+    Footer, 
+    FormatList, 
+    MultiFilter, 
+    SearchCus 
+} from "@/app/components"
 import RatingFilter from "@/app/components/filter/RatingFilter"
-import { freelancerList, optionArrangement, optionExperience, optionJob, optionPrice, optionSkill, optionTypeWork } from "@/app/constants"
+import { 
+    freelancerList, 
+    optionArrangement, 
+    optionExperience, 
+    optionJob, 
+    optionPrice, 
+    optionSkill, 
+    optionTypeWork 
+} from "@/app/constants"
 import Layout from "@/app/layout"
 import Select from "react-select"
 import FreelancerList from "@/app/components/FreelancerList"
@@ -38,15 +51,53 @@ const filterContent = (
         <h1 className="text-xl">
             Filter:
         </h1>
-        <MultiFilter title="What job do you need?" placeholder="Choose field of work" options={optionJob} />
-        <MultiFilter title="Skill" placeholder="Choose skill" options={optionSkill} />
-        <MultiFilter title="Prior experience" placeholder="Choose Experience" options={optionExperience} />
-        <MultiFilter title="Hourly Rate (USD)" placeholder="Choose Price/Hour " options={optionPrice} />
-        <div className="w-full h-auto px-3 py-3 gap-5 border-[1px] rounded-15 shadow-lg bg-white">
+        <MultiFilter 
+            title="What job do you need?" 
+            placeholder="Choose field of work" 
+            options={optionJob} 
+        />
+        <MultiFilter 
+            title="Skill" 
+            placeholder="Choose skill" 
+            options={optionSkill} 
+        />
+        <MultiFilter 
+            title="Prior experience"
+            placeholder="Choose Experience" 
+            options={optionExperience} 
+        />
+        <MultiFilter 
+            title="Hourly Rate (USD)" 
+            placeholder="Choose Price/Hour" 
+            options={optionPrice} 
+        />
+        <div className="
+                w-full 
+                h-auto 
+                px-3 
+                py-3 
+                gap-5 
+                border-[1px] 
+                rounded-15 
+                shadow-lg 
+                bg-white
+            "
+        >
             <h1 className="font-semibold my-3">Working</h1>
             <RatingFilter onChange={handleRatingFilterChange} />
         </div>
-        <div className="w-full h-auto px-3 py-3 gap-5 border-[1px] rounded-15 shadow-lg bg-white">
+        <div className="
+                w-full 
+                h-auto 
+                px-3 
+                py-3 
+                gap-5 
+                border-[1px] 
+                rounded-15 
+                shadow-lg 
+                bg-white
+            "
+        >
             <h1 className="font-semibold my-3">Working</h1>
             <Select
                 placeholder="Choose arrangement"
@@ -108,10 +159,28 @@ const BodyContent: React.FC<BodyContentProps> = ({ businessList }) => {
                 breakLabel="..."
                 pageCount={Math.ceil(businessList.length / itemsPerPage)}
                 onPageChange={handlePageChange}
-                containerClassName="flex gap-2 justify-center my-20"
-                pageLinkClassName="px-3 py-2 rounded bg-gray-200 text-gray-700"
-                activeLinkClassName="font-bold bg-gray-500 text-white"
-                disabledClassName="opacity-50 cursor-not-allowed"
+                containerClassName="
+                    flex 
+                    gap-2 
+                    justify-center
+                    my-20
+                "
+                pageLinkClassName="
+                    px-3 
+                    py-2 
+                    rounded 
+                    bg-gray-200 
+                    text-gray-700
+                "
+                activeLinkClassName="
+                    font-bold 
+                    bg-gray-500 
+                    text-white
+                "
+                disabledClassName="
+                    opacity-50 
+                    cursor-not-allowed
+                "
             />
         </div>
     );
@@ -121,7 +190,10 @@ const list_freelancer = () => {
     return (
         <Layout>
             <SearchCus />
-            <FormatList filter={filterContent} body={<BodyContent businessList={freelancerList} />} />
+            <FormatList 
+                filter={filterContent} 
+                body={<BodyContent businessList={freelancerList} />} 
+            />
             <Footer />
         </Layout>
     )

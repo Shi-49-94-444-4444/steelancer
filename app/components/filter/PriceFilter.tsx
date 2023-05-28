@@ -23,14 +23,31 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ onChange }) => {
   };
 
   return (
-    <div className="w-full h-auto px-3 py-3 gap-5 border-[1px] rounded-15 shadow-lg bg-white">
+    <div className="
+        w-full 
+        h-auto 
+        px-3 
+        py-3 
+        gap-5 
+        border-[1px] 
+        rounded-15 
+        shadow-lg 
+        bg-white
+      "
+    >
       <h1 className="font-semibold my-3">Price</h1>
       <div className="flex flex-row mb-4">
         <input
           type="number"
           value={priceFrom}
           onChange={handlePriceFromChange}
-          className="border border-gray-300 px-2 py-1 rounded"
+          className="
+            border 
+            border-gray-300 
+            px-2 
+            py-1 
+            rounded
+          "
           placeholder="From"
         />
       </div>
@@ -39,7 +56,13 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ onChange }) => {
           type="number"
           value={priceTo}
           onChange={handlePriceToChange}
-          className="border border-gray-300 px-2 py-1 rounded"
+          className="
+            border 
+            border-gray-300 
+            px-2 
+            py-1 
+            rounded
+          "
           placeholder="To"
         />
       </div>

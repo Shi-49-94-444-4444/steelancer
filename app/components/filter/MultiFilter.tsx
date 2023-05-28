@@ -13,9 +13,24 @@ interface MultiFilterProps {
     placeholder: string;
 }
 
-const MultiFilter: React.FC<MultiFilterProps> = ({ title, options, placeholder }) => {
+const MultiFilter: React.FC<MultiFilterProps> = ({ 
+    title, 
+    options, 
+    placeholder 
+}) => {
     return (
-        <div className="w-full h-auto px-3 py-3 gap-5 border-[1px] rounded-15 shadow-lg bg-white">
+        <div className="
+                w-full 
+                h-auto 
+                px-3 
+                py-3 
+                gap-5 
+                border-[1px] 
+                rounded-15 
+                shadow-lg 
+                bg-white
+            "
+        >
             <h1 className="font-semibold my-3">{title}</h1>
             <Select
                 placeholder={placeholder}

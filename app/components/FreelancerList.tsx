@@ -21,7 +21,19 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
     star
 }) => {
     return (
-        <div className="grid grid-cols-12 w-full h-auto bg-white rounded-15 px-2 py-2 gap-10 shadow-lg">
+        <div className="
+                grid 
+                grid-cols-12 
+                w-full 
+                h-auto 
+                bg-white 
+                rounded-15 
+                px-2 
+                py-2 
+                gap-10 
+                shadow-lg
+            "
+        >
             <div className="col-span-2">
                 <Image
                     alt="avatar"
@@ -31,8 +43,20 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                 />
             </div>
             <div className="col-span-10">
-                <div className="flex flex-col gap-3 my-5">
-                    <div className="flex flex-row justify-between mr-10">
+                <div className="
+                        flex 
+                        flex-col 
+                        gap-3 
+                        my-5
+                    "
+                >
+                    <div className="
+                            flex 
+                            flex-row 
+                            justify-between 
+                            mr-10
+                        "
+                    >
                         <section>
                             <h1 className="text-3xl font-bold">
                                 {title}
@@ -41,9 +65,26 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                                 {label}
                             </h2>
                         </section>
-                        <button className="bg-pink-cus-bt text-xl text-white font-bold h-12 rounded-50 px-8">Rent now</button>
+                        <button className="
+                                bg-pink-cus-bt 
+                                text-xl 
+                                text-white 
+                                font-bold 
+                                h-12 
+                                rounded-50 
+                                px-8
+                            "
+                        >
+                            Rent now
+                        </button>
                     </div>
-                    <div className="flex flex-row font-semibold gap-x-10">
+                    <div className="
+                            flex 
+                            flex-row 
+                            font-semibold 
+                            gap-x-10
+                        "
+                    >
                         <div className="flex flex-row gap-3">
                             Rating: <Rating rating={star} maxStars={5} />
                         </div>

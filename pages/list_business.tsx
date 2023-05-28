@@ -1,9 +1,22 @@
 'use client'
 
 import { useState } from 'react';
-import { FormatList, SearchCus, MultiFilter, FilterForm, Footer } from "@/app/components"
+import { 
+    FormatList, 
+    SearchCus, 
+    MultiFilter, 
+    FilterForm, 
+    Footer 
+} from "@/app/components"
 import Layout from "@/app/layout"
-import { optionSkill, optionLanguage, optionPayment, optionPlace, optionWork, businessList } from "@/app/constants"
+import { 
+    optionSkill, 
+    optionLanguage, 
+    optionPayment, 
+    optionPlace, 
+    optionWork, 
+    businessList 
+} from "@/app/constants"
 import BusinessList from "@/app/components/BusinessList"
 import ReactPaginate from 'react-paginate';
 
@@ -57,11 +70,31 @@ const filterContent = (
             onTimeChange={(from, to) => {
             }}
         />
-        <MultiFilter title="Language" placeholder="Choose Language" options={optionLanguage} />
-        <MultiFilter title="Skill" placeholder="Choose Skill" options={optionSkill} />
-        <MultiFilter title="Place" placeholder="Choose Place" options={optionPlace} />
-        <MultiFilter title="Work" placeholder="Choose Work" options={optionWork} />
-        <MultiFilter title="Payment" placeholder="Choose Payment" options={optionPayment} />
+        <MultiFilter 
+            title="Language" 
+            placeholder="Choose Language" 
+            options={optionLanguage} 
+        />
+        <MultiFilter 
+            title="Skill" 
+            placeholder="Choose Skill" 
+            options={optionSkill} 
+        />
+        <MultiFilter 
+            title="Place" 
+            placeholder="Choose Place" 
+            options={optionPlace} 
+        />
+        <MultiFilter 
+            title="Work" 
+            placeholder="Choose Work" 
+            options={optionWork} 
+        />
+        <MultiFilter 
+            title="Payment" 
+            placeholder="Choose Payment" 
+            options={optionPayment} 
+        />
     </div>
 )
 
@@ -101,10 +134,26 @@ const BodyContent: React.FC<BodyContentProps> = ({ businessList }) => {
                 breakLabel="..."
                 pageCount={Math.ceil(businessList.length / itemsPerPage)}
                 onPageChange={handlePageChange}
-                containerClassName="flex gap-2 justify-center my-20"
-                pageLinkClassName="px-3 py-2 rounded bg-gray-200 text-gray-700"
-                activeLinkClassName="font-bold bg-gray-500 text-white"
-                disabledClassName="opacity-50 cursor-not-allowed"
+                containerClassName="
+                    flex gap-2 
+                    justify-center 
+                    my-20
+                "
+                pageLinkClassName="
+                    px-3 py-2 
+                    rounded 
+                    bg-gray-200 
+                    text-gray-700
+                "
+                activeLinkClassName="
+                    font-bold 
+                    bg-gray-500 
+                    text-white
+                "
+                disabledClassName="
+                    opacity-50 
+                    cursor-not-allowed
+                "
             />
         </div>
     );
@@ -114,7 +163,10 @@ const list_business = () => {
     return (
         <Layout>
             <SearchCus />
-            <FormatList filter={filterContent} body={<BodyContent businessList={businessList} />} />
+            <FormatList 
+                filter={filterContent} 
+                body={<BodyContent businessList={businessList} />} 
+            />
             <Footer />
         </Layout>
     )

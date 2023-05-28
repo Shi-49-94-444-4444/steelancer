@@ -18,10 +18,32 @@ const BusinessList: React.FC<BusinessListProps> = ({
     business,
 }) => {
     return (
-        <div className="grid grid-cols-12 w-full h-auto bg-white rounded-15 px-2 py-2 gap-10 shadow-lg">
-            <div className="col-span-10 px-5 gap-3">
+        <div className="
+                grid 
+                grid-cols-12 
+                w-full 
+                h-auto 
+                bg-white 
+                rounded-15 
+                px-2 
+                py-2 
+                gap-10 
+                shadow-lg
+            "
+        >
+            <div className="
+                    col-span-10 
+                    px-5 
+                    gap-3
+                "
+            >
                 <section className="flex flex-col">
-                    <div className="flex flex-row justify-between">
+                    <div className="
+                            flex 
+                            flex-row 
+                            justify-between
+                        "
+                    >
                         <h1 className="text-2xl font-bold">
                             {title}
                         </h1>
@@ -29,7 +51,19 @@ const BusinessList: React.FC<BusinessListProps> = ({
                             {date} day left
                         </h2>
                     </div>
-                    <div className="text-xl bg-pink-cus-bt text-white font-bold w-28 h-12 pt-2 text-center rounded-full cursor-pointer">
+                    <div className="
+                            text-xl 
+                            bg-pink-cus-bt 
+                            text-white 
+                            font-bold 
+                            w-28 
+                            h-12 
+                            pt-2 
+                            text-center 
+                            rounded-full 
+                            cursor-pointer
+                        "
+                    >
                         Verified
                     </div>
                     <p className="line-clamp-3">
@@ -50,7 +84,17 @@ const BusinessList: React.FC<BusinessListProps> = ({
                             Business: {business}
                         </h3>
                     </section>
-                    <button className="bg-pink-cus-bt text-2xl text-white font-medium rounded-50 py-2">Details</button>
+                    <button className="
+                            bg-pink-cus-bt 
+                            text-2xl 
+                            text-white 
+                            font-medium 
+                            rounded-50 
+                            py-2
+                        "
+                    >
+                        Details
+                    </button>
                 </div>
             </div>
         </div>

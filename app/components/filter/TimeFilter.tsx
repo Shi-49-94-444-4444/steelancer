@@ -17,14 +17,31 @@ const TimeFilter = () => {
     };
 
     return (
-        <div className="w-full h-auto px-3 py-3 gap-5 border-[1px] rounded-15 shadow-lg bg-white">
+        <div className="
+                w-full 
+                h-auto 
+                px-3 
+                py-3 
+                gap-5 
+                border-[1px] 
+                rounded-15 
+                shadow-lg 
+                bg-white
+            "
+        >
             <h1 className="font-semibold my-3">Timing</h1>
             <div className="flex flex-row mb-4">
                 <DatePicker
                     selected={from}
                     onChange={handleFromDateChange}
                     dateFormat="dd/MM/yyyy"
-                    className="px-2 py-1 border border-gray-300 rounded"
+                    className="
+                        px-2 
+                        py-1 
+                        border 
+                        border-gray-300 
+                        rounded
+                    "
                     placeholderText="From"
                 />
             </div>
@@ -33,7 +50,13 @@ const TimeFilter = () => {
                     selected={to}
                     onChange={handleToDateChange}
                     dateFormat="dd/MM/yyyy"
-                    className="px-2 py-1 border border-gray-300 rounded"
+                    className="
+                        px-2 
+                        py-1 
+                        border 
+                        border-gray-300 
+                        rounded
+                    "
                     placeholderText="To"
                 />
             </div>
