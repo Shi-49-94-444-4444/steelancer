@@ -2,7 +2,7 @@
 
 import CategoryBox from "../CategoryBox"
 import Container from "../Container"
-import FormatCusMd from "../FormatCusMd"
+import { FormatCusMd } from "../modal"
 import { categories } from "@/app/constants"
 import { ButtonCus } from "../body"
 

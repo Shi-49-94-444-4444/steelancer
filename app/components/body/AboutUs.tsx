@@ -1,5 +1,5 @@
 import Container from "../Container"
-import FormatCusMd from "../FormatCusMd"
+import { FormatCusMd } from "../modal"
 import Image from "next/image"
 
 const AboutUs = () => {

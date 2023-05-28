@@ -1,14 +1,12 @@
 'use client'
 
-import FormatCusMd from "@/app/components/FormatCusMd"
 import Layout from "@/app/layout"
 import Container from "@/app/components/Container"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { IoMail } from "react-icons/io5"
 import { FaUserEdit } from "react-icons/fa"
 import Select from "react-select"
-import Input from "@/app/components/Input"
-import FormatForm from "@/app/components/FormatForm"
+import { Input, FormatForm, FormatCusMd } from "@/app/components"
 
 const options = [
   { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },

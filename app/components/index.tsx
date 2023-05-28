@@ -1,17 +1,27 @@
-import ClientOnly from './ClientOnly'
+import { ClientOnly, Background, Input, FormatForm, FormatCusMd, FormatCusSm, SearchCus, FormatList} from './modal'
 import { Navbar } from './navbar'
 import { Quick, Category, Recent, Banner, AboutUs } from './body'
-import Background from './BackgroundCus'
 import Footer from './Footer'
+import Container from './Container'
+import { MultiFilter, FilterForm } from './filter'
 
 export {
     Navbar,
-    ClientOnly,
     Banner,
     Quick,
     Category,
     Recent,
-    Background,
     AboutUs,
-    Footer
+    Footer, 
+    SearchCus,
+    ClientOnly,
+    Background,
+    Input,
+    FormatForm,
+    Container,
+    FormatCusMd,
+    FormatCusSm,
+    FormatList,
+    MultiFilter,
+    FilterForm
 }
