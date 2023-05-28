@@ -57,11 +57,11 @@ const filterContent = (
             onTimeChange={(from, to) => {
             }}
         />
-        <MultiFilter title="Skill" options={optionSkill} />
-        <MultiFilter title="Language" options={optionLanguage} />
-        <MultiFilter title="Place" options={optionPlace} />
-        <MultiFilter title="Work" options={optionWork} />
-        <MultiFilter title="Payment" options={optionPayment} />
+        <MultiFilter title="Language" placeholder="Choose Language" options={optionLanguage} />
+        <MultiFilter title="Skill" placeholder="Choose Skill" options={optionSkill} />
+        <MultiFilter title="Place" placeholder="Choose Place" options={optionPlace} />
+        <MultiFilter title="Work" placeholder="Choose Work" options={optionWork} />
+        <MultiFilter title="Payment" placeholder="Choose Payment" options={optionPayment} />
     </div>
 )
 

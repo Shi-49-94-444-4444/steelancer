@@ -32,7 +32,7 @@ const BusinessList: React.FC<BusinessListProps> = ({
                     <div className="text-xl bg-pink-cus-bt text-white font-bold w-28 h-12 pt-2 text-center rounded-full cursor-pointer">
                         Verified
                     </div>
-                    <p>
+                    <p className="line-clamp-3">
                         {description}
                     </p>
                     <div className="font-semibold">
@@ -50,7 +50,7 @@ const BusinessList: React.FC<BusinessListProps> = ({
                             Business: {business}
                         </h3>
                     </section>
-                    <button className="bg-pink-cus-bt text-2xl text-white text-medium rounded-50 py-2">Details</button>
+                    <button className="bg-pink-cus-bt text-2xl text-white font-medium rounded-50 py-2">Details</button>
                 </div>
             </div>
         </div>
