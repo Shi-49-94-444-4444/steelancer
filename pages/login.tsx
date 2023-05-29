@@ -1,11 +1,15 @@
 'use client'
 
-import Container from "@/app/components/Container"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { IoMail } from 'react-icons/io5'
-import { Input, FormatForm, FormatCusMd } from "@/app/components"
+import { 
+  Input, 
+  FormatForm, 
+  FormatCusMd, 
+  Container 
+} from "@/app/components"
 
 const bodyContent = (
   <form className="

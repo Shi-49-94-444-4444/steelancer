@@ -4,9 +4,10 @@ import {
     Footer, 
     FormatList, 
     MultiFilter, 
-    SearchCus 
+    SearchCus,
+    FreelancerList,
+    RatingFilter 
 } from "@/app/components"
-import RatingFilter from "@/app/components/filter/RatingFilter"
 import { 
     freelancerList, 
     optionArrangement, 
@@ -17,7 +18,6 @@ import {
     optionTypeWork 
 } from "@/app/constants"
 import Select from "react-select"
-import FreelancerList from "@/app/components/FreelancerList"
 import { useState } from "react"
 import ReactPaginate from "react-paginate"
 

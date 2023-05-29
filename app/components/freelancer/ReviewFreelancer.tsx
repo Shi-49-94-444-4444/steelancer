@@ -2,6 +2,8 @@
 
 import Image from "next/image"
 import Rating from "../Rating"
+import { FcMoneyTransfer } from "react-icons/fc"
+import { AiFillLike } from "react-icons/ai";
 
 interface ReviewFreelancer {
     src: string;
@@ -69,13 +71,19 @@ const ReviewFreelancer: React.FC<ReviewFreelancer> = ({
                     gap-5
                 "
             >
-                <h2>
-                    Desired salary
-                    <span className="font-semibold"> ${price}/h</span>
-                </h2>
-                <h2>
-                    {recommence} Recommenced
-                </h2>
+                <div className="flex flex-row items-center gap-3">
+                    <FcMoneyTransfer size={30} />
+                    <h2>
+                        Desired salary
+                        <span className="font-semibold"> ${price}/h</span>
+                    </h2>
+                </div>
+                <div className="flex flex-row items-center gap-3">
+                    <AiFillLike size={30}/>
+                    <h2>
+                        {recommence} Recommenced
+                    </h2>
+                </div>
             </div>
         </div>
     )

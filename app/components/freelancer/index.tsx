@@ -10,6 +10,7 @@ import EducationItem from "./EducationItem";
 import DegreeFreelancer from "./DegreeFreelancer";
 import EducationFreelancer from "./EducationFreelancer";
 import DegreeItem from "./DegreeItem";
+import FreelancerList from "./FreelancerList";
 
 export {
     ReviewFreelancer,
@@ -23,5 +24,6 @@ export {
     DegreeFreelancer,
     DegreeItem,
     EducationItem,
-    EducationFreelancer
+    EducationFreelancer,
+    FreelancerList
 }

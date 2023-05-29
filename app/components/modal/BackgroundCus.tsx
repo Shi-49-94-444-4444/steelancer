@@ -17,7 +17,7 @@ const Background: React.FC<BackgroundProps> = ({
               h-cus-1
             "
             style={{
-                backgroundImage: 'url("./images/background.png")',
+                backgroundImage: 'url("/images/background.png")',
             }}>
             {children}
         </div>

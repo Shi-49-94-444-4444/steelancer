@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import Rating from "./Rating";
+import Rating from "../Rating";
 import { useRouter } from "next/router";
 
 interface FreelancerListProps {
