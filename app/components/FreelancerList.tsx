@@ -25,8 +25,9 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
 }) => {
     const router = useRouter();
 
-    const handleRentNow = () => {
-        router.push(`/list_freelancer/${id}`);
+    const handleRentNow = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        router.push(`/detail_freelancer/${id}`);
     };
 
     return (
@@ -75,7 +76,7 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                             </h2>
                         </section>
                         <button
-                            onClick={handleRentNow} 
+                            onClick={handleRentNow}
                             className="
                                 bg-pink-cus-bt 
                                 text-xl 
@@ -97,7 +98,7 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                         "
                     >
                         <div className="flex flex-row gap-3">
-                            Rating: <Rating rating={star} maxStars={5} />
+                            Rating: <Rating rating={star} maxStars={5} sizeCus={20}/>
                         </div>
                         <div className="gap-3">
                             Price: {price}$/h

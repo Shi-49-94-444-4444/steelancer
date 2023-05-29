@@ -345,9 +345,115 @@ export const freelancerList = [
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
-        description: "Adobe InDesign, After Effects, AngularJS, App Design, Thủ công & Mỹ nghệ We help your business get there, no matter where “there” is. What do we do? 1. Responsive Web Development - HTML/PHP/CSS/Bootstrap/JS 2. CMS customization/development (WordPress, Wix, Squarespace, Shopify) 3. Ecommerce Website Solutions 4. Laravel/CodeIgnitor WebApps 5. Graphic Design - Branding, Web & UI/UX 6....",
+        description: "Adobe InDesign, After Effects, AngularJS, App Design, Thủ công & Mỹ nghệ We help your business get there, no matter where “there” is. What do we do? 1. Responsive Web Development - HTML/PHP/CSS/Bootstrap/JS 2. CMS customization/development (WordPress, Wix, Squarespace, Shopify) 3. Ecommerce Website Solutions 4. Laravel/CodeIgnitor WebApps 5. Graphic Design - Branding, Web & UI/UX 6",
         price: 100,
         star: 4,
+        city: "Ho Chi Minh city",
+        country: "Viet Nam",
+        recommence: 1000,
+        rateStar: 4.9,
+        numberComment: 9999,
+        performance: [
+            {
+                percent:100,
+                title:"Work Completed"
+            },
+            {
+                percent:100,
+                title:"Collect time"
+            },
+            {
+                percent:100,
+                title:"Lease Rate"
+            },
+        ],
+        detail: [
+            {
+                title:"Description",
+                description:"Adobe InDesign, After Effects, AngularJS, App Design, Thủ công & Mỹ nghệ We help your business get there, no matter where “there” is. What do we do? 1. Responsive Web Development - HTML/PHP/CSS/Bootstrap/JS 2. CMS customization/development (WordPress, Wix, Squarespace, Shopify) 3. Ecommerce Website Solutions 4. Laravel/CodeIgnitor WebApps 5. Graphic Design - Branding, Web & UI/UX 6"
+            },
+            {
+                title:"Language",
+                description:"English, Vietnamese, Japanese"
+            },
+            {
+                title:"Prior experience",
+                description:"Junior Fullstack Developer (MySQL/Java/ReactJS) - MB Bank FullStack Developer (Golang/ NodeJS) - Aviron Junior Full Stack Developer (VueJS,C#,.Net) - Metasource"
+            }
+        ],
+        skill:[
+            {
+                title:"Java"
+            },
+            {
+                title:"HTML"
+            },
+            {
+                title:"CSS"
+            }
+        ],
+        product: [
+            {
+                src:"/images/EOPN.png",
+                title:"Yamiiiiii"
+            },
+            {
+                src:"/images/EOPN.png",
+                title:"Yamiiiiii"
+            },
+            {
+                src:"/images/EOPN.png",
+                title:"Yamiiiiii"
+            },
+            {
+                src:"/images/EOPN.png",
+                title:"Yamiiiiii"
+            },
+            {
+                src:"/images/EOPN.png",
+                title:"Yamiiiiii"
+            },
+            {
+                src:"/images/EOPN.png",
+                title:"Yamiiiiii"
+            },
+            {
+                src:"/images/EOPN.png",
+                title:"Yamiiiiii"
+            },
+        ],
+        education: [
+            {
+                title:"Tốt nghiệp cấp 2",
+                place:"Tại mầm non",
+                date:"10/12/2023"
+            },
+            {
+                title:"Tốt nghiệp cấp 2",
+                place:"Tại mầm non",
+                date:"10/12/2023"
+            },
+        ],
+        degree: [
+            {
+                title:"Tốt nghiệp cấp 2",
+                place:"Tại mầm non",
+                date:"10/12/2023",
+                description:"Đạt 1tr phiếu bé ngoan"
+            },
+            {
+                title:"Tốt nghiệp cấp 2",
+                place:"Tại mầm non",
+                date:"10/12/2023",
+                description:"Đạt 1tr phiếu bé ngoan"
+            },
+            {
+                title:"Tốt nghiệp cấp 2",
+                place:"Tại mầm non",
+                date:"10/12/2023",
+                description:"Đạt 1tr phiếu bé ngoan"
+            },
+        ]
     },
     {
         id: "2",

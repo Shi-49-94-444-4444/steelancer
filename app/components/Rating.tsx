@@ -3,9 +3,14 @@ import { VscStarFull, VscStarEmpty } from 'react-icons/vsc';
 interface RatingProps {
   rating: number;
   maxStars: number;
+  sizeCus: number;
 }
 
-const Rating: React.FC<RatingProps> = ({ rating, maxStars }) => {
+const Rating: React.FC<RatingProps> = ({ 
+  rating, 
+  maxStars,
+  sizeCus 
+}) => {
   return (
     <div className="flex items-center">
       {[...Array(maxStars)].map((_, index) => {
@@ -13,14 +18,14 @@ const Rating: React.FC<RatingProps> = ({ rating, maxStars }) => {
         return (
           <span
             key={starNumber}
-            className={`text-pink-cus-bt ${
+            className={`text-pink-cus-bt cursor-pointer ${
               starNumber <= rating ? 'text-pink-cus-bt' : 'text-gray-cus'
             }`}
           >
             {starNumber <= rating ? (
-              <VscStarFull size={20} />
+              <VscStarFull size={sizeCus} />
             ) : (
-              <VscStarEmpty size={20} />
+              <VscStarEmpty size={sizeCus} />
             )}
           </span>
         );
