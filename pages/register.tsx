@@ -1,6 +1,5 @@
 'use client'
 
-import Layout from "@/app/layout"
 import Container from "@/app/components/Container"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { IoMail } from "react-icons/io5"
@@ -80,17 +79,15 @@ const footerContent = (
 
 const Register = () => {
   return (
-    <Layout>
-      <FormatCusMd>
-        <Container>
-          <FormatForm
-            title="Register"
-            body={bodyContent}
-            footer={footerContent}
-          />
-        </Container >
-      </FormatCusMd >
-    </Layout >
+    <FormatCusMd>
+      <Container>
+        <FormatForm
+          title="Register"
+          body={bodyContent}
+          footer={footerContent}
+        />
+      </Container >
+    </FormatCusMd >
   )
 }
 

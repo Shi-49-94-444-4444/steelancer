@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Rating from "./Rating";
+import { useRouter } from "next/router";
 
 interface FreelancerListProps {
+    id: string;
     src: string;
     title?: string;
     label?: string;
@@ -13,6 +15,7 @@ interface FreelancerListProps {
 }
 
 const FreelancerList: React.FC<FreelancerListProps> = ({
+    id,
     src,
     title,
     label,
@@ -20,6 +23,12 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
     price,
     star
 }) => {
+    const router = useRouter();
+
+    const handleRentNow = () => {
+        router.push(`/list_freelancer/${id}`);
+    };
+
     return (
         <div className="
                 grid 
@@ -65,7 +74,9 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                                 {label}
                             </h2>
                         </section>
-                        <button className="
+                        <button
+                            onClick={handleRentNow} 
+                            className="
                                 bg-pink-cus-bt 
                                 text-xl 
                                 text-white 

@@ -340,7 +340,8 @@ export const businessList = [
 ]
 
 export const freelancerList = [
-    {
+    {   
+        id: "1",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -349,6 +350,7 @@ export const freelancerList = [
         star: 4,
     },
     {
+        id: "2",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -357,6 +359,7 @@ export const freelancerList = [
         star: 5,
     },
     {
+        id: "3",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -365,6 +368,7 @@ export const freelancerList = [
         star: 3,
     },
     {
+        id: "4",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -373,6 +377,7 @@ export const freelancerList = [
         star: 2,
     },
     {
+        id: "5",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -381,6 +386,7 @@ export const freelancerList = [
         star: 1,
     },
     {
+        id: "6",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -389,6 +395,7 @@ export const freelancerList = [
         star: 0,
     },
     {
+        id: "7",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -397,6 +404,7 @@ export const freelancerList = [
         star: 5,
     },
     {
+        id: "8",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -405,6 +413,7 @@ export const freelancerList = [
         star: 5,
     },
     {
+        id: "9",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -413,6 +422,7 @@ export const freelancerList = [
         star: 5,
     },
     {
+        id: "10",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -421,6 +431,7 @@ export const freelancerList = [
         star: 3,
     },
     {
+        id: "11",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -429,6 +440,7 @@ export const freelancerList = [
         star: 2,
     },
     {
+        id: "12",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -437,6 +449,7 @@ export const freelancerList = [
         star: 4,
     },
     {
+        id: "13",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -445,6 +458,7 @@ export const freelancerList = [
         star: 5,
     },
     {
+        id: "14",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -453,6 +467,7 @@ export const freelancerList = [
         star: 5,
     },
     {
+        id: "15",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -461,6 +476,7 @@ export const freelancerList = [
         star: 5,
     },
     {
+        id: "16",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -469,6 +485,7 @@ export const freelancerList = [
         star: 4,
     },
     {
+        id: "17",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",
@@ -477,6 +494,7 @@ export const freelancerList = [
         star: 1,
     },
     {
+        id: "18",
         src:"/images/EOPN.png",
         title:"Shi",
         label:"Full Stack Web Developer (Laravel, WordPress, UX)",

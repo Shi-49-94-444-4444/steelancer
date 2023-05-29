@@ -8,7 +8,6 @@ import {
     FilterForm, 
     Footer 
 } from "@/app/components"
-import Layout from "@/app/layout"
 import { 
     optionSkill, 
     optionLanguage, 
@@ -161,14 +160,14 @@ const BodyContent: React.FC<BodyContentProps> = ({ businessList }) => {
 
 const list_business = () => {
     return (
-        <Layout>
+        <div>
             <SearchCus />
             <FormatList 
                 filter={filterContent} 
                 body={<BodyContent businessList={businessList} />} 
             />
             <Footer />
-        </Layout>
+        </div>
     )
 }
 

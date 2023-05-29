@@ -16,7 +16,6 @@ import {
     optionSkill, 
     optionTypeWork 
 } from "@/app/constants"
-import Layout from "@/app/layout"
 import Select from "react-select"
 import FreelancerList from "@/app/components/FreelancerList"
 import { useState } from "react"
@@ -29,6 +28,7 @@ const handleRatingFilterChange = (rating: number) => {
 };
 
 interface FreelancerItem {
+    id: string;
     src: string;
     title?: string;
     label?: string;
@@ -143,13 +143,8 @@ const BodyContent: React.FC<BodyContentProps> = ({ businessList }) => {
         <div className="flex flex-col gap-3">
             {getCurrentPageItems().map((item) => (
                 <FreelancerList
-                    key={item.title}
-                    title={item.title}
-                    label={item.label}
-                    src={item.src}
-                    star={item.star}
-                    price={item.price}
-                    description={item.description}
+                    key={item.id}
+                    {...item}
                 />
             ))}
 
@@ -188,14 +183,14 @@ const BodyContent: React.FC<BodyContentProps> = ({ businessList }) => {
 
 const list_freelancer = () => {
     return (
-        <Layout>
+        <div>
             <SearchCus />
             <FormatList 
                 filter={filterContent} 
                 body={<BodyContent businessList={freelancerList} />} 
             />
             <Footer />
-        </Layout>
+        </div>
     )
 }
 

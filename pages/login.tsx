@@ -1,6 +1,5 @@
 'use client'
 
-import Layout from "@/app/layout"
 import Container from "@/app/components/Container"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { FaFacebook } from 'react-icons/fa'
@@ -76,17 +75,15 @@ const footerContent = (
 
 const Login = () => {
   return (
-    <Layout>
-      <FormatCusMd>
-        <Container>
-          <FormatForm
-            title="Login"
-            body={bodyContent}
-            footer={footerContent}
-          />
-        </Container>
-      </FormatCusMd>
-    </Layout>
+    <FormatCusMd>
+      <Container>
+        <FormatForm
+          title="Login"
+          body={bodyContent}
+          footer={footerContent}
+        />
+      </Container>
+    </FormatCusMd>
   )
 }
 
