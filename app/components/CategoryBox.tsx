@@ -41,7 +41,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
                             text-white 
                             text-2xl 
                             text-center
-                            hover:text-pink-500
+                            hover:text-pink-cus-bt
                         "
                     >
                         {label}

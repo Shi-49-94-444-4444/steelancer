@@ -1,7 +1,7 @@
 import { quicks } from "@/app/constants"
 import QuickBox from "../QuickBox"
 import Container from "../Container"
-import FormatCusSm from "../FormatCusSm"
+import { FormatCusSm } from "../modal"
 
 const Quick = () => {
     return (
@@ -14,22 +14,22 @@ const Quick = () => {
             >
                 <div className="
                         w-[90%] 
-                        md:h-[325px] 
+                        md:h-80
                         bg-white 
                         z-10 
                         shadow-lg 
-                        rounded-[10px]
+                        rounded-12
                     "
                 >
                     <Container>
                         <div className="
                                 flex 
-                                flex-row 
-                                gap-3
+                                flex-row
+                                gap-3 
                                 md:gap-0
-                                py-10
                                 justify-between
-                                mt-5
+                                items-center
+                                py-10
                             "
                         >
                             {quicks.map((item) => (

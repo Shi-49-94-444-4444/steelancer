@@ -1,224 +1,167 @@
 'use client'
 
-import FormatCusMd from "@/app/components/FormatCusMd"
-import Layout from "@/app/layout"
-import Container from "@/app/components/Container"
 import { RiLockPasswordFill } from "react-icons/ri"
-import { IoMail } from 'react-icons/io5'
-import { useForm } from "react-hook-form"
+import { IoMail } from "react-icons/io5"
+import { FaUserEdit } from "react-icons/fa"
+import Select from "react-select"
+import {
+  Input,
+  FormatForm,
+  FormatCusMd,
+  Container
+} from "@/app/components"
 import AuthService from '../services/auth'
 import { useRouter } from "next/router"
+import { useState } from "react"
+import { useForm, UseFormRegister, FieldErrors, FieldValue, SubmitHandler } from "react-hook-form";
 
-const Register = () => {
+const options = [
+  { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },
+  { value: "Business", label: "Business" },
+  { value: "Freelancer", label: "Freelancer" },
+];
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  // isFreelancer: string;
+}
+
+const BodyContent: React.FC = () => {
+  const [isFreelancer, setIsFreelancer] = useState<string | undefined>("");
+
   const router = useRouter();
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data: any) => {
-    let firstName = data.firstName;
-    let lastName = data.lastName;
-    let email = data.email;
-    let password = data.password;
-    let confirmPassword = data.confirmPassword;
-    let isFreelancer = data.isFreelancer === "role1" ? true : false;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+      // isFreelancer,
+    } = data;
+    const isFreelancerBool = isFreelancer === "Freelancer" ? true : false;
 
-    AuthService
-      .register({
-        firstName,
-        lastName,
-        email,
-        password,
-        confirmPassword,
-        isFreelancer
-      })
-      .then(response => {
+    AuthService.register({
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+      isFreelancer: isFreelancerBool,
+    })
+      .then((response) => {
         router.push("/login");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("Register error: ", error);
-      })
+      });
   };
 
   return (
-    <Layout>
-      <FormatCusMd>
-        <Container>
-          <div className="px-10">
-            <div className="
-                px-20 
-                h-cus-2 
-                bg-white 
-                rounded-50
-              "
-            >
-              <div className="
-                  flex 
-                  flex-col 
-                  space-y-5
-                "
-              >
-                <div className="
-                    flex 
-                    flex-row 
-                    justify-center
-                  "
-                >
-                  <h1 className="
-                      font-thin 
-                      font-mono 
-                      text-pink-500 
-                      text-9xl
-                    "
-                  >
-                    Register
-                  </h1>
-                </div>
-                <form className="px-28 space-y-5" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="
-                      grid 
-                      grid-cols-3 
-                      gap-4
-                    "
-                  >
-                    <div className="col-span-1">
-                      <input
-                        placeholder="First Name"
-                        className="
-                          px-3 
-                          py-2 
-                          w-full 
-                          h-14 
-                          rounded-15 
-                          border-2 
-                          border-gray-400 
-                          text-xl
-                        "
-                        {...register("firstName")}
-                      />
-                    </div>
-                    <div className="col-span-2">
-                      <input
-                        placeholder="Last Name"
-                        className="
-                          px-3 
-                          py-2 
-                          w-full 
-                          h-14 
-                          rounded-15 
-                          border-2 
-                          border-gray-400 
-                          text-xl
-                        "
-                        {...register("lastName")}
-                      />
-                    </div>
-                  </div>
-                  <div className="
-                      relative 
-                      flex 
-                      items-center
-                    "
-                  >
-                    <IoMail className="h-6 w-6 absolute left-3" />
-                    <input
-                      type="email"
-                      placeholder="Mail"
-                      className="
-                        pl-14 
-                        pr-6 
-                        py-2 
-                        w-full 
-                        h-14 
-                        rounded-15 
-                        border-2 
-                        border-gray-400 
-                        text-xl
-                      "
-                      {...register("email")}
-                    />
-                  </div>
-                  <div className="
-                      relative 
-                      flex 
-                      items-center
-                    "
-                  >
-                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      className="
-                        pl-14 
-                        pr-6 
-                        py-2 
-                        w-full 
-                        h-14 
-                        rounded-15 
-                        border-2 
-                        border-gray-400 
-                        text-xl
-                      "
-                      {...register("password")}
-                    />
-                  </div>
-                  <div className="
-                      relative 
-                      flex 
-                      items-center
-                    "
-                  >
-                    <RiLockPasswordFill className="h-6 w-6 absolute left-3" />
-                    <input
-                      type="password"
-                      placeholder="Confirm Password"
-                      className="
-                        pl-14 
-                        pr-6 
-                        py-2 
-                        w-full 
-                        h-14 
-                        rounded-15 
-                        border-2 
-                        border-gray-400 
-                        text-xl
-                      "
-                      {...register("confirmPassword")}
-                    />
-                  </div>
-                  <select title="changeLater" className="
-                      px-3 
-                      py-3 
-                      w-full 
-                      h-14 
-                      rounded-15 
-                      border-2 
-                      border-gray-400 
-                      text-xl
-                    "
-                    {...register("isFreelancer")}
-                  >
-                    <option value="" selected disabled>Click Choose Role</option>
-                    <option value="role1">Business</option>
-                    <option value="role2">Freelancer</option>
-                  </select>
-                  <button type="submit" className="
-                      w-full 
-                      bg-pink-500 
-                      rounded-50 
-                      h-16 
-                      text-xl 
-                      font-semibold 
-                      text-white
-                    "
-                  >
-                    SIGN UP
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </FormatCusMd>
-    </Layout>
+    <form className="px-28 space-y-5 pt-10" onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        icon={FaUserEdit}
+        id="firstName"
+        placeholder="First Name"
+        register={register}
+        errors={errors}
+      />
+      <Input
+        icon={FaUserEdit}
+        id="lastName"
+        placeholder="Last Name"
+        register={register}
+        errors={errors}
+      />
+      <Input
+        icon={IoMail}
+        id="email"
+        placeholder="Mail"
+        type="email"
+        register={register}
+        errors={errors}
+      />
+      <Input
+        icon={RiLockPasswordFill}
+        id="password"
+        placeholder="Password"
+        type="password"
+        register={register}
+        errors={errors}
+      />
+      <Input
+        icon={RiLockPasswordFill}
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        type="password"
+        register={register}
+        errors={errors}
+      />
+      <Select
+        options={options}
+        className="text-xl"
+        isClearable
+        onChange={input => setIsFreelancer(input?.value)}
+        // errors={errors}
+        name="isFreelancer"
+      />
+      <button
+        type="submit"
+        className="
+        w-full 
+        bg-pink-cus-bt 
+        rounded-50 
+        h-16 
+        text-xl 
+        font-semibold 
+        text-white
+      "
+      >
+        SIGN UP
+      </button>
+    </form>
+  );
+};
+
+
+const footerContent = (
+  <div className="px-28">
+    <h1>
+      Already have an account?
+      <span
+        onClick={() => { }}
+        className="
+          cursor-pointer 
+          text-pink-cus-tx 
+          hover:underline
+        "
+      > Log in
+      </span>
+    </h1>
+  </div>
+)
+
+const Register = () => {
+  return (
+    <FormatCusMd>
+      <Container>
+        <FormatForm
+          title="Register"
+          body={<BodyContent />}
+          footer={footerContent}
+        />
+      </Container >
+    </FormatCusMd >
   )
 }
 

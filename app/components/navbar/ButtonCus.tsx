@@ -19,7 +19,7 @@ const ButtonCus = () => {
                         text-sm
                         py-3
                         px-4
-                        bg-pink-500
+                        bg-pink-cus-bt
                         text-white
                         font-semibold
                         rounded-full

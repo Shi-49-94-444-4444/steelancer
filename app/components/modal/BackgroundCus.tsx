@@ -14,10 +14,10 @@ const Background: React.FC<BackgroundProps> = ({
               bg-cover 
               bg-center 
               w-full 
-              h-[980px]
+              h-cus-1
             "
             style={{
-                backgroundImage: 'url("./images/background.png")',
+                backgroundImage: 'url("/images/background.png")',
             }}>
             {children}
         </div>

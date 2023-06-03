@@ -11,6 +11,7 @@ module.exports = {
         'pink-cus-bt': '#FF1ED1',
         'pink-cus-bg': '#ffddf8',
         'pink-cus-tx': '#FF99EA',
+        'gray-cus': '9D9D9D',
       },
       borderRadius: {
         '15': '15px',
@@ -18,7 +19,10 @@ module.exports = {
       },
       spacing: {
         '128': '32rem',
+        'cus-1': '62rem',
         'cus-2': '40rem',
+        'cus-3': '31rem',
+        'cus-4': '34rem'
       },
       fontFamily: {
         sans: ['ui-sans-serif', 'system-ui'],
@@ -30,5 +34,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
