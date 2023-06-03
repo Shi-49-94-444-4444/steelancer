@@ -1,20 +1,20 @@
 'use-client'
 
-// import {
-//     FieldErrors,
-//     FieldValues,
-//     UseFormRegister
-// } from "react-hook-form";
+import {
+    FieldErrors,
+    FieldValues,
+    UseFormRegister
+} from "react-hook-form";
 import { IconType } from "react-icons";
 
 interface InputProps {
     id: string;
     placeholder: string;
     type?: string;
-    // disabled?: boolean;
+    disabled?: boolean;
     // formatPrice?: boolean;
-    // required?: boolean;
-    // register: UseFormRegister<FieldValues>,
+    required?: boolean;
+    register: UseFormRegister<FieldValues>,
     // errors: FieldErrors,
     icon: IconType
 }
@@ -23,7 +23,10 @@ const Input: React.FC<InputProps> = ({
     id,
     placeholder,
     type,
-    icon: Icon
+    icon: Icon,
+    register,
+    required,
+    disabled
 }) => {
     return (
         <div className="
@@ -43,6 +46,8 @@ const Input: React.FC<InputProps> = ({
                 id={id}
                 type={type}
                 placeholder={placeholder}
+                {...register(id, { required })}
+                disabled={disabled}
                 className="
                 pl-14 
                 pr-6 
