@@ -1,11 +1,12 @@
 'use client';
 
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ToasterProvider = () => {
-  return ( 
-    <Toaster />
-   );
+  return (
+    <ToastContainer theme="colored" />
+  );
 }
 
 export default ToasterProvider;

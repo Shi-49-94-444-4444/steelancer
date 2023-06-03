@@ -10,7 +10,7 @@ interface FilterFormProps {
 
 const FilterForm: React.FC<FilterFormProps> = ({ onPriceChange, onTimeChange }) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-1">
       <PriceFilter onChange={onPriceChange} />
       <TimeFilter onChange={onTimeChange} />
     </div>

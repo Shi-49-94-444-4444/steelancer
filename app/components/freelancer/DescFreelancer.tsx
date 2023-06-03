@@ -64,7 +64,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                             font-semibold
                         "
                     >
-                        Hire no
+                        Hire now
                     </button>
                 </div>
                 <h2 className="text-2xl">
