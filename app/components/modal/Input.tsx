@@ -15,7 +15,7 @@ interface InputProps {
     // formatPrice?: boolean;
     required?: boolean;
     register: UseFormRegister<FieldValues>,
-    // errors: FieldErrors,
+    errors: FieldErrors,
     icon: IconType
 }
 
@@ -26,7 +26,8 @@ const Input: React.FC<InputProps> = ({
     icon: Icon,
     register,
     required,
-    disabled
+    disabled,
+    errors
 }) => {
     return (
         <div className="
@@ -58,6 +59,8 @@ const Input: React.FC<InputProps> = ({
                 border-2 
                 border-gray-400 
                 text-xl
+                ${errors[id] ? 'border-pink-cus-bt' : 'border-neutral-300'}
+                ${errors[id] ? 'focus:border-pink-cus-bt' : 'focus:border-black'}
                 "
             />
         </div>

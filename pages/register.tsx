@@ -17,6 +17,7 @@ import {
 } from "react-hook-form";
 import { useState } from "react"
 import axios from "axios"
+import { toast } from "react-hot-toast"
 
 const Register = () => {
 
@@ -50,10 +51,10 @@ const Register = () => {
 
     axios.post('/api/register', data)
     .then(() => {
-      // toast.success('Registered!');
+      toast.success('Registered!');
     })
     .catch((error) => {
-      // toast.error(error);
+      toast.error(error);
     })
     .finally(() => {
       setIsLoading(false);
@@ -69,6 +70,7 @@ const Register = () => {
         placeholder="Full Name"
         disabled={isLoading}
         register={register}
+        errors={errors}
         required
       />
       <Input
@@ -78,6 +80,7 @@ const Register = () => {
         type="Email"
         disabled={isLoading}
         register={register}
+        errors={errors}
         required
       />
       <Input
@@ -87,6 +90,7 @@ const Register = () => {
         type="password"
         disabled={isLoading}
         register={register}
+        errors={errors}
         required
       />
       <Input
@@ -96,6 +100,7 @@ const Register = () => {
         type="password"
         disabled={isLoading}
         register={register}
+        errors={errors}
         required
       />
       <Select
