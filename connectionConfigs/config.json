@@ -1,0 +1,9 @@
+{
+   "api": {
+      "base": "https://localhost:44323/api/",
+      "auth": "auth"
+   },
+   "encryption": {
+      "key": "ahihi"
+   }
+}

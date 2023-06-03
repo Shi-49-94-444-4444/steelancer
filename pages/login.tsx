@@ -1,3 +1,5 @@
+'use client'
+
 import FormatCusMd from "@/app/components/FormatCusMd"
 import Layout from "@/app/layout"
 import Container from "@/app/components/Container"
@@ -5,8 +7,34 @@ import { RiLockPasswordFill } from "react-icons/ri"
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { IoMail } from 'react-icons/io5'
+import { useForm } from "react-hook-form"
+import AuthService from '../services/auth'
+import { useRouter } from "next/router"
 
 const Login = () => {
+  const router = useRouter();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+  const onSubmit = (data: any) => {
+    let email = data.email;
+    let password = data.password;
+    console.log(email);
+    console.log(password);
+
+    AuthService
+      .authenticate({
+        email: email,
+        password: password
+      })
+      .then(response => {
+        localStorage.setItem("auth", response.token);
+        router.push("/")
+      })
+      .catch(error => {
+        console.log("Login error: ", error);
+      })
+  };
+
   return (
     <Layout>
       <FormatCusMd>
@@ -40,7 +68,7 @@ const Login = () => {
                     LOGIN
                   </h1>
                 </div>
-                <form className="px-28 space-y-5">
+                <form className="px-28 space-y-5" onSubmit={handleSubmit(onSubmit)}>
                   <div className="
                       relative 
                       flex 
@@ -52,11 +80,11 @@ const Login = () => {
                         w-6 
                         absolute 
                         left-3
-                      " 
+                      "
                     />
-                    <input 
-                      type="email" 
-                      placeholder="Mail" 
+                    <input
+                      type="email"
+                      placeholder="Mail"
                       className="
                         pl-14 
                         pr-6 
@@ -67,7 +95,8 @@ const Login = () => {
                         border-2 
                         border-gray-400 
                         text-xl
-                      " 
+                      "
+                      {...register("email")}
                     />
                   </div>
                   <div className="
@@ -81,11 +110,11 @@ const Login = () => {
                         w-6 
                         absolute 
                         left-3
-                      " 
+                      "
                     />
-                    <input 
-                      type="password" 
-                      placeholder="Password" 
+                    <input
+                      type="password"
+                      placeholder="Password"
                       className="
                         pl-14 
                         pr-6 
@@ -96,7 +125,8 @@ const Login = () => {
                         border-2 
                         border-gray-400 
                         text-xl
-                      " 
+                      "
+                      {...register("password")}
                     />
                   </div>
                   <h1 className="
@@ -106,7 +136,7 @@ const Login = () => {
                   >
                     Forgot password ?
                   </h1>
-                  <button className="
+                  <button type="submit" className="
                       w-full 
                       bg-pink-500 
                       rounded-50 
@@ -132,8 +162,8 @@ const Login = () => {
                     justify-center
                   "
                 >
-                  <FaFacebook size={80} className="text-blue-500 cursor-pointer mr-20"/>
-                  <FcGoogle size={80} className="cursor-pointer"/>
+                  <FaFacebook size={80} className="text-blue-500 cursor-pointer mr-20" />
+                  <FcGoogle size={80} className="cursor-pointer" />
                 </div>
               </div>
             </div>
