@@ -1,5 +1,6 @@
 'use-client'
 
+import { FieldErrors, FieldValues, UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
 // import {
 //     FieldErrors,
 //     FieldValues,
@@ -14,8 +15,8 @@ interface InputProps {
     // disabled?: boolean;
     // formatPrice?: boolean;
     // required?: boolean;
-    // register: UseFormRegister<FieldValues>,
-    // errors: FieldErrors,
+    register: UseFormRegister<FieldValues>,
+    errors: FieldErrors,
     icon: IconType
 }
 
@@ -23,6 +24,8 @@ const Input: React.FC<InputProps> = ({
     id,
     placeholder,
     type,
+    register,
+    errors,
     icon: Icon
 }) => {
     return (
@@ -54,6 +57,7 @@ const Input: React.FC<InputProps> = ({
                 border-gray-400 
                 text-xl
                 "
+                {...register(id)}
             />
         </div>
     )
