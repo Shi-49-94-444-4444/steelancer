@@ -17,13 +17,13 @@ import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { toast } from "react-toastify"
 
 const Register = () => {
-
   const options = [
     { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },
     { value: "Business", label: "Business" },
     { value: "Freelancer", label: "Freelancer" },
   ];
 
+  const router = useRouter();
   const [isFreelancer, setIsFreelancer] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
 

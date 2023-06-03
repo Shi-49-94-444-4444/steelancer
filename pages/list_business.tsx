@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     FormatList,
     SearchCus,
@@ -18,6 +18,7 @@ import {
 } from "@/app/constants"
 import BusinessList from "@/app/components/BusinessList"
 import ReactPaginate from 'react-paginate';
+import BusinessProfileService from '../services/businessProfiles'
 
 interface BusinessItem {
     title: string;
@@ -54,7 +55,13 @@ interface BodyContentProps {
 // };
 
 const list_business = () => {
-    
+    useEffect(() => {
+        BusinessProfileService.getAll()
+            .then((data) => {
+                console.log(data)
+            })
+    }, [])
+
     const filterContent = (
         <div className="
                 flex

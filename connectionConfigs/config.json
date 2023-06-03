@@ -1,7 +1,8 @@
 {
    "api": {
-      "base": "https://localhost:44323/api/",
-      "auth": "auth"
+      "base": "https://localhost:44323/",
+      "auth": "api/auth",
+      "businessProfile": "odata/BusinessProfiles"
    },
    "encryption": {
       "key": "ahihi"
