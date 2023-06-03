@@ -1,5 +1,6 @@
 import "./globals.css"
 import { Navbar, ClientOnly, Background } from "./components"
+import ToasterProvider from "./providers/ToasterProvider"
 
 export const metadata = {
   title: 'Steelancer',
@@ -14,6 +15,7 @@ export default function Layout({
   return (
     <ClientOnly>
       <Background>
+        <ToasterProvider />
         <Navbar />
         {children}
       </Background>

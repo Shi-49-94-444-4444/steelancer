@@ -20,7 +20,7 @@ module.exports = {
       spacing: {
         '128': '32rem',
         'cus-1': '62rem',
-        'cus-2': '40rem',
+        'cus-2': '45rem',
         'cus-3': '31rem',
         'cus-4': '34rem'
       },

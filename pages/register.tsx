@@ -180,7 +180,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error.response.data)
-        toast.error(error);
+        toast.error(error.response.data);
       })
       .finally(() => {
         setIsLoading(false);
