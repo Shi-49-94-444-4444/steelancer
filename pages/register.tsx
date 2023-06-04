@@ -75,7 +75,7 @@ const Register = () => {
   }
 
   const bodyContent = (
-    <form className="px-28 space-y-5 pt-10" onSubmit={handleSubmit(onSubmit)}>
+    <form className="px-28 pt-10" onSubmit={handleSubmit(onSubmit)}>
       <Input
         icon={FaUserEdit}
         id="firstName"
@@ -137,6 +137,7 @@ const Register = () => {
           text-xl 
           font-semibold 
           text-white
+          mt-5
         "
       >
         SIGN UP

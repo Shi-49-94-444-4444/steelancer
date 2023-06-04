@@ -30,7 +30,7 @@ const Input: React.FC<InputProps> = ({
     errors
 }) => {
     return (
-        <>
+        <div className="pb-5">
             <div className="
                 relative 
                 flex 
@@ -65,8 +65,8 @@ const Input: React.FC<InputProps> = ({
                 "
                 />
             </div>
-            <p>{errors[id]?.message?.toString()}</p>
-        </>
+            <p  className="text-red-600 font-semibold h-2">{errors[id]?.message?.toString()}</p>
+        </div>
     )
 }
 

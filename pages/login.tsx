@@ -64,8 +64,8 @@ const Login = () => {
     return (
       <form className="
           px-28 
-          space-y-5 
-          pt-10
+          pt-20
+          pb-10
       "
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -92,7 +92,9 @@ const Login = () => {
           className="
             text-pink-cus-tx 
             cursor-pointer
-        "
+            hover:underline
+            mb-2
+          "
         >
           Forgot password ?
         </h1>
@@ -108,7 +110,7 @@ const Login = () => {
             text-white
         "
         >
-          Forgot password ?
+          Sign in
         </button>
       </form>
     )
