@@ -13,7 +13,7 @@ interface InputProps {
     type?: string;
     disabled?: boolean;
     // formatPrice?: boolean;
-    required?: boolean;
+    // required?: boolean;
     register: UseFormRegister<FieldValues>,
     errors: FieldErrors,
     icon: IconType
@@ -25,31 +25,32 @@ const Input: React.FC<InputProps> = ({
     type,
     icon: Icon,
     register,
-    required,
+    // required,
     disabled,
     errors
 }) => {
     return (
-        <div className="
+        <>
+            <div className="
                 relative 
                 flex 
                 items-center
             "
-        >
-            <Icon className="
+            >
+                <Icon className="
                 h-6 
                 w-6 
                 absolute 
                 left-3
                 "
-            />
-            <input
-                id={id}
-                type={type}
-                placeholder={placeholder}
-                {...register(id, { required })}
-                disabled={disabled}
-                className="
+                />
+                <input
+                    id={id}
+                    type={type}
+                    placeholder={placeholder}
+                    {...register(id)}
+                    disabled={disabled}
+                    className="
                 pl-14 
                 pr-6 
                 py-2 
@@ -62,9 +63,10 @@ const Input: React.FC<InputProps> = ({
                 ${errors[id] ? 'border-pink-cus-bt' : 'border-neutral-300'}
                 ${errors[id] ? 'focus:border-pink-cus-bt' : 'focus:border-black'}
                 "
-                {...register(id)}
-            />
-        </div>
+                />
+            </div>
+            <p>{errors[id]?.message?.toString()}</p>
+        </>
     )
 }
 

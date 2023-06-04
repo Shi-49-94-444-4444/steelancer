@@ -71,6 +71,7 @@ const Login = () => {
       >
         <Input
           icon={IoMail}
+          disabled={isLoading}
           id="email"
           placeholder="Mail"
           type="Email"
@@ -79,6 +80,7 @@ const Login = () => {
         />
         <Input
           icon={RiLockPasswordFill}
+          disabled={isLoading}
           id="password"
           placeholder="Password"
           type="password"

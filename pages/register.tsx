@@ -15,6 +15,8 @@ import { useRouter } from "next/router"
 import { useState } from "react"
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { toast } from "react-toastify"
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
 const Register = () => {
   const options = [
@@ -26,6 +28,14 @@ const Register = () => {
   const router = useRouter();
   const [isFreelancer, setIsFreelancer] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const schema = yup.object({
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
+    email: yup.string().required("Email is required"),
+    password: yup.string().length(6, "Password must be atleast 6 character").required("Password is required"),
+    confirmPassword: yup.string().length(6, "Password must be atleast 6 character").required("Confirm is required")  
+  }).required();
 
   const {
     register,
@@ -42,6 +52,7 @@ const Register = () => {
       confirmPassword: '',
       isFreelancer: ''
     },
+    resolver: yupResolver(schema)
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -72,7 +83,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={FaUserEdit}
@@ -81,7 +91,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={IoMail}
@@ -91,7 +100,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={RiLockPasswordFill}
@@ -101,7 +109,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={RiLockPasswordFill}
@@ -111,7 +118,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Select
         options={options}
