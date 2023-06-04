@@ -18,8 +18,6 @@ import {
 } from "@/app/constants"
 import BusinessList from "@/app/components/BusinessList"
 import ReactPaginate from 'react-paginate';
-import BusinessProfileService from '../services/businessProfiles'
-
 interface BusinessItem {
     title: string;
     date: number;
@@ -55,13 +53,6 @@ interface BodyContentProps {
 // };
 
 const list_business = () => {
-    useEffect(() => {
-        BusinessProfileService.getAll()
-            .then((data) => {
-                console.log(data)
-            })
-    }, [])
-
     const filterContent = (
         <div className="
                 flex

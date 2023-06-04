@@ -52,6 +52,7 @@ const Register = () => {
     AuthService.register(data)
       .then(() => {
         toast.success('Registered!');
+        router.push("login");
       })
       .catch((error) => {
         console.log(error.response.data)
