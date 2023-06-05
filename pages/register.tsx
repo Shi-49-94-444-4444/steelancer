@@ -33,8 +33,8 @@ const Register = () => {
     firstName: yup.string().required("First name is required"),
     lastName: yup.string().required("Last name is required"),
     email: yup.string().required("Email is required"),
-    password: yup.string().length(6, "Password must be atleast 6 character").required("Password is required"),
-    confirmPassword: yup.string().length(6, "Password must be atleast 6 character").required("Confirm is required")  
+    password: yup.string().required("Password is required").length(6, "Password must be atleast 6 character"),
+    confirmPassword: yup.string().required("Confirm is required").length(6, "Password must be atleast 6 character")  
   }).required();
 
   const {
@@ -128,7 +128,7 @@ const Register = () => {
         }}
       />
       <button
-        onClick={() => { }}
+        type="submit"
         className="
           w-full 
           bg-pink-cus-bt 
@@ -150,7 +150,7 @@ const Register = () => {
       <h1>
         Already have an account?
         <span
-          onClick={() => { }}
+          onClick={() => router.push('/login')}
           className="
             cursor-pointer 
             text-pink-cus-tx 
