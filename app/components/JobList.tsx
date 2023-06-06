@@ -1,21 +1,23 @@
 'use client'
 
-interface BusinessListProps {
+import { useState } from "react";
+
+interface JobsListProps {
     title?: string;
     date?: number;
     description?: string;
-    skills?: string;
+    categories?: string;
     price?: number;
-    business?: string;
+    businessName?: string;
 }
 
-const BusinessList: React.FC<BusinessListProps> = ({
+const JobList: React.FC<JobsListProps> = ({
     title,
     date,
     description,
-    skills,
+    categories,
     price,
-    business,
+    businessName,
 }) => {
     return (
         <div className="
@@ -70,7 +72,7 @@ const BusinessList: React.FC<BusinessListProps> = ({
                         {description}
                     </p>
                     <div className="font-semibold">
-                        Skill: {skills}
+                        Skill: {categories}
                     </div>
                 </section>
             </div>
@@ -81,7 +83,7 @@ const BusinessList: React.FC<BusinessListProps> = ({
                             Price: {price}$/hour
                         </h3>
                         <h3>
-                            Business: {business}
+                            Business: {businessName}
                         </h3>
                     </section>
                     <button className="
@@ -101,4 +103,4 @@ const BusinessList: React.FC<BusinessListProps> = ({
     )
 }
 
-export default BusinessList
+export default JobList

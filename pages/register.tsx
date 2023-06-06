@@ -32,9 +32,13 @@ const Register = () => {
   const schema = yup.object({
     firstName: yup.string().required("First name is required"),
     lastName: yup.string().required("Last name is required"),
-    email: yup.string().required("Email is required"),
-    password: yup.string().required("Password is required").length(6, "Password must be atleast 6 character"),
-    confirmPassword: yup.string().required("Confirm is required").length(6, "Password must be atleast 6 character")  
+    email: yup.string().required("Email is required")
+      .email("Invalid email format"),
+    password: yup.string().required("Password is required")
+      .min(6, "Password must be atleast 6 character")
+      .max(25, "Password must be less than 25 character"),
+    confirmPassword: yup.string().required("Confirm is required")
+      .oneOf([yup.ref('password')], 'Confirm must match')
   }).required();
 
   const {

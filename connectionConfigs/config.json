@@ -2,7 +2,9 @@
    "api": {
       "base": "https://localhost:44323/",
       "auth": "api/auth",
-      "businessProfile": "odata/BusinessProfiles"
+      "businessProfile": "odata/BusinessProfiles",
+      "job": "odata/Jobs",
+      "category": "odata/Categories"
    },
    "encryption": {
       "key": "ahihi"

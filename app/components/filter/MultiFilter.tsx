@@ -1,9 +1,10 @@
 'use client'
 
+import CategoryResponse from '@/models/categoryResponse';
 import Select from 'react-select';
 
 interface Option {
-    value: string;
+    value: number;
     label: string;
 }
 
@@ -41,6 +42,9 @@ const MultiFilter: React.FC<MultiFilterProps> = ({
                 filterOption={(option, inputValue) =>
                     option.label.toLowerCase().includes(inputValue.toLowerCase())
                 }
+                onChange={data => {
+                    
+                }}
             />
         </div>
     );
