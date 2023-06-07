@@ -3,13 +3,30 @@
 import { useCallback, useState } from "react"
 import { MenuItem } from "../navbar"
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 const NavLink = () => {
     const [isMoreOpen, setIsMoreOpen] = useState(false)
+    const { t } = useTranslation();
 
     const toggleMoreOpen = useCallback(() => {
         setIsMoreOpen((value) => !value);
     }, [])
+
+    // function LanguageSwitcher() {
+    //     const { i18n } = useTranslation();
+
+    //     const handleChangeLanguage = (language: string) => {
+    //         i18n.changeLanguage(language);
+    //     };
+
+    //     return (
+    //         <div>
+    //             <button onClick={() => handleChangeLanguage('en')}>English</button>
+    //             <button onClick={() => handleChangeLanguage('vi')}>Vietnamese</button>
+    //         </div>
+    //     );
+    // }
 
     return (
         <div
@@ -31,19 +48,19 @@ const NavLink = () => {
                 "
             >
                 <Link href="/" className="px-6 hover:text-pink-cus-bt">
-                    Home
+                    {t('Home')}
                 </Link>
                 <Link href="/list_business" className="px-6 hover:text-pink-cus-bt">
-                    Find work
+                    {t('Find work')}
                 </Link>
                 <Link href="/list_freelancer" className="px-6 hover:text-pink-cus-bt">
-                    Find Freelancers
+                    {t('Find Freelancers')}
                 </Link>
                 <Link href="/login" className="px-6 hover:text-pink-cus-bt" replace>
-                    Log in
+                   {t('Log in')}
                 </Link>
                 <Link href="/register" className="px-6 hover:text-pink-cus-bt">
-                    Sign up
+                    {t('Sign up')}
                 </Link>
                 <div className="relative">
                     <div
@@ -53,7 +70,7 @@ const NavLink = () => {
                             hover:text-pink-cus-bt
                         "
                     >
-                        More
+                        {t('More')}
                     </div>
                     {isMoreOpen && (
                         <div className="
@@ -73,24 +90,25 @@ const NavLink = () => {
                                 <>
                                     <MenuItem
                                         href="/"
-                                        label="Policy"
+                                        label={t('Policy')}
                                     />
                                     <MenuItem
                                         href="/"
-                                        label="FAQ"
+                                        label={t('FAQ')}
                                     />
                                     <MenuItem
                                         href="/"
-                                        label="Contract"
+                                        label={t('Contract')}
                                     />
                                     <MenuItem
                                         href="/"
-                                        label="Price list"
+                                        label={t('Price list')}
                                     />
                                 </>
                             </div>
                         </div>
                     )}
+                    {/* {LanguageSwitcher()} */}
                 </div>
             </nav>
         </div>

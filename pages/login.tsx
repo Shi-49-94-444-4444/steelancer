@@ -16,8 +16,10 @@ import {
 import { toast } from "react-toastify"
 import { useState } from "react"
 import { json } from "stream/consumers"
+import { useTranslation } from "react-i18next"
 
 const Login = () => {
+  const { t } = useTranslation()
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -73,7 +75,7 @@ const Login = () => {
           icon={IoMail}
           disabled={isLoading}
           id="email"
-          placeholder="Mail"
+          placeholder={t("Email")}
           type="Email"
           register={register}
           errors={errors}

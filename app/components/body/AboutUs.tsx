@@ -1,8 +1,11 @@
 import Container from "../Container"
 import { FormatCusMd } from "../modal"
 import Image from "next/image"
+import { useTranslation } from "react-i18next"
 
 const AboutUs = () => {
+    const { t } = useTranslation()
+
     return (
         <FormatCusMd>
             <Container>
@@ -26,7 +29,7 @@ const AboutUs = () => {
                                 font-semibold
                             "
                         >
-                            <span>ABOUT </span>
+                            <span>{t("ABOUT")} </span>
                             <span className="text-pink-cus-tx">US</span>
                         </h1>
                     </div>
