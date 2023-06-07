@@ -1,6 +1,9 @@
 'use client'
 
+import { useRouter } from "next/router";
+
 interface BusinessListProps {
+    id: string;
     title?: string;
     date?: number;
     description?: string;
@@ -10,6 +13,7 @@ interface BusinessListProps {
 }
 
 const BusinessList: React.FC<BusinessListProps> = ({
+    id,
     title,
     date,
     description,
@@ -17,6 +21,13 @@ const BusinessList: React.FC<BusinessListProps> = ({
     price,
     business,
 }) => {
+    const router = useRouter();
+
+    const handleRentNow = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        router.push(`/detail_business/${id}`);
+    };
+
     return (
         <div className="
                 grid 
@@ -84,7 +95,9 @@ const BusinessList: React.FC<BusinessListProps> = ({
                             Business: {business}
                         </h3>
                     </section>
-                    <button className="
+                    <button
+                        onClick={handleRentNow} 
+                        className="
                             bg-pink-cus-bt 
                             text-2xl 
                             text-white 

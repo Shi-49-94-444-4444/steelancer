@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import {
+    BusinessList,
     FormatList,
     SearchCus,
     MultiFilter,
@@ -16,10 +17,10 @@ import {
     optionWork,
     businessList
 } from "@/app/constants"
-import BusinessList from "@/app/components/BusinessList"
 import ReactPaginate from 'react-paginate';
 
 interface BusinessItem {
+    id: string;
     title: string;
     date: number;
     description: string;
@@ -119,13 +120,8 @@ const list_business = () => {
             <div className="flex flex-col gap-3">
                 {getCurrentPageItems().map((item) => (
                     <BusinessList
-                        key={item.title}
-                        title={item.title}
-                        date={item.date}
-                        description={item.description}
-                        skills={item.skills}
-                        price={item.price}
-                        business={item.business}
+                        key={item.id}
+                        {...item}
                     />
                 ))}
 

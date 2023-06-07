@@ -31,7 +31,7 @@ interface FreelancerItem {
 }
 
 interface BodyContentProps {
-    businessList: FreelancerItem[];
+    freelancerList: FreelancerItem[];
 }
 
 const list_freelancer = () => {
@@ -123,7 +123,7 @@ const list_freelancer = () => {
         </div>
     )
 
-    const BodyContent: React.FC<BodyContentProps> = ({ businessList }) => {
+    const BodyContent: React.FC<BodyContentProps> = ({ freelancerList }) => {
         const itemsPerPage = 10; // Số mục hiển thị trên mỗi trang
         const [currentPage, setCurrentPage] = useState(0); // Trang hiện tại
 
@@ -131,7 +131,7 @@ const list_freelancer = () => {
         const getCurrentPageItems = (): FreelancerItem[] => {
             const startIndex = currentPage * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
-            return businessList.slice(startIndex, endIndex);
+            return freelancerList.slice(startIndex, endIndex);
         };
 
         // Xử lý sự kiện chuyển trang
@@ -152,7 +152,7 @@ const list_freelancer = () => {
                     previousLabel="Previous"
                     nextLabel="Next"
                     breakLabel="..."
-                    pageCount={Math.ceil(businessList.length / itemsPerPage)}
+                    pageCount={Math.ceil(freelancerList.length / itemsPerPage)}
                     onPageChange={handlePageChange}
                     containerClassName="
                         flex 
@@ -185,7 +185,7 @@ const list_freelancer = () => {
             <SearchCus />
             <FormatList
                 filter={filterContent}
-                body={<BodyContent businessList={freelancerList} />}
+                body={<BodyContent freelancerList={freelancerList} />}
             />
             <Footer />
         </div>

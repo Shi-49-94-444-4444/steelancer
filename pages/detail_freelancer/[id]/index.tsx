@@ -1,13 +1,14 @@
 'use client'
 
 import { FormatCusMd, Container, Footer } from "@/app/components";
-import { 
-  DegreeFreelancer, 
-  DescFreelancer, 
-  EducationFreelancer, 
-  ProductFreelancer, 
-  ReviewFreelancer, 
-  SectionFreelancer 
+import {
+  DegreeFreelancer,
+  DescFreelancer,
+  EducationFreelancer,
+  FormatFreelancer,
+  ProductFreelancer,
+  ReviewFreelancer,
+  SectionFreelancer
 } from "@/app/components/freelancer";
 import { useRouter } from "next/router";
 import { freelancerList } from "@/app/constants";
@@ -56,62 +57,60 @@ const DetailFreelancerPage = () => {
     <DegreeFreelancer degree={degree} />
   )
 
+  const reviewContent = (
+    <ReviewFreelancer
+      src={src}
+      title={title}
+      star={star}
+      city={city}
+      country={country}
+      price={price}
+      recommence={recommence}
+    />
+  )
+
+  const bodyContent = (
+    <>
+      <DescFreelancer
+        title={title}
+        label={label}
+        star={star}
+        rateStar={rateStar}
+        numberCmt={numberComment}
+        performance={performance}
+        detail={detail}
+        skill={skill}
+      />
+
+      <SectionFreelancer
+        title="Products"
+        body={ProductContent}
+      />
+
+      <SectionFreelancer
+        title="Education"
+        body={EducationContent}
+      />
+
+      <SectionFreelancer
+        title="Degree"
+        body={DegreeContent}
+      />
+    </>
+  )
+
   return (
-    <div>
+    <>
       <FormatCusMd>
         <Container>
-          <div className="grid grid-cols-4 gap-10">
-            <div className="col-span-1 w-full h-auto">
-              <ReviewFreelancer
-                src={src}
-                title={title}
-                star={star}
-                city={city}
-                country={country}
-                price={price}
-                recommence={recommence}
-              />
-            </div>
-
-            <div className="
-                col-span-3 
-                w-full 
-                h-auto 
-                space-y-5
-              "
-            >
-              <DescFreelancer
-                title={title}
-                label={label}
-                star={star}
-                rateStar={rateStar}
-                numberCmt={numberComment}
-                performance={performance}
-                detail={detail}
-                skill={skill}
-              />
-
-              <SectionFreelancer
-                title="Products"
-                body={ProductContent}
-              />
-
-              <SectionFreelancer
-                title="Education"
-                body={EducationContent}
-              />
-
-              <SectionFreelancer
-                title="Degree"
-                body={DegreeContent}
-              />
-
-            </div>
-          </div>
+          <FormatFreelancer
+            review={reviewContent}
+            body={bodyContent}
+          />
         </Container>
       </FormatCusMd >
       <Footer />
-    </div>
+    </>
   );
 };
 

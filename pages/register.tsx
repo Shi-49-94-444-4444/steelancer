@@ -17,6 +17,7 @@ import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { toast } from "react-toastify"
 
 const Register = () => {
+  const router = useRouter();
 
   const options = [
     { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },
@@ -142,7 +143,7 @@ const Register = () => {
       <h1>
         Already have an account?
         <span
-          onClick={() => { }}
+          onClick={() => router.push("./login")}
           className="
             cursor-pointer 
             text-pink-cus-tx 

@@ -4,9 +4,9 @@ import { RiLockPasswordFill } from "react-icons/ri"
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { IoMail } from 'react-icons/io5'
-import { useForm } from "react-hook-form"
 import AuthService from '../services/auth'
 import { useRouter } from "next/router"
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import {
   Input,
   FormatForm,
@@ -15,21 +15,26 @@ import {
 } from "@/app/components"
 
 const Login = () => {
+  const router = useRouter();
+  
   const BodyContent: React.FC = () => {
-    const router = useRouter();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const onSubmit = (data: any) => {
-      let email = data.email;
-      let password = data.password;
-      console.log(email);
-      console.log(password);
+    const {
+      register,
+      handleSubmit,
+      formState: {
+        errors,
+      },
+    } = useForm<FieldValues>({
+      defaultValues: {
+        email: '',
+        password: '',
+      },
+    });
 
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
       AuthService
-        .authenticate({
-          email: email,
-          password: password
-        })
+        .authenticate(data)
         .then(response => {
           localStorage.setItem("auth", response.token);
           router.push("/")

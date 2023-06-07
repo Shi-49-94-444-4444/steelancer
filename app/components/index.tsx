@@ -27,8 +27,16 @@ import {
     FreelancerList,
     ProductFreelancer,
     ReviewFreelancer,
-    SectionFreelancer
+    SectionFreelancer,
+    FormatFreelancer
 } from './freelancer'
+import {
+    BusinessList,
+    InputBusiness,
+    ReviewBusiness,
+    DetailBusiness,
+    FormatBusiness
+} from './business'
 
 export {
     Navbar,
@@ -58,4 +66,10 @@ export {
     ProductFreelancer,
     SectionFreelancer,
     ReviewFreelancer,
+    BusinessList,
+    InputBusiness,
+    ReviewBusiness,
+    DetailBusiness,
+    FormatFreelancer,
+    FormatBusiness
 }
