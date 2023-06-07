@@ -4,56 +4,74 @@ import { RiLockPasswordFill } from "react-icons/ri"
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { IoMail } from 'react-icons/io5'
+import { FieldValue, FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import AuthService from '../services/auth'
 import { useRouter } from "next/router"
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import {
   Input,
   FormatForm,
   FormatCusMd,
   Container
 } from "@/app/components"
+import { toast } from "react-toastify"
+import { useState } from "react"
+import { json } from "stream/consumers"
 
 const Login = () => {
   const router = useRouter();
-  
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FieldValues>({
+    defaultValues: {
+      email: '',
+      password: ''
+    }
+  });
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true);
+    AuthService
+      .authenticate(data)
+      .then(authResponse => {
+        localStorage.setItem("auth", authResponse.token);
+        AuthService.getUserProfile()
+          .then(profileResponse => {
+            localStorage.setItem("profile", JSON.stringify(profileResponse))
+            let username = `${profileResponse.firstname} ${profileResponse.lastname}`;
+            toast.success(`Welcome ${username}`);
+            router.push("/")
+          })
+          .catch(error => {
+            localStorage.removeItem("auth");
+            toast.error(error.response.data);
+          })
+      })
+      .catch(error => {
+        console.log("Login error: ", error);
+        toast.error(error.response.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+  };
+
   const BodyContent: React.FC = () => {
-
-    const {
-      register,
-      handleSubmit,
-      formState: {
-        errors,
-      },
-    } = useForm<FieldValues>({
-      defaultValues: {
-        email: '',
-        password: '',
-      },
-    });
-
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-      AuthService
-        .authenticate(data)
-        .then(response => {
-          localStorage.setItem("auth", response.token);
-          router.push("/")
-        })
-        .catch(error => {
-          console.log("Login error: ", error);
-        })
-    };
-
     return (
       <form className="
           px-28 
-          space-y-5 
-          pt-10
+          pt-20
+          pb-10
       "
         onSubmit={handleSubmit(onSubmit)}
       >
         <Input
           icon={IoMail}
+          disabled={isLoading}
           id="email"
           placeholder="Mail"
           type="Email"
@@ -62,6 +80,7 @@ const Login = () => {
         />
         <Input
           icon={RiLockPasswordFill}
+          disabled={isLoading}
           id="password"
           placeholder="Password"
           type="password"
@@ -73,7 +92,9 @@ const Login = () => {
           className="
             text-pink-cus-tx 
             cursor-pointer
-        "
+            hover:underline
+            mb-2
+          "
         >
           Forgot password ?
         </h1>
@@ -89,7 +110,7 @@ const Login = () => {
             text-white
         "
         >
-          Forgot password ?
+          Sign in
         </button>
       </form>
     )

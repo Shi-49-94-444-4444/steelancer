@@ -8,22 +8,15 @@ const authenticate = async (loginRequest: Object) => {
    return response.data;
 };
 
-const validateToken = async () => {
-   let url = `${baseUrl}/validateToken`;
-   const response = await axiosInstance.get(url);
-   return response.data;
-};
-
 const register = async (registerRequest: Object) => {
    let url = baseUrl;
    const response = await axiosInstance.post(url, registerRequest);
    return response.data;
 }
 
-const registerProfile = async (blockId: Number) => {
-   let url = `${baseUrl}/registerProfile/${blockId}`;
-   console.log("blockid", blockId);
-   const response = await axiosInstance.post(url);
+const getUserProfile = async () => {
+   let url = `${baseUrl}/user-profile`;
+   const response = await axiosInstance.get(url);
    return response.data;
 }
 
@@ -35,10 +28,8 @@ const getProfile = async () => {
 
 const exportObject = {
    authenticate,
-   validateToken,
    register,
-   registerProfile,
-   getProfile
+   getUserProfile
 };
 
 export default exportObject;

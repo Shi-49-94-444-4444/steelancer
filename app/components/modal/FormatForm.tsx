@@ -23,7 +23,7 @@ const FormatForm: React.FC<FormatFormProps> = ({
                 <div className="
                         flex 
                         flex-col 
-                        space-y-5
+                        space-y-2
                     "
                 >
                     <div className="

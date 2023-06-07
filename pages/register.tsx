@@ -15,6 +15,8 @@ import { useRouter } from "next/router"
 import { useState } from "react"
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { toast } from "react-toastify"
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
 const Register = () => {
   const router = useRouter();
@@ -25,8 +27,21 @@ const Register = () => {
     { value: "Freelancer", label: "Freelancer" },
   ];
 
+  const router = useRouter();
   const [isFreelancer, setIsFreelancer] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const schema = yup.object({
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
+    email: yup.string().required("Email is required")
+      .email("Invalid email format"),
+    password: yup.string().required("Password is required")
+      .min(6, "Password must be atleast 6 character")
+      .max(25, "Password must be less than 25 character"),
+    confirmPassword: yup.string().required("Confirm is required")
+      .oneOf([yup.ref('password')], 'Confirm must match')
+  }).required();
 
   const {
     register,
@@ -43,6 +58,7 @@ const Register = () => {
       confirmPassword: '',
       isFreelancer: ''
     },
+    resolver: yupResolver(schema)
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -53,6 +69,7 @@ const Register = () => {
     AuthService.register(data)
       .then(() => {
         toast.success('Registered!');
+        router.push("login");
       })
       .catch((error) => {
         console.log(error.response.data)
@@ -64,7 +81,7 @@ const Register = () => {
   }
 
   const bodyContent = (
-    <form className="px-28 space-y-5 pt-10" onSubmit={handleSubmit(onSubmit)}>
+    <form className="px-28 pt-10" onSubmit={handleSubmit(onSubmit)}>
       <Input
         icon={FaUserEdit}
         id="firstName"
@@ -72,7 +89,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={FaUserEdit}
@@ -81,7 +97,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={IoMail}
@@ -91,7 +106,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={RiLockPasswordFill}
@@ -101,7 +115,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Input
         icon={RiLockPasswordFill}
@@ -111,7 +124,6 @@ const Register = () => {
         disabled={isLoading}
         register={register}
         errors={errors}
-        required
       />
       <Select
         options={options}
@@ -122,7 +134,7 @@ const Register = () => {
         }}
       />
       <button
-        onClick={() => { }}
+        type="submit"
         className="
           w-full 
           bg-pink-cus-bt 
@@ -131,6 +143,7 @@ const Register = () => {
           text-xl 
           font-semibold 
           text-white
+          mt-5
         "
       >
         SIGN UP
@@ -143,7 +156,7 @@ const Register = () => {
       <h1>
         Already have an account?
         <span
-          onClick={() => router.push("./login")}
+          onClick={() => router.push('/login')}
           className="
             cursor-pointer 
             text-pink-cus-tx 

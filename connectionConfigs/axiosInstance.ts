@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
-
 const axiosInstance: AxiosInstance = axios.create({});
 
 const getToken = () => {
