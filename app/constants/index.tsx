@@ -178,6 +178,7 @@ export const optionTypeWork = [
 
 export const businessList = [
     {
+        id: "1",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -186,6 +187,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "2",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -194,6 +196,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "3",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -202,6 +205,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "4",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -210,6 +214,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "5",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -218,6 +223,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "6",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -226,6 +232,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "7",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -234,6 +241,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "8",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -242,6 +250,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "9",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -250,6 +259,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "10",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -258,6 +268,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "11",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -266,6 +277,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "12",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -274,6 +286,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "13",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -282,6 +295,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "14",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -290,6 +304,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "15",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -298,6 +313,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "16",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -306,6 +322,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "17",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -314,6 +331,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "18",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -322,6 +340,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "19",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",
@@ -330,6 +349,7 @@ export const businessList = [
         business: "Microsoft",
     },
     {
+        id: "20",
         title: "Microsoft 365 and Surface Laptop 5 Training- On-Boarding of Executive",
         date: 5,
         description: "Mission: Provide training, assessment, and on-boarding of corporate executive into current Windows 11 and Microsoft 365 environment and applications, and into ongoing Microsoft training and support Initial rollout to include 1 corporate executive. Solution to include: an on-boarding report, that includes assessments and plan, training, and support resource provision and identification.. Experience, qualifications, certifications, and references in Microsoft Certified Training a must. Ability to do onsite",

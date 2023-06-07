@@ -12,6 +12,7 @@ module.exports = {
         'pink-cus-bg': '#ffddf8',
         'pink-cus-tx': '#FF99EA',
         'gray-cus': '9D9D9D',
+        'blue-cus': '#572760'
       },
       borderRadius: {
         '15': '15px',

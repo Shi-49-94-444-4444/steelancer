@@ -19,6 +19,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 const Register = () => {
+  const router = useRouter();
+
   const options = [
     { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },
     { value: "Business", label: "Business" },

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import {
+    BusinessList,
     FormatList,
     SearchCus,
     MultiFilter,
@@ -168,6 +169,7 @@ const list_business = () => {
                         categories={getCategories(item)}
                         price={item.Offer}
                         businessName={item.BusinessName}
+
                     />
                 ))}
 
