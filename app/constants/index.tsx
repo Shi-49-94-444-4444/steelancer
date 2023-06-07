@@ -98,82 +98,82 @@ export const recents = [
 ]
 
 export const optionSkill = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionLanguage = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionPlace = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionWork = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionPayment = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 export const optionJob = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionExperience = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionPrice = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionArrangement = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const optionTypeWork = [
-    { value: "AJAX", label: "AJAX" },
-    { value: "ASP", label: "ASP" },
-    { value: "C/C", label: "C/C++" },
-    { value: "Delphi", label: "Delphi" },
-    { value: "Java", label: "Java" },
+    { value: 1, label: "AJAX" },
+    { value: 2, label: "ASP" },
+    { value: 3, label: "C/C++" },
+    { value: 4, label: "Delphi" },
+    { value: 5, label: "Java" },
 ]
 
 export const businessList = [

@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 interface JobsListProps {
+    id: number;
     title?: string;
     date?: number;
     description?: string;
@@ -12,6 +13,7 @@ interface JobsListProps {
 }
 
 const JobList: React.FC<JobsListProps> = ({
+    id,
     title,
     date,
     description,
@@ -19,6 +21,13 @@ const JobList: React.FC<JobsListProps> = ({
     price,
     businessName,
 }) => {
+    const router = useRouter();
+
+    const handleRentNow = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        router.push(`/detail_business/${id}`);
+    };
+
     return (
         <div className="
                 grid 
@@ -86,7 +95,9 @@ const JobList: React.FC<JobsListProps> = ({
                             Business: {businessName}
                         </h3>
                     </section>
-                    <button className="
+                    <button
+                        onClick={handleRentNow} 
+                        className="
                             bg-pink-cus-bt 
                             text-2xl 
                             text-white 

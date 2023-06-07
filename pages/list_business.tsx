@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import {
-    BusinessList,
+    JobList,
     FormatList,
     SearchCus,
     MultiFilter,
@@ -16,16 +16,15 @@ import {
     optionPlace,
     optionWork,
 } from "@/app/constants"
-import JobList from "@/app/components/JobList"
 import ReactPaginate from 'react-paginate';
 import JobService, { JobFilter } from '../services/jobs';
 import CategoryService from '../services/category'
 import JobResponse from '@/models/jobResponse';
 import CategoryResponse from '@/models/categoryResponse';
 
-interface BodyContentProps {
+// interface BodyContentProps {
     // businessList: BusinessItem[];
-}
+// }
 
 // const FilterCus: React.FC = () => {
 //     const [priceFrom, setPriceFrom] = useState<number | null>(null);
@@ -48,7 +47,7 @@ interface BodyContentProps {
 //     );
 // };
 
-const list_business = () => {
+const List_business = () => {
     const itemsPerPage = 10; // Số mục hiển thị trên mỗi trang
     const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
     const [currentPage, setCurrentPage] = useState(0); // Trang hiện tại
@@ -127,11 +126,11 @@ const list_business = () => {
                 onTimeChange={(from, to) => {
                 }}
             />
-            {/* <MultiFilter
+            <MultiFilter
                 title="Language"
                 placeholder="Choose Language"
                 options={optionLanguage}
-            /> */}
+            />
             <MultiFilter
                 title="Skill"
                 placeholder="Choose Skill"
@@ -139,12 +138,12 @@ const list_business = () => {
                     value: c.Id, label: c.Name
                 }))}
             />
-            {/* <MultiFilter
+            <MultiFilter
                 title="Place"
                 placeholder="Choose Place"
                 options={optionPlace}
-            /> */}
-            {/* <MultiFilter
+            />
+            <MultiFilter
                 title="Work"
                 placeholder="Choose Work"
                 options={optionWork}
@@ -153,67 +152,68 @@ const list_business = () => {
                 title="Payment"
                 placeholder="Choose Payment"
                 options={optionPayment}
-            /> */}
+            />
         </div>
     )
 
-    const BodyContent: React.FC<BodyContentProps> = () => {
-        return (
-            <div className="flex flex-col gap-3">
-                {jobs.map((item) => (
-                    <JobList
-                        key={item.Id}
-                        title={item.Name}
-                        date={getDurationLeft(item)}
-                        description={item.Description}
-                        categories={getCategories(item)}
-                        price={item.Offer}
-                        businessName={item.BusinessName}
+    // const BodyContent: React.FC<BodyContentProps> = () => {
+    const BodyContent = (
+        // return (
+        <div className="flex flex-col gap-3">
+            {jobs.map((item) => (
+                <JobList
+                    key={item.Id}
+                    id={item.Id}
+                    title={item.Name}
+                    date={getDurationLeft(item)}
+                    description={item.Description}
+                    categories={getCategories(item)}
+                    price={item.Offer}
+                    businessName={item.BusinessName}
+                />
+            ))}
 
-                    />
-                ))}
-
-                <ReactPaginate
-                    previousLabel="Previous"
-                    nextLabel="Next"
-                    breakLabel="..."
-                    pageCount={Math.ceil(jobCount / itemsPerPage)}
-                    onPageChange={handlePageChange}
-                    containerClassName="
+            <ReactPaginate
+                previousLabel="Previous"
+                nextLabel="Next"
+                breakLabel="..."
+                pageCount={Math.ceil(jobCount / itemsPerPage)}
+                onPageChange={handlePageChange}
+                containerClassName="
                         flex gap-2 
                         justify-center 
                         my-20
                     "
-                    pageLinkClassName="
+                pageLinkClassName="
                         px-3 py-2 
                         rounded 
                         bg-gray-200 
                         text-gray-700
                     "
-                    activeLinkClassName="
+                activeLinkClassName="
                         font-bold 
                         bg-gray-500 
                         text-white
                     "
-                    disabledClassName="
+                disabledClassName="
                         opacity-50 
                         cursor-not-allowed
                     "
-                />
-            </div>
-        );
-    };
+            />
+        </div>
+    );
+    // };
 
     return (
         <div>
             <SearchCus />
             <FormatList
                 filter={filterContent}
-                body={<BodyContent />}
+                body={BodyContent}
             />
             <Footer />
         </div>
     )
 }
 
-export default list_business
+export default List_business

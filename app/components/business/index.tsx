@@ -1,11 +1,11 @@
-import BusinessList from "./BusinessList";
+import JobList from "./JobList";
 import InputBusiness from "./InputBusiness";
 import ReviewBusiness from "./ReviewBusiness";
 import DetailBusiness from "./DetailBusiness";
 import FormatBusiness from "./FormatBusiness";
 
 export {
-    BusinessList,
+    JobList,
     InputBusiness,
     ReviewBusiness,
     DetailBusiness,

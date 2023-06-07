@@ -31,7 +31,7 @@ import {
     FormatFreelancer
 } from './freelancer'
 import {
-    BusinessList,
+    JobList,
     InputBusiness,
     ReviewBusiness,
     DetailBusiness,
@@ -66,7 +66,7 @@ export {
     ProductFreelancer,
     SectionFreelancer,
     ReviewFreelancer,
-    BusinessList,
+    JobList,
     InputBusiness,
     ReviewBusiness,
     DetailBusiness,
