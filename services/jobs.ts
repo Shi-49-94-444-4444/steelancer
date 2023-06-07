@@ -7,20 +7,33 @@ const getOpenJob = async (filter: JobFilter) => {
 
    let url = `${baseUrl}/GetOpenJobs()?`
    if (filter.offerFrom !== 0) {
-      url += `&filter=Offer ge ${filter.offerFrom}`
+      url += `&$filter=Offer ge ${filter.offerFrom}`
    }
 
    if (filter.offerTo !== 0) {
-      url += `&filter=Offer le ${filter.offerTo}`
+      if (filter.offerFrom === 0) {
+         url += `&$filter=Offer le ${filter.offerTo}`
+      }
+      else {
+         url += ` and Offer le ${filter.offerTo}`
+      }
    }
 
    if (filter.categories.length > 0) {
-      filter.categories.forEach(c => {
-         url += `&$filter=Categories/any(item: item/Id eq ${c}`
-      })
+      if (!url.includes("filter")) {
+         url += "&$filter="
+      }
+      else {
+         url += " and "
+      }
+      url += `Categories/any(item:item eq ${filter.categories[0]}`;
+      for (let i = 1; i < filter.categories.length; i++ ) {
+         url += `or item eq ${filter.categories[i]}`
+      }
+      url += ")"
    }
 
-   url += `&$skip=${filter.skip}`;
+   url += `&$skip=${filter.skip}&$count=true`;
    console.log(url);
    const response = await axiosInstance.get(url);
    return response.data;
@@ -28,7 +41,6 @@ const getOpenJob = async (filter: JobFilter) => {
 
 const getCount = async () => {
    let url = `${baseUrl}/$count`;
-   console.log(url);
    const response = await axiosInstance.get(url);
    return response.data;
 }

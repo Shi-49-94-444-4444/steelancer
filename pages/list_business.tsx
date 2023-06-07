@@ -23,7 +23,7 @@ import JobResponse from '@/models/jobResponse';
 import CategoryResponse from '@/models/categoryResponse';
 
 // interface BodyContentProps {
-    // businessList: BusinessItem[];
+// businessList: BusinessItem[];
 // }
 
 // const FilterCus: React.FC = () => {
@@ -76,9 +76,10 @@ const List_business = () => {
             categories: filterCategories
         })
             .then(jobsResponse => {
-                setJobs(jobsResponse.value)
+                setJobs(jobsResponse.value);
+                setJobCount(jobsResponse["@odata.count"])
             })
-    }, [currentPage, offerFrom, offerTo])
+    }, [currentPage, offerFrom, offerTo, filterCategories])
 
     const getDurationLeft = (job: JobResponse) => {
         const expiredDate = new Date(job.JobExpiredDate); // Replace with your start date
@@ -116,29 +117,26 @@ const List_business = () => {
             </h1>
             <FilterForm
                 onPriceChange={(from, to) => {
-                    if (!isNaN(from)) {
-                        setOfferFrom(from);
-                    }
-                    if (!isNaN(to)) {
-                        setOfferTo(to);
-                    }
+                    setOfferFrom(!isNaN(from) ? from : 0);
+                    setOfferTo(!isNaN(to) ? to : 0);
                 }}
                 onTimeChange={(from, to) => {
                 }}
             />
-            <MultiFilter
+            {/* <MultiFilter
                 title="Language"
                 placeholder="Choose Language"
                 options={optionLanguage}
-            />
+            /> */}
             <MultiFilter
                 title="Skill"
                 placeholder="Choose Skill"
                 options={categories.map(c => ({
                     value: c.Id, label: c.Name
                 }))}
+                setFilterCategories={setFilterCategories}
             />
-            <MultiFilter
+            {/* <MultiFilter
                 title="Place"
                 placeholder="Choose Place"
                 options={optionPlace}
@@ -152,7 +150,7 @@ const List_business = () => {
                 title="Payment"
                 placeholder="Choose Payment"
                 options={optionPayment}
-            />
+            /> */}
         </div>
     )
 

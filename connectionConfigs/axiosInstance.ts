@@ -15,7 +15,6 @@ const getToken = () => {
 
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
    if (!config.headers.Authorization) {
-      console.log("Token: ", getToken());
       config.headers.Authorization = getToken();
    }
    return config;

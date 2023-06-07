@@ -1,6 +1,7 @@
 'use client'
 
 import CategoryResponse from '@/models/categoryResponse';
+import { Dispatch, SetStateAction } from 'react';
 import Select from 'react-select';
 
 interface Option {
@@ -12,12 +13,14 @@ interface MultiFilterProps {
     options: Option[];
     title: string;
     placeholder: string;
+    setFilterCategories: any
 }
 
 const MultiFilter: React.FC<MultiFilterProps> = ({ 
     title, 
     options, 
-    placeholder 
+    placeholder,
+    setFilterCategories
 }) => {
     return (
         <div className="
@@ -43,7 +46,7 @@ const MultiFilter: React.FC<MultiFilterProps> = ({
                     option.label.toLowerCase().includes(inputValue.toLowerCase())
                 }
                 onChange={data => {
-                    
+                    setFilterCategories(data.map(x => x.value));
                 }}
             />
         </div>
