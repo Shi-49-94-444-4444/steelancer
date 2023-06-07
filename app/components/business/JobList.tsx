@@ -3,7 +3,8 @@
 import { useRouter } from "next/router";
 
 interface JobsListProps {
-    id: number;
+    // id: number;
+    id: string;
     title?: string;
     date?: number;
     description?: string;

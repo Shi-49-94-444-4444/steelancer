@@ -27,7 +27,6 @@ const Register = () => {
     { value: "Freelancer", label: "Freelancer" },
   ];
 
-  const router = useRouter();
   const [isFreelancer, setIsFreelancer] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
 
