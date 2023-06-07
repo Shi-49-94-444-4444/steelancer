@@ -11,23 +11,12 @@ const getOpenJob = async (filter: JobFilter) => {
    }
 
    if (filter.offerTo !== 0) {
-      if (filter.offerFrom === 0) {
-         url += `&$filter=Offer le ${filter.offerTo}`
-      }
-      else {
-         url += ` and Offer le ${filter.offerTo}`
-      }
+      url += `${url.includes('filter') ? '&$filter=' : ' and '}Offer le ${filter.offerTo}`
    }
 
    if (filter.categories.length > 0) {
-      if (!url.includes("filter")) {
-         url += "&$filter="
-      }
-      else {
-         url += " and "
-      }
-      url += `Categories/any(item:item eq ${filter.categories[0]}`;
-      for (let i = 1; i < filter.categories.length; i++ ) {
+      url += `${url.includes('filter') ? '&$filter=' : ' and '}Categories/any(item:item eq ${filter.categories[0]}`;
+      for (let i = 1; i < filter.categories.length; i++) {
          url += `or item eq ${filter.categories[i]}`
       }
       url += ")"
