@@ -1,6 +1,6 @@
 {
    "api": {
-      "base": "https://localhost:44323/",
+      "base": "http://localhost:5000/",
       "auth": "api/auth",
       "businessProfile": "odata/BusinessProfiles",
       "job": "odata/Jobs",
