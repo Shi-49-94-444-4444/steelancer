@@ -15,6 +15,7 @@ import {
     optionPayment,
     optionPlace,
     optionWork,
+    businessList,
 } from "@/app/constants"
 import ReactPaginate from 'react-paginate';
 import JobService, { JobFilter } from '../services/jobs';
@@ -158,7 +159,7 @@ const List_business = () => {
     const BodyContent = (
         // return (
         <div className="flex flex-col gap-3">
-            {jobs.map((item) => (
+            {/* {jobs.map((item) => (
                 <JobList
                     key={item.Id}
                     id={item.Id}
@@ -168,6 +169,12 @@ const List_business = () => {
                     categories={getCategories(item)}
                     price={item.Offer}
                     businessName={item.BusinessName}
+                />
+            ))} */}
+            {businessList.map((item) => (
+                <JobList
+                    key={item.id as string}
+                    {...item}
                 />
             ))}
 
