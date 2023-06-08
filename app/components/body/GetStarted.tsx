@@ -1,7 +1,7 @@
 'use client'
 
 import { BiSearch } from "react-icons/bi"
-import FormatCusSm from "../FormatCusSm"
+import { FormatCusSm } from "../modal"
 
 const GetStarted = () => {
     return (
@@ -31,7 +31,7 @@ const GetStarted = () => {
                             text-2xl 
                             leading-[30px] 
                             
-                            font-regular 
+                            font-normal 
                             text-gray-900 
                             text-opacity-60
                         "
@@ -60,7 +60,7 @@ const GetStarted = () => {
                         text-sm
                         py-5
                         px-10
-                        bg-pink-500
+                        bg-pink-cus-bt
                         text-white
                         font-semibold
                         transition
@@ -86,7 +86,7 @@ const GetStarted = () => {
                     >
                         <div className="
                                 p-4 
-                                bg-pink-500 
+                                bg-pink-cus-bt 
                                 rounded-full 
                                 text-white 
                                 ml-5

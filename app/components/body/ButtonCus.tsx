@@ -16,7 +16,7 @@ const ButtonCus = () => {
                     text-sm
                     px-10
                     py-5
-                    bg-pink-500
+                    bg-pink-cus-bt
                     text-white
                     font-semibold
                     transition

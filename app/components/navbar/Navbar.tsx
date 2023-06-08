@@ -6,6 +6,7 @@ import { Logo, NavLink, ButtonCus } from "../navbar";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const isLoggedIn = true;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -55,7 +56,7 @@ const Navbar = () => {
                         "
                     >
                         <Logo />
-                        <NavLink />
+                        <NavLink isLoggedIn={isLoggedIn} userRole=""/>
                         <ButtonCus />
                     </div>
                 </Container>

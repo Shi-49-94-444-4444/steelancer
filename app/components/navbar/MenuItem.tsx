@@ -11,7 +11,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ href, label }) => {
             href={href} 
             className="
                 px-6 
-                hover:text-pink-500 
+                hover:text-pink-cus-bt 
                 transition
             "
         >

@@ -22,7 +22,8 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                 w-auto
                 md:w-[330px]
                 shadow-lg
-                rounded-[10px]
+                rounded-12
+                gap-10
             "
         >
             <Image
@@ -34,20 +35,18 @@ const RecentBox: React.FC<RecentBoxProps> = ({
             />
             <section className="
                     text-center 
-                    px-2 
-                    mt-10
+                    px-2
                 "
             >
                 <h1 className="
                         text-2xl 
                         font-semibold 
-                        text-regular
                     "
                 >
                     {label}
                 </h1>
                 <h1 className="
-                        text-[#9D9D9D] 
+                        text-gray-cus 
                         text-xl 
                         px-6 
                         text-center
@@ -59,17 +58,16 @@ const RecentBox: React.FC<RecentBoxProps> = ({
             <section className="
                     flex 
                     flex-row 
-                    justify-between 
+                    justify-between
                     items-center 
-                    mt-10 
-                    mb-10
+                    my-10
+                    gap-10
                 "
             >
                 <h1 className="
                         text-xl 
                         text-center 
-                        text-[#808082] 
-                        mr-10
+                        text-gray-cus 
                     "
                 >
                     Highest bid
@@ -78,7 +76,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                 </h1>
                 <h1 className="
                         text-xl 
-                        text-pink-300 
+                        text-pink-cus-tx 
                         underline
                         cursor-pointer
                     "

@@ -1,14 +1,89 @@
-import ClientOnly from './ClientOnly'
+import { 
+    ClientOnly, 
+    Background, 
+    Input, 
+    FormatForm, 
+    FormatCusMd, 
+    FormatCusSm, 
+    SearchCus, 
+    FormatList
+} from './modal'
 import { Navbar } from './navbar'
-import { Quick, Category, Recent, Banner } from './body'
-import Background from './BackgroundCus'
+import {
+    Quick, 
+    Category, 
+    Recent, 
+    Banner, 
+    AboutUs 
+} from './body'
+import Footer from './Footer'
+import Container from './Container'
+import Rating from './Rating'
+import { MultiFilter, FilterForm, RatingFilter } from './filter'
+import {
+    DegreeFreelancer,
+    DescFreelancer,
+    EducationFreelancer,
+    FreelancerList,
+    ProductFreelancer,
+    ReviewFreelancer,
+    SectionFreelancer,
+    FormatFreelancer
+} from './freelancer'
+import {
+    JobList,
+    InputBusiness,
+    ReviewBusiness,
+    DetailBusiness,
+    FormatBusiness,
+    OfferBusiness
+} from './business'
+import {
+    JobInput,
+    JobSelect,
+    JobPayment,
+    JobInformation,
+    JobFormat
+} from './post'
 
 export {
     Navbar,
-    ClientOnly,
     Banner,
     Quick,
     Category,
     Recent,
-    Background
+    AboutUs,
+    Footer, 
+    SearchCus,
+    ClientOnly,
+    Background,
+    Input,
+    FormatForm,
+    Container,
+    FormatCusMd,
+    FormatCusSm,
+    FormatList,
+    MultiFilter,
+    FilterForm,
+    RatingFilter,
+    Rating,
+    DegreeFreelancer,
+    DescFreelancer,
+    EducationFreelancer,
+    FreelancerList,
+    ProductFreelancer,
+    SectionFreelancer,
+    ReviewFreelancer,
+    JobList,
+    InputBusiness,
+    ReviewBusiness,
+    DetailBusiness,
+    FormatFreelancer,
+    FormatBusiness,
+    OfferBusiness,
+    JobInput,
+    JobSelect,
+    JobPayment,
+    JobInformation,
+    JobFormat
 }

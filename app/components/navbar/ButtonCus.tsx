@@ -1,6 +1,10 @@
 'use client'
 
+import { useRouter } from "next/router"
+
 const ButtonCus = () => {
+    const router = useRouter()
+
     return (
         <div className="relative">
             <div className="
@@ -11,7 +15,7 @@ const ButtonCus = () => {
                 "
             >
                 <button
-                    onClick={() => { }}
+                    onClick={() => router.push('/post_job')}
                     className="
                         hidden
                         w-full
@@ -19,7 +23,7 @@ const ButtonCus = () => {
                         text-sm
                         py-3
                         px-4
-                        bg-pink-500
+                        bg-pink-cus-bt
                         text-white
                         font-semibold
                         rounded-full
