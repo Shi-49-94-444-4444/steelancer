@@ -35,7 +35,8 @@ import {
     InputBusiness,
     ReviewBusiness,
     DetailBusiness,
-    FormatBusiness
+    FormatBusiness,
+    OfferBusiness
 } from './business'
 
 export {
@@ -71,5 +72,6 @@ export {
     ReviewBusiness,
     DetailBusiness,
     FormatFreelancer,
-    FormatBusiness
+    FormatBusiness,
+    OfferBusiness
 }

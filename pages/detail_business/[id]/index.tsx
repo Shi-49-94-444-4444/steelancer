@@ -1,9 +1,11 @@
 'use client'
 
-import { Footer, ReviewBusiness, DetailBusiness, FormatBusiness } from "@/app/components"
-import { businessList } from "@/app/constants";
+import { Footer, ReviewBusiness, DetailBusiness, FormatBusiness, OfferBusiness } from "@/app/components"
+import { businessList, freelancerList } from "@/app/constants";
+import Image from "next/image";
 // import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { useRouter } from "next/router";
+import { comment } from "postcss";
 
 const DetailBusinessPage = () => {
   const router = useRouter();
@@ -38,6 +40,12 @@ const DetailBusinessPage = () => {
     skills,
     title
   } = item;
+  
+  function calculateAveragePrice(offers?: any) {
+    if (!offers || offers.length === 0) return 0;
+    const totalPrice = offers.reduce((sum?:any, offer?:any) => sum + offer.price, 0);
+    return totalPrice / offers.length;
+  }
 
   const reviewContent = (
     <ReviewBusiness
@@ -59,9 +67,26 @@ const DetailBusinessPage = () => {
 
   const offerContent = (
     <div className="flex flex-col text-xl bg-white shadow-lg p-6">
-      <h1 className="font-bold py-2">100 freelancer offer avange price for this Job</h1>
+      <h1 className="font-bold py-2">
+        {freelancerList.filter(item => item.offer).length} freelancer offer average price of{" "}
+        {freelancerList
+          .filter(item => item.offer)
+          .reduce((total, item) => total + calculateAveragePrice(item.offer), 0) /
+          freelancerList.filter(item => item.offer).length}
+        $ for this Job
+      </h1>
       <div className="border-b-2"></div>
-
+      {freelancerList
+        .filter(item => item.offer) // Filter out items without an offer
+        .slice(0, 100) // Limit the list to the first 100 items
+        .map((item) => (
+          <OfferBusiness
+            key={item.id}
+            src={item.src}
+            title={item.title}
+            offer={item.offer}
+          />
+        ))}
     </div>
   )
 
