@@ -5,8 +5,10 @@ import Container from "../Container"
 import { FormatCusMd } from "../modal"
 import { categories } from "@/app/constants"
 import { ButtonCus } from "../body"
+import { useTranslation } from "react-i18next"
 
 const Category = () => {
+    const { t } = useTranslation()
     return (
         <FormatCusMd>
             <Container>
@@ -30,8 +32,8 @@ const Category = () => {
                                 font-semibold
                             "
                         >
-                            <span>Choose Different </span>
-                            <span className="text-pink-cus-tx">Category</span>
+                            <span>{t("Choose Different")} </span>
+                            <span className="text-pink-cus-tx">{t("Category")}</span>
                         </h1>
                     </div>
                     <div className="

@@ -5,6 +5,7 @@ import Rating from "../Rating"
 import Performance from "./Performance";
 import DetailFreelancer from "./DetailFreelancer";
 import SkillFreelancer from "./SkillFreelancer";
+import { useTranslation } from "react-i18next"
 
 interface DescFreelancerProps {
     title?: string;
@@ -27,6 +28,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     detail,
     skill
 }) => {
+    const { t } = useTranslation()
     return (
         <div className="
                 bg-white 
@@ -64,7 +66,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                             font-semibold
                         "
                     >
-                        Hire now
+                        {t("Hire now")}
                     </button>
                 </div>
                 <h2 className="text-2xl">
@@ -79,7 +81,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                 >
                     <Rating rating={star} maxStars={5} sizeCus={30} />
                     <div className="text-xl">
-                        {rateStar} ({numberCmt} Comment)
+                        {rateStar} ({numberCmt} {t("Comment")})
                     </div>
                 </div>
                 <div className="
@@ -112,7 +114,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                     >
                         <div className="col-span-2">
                             <h3 className="text-gray-400">
-                                Skill
+                            {t("Skill")}
                             </h3>
                         </div>
                         <div className="col-span-10">

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Rating from "../Rating";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next"
 
 interface FreelancerListProps {
     id: string;
@@ -29,6 +30,8 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
         event.preventDefault();
         router.push(`/detail_freelancer/${id}`);
     };
+
+    const { t } = useTranslation()
 
     return (
         <div className="
@@ -87,7 +90,7 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                                 px-8
                             "
                         >
-                            Rent now
+                            {t("Rent now")}
                         </button>
                     </div>
                     <div className="
@@ -98,10 +101,10 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                         "
                     >
                         <div className="flex flex-row gap-3">
-                            Rating: <Rating rating={star} maxStars={5} sizeCus={20}/>
+                        {t("Rating:")} <Rating rating={star} maxStars={5} sizeCus={20}/>
                         </div>
                         <div className="gap-3">
-                            Price: {price}$/h
+                        {t("Price:")} {price}$/h
                         </div>
                     </div>
                     <p className="line-clamp-3">

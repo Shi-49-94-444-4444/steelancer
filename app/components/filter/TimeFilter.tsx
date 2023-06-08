@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslation } from "react-i18next"
 
 const TimeFilter = () => {
+    const { t } = useTranslation()
     const [from, setFrom] = useState<Date | null>(null);
     const [to, setTo] = useState<Date | null>(null);
 
@@ -29,7 +31,7 @@ const TimeFilter = () => {
                 bg-white
             "
         >
-            <h1 className="font-semibold my-3">Timing</h1>
+            <h1 className="font-semibold my-3">{t("Timing")}</h1>
             <div className="flex flex-row mb-4">
                 <DatePicker
                     selected={from}

@@ -1,6 +1,7 @@
 'use client'
-
+import { useTranslation } from "react-i18next"
 const ButtonCus = () => {
+    const { t } = useTranslation()
     return (
         <div className="
                 flex 
@@ -27,7 +28,7 @@ const ButtonCus = () => {
                     whitespace-nowrap
                 "
             >
-                More Categories
+                {t("More Categories")}
             </button>
         </div>
     )

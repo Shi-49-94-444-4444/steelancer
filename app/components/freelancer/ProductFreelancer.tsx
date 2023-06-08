@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ProductItem from "./ProductItem";
+import { useTranslation } from "react-i18next"
 
 interface ProductFreelancerProps {
     product?: any[];
@@ -15,6 +16,8 @@ const ProductFreelancer: React.FC<ProductFreelancerProps> = ({ product }) => {
     const toggleShowMore = () => {
         setShowMore(!showMore);
     };
+
+    const { t } = useTranslation()
 
     return (
         <div className="grid grid-cols-3 gap-3">
@@ -36,7 +39,7 @@ const ProductFreelancer: React.FC<ProductFreelancerProps> = ({ product }) => {
                                 hover:underline
                             "
                         >
-                            More
+                            {t("More")}
                         </button>
                     ) : (
                         <button
@@ -47,7 +50,7 @@ const ProductFreelancer: React.FC<ProductFreelancerProps> = ({ product }) => {
                                 hover:underline
                             "
                         >
-                            Less
+                            {t("Less")}
                         </button>
                     )}
                 </div>
