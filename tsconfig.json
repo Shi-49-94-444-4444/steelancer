@@ -37,7 +37,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts", 
-    "schema.prisma"  
+    "schema.prisma",
+    ".eslintrc.js",
+    "next.config.js",
+    "tailwind.config.js"
   ],
   "exclude": [
     "node_modules"

@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write .",
     "stylelint": "stylelint \"**/*.{css,scss}\"",
-    "stylelint:fix": "stylelint \"**/*.{css,scss}\" --fix"
+    "stylelint:fix": "stylelint \"**/*.{css,scss}\" --fix",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
