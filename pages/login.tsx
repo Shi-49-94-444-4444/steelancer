@@ -119,7 +119,7 @@ const Login = () => {
   }
 
   const footerContent = (
-    <div>
+    <div className="space-y-10">
       <h1 className="
           text-center 
           text-pink-cus-bt

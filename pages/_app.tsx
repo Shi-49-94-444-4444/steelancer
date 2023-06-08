@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n';
 import Layout from '@/app/layout';
+import '../styles/fontGreyQo.css';
+import '../styles/fontPoppin.css';
 
 class MyApp extends App {
     render() {

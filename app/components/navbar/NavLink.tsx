@@ -51,7 +51,7 @@ const NavLink = ({ isLoggedIn, userRole }: NavLinkProps) => {
                     flex-row
                     items-center
                     justify-between
-                    font-semibold
+                    font-medium
                     text-sm
                 "
             >

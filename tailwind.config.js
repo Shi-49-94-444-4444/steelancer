@@ -21,12 +21,14 @@ module.exports = {
       spacing: {
         '128': '32rem',
         'cus-1': '62rem',
-        'cus-2': '45rem',
+        'cus-2': '50rem',
         'cus-3': '31rem',
         'cus-4': '34rem'
       },
       fontFamily: {
         sans: ['ui-sans-serif', 'system-ui'],
+        greyqo: ['GreyQo-Regular', 'sans-serif'],
+        poppin: ['Poppins-Medium', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -11,9 +11,9 @@ interface Option {
 
 interface MultiFilterProps {
     options: Option[];
-    title: string;
-    placeholder: string;
-    setFilterCategories: any
+    title?: string;
+    placeholder?: string;
+    setFilterCategories?: any
 }
 
 const MultiFilter: React.FC<MultiFilterProps> = ({ 

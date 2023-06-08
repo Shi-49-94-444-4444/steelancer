@@ -1,6 +1,10 @@
 'use client'
 
+import { useRouter } from "next/router"
+
 const ButtonCus = () => {
+    const router = useRouter()
+
     return (
         <div className="relative">
             <div className="
@@ -11,7 +15,7 @@ const ButtonCus = () => {
                 "
             >
                 <button
-                    onClick={() => { }}
+                    onClick={() => router.push('/post_job')}
                     className="
                         hidden
                         w-full

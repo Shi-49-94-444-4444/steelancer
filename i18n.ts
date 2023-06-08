@@ -18,7 +18,7 @@ i18n
       },
     },
     fallbackLng: 'en',
-    debug: true, // Set to false in production
+    // debug: true, // Set to false in production
     interpolation: {
       escapeValue: false,
     },

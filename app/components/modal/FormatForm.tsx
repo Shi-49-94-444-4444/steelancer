@@ -18,6 +18,7 @@ const FormatForm: React.FC<FormatFormProps> = ({
                 h-cus-2 
                 bg-white 
                 rounded-50
+                shadow-lg
               "
             >
                 <div className="
@@ -33,9 +34,10 @@ const FormatForm: React.FC<FormatFormProps> = ({
                         "
                     >
                         <h1 className="
-                            font-mono 
+                            font-greyqo 
                             text-pink-cus-bt 
-                            text-8xl
+                            text-[8rem]
+                            leading-[10rem]
                             "
                         >
                             {title}
