@@ -6,16 +6,30 @@ import Performance from "./Performance";
 import DetailFreelancer from "./DetailFreelancer";
 import SkillFreelancer from "./SkillFreelancer";
 
-interface DescFreelancerProps {
+interface PerformanceItem {
+    title: string;
+    percent: number;
+  }
+  
+  interface DetailItem {
+    title: string;
+    description: string;
+  }
+  
+  interface SkillItem {
+    title: string;
+  }
+  
+  interface DescFreelancerProps {
     title?: string;
     label?: string;
     star: number;
     rateStar?: number;
     numberCmt?: number;
-    performance?: any;
-    detail?: any;
-    skill?: any;
-}
+    performance: PerformanceItem[];
+    detail: DetailItem[];
+    skill: SkillItem[];
+  }
 
 const DescFreelancer: React.FC<DescFreelancerProps> = ({
     title,
@@ -89,7 +103,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         space-x-10
                     "
                 >
-                    {performance.map((item?: any) => (
+                    {performance.map((item) => (
                         <Performance
                             key={item.title}
                             percent={item.percent}
@@ -97,7 +111,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                     ))}
                 </div>
                 <div className="pt-10 space-y-5">
-                    {detail.map((item?: any) => (
+                    {detail.map((item) => (
                         <DetailFreelancer
                             key={item.title}
                             title={item.title}
@@ -123,7 +137,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                     cursor-pointer
                                 "
                             >
-                                {skill.map((item?: any) => (
+                                {skill.map((item) => (
                                     <SkillFreelancer 
                                         key={item.title} 
                                         title={item.title} 

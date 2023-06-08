@@ -15,7 +15,6 @@ const JobSelect: React.FC<JobSelectProps> = ({
     title, 
     description, 
     name, 
-    value , 
     onChange 
 }) => {
     const [selectedSkills, setSelectedSkills] = useState<{ value: string; label: string }[]>([]);

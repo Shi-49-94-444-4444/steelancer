@@ -3,8 +3,13 @@
 import { useState } from "react";
 import ProductItem from "./ProductItem";
 
+interface ProductItem {
+    src: string;
+    title?: string;
+}
+
 interface ProductFreelancerProps {
-    product?: any[];
+    product?: ProductItem[];
 }
 
 const ProductFreelancer: React.FC<ProductFreelancerProps> = ({ product }) => {
@@ -18,7 +23,7 @@ const ProductFreelancer: React.FC<ProductFreelancerProps> = ({ product }) => {
 
     return (
         <div className="grid grid-cols-3 gap-3">
-            {visibleProducts?.map((item?: any) => (
+            {visibleProducts?.map((item) => (
                 <ProductItem 
                     key={item.title} 
                     src={item.src} 

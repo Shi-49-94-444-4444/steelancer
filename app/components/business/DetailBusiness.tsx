@@ -16,11 +16,11 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
     description,
     skills,
 }) => {
-    const [projectStatus, setProjectStatus] = useState("Complete");
+    const [projectStatus] = useState("Complete");
 
-    const handleStatusChange = (status?: any) => {
-        setProjectStatus(status);
-    };
+    // const handleStatusChange = (status?: any) => {
+    //     setProjectStatus(status);
+    // };
 
     return (
         <div className="

@@ -4,7 +4,12 @@ import { RiLockPasswordFill } from "react-icons/ri"
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { IoMail } from 'react-icons/io5'
-import { FieldValue, FieldValues, SubmitHandler, useForm } from "react-hook-form"
+import { 
+  // FieldValue, 
+  FieldValues, 
+  SubmitHandler, 
+  useForm 
+} from "react-hook-form"
 import AuthService from '../services/auth'
 import { useRouter } from "next/router"
 import {
@@ -15,7 +20,7 @@ import {
 } from "@/app/components"
 import { toast } from "react-toastify"
 import { useState } from "react"
-import { json } from "stream/consumers"
+// import { json } from "stream/consumers"
 import { useTranslation } from "react-i18next"
 
 const Login = () => {
@@ -44,7 +49,7 @@ const Login = () => {
         AuthService.getUserProfile()
           .then(profileResponse => {
             localStorage.setItem("profile", JSON.stringify(profileResponse))
-            let username = `${profileResponse.firstname} ${profileResponse.lastname}`;
+            const username = `${profileResponse.firstname} ${profileResponse.lastname}`;
             toast.success(`Welcome ${username}`);
             router.push("/")
           })
@@ -90,7 +95,7 @@ const Login = () => {
           errors={errors}
         />
         <h1
-          onClick={() => { }}
+          // onClick={() => { }}
           className="
             text-pink-cus-tx 
             cursor-pointer
@@ -101,7 +106,7 @@ const Login = () => {
           Forgot password ?
         </h1>
         <button
-          onClick={() => { }}
+          // onClick={() => { }}
           className="
             w-full 
             bg-pink-cus-bt 

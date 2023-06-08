@@ -5,7 +5,7 @@ import { BiSearch } from 'react-icons/bi'
 import FormatCusMd from './FormatCusMd';
 
 const SearchCus = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const [, setSearchTerm] = useState('');
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);

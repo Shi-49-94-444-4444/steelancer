@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react';
 import { LuFolderClock } from 'react-icons/lu'
 import { RiFolderShield2Line } from 'react-icons/ri'
 
@@ -9,11 +10,13 @@ interface JobPaymentProps {
   onChange: (paymentType: string) => void;
 }
 
-const JobPayment: React.FC<JobPaymentProps> = ({ 
-  title, 
-  paymentType, 
-  onChange 
+const JobPayment: React.FC<JobPaymentProps> = ({
+  title,
+  paymentType,
+  onChange
 }) => {
+  const [, setIsFocused] = useState(false);
+
   return (
     <>
       <label>{title}</label>
@@ -39,7 +42,19 @@ const JobPayment: React.FC<JobPaymentProps> = ({
               ${paymentType ? 'cursor-pointer' : ''}
             `
           }
+          role="button"
+          tabIndex={0}
           onClick={() => onChange('hour')}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              onChange('hour');
+            }
+          }}
+          aria-pressed={paymentType === 'hour'}
+          aria-label="Select payment type: Hourly"
+          aria-describedby="payment-type-description"
         >
           <div>
             <LuFolderClock size={100} />
@@ -69,7 +84,19 @@ const JobPayment: React.FC<JobPaymentProps> = ({
               ${paymentType ? 'cursor-pointer' : ''}
             `
           }
+          role="button"
+          tabIndex={0}
           onClick={() => onChange('fixed')}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              onChange('fixed');
+            }
+          }}
+          aria-pressed={paymentType === 'fixed'}
+          aria-label="Select payment type: Fixed"
+          aria-describedby="payment-type-description"
         >
           <div>
             <RiFolderShield2Line size={100} />

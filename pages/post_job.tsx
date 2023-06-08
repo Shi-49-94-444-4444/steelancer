@@ -38,12 +38,14 @@ const Post_job = () => {
     };
 
     const handleProjectSkillsChange = (skills: string[]) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         setFormData((prevData: any) => ({
             ...prevData,
             projectSkills: skills,
         }));
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleBudgetChange = (selectedOption: any) => {
         const budget = selectedOption ? selectedOption.label : '';
         setFormData((prevData) => ({
@@ -92,13 +94,14 @@ const Post_job = () => {
 
     const JobPriceContent = formData.paymentType && (
         <div className="space-y-3">
-            <label>What is your expected budget?</label>
+            <label htmlFor="budget">What is your expected budget?</label>
             {formData.paymentType === 'hour' ? (
                 <Select
                     name="budget"
                     value={formData.budget}
                     onChange={handleBudgetChange}
                     placeholder="..."
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     options={optionSkill as any}
                     className="w-full border-[1px] border-pink-cus-tx rounded-[5px]"
                     isClearable
