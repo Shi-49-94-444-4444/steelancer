@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react';
 import { VscStarFull, VscStarEmpty } from 'react-icons/vsc';
 
@@ -27,13 +29,22 @@ const RatingFilter: React.FC<RatingFilterProps> = ({ onChange }) => {
             {[1, 2, 3, 4, 5].map((rating) => (
                 <span
                     key={rating}
-                    className={`cursor-pointer ${rating <= selectedRating || rating <= hoveredRating
-                            ? 'text-pink-cus-bt'
-                            : 'text-pink-cus-bt'
+                    role="button"
+                    tabIndex={0}
+                    className={`cursor-pointer 
+                        ${rating <= selectedRating || rating <= hoveredRating? 
+                            'text-pink-cus-bt'
+                            : 
+                            'text-pink-cus-bt'
                         }`}
                     onMouseEnter={() => handleRatingHover(rating)}
                     onMouseLeave={handleRatingHoverEnd}
                     onClick={() => handleRatingChange(rating)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleRatingChange(rating);
+                        }
+                    }}
                 >
                     {rating <= selectedRating || rating <= hoveredRating ? (
                         <VscStarFull size={25} />
@@ -41,6 +52,7 @@ const RatingFilter: React.FC<RatingFilterProps> = ({ onChange }) => {
                         <VscStarEmpty size={25} />
                     )}
                 </span>
+
             ))}
         </div>
     );

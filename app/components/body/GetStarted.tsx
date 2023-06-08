@@ -53,7 +53,7 @@ const GetStarted = () => {
                 "
             >
                 <button
-                    onClick={() => { }}
+                    // onClick={() => { }}
                     className="
                         w-auto
                         md:w-auto
@@ -92,7 +92,7 @@ const GetStarted = () => {
                                 ml-5
                                 cursor-pointer
                             "
-                            onClick={() => { }}
+                            // onClick={() => { }}
                         >
                             <BiSearch size={18} />
                         </div>

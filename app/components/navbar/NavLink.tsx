@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { MenuItem } from "../navbar";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";

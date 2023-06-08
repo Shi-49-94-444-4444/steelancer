@@ -29,7 +29,7 @@ const getOpenJob = async (filter: JobFilter) => {
 };
 
 const getCount = async () => {
-   let url = `${baseUrl}/$count`;
+   const url = `${baseUrl}/$count`;
    const response = await axiosInstance.get(url);
    return response.data;
 }

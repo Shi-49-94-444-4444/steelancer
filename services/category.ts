@@ -4,7 +4,7 @@ import config from "../connectionConfigs/config.json";
 const baseUrl = config.api.base + config.api.category;
 
 const get = async () => {
-   let url = `${baseUrl}`;
+   const url = `${baseUrl}`;
    console.log(url);
    const response = await axiosInstance.get(url);
    return response.data;

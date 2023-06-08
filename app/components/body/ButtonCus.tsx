@@ -11,7 +11,7 @@ const ButtonCus = () => {
             "
         >
             <button
-                onClick={() => { }}
+                // onClick={() => { }}
                 className="
                     text-sm
                     px-10

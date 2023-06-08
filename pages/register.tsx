@@ -154,15 +154,14 @@ const Register = () => {
     <div className="px-28">
       <h1>
         Already have an account?
-        <span
+        <button
           onClick={() => router.push('/login')}
           className="
-            cursor-pointer 
             text-pink-cus-tx 
             hover:underline
           "
         > Log in
-        </span>
+        </button>
       </h1>
     </div>
   )
