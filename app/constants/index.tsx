@@ -473,6 +473,13 @@ export const freelancerList = [
                 date:"10/12/2023",
                 description:"Đạt 1tr phiếu bé ngoan"
             },
+        ],
+        offer: [
+            {
+                comment:"Hello there! My name is Asif and Im part of the Einnovention team. We understand that you are looking for a C++ program expert to help you with a Trojan issue. Our team has the necessary expertise to tackle this project, including strong proficiency in C++ programming language, experience in Trojan creation, familiarity with Windows operating system and more. We would be delighted if you could consider us for this job. We offer free consultations before hiring and unlimited repetitions for over 2 weeks free service. Our success rate on Freelancer.com is 248 out of 248 projects completed successfully so far. Plus we provide a 4.9/5 rating which speaks volumes about our quality and dedication towards customer satisfaction.N.A",
+                price: 100,
+                date: 5,
+            }
         ]
     },
     {
