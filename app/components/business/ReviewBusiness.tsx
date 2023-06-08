@@ -10,7 +10,17 @@ const ReviewBusiness: React.FC<ReviewBusinessProps> = ({
     price
 }) => {
     return (
-        <div className="grid grid-cols-3 text-4xl font-bold text-gray-cus px-36 py-10 bg-white">
+        <div className="
+                grid 
+                grid-cols-3 
+                text-4xl 
+                font-bold 
+                text-gray-cus 
+                px-36 
+                py-10 
+                bg-white
+            "
+        >
             <h1 className="col-span-2">
                 {title}
             </h1>

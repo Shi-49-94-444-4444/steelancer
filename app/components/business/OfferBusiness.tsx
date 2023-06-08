@@ -30,7 +30,13 @@ const OfferBusiness: React.FC<OfferBusinessProps> = ({
 
     return (
         <>
-            <div className="grid grid-cols-12 py-5 space-x-5">
+            <div className="
+                    grid 
+                    grid-cols-12
+                    py-5 
+                    space-x-5
+                "
+            >
                 <div className="col-span-2">
                     <Image
                         alt="avatar"
@@ -48,12 +54,18 @@ const OfferBusiness: React.FC<OfferBusinessProps> = ({
                                 {item.comment}
                             </p>
                             {!isExpanded && (
-                                <button onClick={handleShowMore} className="text-pink-cus-tx">
+                                <button 
+                                    onClick={handleShowMore} 
+                                    className="text-pink-cus-tx"
+                                >
                                     Show More
                                 </button>
                             )}
                             {isExpanded && (
-                                <button onClick={handleShowLess} className="text-pink-cus-tx">
+                                <button 
+                                    onClick={handleShowLess} 
+                                    className="text-pink-cus-tx"
+                                >
                                     Show Less
                                 </button>
                             )}

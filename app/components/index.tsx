@@ -38,6 +38,13 @@ import {
     FormatBusiness,
     OfferBusiness
 } from './business'
+import {
+    JobInput,
+    JobSelect,
+    JobPayment,
+    JobInformation,
+    JobFormat
+} from './post'
 
 export {
     Navbar,
@@ -73,5 +80,10 @@ export {
     DetailBusiness,
     FormatFreelancer,
     FormatBusiness,
-    OfferBusiness
+    OfferBusiness,
+    JobInput,
+    JobSelect,
+    JobPayment,
+    JobInformation,
+    JobFormat
 }
