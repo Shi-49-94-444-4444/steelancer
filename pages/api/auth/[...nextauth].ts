@@ -15,13 +15,14 @@ export const authOptions: AuthOptions = {
                     throw new Error('Invalid credentials');
                 }
 
-                const user = await prisma.user.findUnique({
-                    where: {
-                        email: credentials.email
-                    }
-                });
+                // Thực hiện xác thực người dùng thông qua API của bạn ở đây
+                // Tìm kiếm người dùng trong cơ sở dữ liệu của bạn
+                // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập
 
-                if (!user || !user?.hashedPassword) {
+                // Ví dụ:
+                const user = await yourAPIService.findUserByEmail(credentials.email);
+
+                if (!user || !user.hashedPassword) {
                     throw new Error('Invalid credentials');
                 }
 
