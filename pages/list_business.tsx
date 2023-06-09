@@ -17,9 +17,7 @@ import {
     businessList,
 } from "@/app/constants"
 import ReactPaginate from 'react-paginate';
-import JobService, {
-    // JobFilter 
-} from '../services/jobs';
+import JobService from '../services/jobs';
 import CategoryService from '../services/category'
 import JobResponse from '@/models/jobResponse';
 import CategoryResponse from '@/models/categoryResponse';

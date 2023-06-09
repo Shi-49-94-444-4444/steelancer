@@ -19,8 +19,13 @@ import {
     optionTypeWork
 } from "@/app/constants"
 import Select from "react-select"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ReactPaginate from "react-paginate"
+import CategoryResponse from "@/models/categoryResponse"
+import JobResponse from "@/models/jobResponse"
+import JobService from '../services/jobs';
+import CategoryService from '../services/category'
+
 interface FreelancerItem {
     id: string;
     src: string;
@@ -36,12 +41,70 @@ interface BodyContentProps {
 }
 
 const list_freelancer = () => {
-    const handleRatingFilterChange = (rating: number) => {
-        // Thực hiện các thay đổi khi filter rating thay đổi
-        console.log('Filter rating changed:', rating);
-        // Gọi API hoặc cập nhật trạng thái
+    const itemsPerPage = 10; // Số mục hiển thị trên mỗi trang
+    const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
+    const [currentPage, setCurrentPage] = useState(0); // Trang hiện tại
+    const [freelancerCount, setFreelancerCount] = useState(0); // Tổng số job
+    const [freelancers, setFreelancers] = useState<JobResponse[]>([]); // Job trong trang hiện tại
+    const [offerFrom, setOfferFrom] = useState(0);
+    const [offerTo, setOfferTo] = useState(0);
+    const [filterCategories, setFilterCategories] = useState<number[]>([]);
+
+    // Lấy danh sách các mục trên trang hiện tại
+    const getCurrentPageItems = (): FreelancerItem[] => {
+        const startIndex = currentPage * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return freelancerList.slice(startIndex, endIndex);
     };
-    
+
+    useEffect(() => {
+        JobService.getCount()
+            .then(jobCountResponse => {
+                setFreelancerCount(jobCountResponse);
+            })
+        CategoryService.get()
+            .then(categoriesResponse => {
+                setCategories(categoriesResponse.value);
+            })
+    }, [])
+
+    useEffect(() => {
+        JobService.getOpenJob({
+            skip: currentPage * itemsPerPage,
+            offerFrom: offerFrom,
+            offerTo: offerTo,
+            categories: filterCategories
+        })
+            .then(jobsResponse => {
+                setFreelancers(jobsResponse.value);
+                setFreelancerCount(jobsResponse["@odata.count"])
+            })
+    }, [currentPage, offerFrom, offerTo, filterCategories])
+
+    const getDurationLeft = (job: JobResponse) => {
+        const expiredDate = new Date(job.JobExpiredDate); // Replace with your start date
+        const currentDate = new Date();
+        const timeDifference = expiredDate.getTime() - currentDate.getTime();
+        const dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+
+        return dayDifference;
+    }
+
+    const getCategories = (job: JobResponse) => {
+        const categoryIds = job.Categories;
+        let categoriesString = "";
+        categoryIds.forEach(cId => {
+            categoriesString += `${categories.find(c => c.Id === cId)?.Name}, `
+        })
+
+        return categoriesString.replace(/, $/, '');
+    }
+
+    // Xử lý sự kiện chuyển trang
+    const handlePageChange = (selectedPage: { selected: number }) => {
+        setCurrentPage(selectedPage.selected);
+    };
+
     const filterContent = (
         <div className="
                 flex
@@ -52,14 +115,14 @@ const list_freelancer = () => {
             <h1 className="text-xl">
                 Filter:
             </h1>
-            
+
             <FilterForm
                 onPriceChange={(from, to) => {
                     setOfferFrom(!isNaN(from) ? from : 0);
                     setOfferTo(!isNaN(to) ? to : 0);
                 }}
                 // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-                onTimeChange={(from, to) => {}}
+                onTimeChange={(from, to) => { }}
             />
             <MultiFilter
                 title="Skill"
@@ -133,69 +196,54 @@ const list_freelancer = () => {
         </div>
     )
 
-    const BodyContent: React.FC<BodyContentProps> = ({ freelancerList }) => {
-        const itemsPerPage = 10; // Số mục hiển thị trên mỗi trang
-        const [currentPage, setCurrentPage] = useState(0); // Trang hiện tại
+    const BodyContent = (
+        // return (
+        <div className="flex flex-col gap-3">
+            {getCurrentPageItems().map((item) => (
+                <FreelancerList
+                    key={item.id}
+                    {...item}
+                />
+            ))}
 
-        // Lấy danh sách các mục trên trang hiện tại
-        const getCurrentPageItems = (): FreelancerItem[] => {
-            const startIndex = currentPage * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-            return freelancerList.slice(startIndex, endIndex);
-        };
-
-        // Xử lý sự kiện chuyển trang
-        const handlePageChange = (selectedPage: { selected: number }) => {
-            setCurrentPage(selectedPage.selected);
-        };
-
-        return (
-            <div className="flex flex-col gap-3">
-                {getCurrentPageItems().map((item) => (
-                    <FreelancerList
-                        key={item.id}
-                        {...item}
-                    />
-                ))}
-
-                <ReactPaginate
-                    previousLabel="Previous"
-                    nextLabel="Next"
-                    breakLabel="..."
-                    pageCount={Math.ceil(freelancerList.length / itemsPerPage)}
-                    onPageChange={handlePageChange}
-                    containerClassName="
+            <ReactPaginate
+                previousLabel="Previous"
+                nextLabel="Next"
+                breakLabel="..."
+                pageCount={Math.ceil(freelancerList.length / itemsPerPage)}
+                onPageChange={handlePageChange}
+                containerClassName="
                         flex 
                         gap-2 
                         justify-center
                         my-20
                     "
-                    pageLinkClassName="
+                pageLinkClassName="
                         px-3 
                         py-2 
                         rounded 
                         bg-gray-200 
                         text-gray-700
                     "
-                    activeLinkClassName="
+                activeLinkClassName="
                         font-bold 
                         bg-gray-500 
                         text-white
                     "
-                    disabledClassName="
+                disabledClassName="
                         opacity-50 
                         cursor-not-allowed
                     "
-                />
-            </div>
-        );
-    };
+            />
+        </div>
+        // );
+    );
     return (
         <div>
             <SearchCus />
             <FormatList
                 filter={filterContent}
-                body={<BodyContent freelancerList={freelancerList} />}
+                body={<BodyContent />}
             />
             <Footer />
         </div>
