@@ -4,16 +4,22 @@ import React, { useState, useEffect } from "react";
 import Container from "../Container";
 import { Logo, NavLink, ButtonCus } from "../navbar";
 import AuthService, { UserInfo } from '../../../services/auth'
-import { ca } from "date-fns/locale";
+// import { ca } from "date-fns/locale";
 
-const Navbar = () => {
+interface NavbarProps {
+    currentUser: UserInfo | null
+}
+
+const Navbar: React.FC<NavbarProps> = ({
+    currentUser,
+}) => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const [user, setUser] = useState<UserInfo>({
-        Username: "",
-        Email: "",
-        Role: ""
-    });
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [user, setUser] = useState<UserInfo>({
+    //     Username: "",
+    //     Email: "",
+    //     Role: ""
+    // });
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,16 +31,16 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    useEffect(() => {
-        try {
-            console.log(AuthService.getUserInfo());
-            setUser(AuthService.getUserInfo());
-            setIsLoggedIn(true);
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         console.log(AuthService.getUserInfo());
+    //         setUser(AuthService.getUserInfo());
+    //         setIsLoggedIn(true);
+    //     }
+    //     catch (error) {
+    //         console.log(error)
+    //     }
+    // }, [])
 
     return (
         <div
@@ -74,7 +80,7 @@ const Navbar = () => {
                         "
                     >
                         <Logo />
-                        <NavLink isLoggedIn={isLoggedIn} userRole={user.Role} username={user.Username} />
+                        <NavLink currentUser={currentUser} />
                         <ButtonCus />
                     </div>
                 </Container>

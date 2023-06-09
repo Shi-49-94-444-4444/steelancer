@@ -1,23 +1,17 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MenuItem } from "../navbar";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import AuthService from '../../../services/auth'
+import AuthService, { UserInfo } from '../../../services/auth'
 
 interface NavLinkProps {
-    isLoggedIn: boolean;
-    userRole: string;
-    username: string;
+    currentUser: UserInfo | null
 }
 
-const NavLink = ({ isLoggedIn, userRole, username }: NavLinkProps) => {
+const NavLink = ({ currentUser }: NavLinkProps) => {
     const { t } = useTranslation();
-
-    useEffect(() => {
-        console.log(isLoggedIn)
-    }, [])
 
     const [isMoreOpen, setIsMoreOpen] = useState(false);
     const [isFreelancerOpen, setIsFreelancerOpen] = useState(false);
@@ -70,7 +64,7 @@ const NavLink = ({ isLoggedIn, userRole, username }: NavLinkProps) => {
                 <Link href="/list_freelancer" className="px-6 hover:text-pink-cus-bt">
                     {t("Find Freelancers")}
                 </Link>
-                {isLoggedIn && (userRole === "Freelancer" || userRole === "Business") ? (
+                {currentUser && (currentUser.Role === "Freelancer" || currentUser.Role === "Business") ? (
                     <>
                         <div
                             className="relative"
@@ -78,73 +72,77 @@ const NavLink = ({ isLoggedIn, userRole, username }: NavLinkProps) => {
                             onMouseLeave={handleMouseLeaveUser}
                         >
                             <Link href="/username" className="px-6 hover:text-pink-cus-bt" replace>
-                                {username}
+                                {currentUser.Username}
                             </Link>
-                            {userRole === "Freelancer" && isFreelancerOpen && (
-                                <div
-                                    className="
+                            {currentUser.Role === "Freelancer" && isFreelancerOpen && (
+                                <>
+                                    <div
+                                        className="
                                         absolute
                                         w-10
                                         md:w-40
                                         bg-white
                                         overflow-hidden
                                     "
-                                >
-                                    <div
-                                        className="
+                                    >
+                                        <div
+                                            className="
                                             flex 
                                             flex-col 
                                             cursor-pointer
                                         "
-                                    >
-                                        <>
-                                            <MenuItem href="/" label={t("Profile")} />
-                                            <MenuItem href="/" label={t("Manage job")} />
-                                        </>
+                                        >
+                                            <>
+                                                <MenuItem href="/" label={t("Profile")} />
+                                                <MenuItem href="/" label={t("Manage job")} />
+                                            </>
+                                        </div>
                                     </div>
-                                </div>
+                                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
+                                        {t("Logout")}
+                                    </Link>
+                                </>
                             )}
-                            {userRole === "Business" && isBusinessOpen && (
-                                <div
-                                    className="
+                            {currentUser.Role === "Business" && isBusinessOpen && (
+                                <>
+                                    <div
+                                        className="
                                         absolute
                                         w-10
                                         md:w-40
                                         bg-white
                                         overflow-hidden
                                     "
-                                >
-                                    <div
-                                        className="
+                                    >
+                                        <div
+                                            className="
                                             flex 
                                             flex-col 
                                             cursor-pointer
                                         "
-                                    >
-                                        <>
-                                            <MenuItem href="/" label={t("Profile")} />
-                                            <MenuItem href="/" label={t("Manage job")} />
-                                        </>
+                                        >
+                                            <>
+                                                <MenuItem href="/" label={t("Profile")} />
+                                                <MenuItem href="/" label={t("Manage job")} />
+                                            </>
+                                        </div>
                                     </div>
-                                </div>
+                                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
+                                        {t("Logout")}
+                                    </Link>
+                                </>
                             )}
                         </div>
                     </>
                 ) : (
-                    <Link href="/login" className="px-6 hover:text-pink-cus-bt" replace>
-                        {t("Log in")}
-                    </Link>
-                )}
-
-
-                {!isLoggedIn ? (
-                    <Link href="/register" className="px-6 hover:text-pink-cus-bt">
-                        {t("Sign up")}
-                    </Link>
-                ) : (
-                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
-                        {t("Logout")}
-                    </Link>
+                    <>
+                        <Link href="/login" className="px-6 hover:text-pink-cus-bt" replace>
+                            {t("Log in")}
+                        </Link>
+                        <Link href="/register" className="px-6 hover:text-pink-cus-bt">
+                            {t("Sign up")}
+                        </Link>
+                    </>
                 )}
                 <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <div
@@ -183,7 +181,7 @@ const NavLink = ({ isLoggedIn, userRole, username }: NavLinkProps) => {
                     )}
                 </div>
             </nav>
-        </div>
+        </div >
     );
 };
 

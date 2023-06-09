@@ -2,12 +2,14 @@ import axiosInstance from "../connectionConfigs/axiosInstance";
 import config from "../connectionConfigs/config.json";
 const baseUrl = config.api.base + config.api.auth;
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const authenticate = async (loginRequest: Object) => {
    const url = `${baseUrl}/token`;
    const response = await axiosInstance.post(url, loginRequest);
    return response.data;
 };
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const register = async (registerRequest: Object) => {
    const url = baseUrl;
    const response = await axiosInstance.post(url, registerRequest);
