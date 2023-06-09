@@ -1,13 +1,11 @@
-import { getServerSession } from "next-auth/next"
-
+import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import prisma from "@/app/libs/prismadb";
 
 export async function getSession() {
-  return await getServerSession(authOptions)
+  return await getServerSession(authOptions);
 }
 
-export default async function getCurrentUser() {
+export async function getCurrentUser() {
   try {
     const session = await getSession();
 
@@ -15,25 +13,16 @@ export default async function getCurrentUser() {
       return null;
     }
 
-    const currentUser = await prisma.user.findUnique({
-      where: {
-        email: session.user.email as string,
-      }
-    });
-
-    if (!currentUser) {
-      return null;
-    }
+    // You can add your own logic here to fetch the user from your database
+    // using the email from the session
 
     return {
-      ...currentUser,
-      createdAt: currentUser.createdAt.toISOString(),
-      updatedAt: currentUser.updatedAt.toISOString(),
-      emailVerified: 
-        currentUser.emailVerified?.toISOString() || null,
+      email: session.user.email as string,
+      username: session.user.name as string,
+      role: session.user.role as string,
+      // Add other user properties you want to include
     };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
+  } catch (error) {
     return null;
   }
 }
