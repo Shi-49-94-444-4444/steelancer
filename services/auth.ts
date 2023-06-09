@@ -20,16 +20,55 @@ const getUserProfile = async () => {
    return response.data;
 }
 
-const getProfile = async () => {
-   const url = `${baseUrl}/profile`;
-   const response = await axiosInstance.get(url);
-   return response.data;
+const decodeJwtToken = () => {
+   const token = localStorage.getItem('auth');
+   if (token) {
+      const base64Url = token.split('.')[1]; // Extract the payload part of the JWT token
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Replace URL-safe characters
+      const decodedPayload = atob(base64); // Decode the base64-encoded payload
+      const claims = JSON.parse(decodedPayload);
+
+      const user: UserInfo = {
+         Username: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"],
+         Email: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+         Role: claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+      }
+
+      localStorage.setItem("user", JSON.stringify(user));
+   }
+   else {
+      throw new Error("No login");
+   }
+}
+
+const getUserInfo = (): UserInfo => {
+   const token = localStorage.getItem("user");
+   if (token) {
+      return JSON.parse(token);
+   }
+   else {
+      throw new Error("No login");
+   }
+}
+
+const logout = () => {
+   localStorage.removeItem("auth");
+   localStorage.removeItem("user");
 }
 
 const exportObject = {
    authenticate,
    register,
-   getUserProfile
+   decodeJwtToken,
+   getUserProfile,
+   getUserInfo,
+   logout
 };
+
+export interface UserInfo {
+   Username: string,
+   Email: string,
+   Role: string
+}
 
 export default exportObject;

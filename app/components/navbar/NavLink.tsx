@@ -1,17 +1,23 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuItem } from "../navbar";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import AuthService from '../../../services/auth'
 
 interface NavLinkProps {
     isLoggedIn: boolean;
     userRole: string;
+    username: string;
 }
 
-const NavLink = ({ isLoggedIn, userRole }: NavLinkProps) => {
+const NavLink = ({ isLoggedIn, userRole, username }: NavLinkProps) => {
     const { t } = useTranslation();
+
+    useEffect(() => {
+        console.log(isLoggedIn)
+    }, [])
 
     const [isMoreOpen, setIsMoreOpen] = useState(false);
     const [isFreelancerOpen, setIsFreelancerOpen] = useState(false);
@@ -64,7 +70,7 @@ const NavLink = ({ isLoggedIn, userRole }: NavLinkProps) => {
                 <Link href="/list_freelancer" className="px-6 hover:text-pink-cus-bt">
                     {t("Find Freelancers")}
                 </Link>
-                {isLoggedIn && (userRole === "freelancer" || userRole === "business") ? (
+                {isLoggedIn && (userRole === "Freelancer" || userRole === "Business") ? (
                     <>
                         <div
                             className="relative"
@@ -72,9 +78,9 @@ const NavLink = ({ isLoggedIn, userRole }: NavLinkProps) => {
                             onMouseLeave={handleMouseLeaveUser}
                         >
                             <Link href="/username" className="px-6 hover:text-pink-cus-bt" replace>
-                                {t("Username")}
+                                {username}
                             </Link>
-                            {userRole === "freelancer" && isFreelancerOpen && (
+                            {userRole === "Freelancer" && isFreelancerOpen && (
                                 <div
                                     className="
                                         absolute
@@ -98,7 +104,7 @@ const NavLink = ({ isLoggedIn, userRole }: NavLinkProps) => {
                                     </div>
                                 </div>
                             )}
-                            {userRole === "business" && isBusinessOpen && (
+                            {userRole === "Business" && isBusinessOpen && (
                                 <div
                                     className="
                                         absolute
@@ -131,12 +137,12 @@ const NavLink = ({ isLoggedIn, userRole }: NavLinkProps) => {
                 )}
 
 
-                {isLoggedIn ? (
+                {!isLoggedIn ? (
                     <Link href="/register" className="px-6 hover:text-pink-cus-bt">
                         {t("Sign up")}
                     </Link>
                 ) : (
-                    <Link href="/logout" className="px-6 hover:text-pink-cus-bt">
+                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
                         {t("Logout")}
                     </Link>
                 )}
