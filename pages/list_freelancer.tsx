@@ -243,7 +243,7 @@ const list_freelancer = () => {
             <SearchCus />
             <FormatList
                 filter={filterContent}
-                body={<BodyContent />}
+                body={BodyContent}
             />
             <Footer />
         </div>
