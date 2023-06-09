@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({
             setIsLoggedIn(true);
         }
         catch (error) {
-            console.log(error)
+            console.log("No login")
         }
     }, [])
 

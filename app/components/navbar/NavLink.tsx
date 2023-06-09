@@ -35,6 +35,13 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
         setIsBusinessOpen(false);
     };
 
+    const onLogout = () => {
+        AuthService.logout();
+        console.log("logging out");
+        const baseUrl = window.location.origin;
+        window.location.href = baseUrl;
+    }
+
     return (
         <div
             className="
@@ -136,12 +143,12 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
 
                     </>
                 )}
-                {!currentUser ? (
+                {currentUser?.Username === "" ? (
                     <Link href="/register" className="px-6 hover:text-pink-cus-bt">
                         {t("Sign up")}
                     </Link>
                 ) : (
-                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
+                    <Link href="/" onClick={onLogout} className="px-6 hover:text-pink-cus-bt">
                         {t("Logout")}
                     </Link>
                 )}
