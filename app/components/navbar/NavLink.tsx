@@ -65,84 +65,85 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
                     {t("Find Freelancers")}
                 </Link>
                 {currentUser && (currentUser.Role === "Freelancer" || currentUser.Role === "Business") ? (
-                    <>
-                        <div
-                            className="relative"
-                            onMouseEnter={handleMouseEnterUser}
-                            onMouseLeave={handleMouseLeaveUser}
-                        >
-                            <Link href="/username" className="px-6 hover:text-pink-cus-bt" replace>
-                                {currentUser.Username}
-                            </Link>
-                            {currentUser.Role === "Freelancer" && isFreelancerOpen && (
-                                <>
-                                    <div
-                                        className="
+                    <div
+                        className="relative"
+                        onMouseEnter={handleMouseEnterUser}
+                        onMouseLeave={handleMouseLeaveUser}
+                    >
+                        <Link href="/username" className="px-6 hover:text-pink-cus-bt" replace>
+                            {currentUser.Username}
+                        </Link>
+                        {currentUser.Role === "Freelancer" && isFreelancerOpen && (
+                            <>
+                                <div
+                                    className="
                                         absolute
                                         w-10
                                         md:w-40
                                         bg-white
                                         overflow-hidden
                                     "
-                                    >
-                                        <div
-                                            className="
+                                >
+                                    <div
+                                        className="
                                             flex 
                                             flex-col 
                                             cursor-pointer
                                         "
-                                        >
-                                            <>
-                                                <MenuItem href="/" label={t("Profile")} />
-                                                <MenuItem href="/" label={t("Manage job")} />
-                                            </>
-                                        </div>
+                                    >
+                                        <>
+                                            <MenuItem href="/" label={t("Profile")} />
+                                            <MenuItem href="/" label={t("Manage job")} />
+                                        </>
                                     </div>
-                                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
-                                        {t("Logout")}
-                                    </Link>
-                                </>
-                            )}
-                            {currentUser.Role === "Business" && isBusinessOpen && (
-                                <>
-                                    <div
-                                        className="
+                                </div>
+
+                            </>
+                        )}
+                        {currentUser.Role === "Business" && isBusinessOpen && (
+                            <>
+                                <div
+                                    className="
                                         absolute
                                         w-10
                                         md:w-40
                                         bg-white
                                         overflow-hidden
                                     "
-                                    >
-                                        <div
-                                            className="
+                                >
+                                    <div
+                                        className="
                                             flex 
                                             flex-col 
                                             cursor-pointer
                                         "
-                                        >
-                                            <>
-                                                <MenuItem href="/" label={t("Profile")} />
-                                                <MenuItem href="/" label={t("Manage job")} />
-                                            </>
-                                        </div>
+                                    >
+                                        <>
+                                            <MenuItem href="/" label={t("Profile")} />
+                                            <MenuItem href="/" label={t("Manage job")} />
+                                        </>
                                     </div>
-                                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
-                                        {t("Logout")}
-                                    </Link>
-                                </>
-                            )}
-                        </div>
-                    </>
+                                </div>
+
+                            </>
+                        )}
+                    </div>
                 ) : (
                     <>
                         <Link href="/login" className="px-6 hover:text-pink-cus-bt" replace>
                             {t("Log in")}
                         </Link>
-                        <Link href="/register" className="px-6 hover:text-pink-cus-bt">
-                            {t("Sign up")}
-                        </Link>
+
                     </>
+                )}
+                {!currentUser ? (
+                    <Link href="/register" className="px-6 hover:text-pink-cus-bt">
+                        {t("Sign up")}
+                    </Link>
+                ) : (
+                    <Link href="/" onClick={AuthService.logout} className="px-6 hover:text-pink-cus-bt">
+                        {t("Logout")}
+                    </Link>
                 )}
                 <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <div
@@ -180,7 +181,7 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
                         </div>
                     )}
                 </div>
-            </nav>
+            </nav >
         </div >
     );
 };
