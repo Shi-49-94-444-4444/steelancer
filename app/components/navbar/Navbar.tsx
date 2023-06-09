@@ -7,19 +7,19 @@ import AuthService, { UserInfo } from '../../../services/auth'
 // import { ca } from "date-fns/locale";
 
 interface NavbarProps {
-    currentUser: UserInfo | null
+    // currentUser: UserInfo | null
 }
 
 const Navbar: React.FC<NavbarProps> = ({
-    currentUser,
+    // currentUser,
 }) => {
     const [isScrolled, setIsScrolled] = useState(false);
-    // const [user, setUser] = useState<UserInfo>({
-    //     Username: "",
-    //     Email: "",
-    //     Role: ""
-    // });
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState<UserInfo>({
+        Username: "",
+        Email: "",
+        Role: ""
+    });
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,16 +31,16 @@ const Navbar: React.FC<NavbarProps> = ({
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // useEffect(() => {
-    //     try {
-    //         console.log(AuthService.getUserInfo());
-    //         setUser(AuthService.getUserInfo());
-    //         setIsLoggedIn(true);
-    //     }
-    //     catch (error) {
-    //         console.log(error)
-    //     }
-    // }, [])
+    useEffect(() => {
+        try {
+            console.log(AuthService.getUserInfo());
+            setUser(AuthService.getUserInfo());
+            setIsLoggedIn(true);
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }, [])
 
     return (
         <div
@@ -80,7 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({
                         "
                     >
                         <Logo />
-                        <NavLink currentUser={currentUser} />
+                        <NavLink currentUser={user} />
                         <ButtonCus />
                     </div>
                 </Container>
