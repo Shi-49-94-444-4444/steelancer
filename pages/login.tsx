@@ -4,11 +4,11 @@ import { RiLockPasswordFill } from "react-icons/ri"
 import { FaFacebook } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { IoMail } from 'react-icons/io5'
-import { 
+import {
   // FieldValue, 
-  FieldValues, 
-  SubmitHandler, 
-  useForm 
+  FieldValues,
+  SubmitHandler,
+  useForm
 } from "react-hook-form"
 import AuthService from '../services/auth'
 import { useRouter } from "next/router"
@@ -52,7 +52,8 @@ const Login = () => {
             AuthService.decodeJwtToken();
             const username = `${profileResponse.firstname} ${profileResponse.lastname}`;
             toast.success(`Welcome ${username}`);
-            router.push("/")
+            const baseUrl = window.location.origin;
+            window.location.href = baseUrl;
           })
           .catch(error => {
             localStorage.removeItem("auth");
