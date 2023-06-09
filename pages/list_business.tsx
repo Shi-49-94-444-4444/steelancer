@@ -17,7 +17,7 @@ import {
     businessList,
 } from "@/app/constants"
 import ReactPaginate from 'react-paginate';
-import JobService, { 
+import JobService, {
     // JobFilter 
 } from '../services/jobs';
 import CategoryService from '../services/category'
@@ -54,7 +54,7 @@ const List_business = () => {
     const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
     const [currentPage, setCurrentPage] = useState(0); // Trang hiện tại
     const [jobCount, setJobCount] = useState(0); // Tổng số job
-    const [, setJobs] = useState<JobResponse[]>([]); // Job trong trang hiện tại
+    const [jobs, setJobs] = useState<JobResponse[]>([]); // Job trong trang hiện tại
     const [offerFrom, setOfferFrom] = useState(0);
     const [offerTo, setOfferTo] = useState(0);
     const [filterCategories, setFilterCategories] = useState<number[]>([]);
@@ -83,24 +83,24 @@ const List_business = () => {
             })
     }, [currentPage, offerFrom, offerTo, filterCategories])
 
-    // const getDurationLeft = (job: JobResponse) => {
-    //     const expiredDate = new Date(job.JobExpiredDate); // Replace with your start date
-    //     const currentDate = new Date();
-    //     const timeDifference = expiredDate.getTime() - currentDate.getTime();
-    //     const dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+    const getDurationLeft = (job: JobResponse) => {
+        const expiredDate = new Date(job.JobExpiredDate); // Replace with your start date
+        const currentDate = new Date();
+        const timeDifference = expiredDate.getTime() - currentDate.getTime();
+        const dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
 
-    //     return dayDifference;
-    // }
+        return dayDifference;
+    }
 
-    // const getCategories = (job: JobResponse) => {
-    //     const categoryIds = job.Categories;
-    //     let categoriesString = "";
-    //     categoryIds.forEach(cId => {
-    //         categoriesString += `${categories.find(c => c.Id === cId)?.Name}, `
-    //     })
+    const getCategories = (job: JobResponse) => {
+        const categoryIds = job.Categories;
+        let categoriesString = "";
+        categoryIds.forEach(cId => {
+            categoriesString += `${categories.find(c => c.Id === cId)?.Name}, `
+        })
 
-    //     return categoriesString.replace(/, $/, '');
-    // }
+        return categoriesString.replace(/, $/, '');
+    }
 
     // Xử lý sự kiện chuyển trang
     const handlePageChange = (selectedPage: { selected: number }) => {
@@ -123,13 +123,13 @@ const List_business = () => {
                     setOfferTo(!isNaN(to) ? to : 0);
                 }}
                 // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-                onTimeChange={(from, to) => {}}
+                onTimeChange={(from, to) => { }}
             />
-            <MultiFilter
+            {/* <MultiFilter
                 title="Language"
                 placeholder="Choose Language"
                 options={optionLanguage}
-            />
+            /> */}
             <MultiFilter
                 title="Skill"
                 placeholder="Choose Skill"
@@ -138,7 +138,7 @@ const List_business = () => {
                 }))}
                 setFilterCategories={setFilterCategories}
             />
-            <MultiFilter
+            {/* <MultiFilter
                 title="Place"
                 placeholder="Choose Place"
                 options={optionPlace}
@@ -152,7 +152,7 @@ const List_business = () => {
                 title="Payment"
                 placeholder="Choose Payment"
                 options={optionPayment}
-            />
+            /> */}
         </div>
     )
 
@@ -160,10 +160,10 @@ const List_business = () => {
     const BodyContent = (
         // return (
         <div className="flex flex-col gap-3">
-            {/* {jobs.map((item) => (
+            {jobs.map((item) => (
                 <JobList
                     key={item.Id}
-                    id={item.Id}
+                    id={item.Id.toString()}
                     title={item.Name}
                     date={getDurationLeft(item)}
                     description={item.Description}
@@ -171,13 +171,13 @@ const List_business = () => {
                     price={item.Offer}
                     businessName={item.BusinessName}
                 />
-            ))} */}
-            {businessList.map((item) => (
+            ))}
+            {/* {businessList.map((item) => (
                 <JobList
                     key={item.id as string}
                     {...item}
                 />
-            ))}
+            ))} */}
 
             <ReactPaginate
                 previousLabel="Previous"

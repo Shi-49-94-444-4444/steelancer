@@ -6,7 +6,8 @@ import {
     MultiFilter,
     SearchCus,
     FreelancerList,
-    RatingFilter
+    RatingFilter,
+    FilterForm
 } from "@/app/components"
 import {
     freelancerList,
@@ -51,17 +52,26 @@ const list_freelancer = () => {
             <h1 className="text-xl">
                 Filter:
             </h1>
-            <MultiFilter
-                title="What job do you need?"
-                placeholder="Choose field of work"
-                options={optionJob}
+            
+            <FilterForm
+                onPriceChange={(from, to) => {
+                    setOfferFrom(!isNaN(from) ? from : 0);
+                    setOfferTo(!isNaN(to) ? to : 0);
+                }}
+                // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+                onTimeChange={(from, to) => {}}
             />
             <MultiFilter
                 title="Skill"
                 placeholder="Choose skill"
                 options={optionSkill}
             />
-            <MultiFilter
+            {/* <MultiFilter
+                title="What job do you need?"
+                placeholder="Choose field of work"
+                options={optionJob}
+            /> */}
+            {/* <MultiFilter
                 title="Prior experience"
                 placeholder="Choose Experience"
                 options={optionExperience}
@@ -119,7 +129,7 @@ const list_freelancer = () => {
                         option.label.toLowerCase().includes(inputValue.toLowerCase())
                     }
                 />
-            </div>
+            </div> */}
         </div>
     )
 

@@ -4,7 +4,8 @@
       "auth": "api/auth",
       "businessProfile": "odata/BusinessProfiles",
       "job": "odata/Jobs",
-      "category": "odata/Categories"
+      "category": "odata/Categories",
+      "freelancerProfile": "odata/FreelancerProfiles"
    },
    "encryption": {
       "key": "ahihi"
