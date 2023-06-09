@@ -29,10 +29,10 @@ export default async function getCurrentUser() {
       ...currentUser,
       createdAt: currentUser.createdAt.toISOString(),
       updatedAt: currentUser.updatedAt.toISOString(),
-      emailVerified: 
+      emailVerified:
         currentUser.emailVerified?.toISOString() || null,
     };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return null;
   }
