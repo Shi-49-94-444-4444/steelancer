@@ -13,6 +13,9 @@ const nextConfig = {
     locales: ["en", "vi"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ['picsum.photos'],
+  },
 };
 
 module.exports = nextConfig;

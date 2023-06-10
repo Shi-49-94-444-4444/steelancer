@@ -23,8 +23,9 @@ import { useEffect, useState } from "react"
 import ReactPaginate from "react-paginate"
 import CategoryResponse from "@/models/categoryResponse"
 import JobResponse from "@/models/jobResponse"
-import JobService from '../services/jobs';
+import FreelancerService from '../services/freelancerProfiles';
 import CategoryService from '../services/category'
+import FreelancerResponse from "@/models/freelancerResponse"
 
 interface FreelancerItem {
     id: string;
@@ -45,22 +46,22 @@ const list_freelancer = () => {
     const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
     const [currentPage, setCurrentPage] = useState(0); // Trang hiện tại
     const [freelancerCount, setFreelancerCount] = useState(0); // Tổng số job
-    const [freelancers, setFreelancers] = useState<JobResponse[]>([]); // Job trong trang hiện tại
+    const [freelancers, setFreelancers] = useState<FreelancerResponse[]>([]); // Job trong trang hiện tại
     const [offerFrom, setOfferFrom] = useState(0);
     const [offerTo, setOfferTo] = useState(0);
     const [filterCategories, setFilterCategories] = useState<number[]>([]);
 
-    // Lấy danh sách các mục trên trang hiện tại
-    const getCurrentPageItems = (): FreelancerItem[] => {
-        const startIndex = currentPage * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return freelancerList.slice(startIndex, endIndex);
-    };
+    // // Lấy danh sách các mục trên trang hiện tại
+    // const getCurrentPageItems = (): FreelancerItem[] => {
+    //     const startIndex = currentPage * itemsPerPage;
+    //     const endIndex = startIndex + itemsPerPage;
+    //     return freelancerList.slice(startIndex, endIndex);
+    // };
 
     useEffect(() => {
-        JobService.getCount()
-            .then(jobCountResponse => {
-                setFreelancerCount(jobCountResponse);
+        FreelancerService.getCount()
+            .then(freelancerCountResponse => {
+                setFreelancerCount(freelancerCountResponse);
             })
         CategoryService.get()
             .then(categoriesResponse => {
@@ -69,36 +70,18 @@ const list_freelancer = () => {
     }, [])
 
     useEffect(() => {
-        JobService.getOpenJob({
+        FreelancerService.get({
             skip: currentPage * itemsPerPage,
-            offerFrom: offerFrom,
-            offerTo: offerTo,
+            priceFrom: offerFrom,
+            priceTo: offerTo,
             categories: filterCategories
         })
-            .then(jobsResponse => {
-                setFreelancers(jobsResponse.value);
-                setFreelancerCount(jobsResponse["@odata.count"])
+            .then(freelancersResponse => {
+                console.log(freelancersResponse)
+                setFreelancers(freelancersResponse.value);
+                setFreelancerCount(freelancersResponse["@odata.count"])
             })
     }, [currentPage, offerFrom, offerTo, filterCategories])
-
-    const getDurationLeft = (job: JobResponse) => {
-        const expiredDate = new Date(job.JobExpiredDate); // Replace with your start date
-        const currentDate = new Date();
-        const timeDifference = expiredDate.getTime() - currentDate.getTime();
-        const dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
-
-        return dayDifference;
-    }
-
-    const getCategories = (job: JobResponse) => {
-        const categoryIds = job.Categories;
-        let categoriesString = "";
-        categoryIds.forEach(cId => {
-            categoriesString += `${categories.find(c => c.Id === cId)?.Name}, `
-        })
-
-        return categoriesString.replace(/, $/, '');
-    }
 
     // Xử lý sự kiện chuyển trang
     const handlePageChange = (selectedPage: { selected: number }) => {
@@ -128,6 +111,7 @@ const list_freelancer = () => {
                 title="Skill"
                 placeholder="Choose skill"
                 options={optionSkill}
+                setFilterCategories={setFilterCategories}
             />
             {/* <MultiFilter
                 title="What job do you need?"
@@ -199,9 +183,15 @@ const list_freelancer = () => {
     const BodyContent = (
         // return (
         <div className="flex flex-col gap-3">
-            {getCurrentPageItems().map((item) => (
+            {freelancers.map((item) => (
                 <FreelancerList
-                    key={item.id}
+                    key={item.Id.toString()}
+                    id={item.Id.toString()}
+                    src={item.ImageUrl}
+                    fullname={item.Fullname}
+                    title={item.Title}
+                    description={item.Description}
+                    price={item.Price}
                     {...item}
                 />
             ))}
@@ -210,7 +200,7 @@ const list_freelancer = () => {
                 previousLabel="Previous"
                 nextLabel="Next"
                 breakLabel="..."
-                pageCount={Math.ceil(freelancerList.length / itemsPerPage)}
+                pageCount={Math.ceil(freelancerCount / itemsPerPage)}
                 onPageChange={handlePageChange}
                 containerClassName="
                         flex 

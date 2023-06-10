@@ -1,26 +1,28 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputBusiness from "./InputBusiness"
 
 interface DetailBusinessProps {
     id: string;
     description?: string;
     skills?: string;
-    date?: number;
+    openDateLeft: number;
 }
 
 const DetailBusiness: React.FC<DetailBusinessProps> = ({
     id,
-    date,
+    openDateLeft,
     description,
     skills,
 }) => {
-    const [projectStatus] = useState("Complete");
+    const [projectStatus, setProjectStatus] = useState("Complete");
 
-    // const handleStatusChange = (status?: any) => {
-    //     setProjectStatus(status);
-    // };
+    useEffect(() => {
+        if (openDateLeft > 0) {
+            setProjectStatus("Open")
+        }
+    }, [])
 
     return (
         <div className="
@@ -48,7 +50,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 <div className="col-span-2">
                     {projectStatus === "Open" && (
                         <h2 className="font-bold">
-                            Submit a job offer for this job now! <br /> Close offer after {date} day
+                            Submit a job offer for this job now! <br /> Close offer after {openDateLeft} day
                         </h2>
                     )}
                     {projectStatus === "Complete" && (
@@ -74,7 +76,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                                 font-semibold
                             "
                         >
-                            Open - {date} day ago
+                            Open
                         </div>
                     )}
                     {projectStatus === "Complete" && (
@@ -108,36 +110,36 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 </div>
             </div>
             {projectStatus === "Open" && (
-            <form className="
+                <form className="
                     flex 
                     flex-row 
                     justify-between 
                     items-center 
                     gap-3
                 "
-            >
-                <div className="w-full">
-                    <h2 className="text-[15px] font-semibold">
-                        Offer your price for this job
-                    </h2>
-                    <InputBusiness
-                        id="offer"
-                        placeholder="Your offer"
-                        type="text"
-                    />
-                </div>
-                <div className="w-full">
-                    <h2 className="text-[15px] font-semibold">
-                        Your Mail
-                    </h2>
-                    <InputBusiness
-                        id="email"
-                        placeholder="Mail"
-                        type="Email"
-                    />
-                </div>
-                <div className="w-full">
-                    <button className="
+                >
+                    <div className="w-full">
+                        <h2 className="text-[15px] font-semibold">
+                            Your price for this job
+                        </h2>
+                        <InputBusiness
+                            id="offer"
+                            placeholder="Your offer"
+                            type="text"
+                        />
+                    </div>
+                    <div className="w-full">
+                        <h2 className="text-[15px] font-semibold">
+                            Your Mail
+                        </h2>
+                        <InputBusiness
+                            id="email"
+                            placeholder="Mail"
+                            type="Email"
+                        />
+                    </div>
+                    <div className="w-full">
+                        <button className="
                             bg-pink-cus-bt 
                             text-white 
                             font-semibold
@@ -145,15 +147,15 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                             w-full 
                             py-4
                         "
-                    >
-                        Offer for Job
-                    </button>
-                </div>
-            </form>
+                        >
+                            Offer for Job
+                        </button>
+                    </div>
+                </form>
             )}
             {projectStatus === "Complete" && (
                 <div>
-                    
+
                 </div>
             )}
         </div>

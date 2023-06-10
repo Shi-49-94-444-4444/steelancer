@@ -1,5 +1,3 @@
-import JobCategoryResponse from "./jobCategoryResponse";
-
 export default interface JobResponse {
    Id: number;
    Name: string;

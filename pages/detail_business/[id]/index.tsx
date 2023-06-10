@@ -2,56 +2,64 @@
 
 import { Footer, ReviewBusiness, DetailBusiness, FormatBusiness, OfferBusiness } from "@/app/components"
 import { businessList, freelancerList } from "@/app/constants";
+import CategoryResponse from "@/models/categoryResponse";
+import JobResponse from "@/models/jobResponse";
 import Image from "next/image";
-// import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { useRouter } from "next/router";
-import { comment } from "postcss";
+import { useEffect, useState } from "react";
+import CategoryService from '../../../services/category';
+import JobService from '../../../services/jobs';
+import { error } from "console";
 
 const DetailBusinessPage = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [job, setJob] = useState<JobResponse>();
+  const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: {
-  //     errors,
-  //   },
-  // } = useForm<FieldValues>({
-  //   defaultValues: {
-  //     price: '',
-  //     mail: '',
-  //   },
-  // });
-
-  //Get dữ liệu
-  const item = businessList.find((item) => item.id === id);
+  useEffect(() => {
+    CategoryService.get()
+      .then(categoriesResponse => {
+        setCategories(categoriesResponse.value);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    JobService.getDetail(id)
+      .then((jobDetailResponse: JobResponse) => {
+        console.log(jobDetailResponse)
+        setJob(jobDetailResponse)
+      })
+      .catch((error: Error) => {
+        console.log(error);
+      })
+  }, [])
 
   // Check
-  if (!item) {
+  if (!job) {
     return <div>Not Data</div>;
   }
 
-  const {
-    business,
-    date,
-    description,
-    price,
-    skills,
-    title
-  } = item;
-  
+  const getDurationLeft = (job: JobResponse) => {
+    const expiredDate = new Date(job.JobExpiredDate); // Replace with your start date
+    const currentDate = new Date();
+    const timeDifference = expiredDate.getTime() - currentDate.getTime();
+    const dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+
+    return dayDifference;
+  }
+
   function calculateAveragePrice(offers?: any) {
     if (!offers || offers.length === 0) return 0;
-    const totalPrice = offers.reduce((sum?:any, offer?:any) => sum + offer.price, 0);
+    const totalPrice = offers.reduce((sum?: any, offer?: any) => sum + offer.price, 0);
     return totalPrice / offers.length;
   }
 
   const reviewContent = (
     <ReviewBusiness
       key={id as string}
-      title={title}
-      price={price}
+      title={job.Name}
+      price={job.Offer}
     />
   )
 
@@ -59,9 +67,9 @@ const DetailBusinessPage = () => {
     <DetailBusiness
       key={id as string}
       id={id as string}
-      description={description}
-      skills={skills}
-      date={date}
+      description={job.Description}
+      skills={"sdfg"}
+      openDateLeft={getDurationLeft(job)}
     />
   )
 
@@ -111,9 +119,9 @@ const DetailBusinessPage = () => {
       <FormatBusiness
         review={reviewContent}
         detail={detailContent}
-        offer={offerContent}
+        // offer={offerContent}
         jobCompany={jobCompanyContent}
-        similarJob={similarJobContent}
+      // similarJob={similarJobContent}
       />
       <Footer />
     </>

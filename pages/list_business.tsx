@@ -21,6 +21,7 @@ import JobService from '../services/jobs';
 import CategoryService from '../services/category'
 import JobResponse from '@/models/jobResponse';
 import CategoryResponse from '@/models/categoryResponse';
+import { number } from 'yup';
 
 // interface BodyContentProps {
 // businessList: BusinessItem[];
@@ -59,7 +60,7 @@ const List_business = () => {
 
     useEffect(() => {
         JobService.getCount()
-            .then(jobCountResponse => {
+            .then((jobCountResponse: any) => {
                 setJobCount(jobCountResponse);
             })
         CategoryService.get()
@@ -75,7 +76,7 @@ const List_business = () => {
             offerTo: offerTo,
             categories: filterCategories
         })
-            .then(jobsResponse => {
+            .then((jobsResponse: any) => {
                 setJobs(jobsResponse.value);
                 setJobCount(jobsResponse["@odata.count"])
             })

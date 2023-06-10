@@ -7,21 +7,21 @@ import { useRouter } from "next/router";
 interface FreelancerListProps {
     id: string;
     src: string;
+    fullname?: string;
     title?: string;
-    label?: string;
     description?: string;
     price?: number;
-    star: number
+    // star: number
 }
 
 const FreelancerList: React.FC<FreelancerListProps> = ({
     id,
     src,
-    title,
-    label,
+    fullname: title,
+    title: label,
     description,
     price,
-    star
+    // star
 }) => {
     const router = useRouter();
 
@@ -97,9 +97,9 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                             gap-x-10
                         "
                     >
-                        <div className="flex flex-row gap-3">
+                        {/* <div className="flex flex-row gap-3">
                             Rating: <Rating rating={star} maxStars={5} sizeCus={20}/>
-                        </div>
+                        </div> */}
                         <div className="gap-3">
                             Price: {price}$/h
                         </div>

@@ -1,23 +1,22 @@
-import { QueryBuilder } from "odata-query-builder";
 import axiosInstance from "../connectionConfigs/axiosInstance";
 import config from "../connectionConfigs/config.json";
 const baseUrl = config.api.base + config.api.freelancerProfile;
 
-const getFreelancerProfiles = async (filter: JobFilter) => {
+const get = async (filter: FreelancerFilter) => {
 
-   let url = `${baseUrl}?`
-   if (filter.offerFrom !== 0) {
-      url += `&$filter=Offer ge ${filter.offerFrom}`
+   let url = `${baseUrl}/GetFreelancers()?`
+   if (filter.priceFrom !== 0) {
+      url += `&$filter=Price ge ${filter.priceFrom}`
    }
 
-   if (filter.offerTo !== 0) {
-      url += `${url.includes('filter') ? '&$filter=' : ' and '}Offer le ${filter.offerTo}`
+   if (filter.priceTo !== 0) {
+      url += `${!url.includes('filter') ? '&$filter=' : ' and '}Price le ${filter.priceTo}`
    }
 
    if (filter.categories.length > 0) {
-      url += `${url.includes('filter') ? '&$filter=' : ' and '}Categories/any(item:item eq ${filter.categories[0]}`;
+      url += `${!url.includes('filter') ? '&$filter=' : ' and '}Categories/any(item:item eq ${filter.categories[0]}`;
       for (let i = 1; i < filter.categories.length; i++) {
-         url += `or item eq ${filter.categories[i]}`
+         url += ` or item eq ${filter.categories[i]}`
       }
       url += ")"
    }
@@ -34,15 +33,15 @@ const getCount = async () => {
    return response.data;
 }
 
-export interface JobFilter {
+export interface FreelancerFilter {
    skip: number,
-   offerFrom?: number,
-   offerTo?: number,
+   priceFrom?: number,
+   priceTo?: number,
    categories: number[]
 }
 
 const exportObject = {
-   getFreelancerProfiles,
+   get,
    getCount,
 };
 
