@@ -12,77 +12,86 @@ import {
 } from "@/app/components/freelancer";
 import { useRouter } from "next/router";
 import { freelancerList } from "@/app/constants";
+import { useEffect, useState } from "react";
+import FreelancerResponse from "@/models/freelancerResponse";
+import FreelancerService from '../../../services/freelancerProfiles'
+import CategoryService from '../../../services/category';
+import CategoryResponse from "@/models/categoryResponse";
+import { SkillItem } from "@/app/components/freelancer/DescFreelancer";
 
 const DetailFreelancerPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  //Get dữ liệu
-  const item = freelancerList.find((item) => item.id === id);
+  const [freelancer, setFreelancer] = useState<FreelancerResponse>();
+  const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
+
+  useEffect(() => {
+    console.log("id: ", id);
+    FreelancerService.getDetail(id)
+      .then(freelancerDetailResponse => {
+        console.log(freelancerDetailResponse)
+        setFreelancer(freelancerDetailResponse)
+      })
+    CategoryService.get()
+      .then(categoriesResponse => {
+        setCategories(categoriesResponse.value);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }, [])
 
   // Check
-  if (!item) {
+  if (!freelancer) {
     return <div>Not Data</div>;
   }
 
-  const {
-    src,
-    title,
-    label,
-    description,
-    price,
-    star,
-    city,
-    country,
-    recommence,
-    performance,
-    detail,
-    skill,
-    rateStar,
-    numberComment,
-    product,
-    education,
-    degree
-  } = item;
+  const getCategories = (freelancer: FreelancerResponse): SkillItem[] => {
+    const categoryIds = freelancer.Categories;
+    return categoryIds.map(cId => ({
+      title: `${categories.find(c => c.Id === cId)?.Name}`
+    }))
+  }
 
-  const ProductContent = (
-    <ProductFreelancer product={product} />
-  )
+  // const ProductContent = (
+  //   <ProductFreelancer product={product} />
+  // )
 
-  const EducationContent = (
-    <EducationFreelancer education={education} />
-  )
+  // const EducationContent = (
+  //   <EducationFreelancer education={education} />
+  // )
 
-  const DegreeContent = (
-    <DegreeFreelancer degree={degree} />
-  )
+  // const DegreeContent = (
+  //   <DegreeFreelancer degree={degree} />
+  // )
 
   const reviewContent = (
     <ReviewFreelancer
-      src={src}
-      title={title}
-      star={star}
-      city={city}
-      country={country}
-      price={price}
-      recommence={recommence}
+      src={freelancer.ImageUrl}
+      title={freelancer.Title}
+      // star={star}
+      address={freelancer.Address}
+      // country={country}
+      price={freelancer.Price}
+    // recommence={recommence}
     />
   )
 
   const bodyContent = (
     <>
       <DescFreelancer
-        title={title}
-        label={label}
-        star={star}
-        rateStar={rateStar}
-        numberCmt={numberComment}
-        performance={performance}
-        detail={detail}
-        skill={skill}
+        title={freelancer.Fullname}
+        label={freelancer.Title}
+        // star={star}
+        // rateStar={rateStar}
+        // numberCmt={numberComment}
+        // performance={performance}
+        detail={freelancer.Description}
+        skill={getCategories(freelancer)}
       />
 
-      <SectionFreelancer
+      {/* <SectionFreelancer
         title="Products"
         body={ProductContent}
       />
@@ -95,7 +104,7 @@ const DetailFreelancerPage = () => {
       <SectionFreelancer
         title="Degree"
         body={DegreeContent}
-      />
+      /> */}
     </>
   )
 

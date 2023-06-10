@@ -4,7 +4,7 @@ const baseUrl = config.api.base + config.api.freelancerProfile;
 
 const get = async (filter: FreelancerFilter) => {
 
-   let url = `${baseUrl}/GetFreelancers()?`
+   let url = `${baseUrl}?`
    if (filter.priceFrom !== 0) {
       url += `&$filter=Price ge ${filter.priceFrom}`
    }
@@ -40,9 +40,16 @@ export interface FreelancerFilter {
    categories: number[]
 }
 
+const getDetail = async (id: any) => {
+   const url = `${baseUrl}/${id}`;
+   const response = await axiosInstance.get(url);
+   return response.data;
+}
+
 const exportObject = {
    get,
    getCount,
+   getDetail
 };
 
 export default exportObject;

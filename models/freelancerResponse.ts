@@ -5,5 +5,6 @@ export default interface FreelancerResponse {
    Categories: number[];
    Price: number;
    Fullname: string;
-   ImageUrl: string
+   ImageUrl: string;
+   Address: string
 }

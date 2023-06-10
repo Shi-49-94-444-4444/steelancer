@@ -9,35 +9,35 @@ import SkillFreelancer from "./SkillFreelancer";
 interface PerformanceItem {
     title: string;
     percent: number;
-  }
-  
-  interface DetailItem {
+}
+
+interface DetailItem {
     title: string;
     description: string;
-  }
-  
-  interface SkillItem {
+}
+
+export interface SkillItem {
     title: string;
-  }
-  
-  interface DescFreelancerProps {
+}
+
+interface DescFreelancerProps {
     title?: string;
     label?: string;
-    star: number;
-    rateStar?: number;
-    numberCmt?: number;
-    performance: PerformanceItem[];
-    detail: DetailItem[];
-    skill: SkillItem[];
-  }
+    // star: number;
+    // rateStar?: number;
+    // numberCmt?: number;
+    // performance: PerformanceItem[];
+    detail?: string;
+    skill?: SkillItem[];
+}
 
 const DescFreelancer: React.FC<DescFreelancerProps> = ({
     title,
     label,
-    star,
-    rateStar,
-    numberCmt,
-    performance,
+    // star,
+    // rateStar,
+    // numberCmt,
+    // performance,
     detail,
     skill
 }) => {
@@ -84,7 +84,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                 <h2 className="text-2xl">
                     {label}
                 </h2>
-                <div className="
+                {/* <div className="
                         flex 
                         flex-row 
                         items-center 
@@ -95,8 +95,8 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                     <div className="text-xl">
                         {rateStar} ({numberCmt} Comment)
                     </div>
-                </div>
-                <div className="
+                </div> */}
+                {/* <div className="
                         flex 
                         flex-row 
                         gap-3 
@@ -109,15 +109,12 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                             percent={item.percent}
                             title={item.title} />
                     ))}
-                </div>
+                </div> */}
                 <div className="pt-10 space-y-5">
-                    {detail.map((item) => (
-                        <DetailFreelancer
-                            key={item.title}
-                            title={item.title}
-                            description={item.description}
-                        />
-                    ))}
+                    <DetailFreelancer
+                        title={label}
+                        description={detail}
+                    />
                     <div className="
                             grid 
                             grid-cols-12 
@@ -137,10 +134,10 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                     cursor-pointer
                                 "
                             >
-                                {skill.map((item) => (
-                                    <SkillFreelancer 
-                                        key={item.title} 
-                                        title={item.title} 
+                                {skill?.map((item) => (
+                                    <SkillFreelancer
+                                        key={item.title}
+                                        title={item.title}
                                     />
                                 ))}
                             </div>

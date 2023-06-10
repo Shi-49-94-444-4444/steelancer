@@ -8,21 +8,21 @@ import { AiFillLike } from "react-icons/ai";
 interface ReviewFreelancer {
     src: string;
     title?: string;
-    star: number;
-    city?: string;
-    country?: string;
+    // star: number;
+    address?: string;
+    // country?: string;
     price?: number;
-    recommence?: number;
+    // recommence?: number;
 }
 
 const ReviewFreelancer: React.FC<ReviewFreelancer> = ({
     src,
     title,
-    star,
-    city,
-    country,
+    // star,
+    address,
+    // country,
     price,
-    recommence
+    // recommence
 }) => {
     return (
         <div className="
@@ -54,13 +54,13 @@ const ReviewFreelancer: React.FC<ReviewFreelancer> = ({
                 <h1 className="text-2xl font-medium">
                     {title}
                 </h1>
-                <Rating rating={star} maxStars={5} sizeCus={30} />
+                {/* <Rating rating={star} maxStars={5} sizeCus={30} /> */}
                 <h2>
-                    {city}
+                    {address}
                 </h2>
-                <h2>
+                {/* <h2>
                     {country}
-                </h2>
+                </h2> */}
             </div>
             <div className="border-b-2"></div>
             <div className="
@@ -78,12 +78,12 @@ const ReviewFreelancer: React.FC<ReviewFreelancer> = ({
                         <span className="font-semibold"> ${price}/h</span>
                     </h2>
                 </div>
-                <div className="flex flex-row items-center gap-3">
+                {/* <div className="flex flex-row items-center gap-3">
                     <AiFillLike size={30}/>
                     <h2>
                         {recommence} Recommenced
                     </h2>
-                </div>
+                </div> */}
             </div>
         </div>
     )

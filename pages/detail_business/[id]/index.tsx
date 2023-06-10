@@ -4,18 +4,17 @@ import { Footer, ReviewBusiness, DetailBusiness, FormatBusiness, OfferBusiness }
 import { businessList, freelancerList } from "@/app/constants";
 import CategoryResponse from "@/models/categoryResponse";
 import JobResponse from "@/models/jobResponse";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CategoryService from '../../../services/category';
 import JobService from '../../../services/jobs';
-import { error } from "console";
 
 const DetailBusinessPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const [job, setJob] = useState<JobResponse>();
   const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
+  const [businessJobs, setBusinessJobs] = useState<JobResponse[]>([]);
 
   useEffect(() => {
     CategoryService.get()
@@ -35,6 +34,16 @@ const DetailBusinessPage = () => {
       })
   }, [])
 
+  useEffect(() => {
+    JobService.getJobByBusiness(job?.BusinessName)
+      .then((jobByBusinessResponse: any) => {
+        console.log(jobByBusinessResponse);
+      })
+      .catch((error: Error) => {
+        console.log(error);
+      })
+  }, [job])
+
   // Check
   if (!job) {
     return <div>Not Data</div>;
@@ -47,6 +56,16 @@ const DetailBusinessPage = () => {
     const dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
 
     return dayDifference;
+  }
+
+  const getCategories = (job: JobResponse) => {
+    const categoryIds = job.Categories;
+    let categoriesString = "";
+    categoryIds.forEach(cId => {
+      categoriesString += `${categories.find(c => c.Id === cId)?.Name}, `
+    })
+
+    return categoriesString.replace(/, $/, '');
   }
 
   function calculateAveragePrice(offers?: any) {
@@ -68,7 +87,7 @@ const DetailBusinessPage = () => {
       key={id as string}
       id={id as string}
       description={job.Description}
-      skills={"sdfg"}
+      skills={getCategories(job)}
       openDateLeft={getDurationLeft(job)}
     />
   )
@@ -121,7 +140,7 @@ const DetailBusinessPage = () => {
         detail={detailContent}
         // offer={offerContent}
         jobCompany={jobCompanyContent}
-      // similarJob={similarJobContent}
+        similarJob={similarJobContent}
       />
       <Footer />
     </>
