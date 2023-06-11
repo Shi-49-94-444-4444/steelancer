@@ -9,11 +9,11 @@ interface EducationItem {
 }
 
 interface EducationFreelancerProps {
-  education: EducationItem[]
+  education?: EducationItem[]
 }
 
 const EducationFreelancer: React.FC<EducationFreelancerProps> = ({
-  education
+  education = []
 }) => {
   return (
     <>
