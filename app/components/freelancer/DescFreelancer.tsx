@@ -5,31 +5,33 @@ import Rating from "../Rating"
 import Performance from "./Performance";
 import DetailFreelancer from "./DetailFreelancer";
 import SkillFreelancer from "./SkillFreelancer";
+import useQrModal from "@/hooks/useQrModal";
+import QrMomo from "../modal/ModalQRMomo";
 
 interface PerformanceItem {
     title: string;
     percent: number;
-  }
-  
-  interface DetailItem {
+}
+
+interface DetailItem {
     title: string;
     description: string;
-  }
-  
-  interface SkillItem {
+}
+
+interface SkillItem {
     title: string;
-  }
-  
-  interface DescFreelancerProps {
+}
+
+interface DescFreelancerProps {
     title?: string;
     label?: string;
     star: number;
     rateStar?: number;
     numberCmt?: number;
-    performance: PerformanceItem[];
-    detail: DetailItem[];
-    skill: SkillItem[];
-  }
+    performance?: PerformanceItem[];
+    detail?: DetailItem[];
+    skill?: SkillItem[];
+}
 
 const DescFreelancer: React.FC<DescFreelancerProps> = ({
     title,
@@ -37,10 +39,12 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     star,
     rateStar,
     numberCmt,
-    performance,
-    detail,
-    skill
+    performance = [],
+    detail = [],
+    skill = []
 }) => {
+    const qrModal = useQrModal()
+
     return (
         <div className="
                 bg-white 
@@ -68,7 +72,10 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         </h1>
                         <BsFillPatchCheckFill size={30} className="text-pink-cus-tx" />
                     </div>
-                    <button className="
+                    <div>
+                        <button
+                            onClick={qrModal.onOpen}
+                            className="
                             bg-pink-cus-bt 
                             text-white 
                             rounded-50 
@@ -77,9 +84,11 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                             text-xl 
                             font-semibold
                         "
-                    >
-                        Hire now
-                    </button>
+                        >
+                            Hire now
+                        </button>
+                        <QrMomo />
+                    </div>
                 </div>
                 <h2 className="text-2xl">
                     {label}
@@ -138,9 +147,9 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                 "
                             >
                                 {skill.map((item) => (
-                                    <SkillFreelancer 
-                                        key={item.title} 
-                                        title={item.title} 
+                                    <SkillFreelancer
+                                        key={item.title}
+                                        title={item.title}
                                     />
                                 ))}
                             </div>
