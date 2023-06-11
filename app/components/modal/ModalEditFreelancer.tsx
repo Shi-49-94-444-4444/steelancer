@@ -4,6 +4,7 @@ import useEditModal from '@/hooks/useEditModal';
 import CustomModal from './Modal';
 import { useState } from 'react';
 import Input from './Input';
+import FreelancerResponse from '@/models/freelancerResponse';
 
 interface Skill {
     title: string;
@@ -29,13 +30,15 @@ interface ModalEditData {
 }
 
 interface ModalEditProps {
-    onSave: (value: ModalEditData) => void;
-    initialData: ModalEditData
+    onSave: (value: FreelancerResponse) => void;
+    initialData: FreelancerResponse,
+    categories: string[]
 }
 
 const ModalEdit: React.FC<ModalEditProps> = ({
     onSave,
-    initialData
+    initialData,
+    categories
 }) => {
     const editModal = useEditModal()
 
@@ -51,36 +54,36 @@ const ModalEdit: React.FC<ModalEditProps> = ({
         }));
     };
 
-    const handleProductTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault()
-        const { name, value } = e.target;
-        const index = parseInt(name.split("-")[1]);
-        const updatedProduct = [...formData.product || []];
-        updatedProduct[index] = {
-          ...updatedProduct[index],
-          title: value
-        };
-        setFormData((prevData) => ({
-          ...prevData,
-          product: updatedProduct
-        }));
-      };
-      
-      const handleProductSrcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault()
-        const { name, value } = e.target;
-        const index = parseInt(name.split("-")[1]);
-        const updatedProduct = [...formData.product || []];
-        updatedProduct[index] = {
-          ...updatedProduct[index],
-          src: value
-        };
-        setFormData((prevData) => ({
-          ...prevData,
-          product: updatedProduct
-        }));
-      };
-      
+    // const handleProductTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     e.preventDefault()
+    //     const { name, value } = e.target;
+    //     const index = parseInt(name.split("-")[1]);
+    //     const updatedProduct = [...formData.product || []];
+    //     updatedProduct[index] = {
+    //         ...updatedProduct[index],
+    //         title: value
+    //     };
+    //     setFormData((prevData) => ({
+    //         ...prevData,
+    //         product: updatedProduct
+    //     }));
+    // };
+
+    // const handleProductSrcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     e.preventDefault()
+    //     const { name, value } = e.target;
+    //     const index = parseInt(name.split("-")[1]);
+    //     const updatedProduct = [...formData.product || []];
+    //     updatedProduct[index] = {
+    //         ...updatedProduct[index],
+    //         src: value
+    //     };
+    //     setFormData((prevData) => ({
+    //         ...prevData,
+    //         product: updatedProduct
+    //     }));
+    // };
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -115,44 +118,44 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                 <Input
                     label="Image"
                     name="src"
-                    value={formData.src}
+                    value={formData.ImageUrl}
                     onChange={handleInputChange}
                 />
                 <Input
                     label="Name"
-                    name="title"
-                    value={formData.title}
+                    name="Name"
+                    value={formData.Fullname}
                     onChange={handleInputChange}
                 />
                 <Input
-                    label="Lable"
-                    name="lable"
-                    value={formData.lable}
+                    label="Title"
+                    name="Title"
+                    value={formData.Title}
                     onChange={handleInputChange}
                 />
                 <Input
-                    label="City"
-                    name="city"
-                    value={formData.city}
+                    label="Address"
+                    name="Address"
+                    value={formData.Address}
                     onChange={handleInputChange}
                 />
-                <Input
+                {/* <Input
                     label="Country"
                     name="country"
                     value={formData.country}
                     onChange={handleInputChange}
-                />
+                /> */}
                 <Input
                     label="Price"
                     name="price"
-                    value={formData.price}
+                    value={formData.Price}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="description" className='block text-xl font-semibold text-left'>Description</label>
                 <textarea
                     rows={5}
                     name="description"
-                    value={formData.description}
+                    value={formData.Description}
                     onChange={handleTextareaChange}
                     className="
                         w-full 
@@ -163,7 +166,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                         text-xl
                     "
                 ></textarea>
-                <Input
+                {/* <Input
                     label="Language"
                     name="language"
                     value={formData.language}
@@ -183,14 +186,14 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                         hover:border-pink-cus-bt 
                         text-xl
                     "
-                ></textarea>
+                ></textarea> */}
                 <Input
                     label="Skill"
                     name="skill"
-                    value={formData.skill ? formData.skill.map(item => item.title).join(", ") : ""}
+                    value={categories ? categories.join(", ") : ""}
                     onChange={handleSkillChange}
                 />
-                {formData.product &&
+                {/* {formData.product &&
                     formData.product.map((item, index) => (
                         <div key={index}>
                             <Input
@@ -206,7 +209,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                                 onChange={handleProductSrcChange}
                             />
                         </div>
-                    ))}
+                    ))} */}
                 <button onClick={handleSubmit} className='mt-4 text-pink-cus-tx hover:underline'>Save</button>
             </form>
         </CustomModal>

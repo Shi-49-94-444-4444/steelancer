@@ -54,6 +54,11 @@ const DetailFreelancerPage = () => {
     }))
   }
 
+  const getCategoriesStrings = (freelancer: FreelancerResponse): string[] => {
+    const categoryIds = freelancer.Categories;
+    return categoryIds.map(cId => `${categories.find(c => c.Id === cId)?.Name}`);
+  }
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [, setShowEditModal] = useState(false);
 
@@ -64,9 +69,9 @@ const DetailFreelancerPage = () => {
     setShowEditModal(true);
   };
 
-  const ProductContent = (
-    <ProductFreelancer product={product} />
-  )
+  // const ProductContent = (
+  //   <ProductFreelancer product={product} />
+  // )
 
   // const EducationContent = (
   //   <EducationFreelancer education={education} />
@@ -102,25 +107,14 @@ const DetailFreelancerPage = () => {
       />
       <ModalEdit
         onSave={handleEditModalSubmit}
-        initialData={{
-          src: freelancer.ImageUrl,
-          title: freelancer.Title,
-          lable: ,
-          city: city,
-          country: country,
-          price: price,
-          description: detail && detail[0]?.description,
-          language: detail && detail[1]?.description,
-          prior: detail && detail[2]?.description,
-          skill: skill && skill,
-          product: product && product.map((item) => ({ title: item.title, src: item.src }))
-        }}
+        initialData={freelancer}
+        categories={getCategoriesStrings(freelancer)}
       />
 
-      <SectionFreelancer
+      {/* <SectionFreelancer
         title="Products"
         body={ProductContent}
-      />
+      /> */}
 
       {/* <SectionFreelancer
         title="Education"
