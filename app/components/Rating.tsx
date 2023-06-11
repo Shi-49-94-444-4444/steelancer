@@ -1,13 +1,13 @@
 import { VscStarFull, VscStarEmpty } from 'react-icons/vsc';
 
 interface RatingProps {
-  rating: number;
+  rating?: number;
   maxStars: number;
   sizeCus: number;
 }
 
 const Rating: React.FC<RatingProps> = ({ 
-  rating, 
+  rating=0, 
   maxStars,
   sizeCus 
 }) => {

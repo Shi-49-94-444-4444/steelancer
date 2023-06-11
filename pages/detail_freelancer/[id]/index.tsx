@@ -1,6 +1,6 @@
 'use client'
 
-import { FormatCusMd, Container, Footer } from "@/app/components";
+import { FormatCusMd, Container, Footer, ModalEdit } from "@/app/components";
 import {
   DegreeFreelancer,
   DescFreelancer,
@@ -54,9 +54,19 @@ const DetailFreelancerPage = () => {
     }))
   }
 
-  // const ProductContent = (
-  //   <ProductFreelancer product={product} />
-  // )
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [, setShowEditModal] = useState(false);
+
+  type ModalEditData = Partial<typeof freelancer>;
+
+  const handleEditModalSubmit = (formData: ModalEditData = {}) => {
+    console.log(formData);
+    setShowEditModal(true);
+  };
+
+  const ProductContent = (
+    <ProductFreelancer product={product} />
+  )
 
   // const EducationContent = (
   //   <EducationFreelancer education={education} />
@@ -90,13 +100,29 @@ const DetailFreelancerPage = () => {
         detail={freelancer.Description}
         skill={getCategories(freelancer)}
       />
+      <ModalEdit
+        onSave={handleEditModalSubmit}
+        initialData={{
+          src: freelancer.ImageUrl,
+          title: freelancer.Title,
+          lable: ,
+          city: city,
+          country: country,
+          price: price,
+          description: detail && detail[0]?.description,
+          language: detail && detail[1]?.description,
+          prior: detail && detail[2]?.description,
+          skill: skill && skill,
+          product: product && product.map((item) => ({ title: item.title, src: item.src }))
+        }}
+      />
 
-      {/* <SectionFreelancer
+      <SectionFreelancer
         title="Products"
         body={ProductContent}
       />
 
-      <SectionFreelancer
+      {/* <SectionFreelancer
         title="Education"
         body={EducationContent}
       />
@@ -104,7 +130,7 @@ const DetailFreelancerPage = () => {
       <SectionFreelancer
         title="Degree"
         body={DegreeContent}
-      /> */}
+      />  */}
     </>
   )
 

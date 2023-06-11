@@ -1,6 +1,12 @@
 'use client'
 
-import { Footer, ReviewBusiness, DetailBusiness, FormatBusiness, OfferBusiness } from "@/app/components"
+import {
+  Footer,
+  ReviewBusiness,
+  DetailBusiness,
+  FormatBusiness,
+  OfferBusiness
+} from "@/app/components"
 import { businessList, freelancerList } from "@/app/constants";
 import CategoryResponse from "@/models/categoryResponse";
 import JobResponse from "@/models/jobResponse";
@@ -8,6 +14,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CategoryService from '../../../services/category';
 import JobService from '../../../services/jobs';
+// import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+
+interface Offer {
+  comment: string;
+  price: number;
+  date: number;
+}
 
 const DetailBusinessPage = () => {
   const router = useRouter();
@@ -68,9 +81,9 @@ const DetailBusinessPage = () => {
     return categoriesString.replace(/, $/, '');
   }
 
-  function calculateAveragePrice(offers?: any) {
+  function calculateAveragePrice(offers?: Offer[]) {
     if (!offers || offers.length === 0) return 0;
-    const totalPrice = offers.reduce((sum?: any, offer?: any) => sum + offer.price, 0);
+    const totalPrice = offers.reduce((sum, offer) => sum + offer.price, 0);
     return totalPrice / offers.length;
   }
 

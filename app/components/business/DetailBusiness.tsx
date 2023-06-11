@@ -1,7 +1,13 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import InputBusiness from "./InputBusiness"
+import { Input } from "../modal";
+import {
+    // FieldValue,
+    FieldValues,
+    // SubmitHandler,
+    useForm
+} from "react-hook-form"
 
 interface DetailBusinessProps {
     id: string;
@@ -18,11 +24,22 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
 }) => {
     const [projectStatus, setProjectStatus] = useState("Complete");
 
+    const {
+        register,
+        // handleSubmit,
+        formState: { errors }
+    } = useForm<FieldValues>({
+        defaultValues: {
+            email: '',
+            password: ''
+        }
+    });
+
     useEffect(() => {
         if (openDateLeft > 0) {
             setProjectStatus("Open")
         }
-    }, [])
+    }, [openDateLeft])
 
     return (
         <div className="
@@ -120,24 +137,28 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 >
                     <div className="w-full">
                         <h2 className="text-[15px] font-semibold">
-                            Your price for this job
+                            Offer your price for this job
                         </h2>
-                        <InputBusiness
+                        <Input
                             id="offer"
                             placeholder="Your offer"
                             type="text"
+                            register={register}
+                            errors={errors}
                         />
-                    </div>
+                    </div >
                     <div className="w-full">
                         <h2 className="text-[15px] font-semibold">
                             Your Mail
                         </h2>
-                        <InputBusiness
+                        <Input
                             id="email"
                             placeholder="Mail"
                             type="Email"
+                            register={register}
+                            errors={errors}
                         />
-                    </div>
+                    </div >
                     <div className="w-full">
                         <button className="
                             bg-pink-cus-bt 
@@ -151,14 +172,16 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                             Offer for Job
                         </button>
                     </div>
-                </form>
+                </form >
             )}
-            {projectStatus === "Complete" && (
-                <div>
+            {
+                projectStatus === "Complete" && (
+                    <div>
 
-                </div>
-            )}
-        </div>
+                    </div>
+                )
+            }
+        </div >
     )
 }
 

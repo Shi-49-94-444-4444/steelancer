@@ -82,7 +82,7 @@ const Login = () => {
           icon={IoMail}
           disabled={isLoading}
           id="email"
-          placeholder={t("Email")}
+          placeholder={t("Email") || undefined}
           type="Email"
           register={register}
           errors={errors}

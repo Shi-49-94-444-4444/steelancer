@@ -6,6 +6,9 @@ import FormatCusMd from "./FormatCusMd";
 import FormatCusSm from "./FormatCusSm";
 import SearchCus from "./SearchCus";
 import FormatList from "./FormatList";
+import Modal from "./Modal";
+import QrMomo from "./ModalQRMomo";
+import ModalEdit from "./ModalEditFreelancer";
 
 export {
     Background,
@@ -16,4 +19,7 @@ export {
     FormatCusSm,
     FormatList,
     SearchCus,
+    Modal,
+    QrMomo,
+    ModalEdit
 }
