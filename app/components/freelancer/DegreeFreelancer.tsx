@@ -10,11 +10,11 @@ interface Degree {
 }
 
 interface DegreeFreelancerProps {
-  degree?: Degree[];
+  degree: Degree[];
 }
 
 const DegreeFreelancer: React.FC<DegreeFreelancerProps> = ({
-  degree = []
+  degree
 }) => {
   return (
     <>
