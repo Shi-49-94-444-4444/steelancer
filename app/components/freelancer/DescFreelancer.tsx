@@ -6,7 +6,9 @@ import Performance from "./Performance";
 import DetailFreelancer from "./DetailFreelancer";
 import SkillFreelancer from "./SkillFreelancer";
 import useQrModal from "@/hooks/useQrModal";
+import useEditModal from "@/hooks/useEditModal";
 import QrMomo from "../modal/ModalQRMomo";
+import { useContext, createContext } from "react";
 
 interface PerformanceItem {
     title: string;
@@ -23,9 +25,10 @@ interface SkillItem {
 }
 
 interface DescFreelancerProps {
+    id?: string;
     title?: string;
     label?: string;
-    star: number;
+    star?: number;
     rateStar?: number;
     numberCmt?: number;
     performance?: PerformanceItem[];
@@ -34,6 +37,7 @@ interface DescFreelancerProps {
 }
 
 const DescFreelancer: React.FC<DescFreelancerProps> = ({
+    id,
     title,
     label,
     star,
@@ -43,7 +47,25 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     detail = [],
     skill = []
 }) => {
-    const qrModal = useQrModal()
+    const qrModal = useQrModal();
+    const editModal = useEditModal();
+
+    const UserContext = createContext({
+        role: 'business',
+        userId: undefined,
+    });
+    const { role, userId } = useContext(UserContext);
+
+    const isBusinessRole = role === 'business';
+    const isFreelancerRole = role === 'freelancer' && userId;
+
+    const handleHireButtonClick = () => {
+        qrModal.onOpen();
+    };
+
+    const handleEditButtonClick = () => {
+        editModal.onOpen();
+    };
 
     return (
         <div className="
@@ -56,7 +78,8 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                     flex 
                     flex-col 
                     p-8 
-                    px-10 gap-2
+                    px-10 
+                    gap-2
                 "
             >
                 <div className="flex flex-row justify-between">
@@ -73,21 +96,47 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         <BsFillPatchCheckFill size={30} className="text-pink-cus-tx" />
                     </div>
                     <div>
-                        <button
-                            onClick={qrModal.onOpen}
-                            className="
-                            bg-pink-cus-bt 
-                            text-white 
-                            rounded-50 
-                            px-8 
-                            h-12 
-                            text-xl 
-                            font-semibold
-                        "
-                        >
-                            Hire now
-                        </button>
-                        <QrMomo />
+                        {isBusinessRole && (
+                            <div>
+                                <button
+                                    onClick={handleEditButtonClick}
+                                    className="
+                                        bg-pink-cus-bt 
+                                        text-white 
+                                        rounded-50 
+                                        px-8 
+                                        h-12 
+                                        text-xl 
+                                        font-semibold
+                                    "
+                                >
+                                    Hire now
+                                </button>
+                                {/* <QrMomo /> */}
+                                
+                            </div>
+                        )}
+                        {isFreelancerRole && (
+                            userId === id && (
+                                <div>
+                                    <button
+                                        onClick={handleHireButtonClick}
+                                        className="
+                                            bg-pink-cus-bt 
+                                            text-white 
+                                            rounded-50 
+                                            px-8 
+                                            h-12 
+                                            text-xl 
+                                            font-semibold
+                                        "
+                                    >
+                                        Edit Profile
+                                    </button>
+                                    <QrMomo />
+                                </div>
+                            )
+                        )}
                     </div>
                 </div>
                 <h2 className="text-2xl">

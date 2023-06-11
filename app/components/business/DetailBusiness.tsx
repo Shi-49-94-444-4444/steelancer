@@ -1,7 +1,13 @@
 'use client'
 
 import { useState } from "react";
-import InputBusiness from "./InputBusiness"
+import { Input } from "../modal";
+import {
+    // FieldValue, 
+    FieldValues,
+    // SubmitHandler,
+    useForm
+} from "react-hook-form"
 
 interface DetailBusinessProps {
     id: string;
@@ -16,7 +22,18 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
     description,
     skills,
 }) => {
-    const [projectStatus] = useState("Complete");
+    const [projectStatus] = useState("Open");
+
+    const {
+        register,
+        // handleSubmit,
+        formState: { errors }
+    } = useForm<FieldValues>({
+        defaultValues: {
+            email: '',
+            password: ''
+        }
+    });
 
     // const handleStatusChange = (status?: any) => {
     //     setProjectStatus(status);
@@ -108,36 +125,40 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 </div>
             </div>
             {projectStatus === "Open" && (
-            <form className="
+                <form className="
                     flex 
                     flex-row 
                     justify-between 
                     items-center 
                     gap-3
                 "
-            >
-                <div className="w-full">
-                    <h2 className="text-[15px] font-semibold">
-                        Offer your price for this job
-                    </h2>
-                    <InputBusiness
-                        id="offer"
-                        placeholder="Your offer"
-                        type="text"
-                    />
-                </div>
-                <div className="w-full">
-                    <h2 className="text-[15px] font-semibold">
-                        Your Mail
-                    </h2>
-                    <InputBusiness
-                        id="email"
-                        placeholder="Mail"
-                        type="Email"
-                    />
-                </div>
-                <div className="w-full">
-                    <button className="
+                >
+                    <div className="w-full">
+                        <h2 className="text-[15px] font-semibold">
+                            Offer your price for this job
+                        </h2>
+                        <Input
+                            id="offer"
+                            placeholder="Your offer"
+                            type="text"
+                            register={register}
+                            errors={errors}
+                        />
+                    </div>
+                    <div className="w-full">
+                        <h2 className="text-[15px] font-semibold">
+                            Your Mail
+                        </h2>
+                        <Input
+                            id="email"
+                            placeholder="Mail"
+                            type="Email"
+                            register={register}
+                            errors={errors}
+                        />
+                    </div>
+                    <div className="w-full">
+                        <button className="
                             bg-pink-cus-bt 
                             text-white 
                             font-semibold
@@ -145,15 +166,15 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                             w-full 
                             py-4
                         "
-                    >
-                        Offer for Job
-                    </button>
-                </div>
-            </form>
+                        >
+                            Offer for Job
+                        </button>
+                    </div>
+                </form>
             )}
             {projectStatus === "Complete" && (
                 <div>
-                    
+
                 </div>
             )}
         </div>

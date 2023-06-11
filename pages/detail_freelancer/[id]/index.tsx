@@ -1,6 +1,6 @@
 'use client'
 
-import { FormatCusMd, Container, Footer } from "@/app/components";
+import { FormatCusMd, Container, Footer, ModalEdit } from "@/app/components";
 import {
   DegreeFreelancer,
   DescFreelancer,
@@ -12,6 +12,7 @@ import {
 } from "@/app/components/freelancer";
 import { useRouter } from "next/router";
 import { freelancerList } from "@/app/constants";
+import { useState } from "react";
 
 const DetailFreelancerPage = () => {
   const router = useRouter();
@@ -45,6 +46,16 @@ const DetailFreelancerPage = () => {
     degree
   } = item;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [, setShowEditModal] = useState(false);
+
+  type ModalEditData = Partial<typeof item>;
+
+  const handleEditModalSubmit = (formData: ModalEditData = {}) => {
+    console.log(formData);
+    setShowEditModal(true);
+  };
+
   const ProductContent = (
     <ProductFreelancer product={product} />
   )
@@ -72,6 +83,7 @@ const DetailFreelancerPage = () => {
   const bodyContent = (
     <>
       <DescFreelancer
+        id={id as string}
         title={title}
         label={label}
         star={star}
@@ -80,6 +92,22 @@ const DetailFreelancerPage = () => {
         performance={performance}
         detail={detail}
         skill={skill}
+      />
+      <ModalEdit
+        onSave={handleEditModalSubmit}
+        initialData={{
+          src: src,
+          title: title,
+          lable: label,
+          city: city,
+          country: country,
+          price: price,
+          description: detail && detail[0]?.description,
+          language: detail && detail[1]?.description,
+          prior: detail && detail[2]?.description,
+          skill: skill && skill,
+          product: product && product.map((item) => ({ title: item.title, src: item.src }))
+        }}
       />
 
       <SectionFreelancer

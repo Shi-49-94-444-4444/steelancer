@@ -6,7 +6,10 @@ import {
     FormatCusMd, 
     FormatCusSm, 
     SearchCus, 
-    FormatList
+    FormatList,
+    Modal,
+    ModalEdit,
+    QrMomo
 } from './modal'
 import { Navbar } from './navbar'
 import {
@@ -32,7 +35,6 @@ import {
 } from './freelancer'
 import {
     JobList,
-    InputBusiness,
     ReviewBusiness,
     DetailBusiness,
     FormatBusiness,
@@ -75,7 +77,6 @@ export {
     SectionFreelancer,
     ReviewFreelancer,
     JobList,
-    InputBusiness,
     ReviewBusiness,
     DetailBusiness,
     FormatFreelancer,
@@ -85,5 +86,8 @@ export {
     JobSelect,
     JobPayment,
     JobInformation,
-    JobFormat
+    JobFormat,
+    Modal,
+    ModalEdit,
+    QrMomo
 }

@@ -69,6 +69,7 @@ const ReviewFreelancer: React.FC<ReviewFreelancer> = ({
                     p-2 
                     py-5 
                     gap-5
+                    text-[15px]
                 "
             >
                 <div className="flex flex-row items-center gap-3">
