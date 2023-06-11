@@ -63,7 +63,7 @@ const DetailBusinessPage = () => {
   }
 
   const getDurationLeft = (job: JobResponse) => {
-    const expiredDate = new Date(job.JobExpiredDate); // Replace with your start date
+    const expiredDate = new Date(job.ApplyExpireDate); // Replace with your start date
     const currentDate = new Date();
     const timeDifference = expiredDate.getTime() - currentDate.getTime();
     const dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));

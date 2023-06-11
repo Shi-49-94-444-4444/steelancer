@@ -42,11 +42,6 @@ const DetailFreelancerPage = () => {
       })
   }, [])
 
-  // Check
-  if (!freelancer) {
-    return <div>Not Data</div>;
-  }
-
   const getCategories = (freelancer: FreelancerResponse): SkillItem[] => {
     const categoryIds = freelancer.Categories;
     return categoryIds.map(cId => ({
@@ -80,6 +75,10 @@ const DetailFreelancerPage = () => {
   // const DegreeContent = (
   //   <DegreeFreelancer degree={degree} />
   // )
+  // Check
+  if (!freelancer) {
+    return <div>Not Data</div>;
+  }
 
   const reviewContent = (
     <ReviewFreelancer

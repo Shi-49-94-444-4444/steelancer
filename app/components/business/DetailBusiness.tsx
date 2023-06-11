@@ -137,7 +137,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 >
                     <div className="w-full">
                         <h2 className="text-[15px] font-semibold">
-                            Offer your price for this job
+                            Offer your price
                         </h2>
                         <Input
                             id="offer"

@@ -1,7 +1,7 @@
 export default interface JobResponse {
    Id: number;
    Name: string;
-   JobExpiredDate: string;
+   ApplyExpireDate: string;
    Description: string;
    Categories: number[];
    Offer: number;
