@@ -41,33 +41,54 @@ const ModalEdit: React.FC<ModalEditProps> = ({
 
     const [formData, setFormData] = useState(initialData);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        if (name === "skill") {
-            const skillArr = value.split(",").map((item) => ({ title: item.trim() }));
-            setFormData((prevData) => ({
-                ...prevData,
-                skill: skillArr
-            }));
-        } else if (name.startsWith("product")) {
-            const index = parseInt(name.split("-")[1]);
-            const updatedProduct = [...formData.product || []];
-            updatedProduct[index] = {
-                ...updatedProduct[index],
-                title: value
-            };
-            setFormData((prevData) => ({
-                ...prevData,
-                product: updatedProduct
-            }));
-        } else {
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: value
-            }));
-        }
+    const handleSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        const { value } = e.target;
+        const skillArr = value.split(",").map((item) => ({ title: item.trim() }));
+        setFormData((prevData) => ({
+            ...prevData,
+            skill: skillArr
+        }));
     };
 
+    const handleProductTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        const { name, value } = e.target;
+        const index = parseInt(name.split("-")[1]);
+        const updatedProduct = [...formData.product || []];
+        updatedProduct[index] = {
+          ...updatedProduct[index],
+          title: value
+        };
+        setFormData((prevData) => ({
+          ...prevData,
+          product: updatedProduct
+        }));
+      };
+      
+      const handleProductSrcChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        const { name, value } = e.target;
+        const index = parseInt(name.split("-")[1]);
+        const updatedProduct = [...formData.product || []];
+        updatedProduct[index] = {
+          ...updatedProduct[index],
+          src: value
+        };
+        setFormData((prevData) => ({
+          ...prevData,
+          product: updatedProduct
+        }));
+      };
+      
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
 
     const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -76,6 +97,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
             [name]: value
         }));
     };
+
 
     const handleSubmit = () => {
         onSave(formData);
@@ -92,37 +114,44 @@ const ModalEdit: React.FC<ModalEditProps> = ({
             <form className="w-full px-10">
                 <Input
                     label="Image"
+                    name="src"
                     value={formData.src}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                 />
                 <Input
                     label="Name"
+                    name="title"
                     value={formData.title}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                 />
                 <Input
                     label="Lable"
+                    name="lable"
                     value={formData.lable}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                 />
                 <Input
                     label="City"
+                    name="city"
                     value={formData.city}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                 />
                 <Input
                     label="Country"
+                    name="country"
                     value={formData.country}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                 />
                 <Input
                     label="Price"
+                    name="price"
                     value={formData.price}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                 />
                 <label htmlFor="description" className='block text-xl font-semibold text-left'>Description</label>
                 <textarea
                     rows={5}
+                    name="description"
                     value={formData.description}
                     onChange={handleTextareaChange}
                     className="
@@ -136,12 +165,14 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                 ></textarea>
                 <Input
                     label="Language"
+                    name="language"
                     value={formData.language}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                 />
                 <label htmlFor="prior" className='block text-xl font-semibold text-left'>Prior experience</label>
                 <textarea
                     rows={2}
+                    name="prior"
                     value={formData.prior}
                     onChange={handleTextareaChange}
                     className="
@@ -155,8 +186,9 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                 ></textarea>
                 <Input
                     label="Skill"
+                    name="skill"
                     value={formData.skill ? formData.skill.map(item => item.title).join(", ") : ""}
-                    onChange={handleChange}
+                    onChange={handleSkillChange}
                 />
                 {formData.product &&
                     formData.product.map((item, index) => (
@@ -165,17 +197,17 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                                 label={`Product ${index + 1} - Title`}
                                 name={`product-${index}`}
                                 value={item.title}
-                                onChange={handleChange}
+                                onChange={handleProductTitleChange}
                             />
                             <Input
                                 label={`Product ${index + 1} - Src`}
                                 name={`product-${index}-src`}
                                 value={item.src}
-                                onChange={handleChange}
+                                onChange={handleProductSrcChange}
                             />
                         </div>
                     ))}
-                <button onClick={handleSubmit} className='mt-4 ml-3 text-pink-cus-tx hover:underline'>Save</button>
+                <button onClick={handleSubmit} className='mt-4 text-pink-cus-tx hover:underline'>Save</button>
             </form>
         </CustomModal>
     );

@@ -30,17 +30,9 @@ const CustomModal: React.FC<ModalProps> = ({
             }
             overlayClassName="custom-overlay"
         >
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center ">
                 <h2 className="text-2xl font-bold mb-4">{title}</h2>
-                <div
-                    className="scrollable-content w-full"
-                    style={{
-                        maxHeight: '500px',
-                        overflowY: 'auto',
-                    }}
-                >
-                    {children}
-                </div>
+                {children}
                 <button className="mt-4 text-pink-cus-tx hover:underline" onClick={onClose}>
                     Close
                 </button>

@@ -19,7 +19,7 @@ body,
   padding: 20px;
   text-align: center;
   z-index: 9999;
-  /* Đặt mức ưu tiên cao hơn */
+  overflow: auto; /* Thêm thuộc tính overflow: auto */
 }
 
 .custom-overlay {
@@ -30,5 +30,4 @@ body,
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9998;
-  /* Đặt mức ưu tiên cao hơn */
 }

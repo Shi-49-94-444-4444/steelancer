@@ -1,11 +1,22 @@
 'use client'
 
-import { Footer, ReviewBusiness, DetailBusiness, FormatBusiness, OfferBusiness } from "@/app/components"
+import {
+  Footer,
+  ReviewBusiness,
+  DetailBusiness,
+  FormatBusiness,
+  OfferBusiness
+} from "@/app/components"
 import { businessList, freelancerList } from "@/app/constants";
-import Image from "next/image";
 // import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { useRouter } from "next/router";
-import { comment } from "postcss";
+
+interface Offer {
+  comment: string;
+  price: number;
+  date: number;
+}
+
 
 const DetailBusinessPage = () => {
   const router = useRouter();
@@ -40,10 +51,10 @@ const DetailBusinessPage = () => {
     skills,
     title
   } = item;
-  
-  function calculateAveragePrice(offers?: any) {
+
+  function calculateAveragePrice(offers?: Offer[]) {
     if (!offers || offers.length === 0) return 0;
-    const totalPrice = offers.reduce((sum?:any, offer?:any) => sum + offer.price, 0);
+    const totalPrice = offers.reduce((sum, offer) => sum + offer.price, 0);
     return totalPrice / offers.length;
   }
 
