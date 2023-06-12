@@ -1,5 +1,5 @@
 import "./globals.css"
-import { Navbar, ClientOnly, Background } from "./components"
+import { Navbar, ClientOnly, Background, QrMomo, ModalCreate } from "./components"
 import ToasterProvider from "./providers/ToasterProvider"
 
 export const metadata = {
@@ -16,6 +16,8 @@ export default function Layout({
     <ClientOnly>
       <Background>
         <ToasterProvider />
+        <QrMomo />
+        <ModalCreate />
         <Navbar />
         {children}
       </Background>

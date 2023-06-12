@@ -5,6 +5,7 @@ import { MenuItem } from "../navbar";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import AuthService, { UserInfo } from '../../../services/auth'
+import useCreateModal from "@/hooks/useCreateModal";
 
 interface NavLinkProps {
     currentUser: UserInfo | null
@@ -41,6 +42,12 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
         const baseUrl = window.location.origin;
         window.location.href = baseUrl;
     }
+
+    const createModal = useCreateModal()
+
+    const handleCreateButtonClick = () => {
+        createModal.onOpen();
+    };
 
     return (
         <div
@@ -153,14 +160,15 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
                     </Link>
                 )}
                 <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                    <div
+                    <button
+                        onClick={handleCreateButtonClick}
                         className="
                             px-6
                             hover:text-pink-cus-bt
                         "
                     >
                         {t("More")}
-                    </div>
+                    </button>
                     {isMoreOpen && (
                         <div
                             className="

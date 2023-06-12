@@ -27,21 +27,21 @@ import FreelancerService from '../services/freelancerProfiles';
 import CategoryService from '../services/category'
 import FreelancerResponse from "@/models/freelancerResponse"
 
-interface FreelancerItem {
-    id: string;
-    src: string;
-    title?: string;
-    label?: string;
-    description?: string;
-    price?: number;
-    star: number
-}
+// interface FreelancerItem {
+//     id: string;
+//     src: string;
+//     title?: string;
+//     label?: string;
+//     description?: string;
+//     price?: number;
+//     star: number
+// }
 
-interface BodyContentProps {
-    freelancerList: FreelancerItem[];
-}
+// interface BodyContentProps {
+//     freelancerList: FreelancerItem[];
+// }
 
-const list_freelancer = () => {
+const List_freelancer = () => {
     const itemsPerPage = 10; // Số mục hiển thị trên mỗi trang
     const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
     const [currentPage, setCurrentPage] = useState(0); // Trang hiện tại
@@ -57,6 +57,10 @@ const list_freelancer = () => {
     //     const endIndex = startIndex + itemsPerPage;
     //     return freelancerList.slice(startIndex, endIndex);
     // };
+
+    const handleRatingFilterChange = (rating: number) => {
+        console.log('Filter rating changed:', rating);
+    }
 
     useEffect(() => {
         FreelancerService.getCount()
@@ -113,12 +117,12 @@ const list_freelancer = () => {
                 options={optionSkill}
                 setFilterCategories={setFilterCategories}
             />
-            {/* <MultiFilter
+            <MultiFilter
                 title="What job do you need?"
                 placeholder="Choose field of work"
                 options={optionJob}
-            /> */}
-            {/* <MultiFilter
+            />
+            <MultiFilter
                 title="Prior experience"
                 placeholder="Choose Experience"
                 options={optionExperience}
@@ -176,7 +180,7 @@ const list_freelancer = () => {
                         option.label.toLowerCase().includes(inputValue.toLowerCase())
                     }
                 />
-            </div> */}
+            </div>
         </div>
     )
 
@@ -240,4 +244,4 @@ const list_freelancer = () => {
     )
 }
 
-export default list_freelancer
+export default List_freelancer

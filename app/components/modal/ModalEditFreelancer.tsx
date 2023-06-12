@@ -6,28 +6,28 @@ import { useState } from 'react';
 import Input from './Input';
 import FreelancerResponse from '@/models/freelancerResponse';
 
-interface Skill {
-    title: string;
-}
+// interface Skill {
+//     title: string;
+// }
 
-interface Product {
-    src: string;
-    title: string;
-}
+// interface Product {
+//     src: string;
+//     title: string;
+// }
 
-interface ModalEditData {
-    src?: string;
-    title?: string,
-    lable?: string,
-    city?: string,
-    country?: string
-    price?: number
-    description?: string,
-    language?: string,
-    prior?: string,
-    skill?: Skill[],
-    product?: Product[]
-}
+// interface ModalEditData {
+//     src?: string;
+//     title?: string,
+//     lable?: string,
+//     city?: string,
+//     country?: string
+//     price?: number
+//     description?: string,
+//     language?: string,
+//     prior?: string,
+//     skill?: Skill[],
+//     product?: Product[]
+// }
 
 interface ModalEditProps {
     onSave: (value: FreelancerResponse) => void;
@@ -83,7 +83,6 @@ const ModalEdit: React.FC<ModalEditProps> = ({
     //         product: updatedProduct
     //     }));
     // };
-
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

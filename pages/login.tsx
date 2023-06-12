@@ -11,7 +11,7 @@ import {
   useForm
 } from "react-hook-form"
 import AuthService from '../services/auth'
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 import {
   Input,
   FormatForm,
@@ -25,7 +25,7 @@ import { useTranslation } from "react-i18next"
 
 const Login = () => {
   const { t } = useTranslation()
-  const router = useRouter();
+  // const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 

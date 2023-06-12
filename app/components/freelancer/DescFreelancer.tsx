@@ -1,24 +1,23 @@
 'use client'
 
 import { BsFillPatchCheckFill } from "react-icons/bs"
-import Rating from "../Rating"
-import Performance from "./Performance";
+// import Rating from "../Rating"
+// import Performance from "./Performance";
 import DetailFreelancer from "./DetailFreelancer";
 import SkillFreelancer from "./SkillFreelancer";
-import useQrModal from "@/hooks/useQrModal";
 import useEditModal from "@/hooks/useEditModal";
-import QrMomo from "../modal/ModalQRMomo";
 import { useContext, createContext } from "react";
+import useQrModal from "@/hooks/useQrModal";
 
 interface PerformanceItem {
     title: string;
     percent: number;
 }
 
-interface DetailItem {
-    title: string;
-    description: string;
-}
+// interface DetailItem {
+//     title: string;
+//     description: string;
+// }
 
 export interface SkillItem {
     title: string;
@@ -48,8 +47,8 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     detail,
     skill
 }) => {
-    const qrModal = useQrModal();
     const editModal = useEditModal();
+    const qrModal = useQrModal();
 
     const UserContext = createContext({
         role: 'business',
@@ -60,12 +59,13 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     const isBusinessRole = role === 'business';
     const isFreelancerRole = role === 'freelancer' && userId;
 
-    const handleHireButtonClick = () => {
-        qrModal.onOpen();
-    };
 
     const handleEditButtonClick = () => {
         editModal.onOpen();
+    };
+
+    const handleQrButtonClick = () => {
+        qrModal.onOpen();
     };
 
     return (
@@ -100,7 +100,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         {isBusinessRole && (
                             <div>
                                 <button
-                                    onClick={handleEditButtonClick}
+                                    onClick={handleQrButtonClick}
                                     className="
                                         bg-pink-cus-bt 
                                         text-white 
@@ -113,15 +113,13 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                 >
                                     Hire now
                                 </button>
-                                {/* <QrMomo /> */}
-                                
                             </div>
                         )}
                         {isFreelancerRole && (
                             userId === id && (
                                 <div>
                                     <button
-                                        onClick={handleHireButtonClick}
+                                        onClick={handleEditButtonClick}
                                         className="
                                             bg-pink-cus-bt 
                                             text-white 
@@ -134,7 +132,6 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                     >
                                         Edit Profile
                                     </button>
-                                    <QrMomo />
                                 </div>
                             )
                         )}
