@@ -7,8 +7,10 @@ import DetailFreelancer from "./DetailFreelancer";
 import SkillFreelancer from "./SkillFreelancer";
 import useQrModal from "@/hooks/useQrModal";
 import useEditModal from "@/hooks/useEditModal";
-import QrMomo from "../modal/ModalQRMomo";
-import { useContext, createContext } from "react";
+import AuthService, { UserInfo } from '../../../services/auth';
+import { useContext, createContext, useState, useEffect } from "react";
+import { error } from "console";
+import { MyContext } from "@/app/layout";
 
 interface PerformanceItem {
     title: string;
@@ -50,15 +52,22 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
 }) => {
     const qrModal = useQrModal();
     const editModal = useEditModal();
-
-    const UserContext = createContext({
-        role: 'business',
-        userId: undefined,
-    });
-    const { role, userId } = useContext(UserContext);
-
-    const isBusinessRole = role === 'business';
-    const isFreelancerRole = role === 'freelancer' && userId;
+    const {currentUser, setCurrentUser} = useContext(MyContext);
+    
+    useEffect(() => {
+        try {
+            setCurrentUser(AuthService.getUserInfo())
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }, [])
+    // const UserContext = createContext({
+    //     role: 'business',
+    //     userId: undefined,
+    // });
+    // const { role, userId } = useContext(UserContext);
+    const isBusinessRole = currentUser.Role === 'Business';
 
     const handleHireButtonClick = () => {
         qrModal.onOpen();
@@ -114,10 +123,10 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                     Hire now
                                 </button>
                                 {/* <QrMomo /> */}
-                                
+
                             </div>
                         )}
-                        {isFreelancerRole && (
+                        {/* {isFreelancerRole && (
                             userId === id && (
                                 <div>
                                     <button
@@ -134,10 +143,9 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                     >
                                         Edit Profile
                                     </button>
-                                    <QrMomo />
                                 </div>
                             )
-                        )}
+                        )} */}
                     </div>
                 </div>
                 <h2 className="text-2xl">

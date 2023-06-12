@@ -1,9 +1,11 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Container from "../Container";
 import { Logo, NavLink, ButtonCus } from "../navbar";
 import AuthService, { UserInfo } from '../../../services/auth'
+import { createContext } from "vm";
+import { MyContext } from "@/app/layout";
 // import { ca } from "date-fns/locale";
 
 interface NavbarProps {
@@ -14,11 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({
     // currentUser,
 }) => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const [user, setUser] = useState<UserInfo>({
-        Username: "",
-        Email: "",
-        Role: ""
-    });
+    const {currentUser, setCurrentUser} = useContext(MyContext);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -34,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({
     useEffect(() => {
         try {
             console.log(AuthService.getUserInfo());
-            setUser(AuthService.getUserInfo());
+            setCurrentUser(AuthService.getUserInfo());
             setIsLoggedIn(true);
         }
         catch (error) {
@@ -80,8 +78,8 @@ const Navbar: React.FC<NavbarProps> = ({
                         "
                     >
                         <Logo />
-                        <NavLink currentUser={user} />
-                        <ButtonCus />
+                        <NavLink />
+                        {currentUser.Id !== 0 && <ButtonCus />}
                     </div>
                 </Container>
             </div>

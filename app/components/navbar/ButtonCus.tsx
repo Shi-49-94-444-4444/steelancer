@@ -1,9 +1,26 @@
 'use client'
 
+import { MyContext } from "@/app/layout"
+import useEditModal from "@/hooks/useEditModal"
+import useQrModal from "@/hooks/useQrModal"
+import { UserInfo } from "@/services/auth"
 import { useRouter } from "next/router"
+import React, { useContext } from "react"
 
-const ButtonCus = () => {
+const ButtonCus: React.FC = () => {
+    const context = useContext(MyContext);
     const router = useRouter()
+    const editModal = useEditModal();
+    const qrModal = useQrModal();
+
+    const handleEditButtonClick = () => {
+        if (context.currentUser.IsPremium) {
+            editModal.onOpen();
+        }
+        else {
+            qrModal.onOpen();
+        }
+    };
 
     return (
         <div className="relative">
@@ -15,7 +32,7 @@ const ButtonCus = () => {
                 "
             >
                 <button
-                    onClick={() => router.push('/post_job')}
+                    onClick={context.currentUser.Role === "Business"? () => router.push('/post_job') : handleEditButtonClick}
                     className="
                         hidden
                         w-full
@@ -33,7 +50,7 @@ const ButtonCus = () => {
                     "
                     style={{ width: 'fit-content' }}
                 >
-                    Post a project
+                    {context.currentUser.Role === "Business" ? "Post a project" : "Your freelancer profile"}
                 </button>
             </div>
         </div>

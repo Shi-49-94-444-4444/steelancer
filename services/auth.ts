@@ -1,3 +1,4 @@
+import { boolean } from "yup";
 import axiosInstance from "../connectionConfigs/axiosInstance";
 import config from "../connectionConfigs/config.json";
 const baseUrl = config.api.base + config.api.auth;
@@ -31,9 +32,11 @@ const decodeJwtToken = () => {
       const claims = JSON.parse(decodedPayload);
 
       const user: UserInfo = {
+         Id: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"],
          Username: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"],
          Email: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-         Role: claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+         Role: claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"],
+         IsPremium: claims["IsPremium"] === "true"
       }
 
       localStorage.setItem("user", JSON.stringify(user));
@@ -68,9 +71,11 @@ const exportObject = {
 };
 
 export interface UserInfo {
+   Id: number,
    Username: string,
    Email: string,
-   Role: string
+   Role: string,
+   IsPremium: Boolean
 }
 
 export default exportObject;

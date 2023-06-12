@@ -19,25 +19,28 @@ import {
   Container
 } from "@/app/components"
 import { toast } from "react-toastify"
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 // import { json } from "stream/consumers"
 import { useTranslation } from "react-i18next"
+import { MyContext } from "@/app/layout"
 
 const Login = () => {
   const { t } = useTranslation()
   const router = useRouter();
-
+  const context = useContext(MyContext);
   const [isLoading, setIsLoading] = useState(false);
 
+  const defaultValues = {
+    email: '',
+    password: ''
+  };
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<FieldValues>({
-    defaultValues: {
-      email: '',
-      password: ''
-    }
+    defaultValues
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -52,8 +55,9 @@ const Login = () => {
             AuthService.decodeJwtToken();
             const username = `${profileResponse.firstname} ${profileResponse.lastname}`;
             toast.success(`Welcome ${username}`);
-            const baseUrl = window.location.origin;
-            window.location.href = baseUrl;
+            context.setCurrentUser(AuthService.getUserInfo());
+            reset(defaultValues)
+            router.push("/");
           })
           .catch(error => {
             localStorage.removeItem("auth");

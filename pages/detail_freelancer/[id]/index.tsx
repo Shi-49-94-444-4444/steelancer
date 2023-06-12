@@ -49,21 +49,6 @@ const DetailFreelancerPage = () => {
     }))
   }
 
-  const getCategoriesStrings = (freelancer: FreelancerResponse): string[] => {
-    const categoryIds = freelancer.Categories;
-    return categoryIds.map(cId => `${categories.find(c => c.Id === cId)?.Name}`);
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [, setShowEditModal] = useState(false);
-
-  type ModalEditData = Partial<typeof freelancer>;
-
-  const handleEditModalSubmit = (formData: ModalEditData = {}) => {
-    console.log(formData);
-    setShowEditModal(true);
-  };
-
   // const ProductContent = (
   //   <ProductFreelancer product={product} />
   // )
@@ -103,11 +88,6 @@ const DetailFreelancerPage = () => {
         // performance={performance}
         detail={freelancer.Description}
         skill={getCategories(freelancer)}
-      />
-      <ModalEdit
-        onSave={handleEditModalSubmit}
-        initialData={freelancer}
-        categories={getCategoriesStrings(freelancer)}
       />
 
       {/* <SectionFreelancer

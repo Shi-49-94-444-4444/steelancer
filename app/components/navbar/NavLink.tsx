@@ -1,18 +1,15 @@
 'use client'
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MenuItem } from "../navbar";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import AuthService, { UserInfo } from '../../../services/auth'
+import { MyContext } from "@/app/layout";
 
-interface NavLinkProps {
-    currentUser: UserInfo | null
-}
-
-const NavLink = ({ currentUser }: NavLinkProps) => {
+const NavLink = () => {
     const { t } = useTranslation();
-
+    const { currentUser, setCurrentUser } = useContext(MyContext)
     const [isMoreOpen, setIsMoreOpen] = useState(false);
     const [isFreelancerOpen, setIsFreelancerOpen] = useState(false);
     const [isBusinessOpen, setIsBusinessOpen] = useState(false);
@@ -38,8 +35,15 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
     const onLogout = () => {
         AuthService.logout();
         console.log("logging out");
-        const baseUrl = window.location.origin;
-        window.location.href = baseUrl;
+        // const baseUrl = window.location.origin;
+        // window.location.href = baseUrl;
+        setCurrentUser({
+            Id: 0,
+            Username: "",
+            Email: "",
+            Role: "",
+            IsPremium: false
+        })
     }
 
     return (
