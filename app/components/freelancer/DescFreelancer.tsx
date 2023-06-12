@@ -117,7 +117,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                 </button>
                             </div >
                         )}
-{/* {isFreelancerRole && (
+                        {/* {isFreelancerRole && (
                             userId === id && (
                                 <div>
                                     <button
@@ -139,10 +139,10 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         )} */}
                     </div >
                 </div >
-    <h2 className="text-2xl">
-        {label}
-    </h2>
-{/* <div className="
+                <h2 className="text-2xl">
+                    {label}
+                </h2>
+                {/* <div className="
                         flex 
                         flex-row 
                         items-center 
@@ -154,7 +154,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         {rateStar} ({numberCmt} {t("Comment")})
                     </div>
                 </div> */}
-{/* <div className="
+                {/* <div className="
                         flex 
                         flex-row 
                         gap-3 
@@ -168,40 +168,40 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                             title={item.title} />
                     ))}
                 </div> */}
-<div className="pt-10 space-y-5">
-    <DetailFreelancer
-        title={label}
-        description={detail}
-    />
-    <div className="
+                <div className="pt-10 space-y-5">
+                    <DetailFreelancer
+                        title={label}
+                        description={detail}
+                    />
+                    <div className="
                             grid 
                             grid-cols-12 
                             items-center
                         "
-    >
-        <div className="col-span-2">
-            <h3 className="text-gray-400">
-                {t("Skill")}
-            </h3>
-        </div>
-        <div className="col-span-10">
-            <div className="
+                    >
+                        <div className="col-span-2">
+                            <h3 className="text-gray-400">
+                                {t("Skill")}
+                            </h3>
+                        </div>
+                        <div className="col-span-10">
+                            <div className="
                                     flex 
                                     flex-row 
                                     space-x-2 
                                     cursor-pointer
                                 "
-            >
-                {skill?.map((item) => (
-                    <SkillFreelancer
-                        key={item.title}
-                        title={item.title}
-                    />
-                ))}
-            </div>
-        </div>
-    </div>
-</div>
+                            >
+                                {skill?.map((item) => (
+                                    <SkillFreelancer
+                                        key={item.title}
+                                        title={item.title}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div >
         </div >
     )
