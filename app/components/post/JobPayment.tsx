@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { LuFolderClock } from 'react-icons/lu'
 import { RiFolderShield2Line } from 'react-icons/ri'
+import { useTranslation } from "react-i18next"
 
 interface JobPaymentProps {
   title?: string;
@@ -16,6 +17,7 @@ const JobPayment: React.FC<JobPaymentProps> = ({
   onChange
 }) => {
   const [, setIsFocused] = useState(false);
+  const { t } = useTranslation()
 
   return (
     <>
@@ -61,10 +63,10 @@ const JobPayment: React.FC<JobPaymentProps> = ({
           </div>
           <section className="space-y-2">
             <h1 className="text-xl font-semibold">
-              Pay by the hour
+              {t("Pay by the hour")}
             </h1>
             <h2 className="text-sm">
-              Rent at hourly rates and pay for billed hours. Best suited for extended jobs.
+              {t("Rent at hourly rates and pay for billed hours. Best suited for extended jobs.")}
             </h2>
           </section>
         </div>
@@ -103,10 +105,10 @@ const JobPayment: React.FC<JobPaymentProps> = ({
           </div>
           <section className="space-y-2">
             <h1 className="text-xl font-semibold">
-              Pay a fixed price
+              {t("Pay a fixed price")}
             </h1>
             <h2 className="text-sm">
-              Negotiate the price and disburse payment when the job is completed. Best suited for one-time jobs.
+              {t("Negotiate the price and disburse payment when the job is completed. Best suited for one-time jobs.")}
             </h2>
           </section>
         </div>

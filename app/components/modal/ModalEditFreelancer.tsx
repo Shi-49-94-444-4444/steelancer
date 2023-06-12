@@ -5,6 +5,7 @@ import CustomModal from './Modal';
 import { useState } from 'react';
 import Input from './Input';
 import FreelancerResponse from '@/models/freelancerResponse';
+import { useTranslation } from "react-i18next"
 
 // interface Skill {
 //     title: string;
@@ -41,7 +42,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
     categories
 }) => {
     const editModal = useEditModal()
-
+    const { t } = useTranslation()
     const [formData, setFormData] = useState(initialData);
 
     const handleSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -209,7 +210,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                             />
                         </div>
                     ))} */}
-                <button onClick={handleSubmit} className='mt-4 text-pink-cus-tx hover:underline'>Save</button>
+                <button onClick={handleSubmit} className='mt-4 text-pink-cus-tx hover:underline'>{t("Save")}</button>
             </form>
         </CustomModal>
     );

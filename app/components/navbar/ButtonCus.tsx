@@ -1,10 +1,12 @@
 'use client'
 
 import { useRouter } from "next/router"
+import { useTranslation } from "react-i18next"
 
 const ButtonCus = () => {
     const router = useRouter()
-
+    const { t } = useTranslation()
+    
     return (
         <div className="relative">
             <div className="
@@ -33,7 +35,7 @@ const ButtonCus = () => {
                     "
                     style={{ width: 'fit-content' }}
                 >
-                    Post a project
+                    {t("Post a project")}
                 </button>
             </div>
         </div>

@@ -6,9 +6,11 @@ import {
     SubmitHandler,
     useForm
 } from "react-hook-form";
+import { useTranslation } from "react-i18next"
 
 const ModalCreate = () => {
     const createModal = useCreateModal();
+    const { t } = useTranslation()
 
     const {
         register,
@@ -74,7 +76,7 @@ const ModalCreate = () => {
                     register={register}
                     errors={errors}
                 />
-                <label htmlFor="description" className='block text-xl font-semibold text-left'>Description</label>
+                <label htmlFor="description" className='block text-xl font-semibold text-left'>{t("Description")}</label>
                 <textarea
                     rows={5}
                     className="
@@ -94,7 +96,7 @@ const ModalCreate = () => {
                     register={register}
                     errors={errors}
                 />
-                <button type="submit" className='mt-4 text-pink-cus-tx hover:underline'>Create</button>
+                <button type="submit" className='mt-4 text-pink-cus-tx hover:underline'>{t("Create")}</button>
             </form>
         </CustomModal>
     );
