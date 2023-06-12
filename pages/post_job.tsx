@@ -20,8 +20,11 @@ import CategoryResponse from '@/models/categoryResponse';
 import BusinessProfileResponse from '@/models/businessProfileResponse';
 import { MyContext } from '@/app/layout';
 import BusinessProfileService from '../services/businessProfiles';
+import { useTranslation } from 'react-i18next';
 
 const Post_job = () => {
+    const { t } = useTranslation() 
+
     const schema = Yup.object({
         Name: Yup.string().required('Name is required'),
         Description: Yup.string().required('Description is required'),
@@ -98,7 +101,7 @@ const Post_job = () => {
 
     const jobNameContent = (
         <JobInput
-            label="Choose a name for your project"
+            label={t("Choose a name for your project") ?? ""}
             number={1}
             name="Name"
             register={register}
@@ -108,7 +111,7 @@ const Post_job = () => {
 
     const expireDateContent = (
         <JobDateInput
-            label="Application expire date"
+            label={t("Application expire date") ?? ""}
             name="ApplyExpireDate"
             min={new Date().toISOString().split('T')[0]}
             register={register}
@@ -118,7 +121,7 @@ const Post_job = () => {
 
     const JobDescriptionContent = (
         <JobInput
-            label="Tell us more about your project"
+            label={t("Tell us more about your project") ?? ""}
             number={5}
             name="Description"
             register={register}
@@ -128,7 +131,7 @@ const Post_job = () => {
 
     const JobSelectContent = (
         <JobSelect
-            title="What skills are needed?"
+            title={t("What skills are needed?") ?? ""}
             description="Fill in up to 5 skills to best describe your project. Freelancers will use these skills to find projects that interest them and have the most experience."
             name="projectSkills"
             // value={formData.projectSkills}
@@ -139,7 +142,7 @@ const Post_job = () => {
 
     const JobPaymentContent = (
         <JobPayment
-            title="How do you want to pay?"
+            title={t("How do you want to pay?") ?? ""}
             paymentType={paymentType}
             onChange={handlePaymentTypeChange}
         />
@@ -147,14 +150,14 @@ const Post_job = () => {
 
     const JobPriceContent = (
         <div className="space-y-3">
-            <label htmlFor="budget">What is your expected budget?</label>
+            <label htmlFor="budget">{t("What is your expected budget?")}</label>
 
             <input
                 type="number"
                 // value={formData.budget}
                 {...register("Offer")}
                 // onChange={(e) => handleInputChange('budget', e.target.value)}
-                placeholder="Enter money"
+                placeholder={t("Enter money") ?? ""}
                 className="w-full border-[1px] border-pink-cus-tx rounded-[5px] p-2"
             />
             {errors && (
@@ -186,7 +189,7 @@ const Post_job = () => {
                     "
                     type='submit'
                 >
-                    YES, Post the project!
+                    {t("YES, Post the project!")}
                 </button>
             </div>
         </>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface OfferBusinessProps {
     src: string;
@@ -21,6 +22,7 @@ const OfferBusiness: React.FC<OfferBusinessProps> = ({
     showButton = false, // Giá trị mặc định cho showButton là false
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const { t } = useTranslation()
 
     const handleShowMore = () => {
         setIsExpanded(true);
@@ -49,26 +51,26 @@ const OfferBusiness: React.FC<OfferBusinessProps> = ({
                             <p className={isExpanded ? "" : "line-clamp-6"}>{item.comment}</p>
                             {!isExpanded && (
                                 <button onClick={handleShowMore} className="text-pink-cus-tx">
-                                    Show More
+                                    {t("Show More")}
                                 </button>
                             )}
                             {isExpanded && (
                                 <button onClick={handleShowLess} className="text-pink-cus-tx">
-                                    Show Less
+                                    {t("Show Less")}
                                 </button>
                             )}
                         </section>
                         <div className="col-span-4 text-center">
                             <h2 className="font-bold text-pink-cus-bt">
                                 {item.price}$
-                                <span className="text-black font-medium"> in {item.date} day</span>
+                                <span className="text-black font-medium"> {t("in")} {item.date} {t("Date")}</span>
                             </h2>
                         </div>
                     </>
                 ))}
                 {showButton && ( // Kiểm tra nếu showButton là true thì hiển thị nút button
                     <div className="col-span-12 flex justify-end">
-                        <button className="text-pink-cus-tx hover:underline">Choose</button>
+                        <button className="text-pink-cus-tx hover:underline">{t("Choose")}</button>
                     </div>
                 )}
             </div>

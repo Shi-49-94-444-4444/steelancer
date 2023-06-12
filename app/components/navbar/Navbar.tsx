@@ -8,13 +8,7 @@ import { createContext } from "vm";
 import { MyContext } from "@/app/layout";
 // import { ca } from "date-fns/locale";
 
-interface NavbarProps {
-    // currentUser: UserInfo | null
-}
-
-const Navbar: React.FC<NavbarProps> = ({
-    // currentUser,
-}) => {
+const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const {currentUser, setCurrentUser} = useContext(MyContext);
     const [isLoggedIn, setIsLoggedIn] = useState(false);

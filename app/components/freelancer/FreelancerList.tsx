@@ -104,7 +104,7 @@ const FreelancerList: React.FC<FreelancerListProps> = ({
                             {t("Rating:")} <Rating rating={star} maxStars={5} sizeCus={20}/>
                         </div> */}
                         <div className="gap-3">
-                            {t("Price:")} {price}$/h
+                            {t("Price")}: {price}$/h
                         </div>
                     </div>
                     <p className="line-clamp-3">

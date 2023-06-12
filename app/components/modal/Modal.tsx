@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import { useTranslation } from 'react-i18next';
 
 interface ModalProps {
     isOpen: boolean;
@@ -17,6 +18,8 @@ const CustomModal: React.FC<ModalProps> = ({
     height,
     children
 }) => {
+    const { t } = useTranslation()
+
     return (
         <Modal
             isOpen={isOpen}
@@ -34,7 +37,7 @@ const CustomModal: React.FC<ModalProps> = ({
                 <h2 className="text-2xl font-bold mb-4">{title}</h2>
                 {children}
                 <button className="mt-4 text-pink-cus-tx hover:underline" onClick={onClose}>
-                    Close
+                    {t("Close")}
                 </button>
             </div>
         </Modal>

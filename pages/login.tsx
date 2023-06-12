@@ -87,7 +87,7 @@ const Login = () => {
           icon={IoMail}
           disabled={isLoading}
           id="email"
-          placeholder={t("Email") || undefined}
+          placeholder="Email"
           type="Email"
           register={register}
           errors={errors}
@@ -96,7 +96,7 @@ const Login = () => {
           icon={RiLockPasswordFill}
           disabled={isLoading}
           id="password"
-          placeholder="Password"
+          placeholder={t("Password") ?? ""}
           type="password"
           register={register}
           errors={errors}
@@ -110,7 +110,7 @@ const Login = () => {
             mb-2
           "
         >
-          Forgot password ?
+          {t("Forgot password ?")}
         </h1>
         <button
           // onClick={() => { }}
@@ -124,7 +124,7 @@ const Login = () => {
             text-white
         "
         >
-          Sign in
+          {t("Sign in")}
         </button>
       </form>
     )
@@ -137,7 +137,7 @@ const Login = () => {
           text-pink-cus-bt
         "
       >
-        Or
+        {t("Or")}
       </h1>
       <div className="
           flex 

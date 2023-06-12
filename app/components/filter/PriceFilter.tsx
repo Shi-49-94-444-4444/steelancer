@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface PriceFilterProps {
   onChange: (from: number, to: number) => void;
@@ -9,6 +10,7 @@ interface PriceFilterProps {
 const PriceFilter: React.FC<PriceFilterProps> = ({ onChange }) => {
   const [priceFrom, setPriceFrom] = useState('');
   const [priceTo, setPriceTo] = useState('');
+  const { t } = useTranslation()
 
   const handlePriceFromChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(event.target.value);
@@ -35,7 +37,7 @@ const PriceFilter: React.FC<PriceFilterProps> = ({ onChange }) => {
         bg-white
       "
     >
-      <h1 className="font-semibold my-3">Price</h1>
+      <h1 className="font-semibold my-3">{t("Price")}</h1>
       <div className="flex flex-row mb-4">
         <input
           type="number"

@@ -26,6 +26,7 @@ import JobResponse from "@/models/jobResponse"
 import FreelancerService from '../services/freelancerProfiles';
 import CategoryService from '../services/category'
 import FreelancerResponse from "@/models/freelancerResponse"
+import { useTranslation } from "react-i18next"
 
 // interface FreelancerItem {
 //     id: string;
@@ -50,6 +51,7 @@ const List_freelancer = () => {
     const [offerFrom, setOfferFrom] = useState(0);
     const [offerTo, setOfferTo] = useState(0);
     const [filterCategories, setFilterCategories] = useState<number[]>([]);
+    const { t } = useTranslation()
 
     // // Lấy danh sách các mục trên trang hiện tại
     // const getCurrentPageItems = (): FreelancerItem[] => {
@@ -100,7 +102,7 @@ const List_freelancer = () => {
             "
         >
             <h1 className="text-xl">
-                Filter:
+                {t("Filter")}:
             </h1>
 
             <FilterForm
@@ -144,7 +146,7 @@ const List_freelancer = () => {
                     bg-white
                 "
             >
-                <h1 className="font-semibold my-3">Working</h1>
+                <h1 className="font-semibold my-3">{t("Working")}</h1>
                 <RatingFilter onChange={handleRatingFilterChange} />
             </div>
             <div className="
@@ -159,7 +161,7 @@ const List_freelancer = () => {
                     bg-white
                 "
             >
-                <h1 className="font-semibold my-3">Working</h1>
+                <h1 className="font-semibold my-3">{t("Working")}</h1>
                 <Select
                     placeholder="Choose arrangement"
                     options={optionArrangement}

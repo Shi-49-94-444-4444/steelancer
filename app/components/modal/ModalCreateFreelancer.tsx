@@ -20,7 +20,7 @@ const ModalCreate = () => {
         defaultValues: {
             src: '',
             name: '',
-            title: '',
+            review: '',
             address: '',
             price: '',
             description: '',
@@ -50,35 +50,36 @@ const ModalCreate = () => {
                 />
                 <Input
                     id="name"
-                    label="Full Name"
-                    placeholder="Enter fullname"
+                    label={t("Name") ?? ""} 
+                    placeholder={t("Enter name") ?? ""} 
                     register={register}
                     errors={errors}
                 />
                 <Input
                     id="title"
-                    label="Title"
-                    placeholder="Enter title"
+                    label={t("Review") ?? ""} 
+                    placeholder={t("Enter review") ?? ""} 
                     register={register}
                     errors={errors}
                 />
                 <Input
                     id="address"
-                    label="Address"
-                    placeholder="Enter address"
+                    label={t("Address") ?? ""} 
+                    placeholder={t("Enter Address") ?? ""} 
                     register={register}
                     errors={errors}
                 />
                 <Input
                     id="price"
-                    label="Price"
-                    placeholder="Enter price"
+                    label={t("Price") ?? ""} 
+                    placeholder={t("Enter Price") ?? ""} 
                     register={register}
                     errors={errors}
                 />
                 <label htmlFor="description" className='block text-xl font-semibold text-left'>{t("Description")}</label>
                 <textarea
                     rows={5}
+                    placeholder={t("Enter description") ?? ""} 
                     className="
                         w-full 
                         border-[1px] 
@@ -91,8 +92,8 @@ const ModalCreate = () => {
                 ></textarea>
                 <Input
                     id="skill"
-                    label="Skill"
-                    placeholder="Enter skill"
+                    label={t("Skill") ?? ""} 
+                    placeholder={t("Enter Skill") ?? ""} 
                     register={register}
                     errors={errors}
                 />

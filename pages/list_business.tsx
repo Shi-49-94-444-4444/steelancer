@@ -21,6 +21,7 @@ import CategoryService from '../services/category'
 import JobResponse from '@/models/jobResponse';
 import CategoryResponse from '@/models/categoryResponse';
 import { number } from 'yup';
+import { useTranslation } from 'react-i18next';
 
 // interface BodyContentProps {
 // businessList: BusinessItem[];
@@ -56,6 +57,7 @@ const List_business = () => {
     const [offerFrom, setOfferFrom] = useState(0);
     const [offerTo, setOfferTo] = useState(0);
     const [filterCategories, setFilterCategories] = useState<number[]>([]);
+    const { t } = useTranslation()
 
     useEffect(() => {
         JobService.getCount()
@@ -113,7 +115,7 @@ const List_business = () => {
             "
         >
             <h1 className="text-xl">
-                Filter:
+                {t("Filter")}:
             </h1>
             <FilterForm
                 onPriceChange={(from, to) => {

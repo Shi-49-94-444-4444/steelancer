@@ -8,6 +8,8 @@ import {
     // SubmitHandler,
     useForm
 } from "react-hook-form"
+import { useTranslation } from "react-i18next";
+import { ta } from "date-fns/locale";
 
 interface DetailBusinessProps {
     id: string;
@@ -23,6 +25,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
     skills,
 }) => {
     const [projectStatus, setProjectStatus] = useState("Complete");
+    const { t } = useTranslation()
 
     const {
         register,
@@ -52,10 +55,10 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 text-xl
             "
         >
-            <h1>Job Description:</h1>
+            <h1>{t("Job Description:")}</h1>
             <p>{description}</p>
-            <h2>Skill: {skills}</h2>
-            <h2>ID project: #{id}</h2>
+            <h2>{t("Skill")}: {skills}</h2>
+            <h2>{t("ID project")}: #{id}</h2>
             <div className="border-b-2"></div>
             <div className="
                     grid 
@@ -67,17 +70,17 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 <div className="col-span-2">
                     {projectStatus === "Open" && (
                         <h2 className="font-bold">
-                            Submit a job offer for this job now! <br /> Close offer after {openDateLeft} day
+                            {t("Submit a job offer for this job now!")} <br /> {t("Close offer after")} {openDateLeft} {t("Date")}
                         </h2>
                     )}
                     {projectStatus === "Complete" && (
                         <h2 className="font-bold">
-                            Project complete
+                            {t("Project complete")}
                         </h2>
                     )}
                     {projectStatus === "Close" && (
                         <h2 className="font-bold">
-                            Project closed
+                            {t("Project closed")}
                         </h2>
                     )}
                 </div>
@@ -93,7 +96,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                                 font-semibold
                             "
                         >
-                            Open
+                            {t("Open")}
                         </div>
                     )}
                     {projectStatus === "Complete" && (
@@ -107,7 +110,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                                 font-semibold
                             "
                         >
-                            Project complete
+                            {t("Project complete")}
                         </div>
                     )}
                     {projectStatus === "Close" && (
@@ -121,7 +124,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                                 font-semibold
                             "
                         >
-                            Project Close
+                            {t("Project Close")}
                         </div>
                     )}
                 </div>
@@ -137,7 +140,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                 >
                     <div className="w-full">
                         <h2 className="text-[15px] font-semibold">
-                            Offer your price
+                            {t("Offer your price")}
                         </h2>
                         <Input
                             id="offer"
@@ -149,7 +152,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                     </div >
                     <div className="w-full">
                         <h2 className="text-[15px] font-semibold">
-                            Your Mail
+                            {t("Your Mail")}
                         </h2>
                         <Input
                             id="email"
@@ -169,7 +172,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                             py-4
                         "
                         >
-                            Offer for Job
+                            {t("Offer for Job")}
                         </button>
                     </div>
                 </form >

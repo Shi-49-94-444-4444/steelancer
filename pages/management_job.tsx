@@ -3,8 +3,10 @@
 import { Container, FormatCusMd, OfferBusiness } from "@/app/components";
 import { freelancerList } from "@/app/constants";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Management_job = () => {
+    const { t } = useTranslation() 
     const [projectStatus, setProjectStatus] = useState("Complete");
     const [savedStatus, setSavedStatus] = useState("");
 
@@ -58,9 +60,9 @@ const Management_job = () => {
     return (
         <FormatCusMd>
             <Container>
-                <h1 className="text-3xl font-semibold mb-10">Manage Jobs</h1>
+                <h1 className="text-3xl font-semibold mb-10">{t("Manage Jobs")}</h1>
                 <div className="flex flex-col bg-white shadow-lg border-[1px] p-4 border-pink-cus-tx">
-                    <h2 className="text-2xl font-medium py-2">Project</h2>
+                    <h2 className="text-2xl font-medium py-2">{t("Project")}</h2>
                     <div className="border-b-2"></div>
                     <div className="flex flex-col p-6">
                         <div className="flex flex-row justify-between items-center">
@@ -72,7 +74,7 @@ const Management_job = () => {
                                     onClick={() => handleStatusChange("Open")}
                                     style={{ width: "calc(100% / 3)" }}
                                 >
-                                    Open
+                                    {t("Open")}
                                 </button>
                                 <button
                                     className={`flex items-center justify-center text-[15px] px-4 border border-pink-cus-tx font-semibold ${projectStatus === "Complete" ? "bg-gray-400 text-blue-cus" : ""
@@ -80,7 +82,7 @@ const Management_job = () => {
                                     onClick={() => handleStatusChange("Complete")}
                                     style={{ width: "calc(100% / 3)" }}
                                 >
-                                    Project complete
+                                    {("Project complete")}
                                 </button>
                                 <button
                                     className={`flex items-center justify-center text-[15px] px-4 border border-pink-cus-tx font-semibold ${projectStatus === "Close" ? "bg-gray-cus text-blue-cus" : ""
@@ -88,23 +90,23 @@ const Management_job = () => {
                                     onClick={() => handleStatusChange("Close")}
                                     style={{ width: "calc(100% / 3)" }}
                                 >
-                                    Project Close
+                                    {("Project Close")}
                                 </button>
                             </div>
                         </div>
                         <div className="flex flex-row space-x-5">
                             <h2>
-                                Posted on
+                                {("Posted on")}
                                 <span> 10/12/2001</span>
                             </h2>
                             <h2>
-                                Expiring on
+                                {t("Expiring on")}
                                 <span> 10/12/2001</span>
                             </h2>
                         </div>
                         {renderDropdownContent()}
                     </div>
-                    <button onClick={handleSaveStatus} className="text-right text-pink-cus-tx hover:underline">Save</button>
+                    <button onClick={handleSaveStatus} className="text-right text-pink-cus-tx hover:underline">{t("Save")}</button>
                 </div>
             </Container>
         </FormatCusMd>

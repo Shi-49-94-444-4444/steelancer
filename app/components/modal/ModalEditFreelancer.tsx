@@ -116,25 +116,25 @@ const ModalEdit: React.FC<ModalEditProps> = ({
         >
             <form className="w-full px-10">
                 <Input
-                    label="Image"
+                    label="ImageURL"
                     name="src"
                     value={formData.ImageUrl}
                     onChange={handleInputChange}
                 />
                 <Input
-                    label="Name"
+                    label={t("Name") ?? ""} 
                     name="Name"
                     value={formData.Fullname}
                     onChange={handleInputChange}
                 />
                 <Input
-                    label="Title"
+                    label={t("Review") ?? ""} 
                     name="Title"
                     value={formData.Title}
                     onChange={handleInputChange}
                 />
                 <Input
-                    label="Address"
+                    label={t("Address") ?? ""} 
                     name="Address"
                     value={formData.Address}
                     onChange={handleInputChange}
@@ -146,15 +146,16 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                     onChange={handleInputChange}
                 /> */}
                 <Input
-                    label="Price"
+                    label={t("Price") ?? ""} 
                     name="price"
                     value={formData.Price}
                     onChange={handleInputChange}
                 />
-                <label htmlFor="description" className='block text-xl font-semibold text-left'>Description</label>
+                <label htmlFor="description" className='block text-xl font-semibold text-left'>{t("Description")}</label>
                 <textarea
                     rows={5}
                     name="description"
+                    placeholder={t("Enter description") ?? ""} 
                     value={formData.Description}
                     onChange={handleTextareaChange}
                     className="
@@ -188,7 +189,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                     "
                 ></textarea> */}
                 <Input
-                    label="Skill"
+                    label={t("Skill") ?? ""} 
                     name="skill"
                     value={categories ? categories.join(", ") : ""}
                     onChange={handleSkillChange}

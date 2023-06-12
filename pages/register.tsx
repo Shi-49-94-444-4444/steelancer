@@ -17,10 +17,11 @@ import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { toast } from "react-toastify"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { useTranslation } from "react-i18next"
 
 const Register = () => {
   const router = useRouter();
-
+  const { t } = useTranslation()
   const options = [
     { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },
     { value: "Business", label: "Business" },
@@ -85,7 +86,7 @@ const Register = () => {
         icon={FaUserEdit}
         id="firstName"
         name="firstName"
-        placeholder="First Name"
+        placeholder={t("First Name") ?? ""}
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -94,7 +95,7 @@ const Register = () => {
         icon={FaUserEdit}
         id="lastName"
         name="lastName"
-        placeholder="Last Name"
+        placeholder={t("Last Name") ?? ""}
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -113,7 +114,7 @@ const Register = () => {
         icon={RiLockPasswordFill}
         id="password"
         name="password"
-        placeholder="Password"
+        placeholder={t("Password") ?? ""}
         type="password"
         disabled={isLoading}
         register={register}
@@ -123,7 +124,7 @@ const Register = () => {
         icon={RiLockPasswordFill}
         id="confirmPassword"
         name="confirmPassword"
-        placeholder="Confirm Password"
+        placeholder={t("Confirm Password") ?? ""}
         type="password"
         disabled={isLoading}
         register={register}
@@ -150,7 +151,7 @@ const Register = () => {
           mt-5
         "
       >
-        SIGN UP
+        {t("SIGN UP")}
       </button>
     </form>
   )
@@ -158,14 +159,14 @@ const Register = () => {
   const footerContent = (
     <div className="px-28">
       <h1>
-        Already have an account?
+        {t("Already have an account?")}
         <button
           onClick={() => router.push('/login')}
           className="
             text-pink-cus-tx 
             hover:underline
           "
-        > Log in
+        > {t("Log in")}
         </button>
       </h1>
     </div>

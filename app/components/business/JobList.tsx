@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 interface JobsListProps {
     // id: number;
@@ -23,6 +24,7 @@ const JobList: React.FC<JobsListProps> = ({
     businessName,
 }) => {
     const router = useRouter();
+    const { t } = useTranslation()
 
     const handleRentNow = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -60,7 +62,7 @@ const JobList: React.FC<JobsListProps> = ({
                             {title}
                         </h1>
                         <h2 className="text-2xl text-pink-cus-tx">
-                            {date} day left
+                            {date} {t("day left")}
                         </h2>
                     </div>
                     <div className="
@@ -76,13 +78,13 @@ const JobList: React.FC<JobsListProps> = ({
                             cursor-pointer
                         "
                     >
-                        Verified
+                        {t("Verified")}
                     </div>
                     <p className="line-clamp-3">
                         {description}
                     </p>
                     <div className="font-semibold">
-                        Skill: {categories}
+                        {t("Skill")}: {categories}
                     </div>
                 </section>
             </div>
@@ -90,10 +92,10 @@ const JobList: React.FC<JobsListProps> = ({
                 <div className="flex flex-col">
                     <section className="font-medium mb-10">
                         <h3>
-                            Price: {price}$/hour
+                            {t("Price")}: {price}$/hour
                         </h3>
                         <h3>
-                            Business: {businessName}
+                            {t("Business")}: {businessName}
                         </h3>
                     </section>
                     <button
@@ -107,7 +109,7 @@ const JobList: React.FC<JobsListProps> = ({
                             py-2
                         "
                     >
-                        Details
+                        {t("Detail")}
                     </button>
                 </div>
             </div>

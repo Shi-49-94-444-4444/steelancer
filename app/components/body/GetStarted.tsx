@@ -17,7 +17,7 @@ const GetStarted = () => {
                         font-bold 
                         text-[60px]
                     "
-                >{t("Are you looking for")} <br />{t("Freelancers?")}
+                >{t("Are you looking for")} <br />{t("Freelancers")} ?
                 </h1>
             </div>
             <div className="
@@ -41,7 +41,7 @@ const GetStarted = () => {
                     <span className="font-semibold">
                     {t("great freelancers, Fast")}
                     </span>
-                    {t(". SteelanceX will help")}
+                    . {t("SteelanceX will help")}
                     <br />
                     {t("you hire elite freelancers at a moments notice")}
                 </h1>
@@ -100,7 +100,7 @@ const GetStarted = () => {
                         <div>
                             <input
                                 type="text"
-                                placeholder="Search freelance work"
+                                placeholder={t("Search freelance work") ?? ""}
                                 className="
                                     w-full 
                                     ml-5 
