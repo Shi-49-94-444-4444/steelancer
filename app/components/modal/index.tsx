@@ -9,6 +9,7 @@ import FormatList from "./FormatList";
 import Modal from "./Modal";
 import QrMomo from "./ModalQRMomo";
 import ModalEdit from "./ModalEditFreelancer";
+import ModalCreate from "./ModalCreateFreelancer";
 
 export {
     Background,
@@ -21,5 +22,6 @@ export {
     SearchCus,
     Modal,
     QrMomo,
-    ModalEdit
+    ModalEdit,
+    ModalCreate
 }

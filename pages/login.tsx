@@ -11,7 +11,7 @@ import {
   useForm
 } from "react-hook-form"
 import AuthService from '../services/auth'
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 import {
   Input,
   FormatForm,
@@ -23,6 +23,7 @@ import { useContext, useEffect, useState } from "react"
 // import { json } from "stream/consumers"
 import { useTranslation } from "react-i18next"
 import { MyContext } from "@/app/layout"
+import { useRouter } from "next/router"
 
 const Login = () => {
   const { t } = useTranslation()

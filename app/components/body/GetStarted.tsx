@@ -1,9 +1,10 @@
 'use client'
-
 import { BiSearch } from "react-icons/bi"
 import { FormatCusSm } from "../modal"
+import { useTranslation } from "react-i18next"
 
 const GetStarted = () => {
+    const { t } = useTranslation()
     return (
         <FormatCusSm>
             <div className="
@@ -16,7 +17,7 @@ const GetStarted = () => {
                         font-bold 
                         text-[60px]
                     "
-                >Are you looking for <br />Freelancers?
+                >{t("Are you looking for")} <br />{t("Freelancers?")}
                 </h1>
             </div>
             <div className="
@@ -36,13 +37,13 @@ const GetStarted = () => {
                             text-opacity-60
                         "
                 >
-                    <span>Hire </span>
+                    <span>{t("Hire")} </span>
                     <span className="font-semibold">
-                        great freelancers, Fast
+                    {t("great freelancers, Fast")}
                     </span>
-                    . SteelanceX will help
+                    {t(". SteelanceX will help")}
                     <br />
-                    you hire elite freelancers at a moments notice
+                    {t("you hire elite freelancers at a moments notice")}
                 </h1>
             </div>
             <div className="
@@ -71,7 +72,7 @@ const GetStarted = () => {
                         whitespace-nowrap
                     "
                 >
-                    Hire a freelancer
+                    {t("Hire a freelancer")}
                 </button>
                 <div className="ml-10">
                     <div className="

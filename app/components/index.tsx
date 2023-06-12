@@ -9,7 +9,8 @@ import {
     FormatList,
     Modal,
     ModalEdit,
-    QrMomo
+    QrMomo,
+    ModalCreate
 } from './modal'
 import { Navbar } from './navbar'
 import {
@@ -89,5 +90,6 @@ export {
     JobFormat,
     Modal,
     ModalEdit,
-    QrMomo
+    QrMomo,
+    ModalCreate
 }

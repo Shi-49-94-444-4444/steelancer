@@ -1,26 +1,27 @@
 'use client'
 
 import { BsFillPatchCheckFill } from "react-icons/bs"
-import Rating from "../Rating"
-import Performance from "./Performance";
+// import Rating from "../Rating"
+// import Performance from "./Performance";
 import DetailFreelancer from "./DetailFreelancer";
 import SkillFreelancer from "./SkillFreelancer";
-import useQrModal from "@/hooks/useQrModal";
 import useEditModal from "@/hooks/useEditModal";
 import AuthService, { UserInfo } from '../../../services/auth';
 import { useContext, createContext, useState, useEffect } from "react";
 import { error } from "console";
 import { MyContext } from "@/app/layout";
+import useQrModal from "@/hooks/useQrModal";
+import { useTranslation } from "react-i18next"
 
 interface PerformanceItem {
     title: string;
     percent: number;
 }
 
-interface DetailItem {
-    title: string;
-    description: string;
-}
+// interface DetailItem {
+//     title: string;
+//     description: string;
+// }
 
 export interface SkillItem {
     title: string;
@@ -50,9 +51,10 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     detail,
     skill
 }) => {
+    const { t } = useTranslation()
     const qrModal = useQrModal();
-    const {currentUser, setCurrentUser} = useContext(MyContext);
-    
+    const { currentUser, setCurrentUser } = useContext(MyContext);
+
     useEffect(() => {
         try {
             setCurrentUser(AuthService.getUserInfo())
@@ -64,7 +66,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
 
     const isBusinessRole = currentUser.Role === 'Business';
 
-    const handleHireButtonClick = () => {
+    const handleQrButtonClick = () => {
         qrModal.onOpen();
     };
 
@@ -100,7 +102,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         {isBusinessRole && (
                             <div>
                                 <button
-                                    onClick={handleHireButtonClick}
+                                    onClick={handleQrButtonClick}
                                     className="
                                         bg-pink-cus-bt 
                                         text-white 
@@ -111,17 +113,15 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                         font-semibold
                                     "
                                 >
-                                    Hire now
+                                    {t("Hire now")}
                                 </button>
-                                {/* <QrMomo /> */}
-
-                            </div>
+                            </div >
                         )}
-                        {/* {isFreelancerRole && (
+{/* {isFreelancerRole && (
                             userId === id && (
                                 <div>
                                     <button
-                                        onClick={handleHireButtonClick}
+                                        onClick={handleEditButtonClick}
                                         className="
                                             bg-pink-cus-bt 
                                             text-white 
@@ -132,17 +132,17 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                             font-semibold
                                         "
                                     >
-                                        Edit Profile
+                                        {t("Edit Profile")}
                                     </button>
                                 </div>
                             )
                         )} */}
-                    </div>
-                </div>
-                <h2 className="text-2xl">
-                    {label}
-                </h2>
-                {/* <div className="
+                    </div >
+                </div >
+    <h2 className="text-2xl">
+        {label}
+    </h2>
+{/* <div className="
                         flex 
                         flex-row 
                         items-center 
@@ -151,10 +151,10 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                 >
                     <Rating rating={star} maxStars={5} sizeCus={30} />
                     <div className="text-xl">
-                        {rateStar} ({numberCmt} Comment)
+                        {rateStar} ({numberCmt} {t("Comment")})
                     </div>
                 </div> */}
-                {/* <div className="
+{/* <div className="
                         flex 
                         flex-row 
                         gap-3 
@@ -168,42 +168,42 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                             title={item.title} />
                     ))}
                 </div> */}
-                <div className="pt-10 space-y-5">
-                    <DetailFreelancer
-                        title={label}
-                        description={detail}
-                    />
-                    <div className="
+<div className="pt-10 space-y-5">
+    <DetailFreelancer
+        title={label}
+        description={detail}
+    />
+    <div className="
                             grid 
                             grid-cols-12 
                             items-center
                         "
-                    >
-                        <div className="col-span-2">
-                            <h3 className="text-gray-400">
-                                Skill
-                            </h3>
-                        </div>
-                        <div className="col-span-10">
-                            <div className="
+    >
+        <div className="col-span-2">
+            <h3 className="text-gray-400">
+                {t("Skill")}
+            </h3>
+        </div>
+        <div className="col-span-10">
+            <div className="
                                     flex 
                                     flex-row 
                                     space-x-2 
                                     cursor-pointer
                                 "
-                            >
-                                {skill?.map((item) => (
-                                    <SkillFreelancer
-                                        key={item.title}
-                                        title={item.title}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            >
+                {skill?.map((item) => (
+                    <SkillFreelancer
+                        key={item.title}
+                        title={item.title}
+                    />
+                ))}
             </div>
         </div>
+    </div>
+</div>
+            </div >
+        </div >
     )
 }
 

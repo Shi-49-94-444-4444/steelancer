@@ -1,5 +1,5 @@
 import "./globals.css"
-import { Navbar, ClientOnly, Background, ModalEdit, QrMomo } from "./components"
+import { Navbar, ClientOnly, Background, ModalEdit, QrMomo, ModalCreate } from "./components"
 import ToasterProvider from "./providers/ToasterProvider"
 import { createContext, useContext, useEffect, useState } from "react"
 import FreelancerResponse from "@/models/freelancerResponse"

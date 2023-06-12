@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import AuthService, { UserInfo } from '../../../services/auth'
 import { MyContext } from "@/app/layout";
+import useCreateModal from "@/hooks/useCreateModal";
 
 const NavLink = () => {
     const { t } = useTranslation();
@@ -45,6 +46,12 @@ const NavLink = () => {
             IsPremium: false
         })
     }
+
+    const createModal = useCreateModal()
+
+    const handleCreateButtonClick = () => {
+        createModal.onOpen();
+    };
 
     return (
         <div
@@ -157,14 +164,15 @@ const NavLink = () => {
                     </Link>
                 )}
                 <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                    <div
+                    <button
+                        onClick={handleCreateButtonClick}
                         className="
                             px-6
                             hover:text-pink-cus-bt
                         "
                     >
                         {t("More")}
-                    </div>
+                    </button>
                     {isMoreOpen && (
                         <div
                             className="
@@ -183,7 +191,7 @@ const NavLink = () => {
                                 "
                             >
                                 <>
-                                    <MenuItem href="/" label={t("Policy")} />
+                                    <MenuItem href="/management_job" label={t("Policy")} />
                                     <MenuItem href="/" label={t("FAQ")} />
                                     <MenuItem href="/" label={t("Contract")} />
                                     <MenuItem href="/" label={t("Price list")} />

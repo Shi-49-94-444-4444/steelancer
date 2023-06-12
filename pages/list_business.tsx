@@ -14,7 +14,6 @@ import {
     optionPayment,
     optionPlace,
     optionWork,
-    businessList,
 } from "@/app/constants"
 import ReactPaginate from 'react-paginate';
 import JobService from '../services/jobs';
@@ -124,11 +123,11 @@ const List_business = () => {
                 // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
                 onTimeChange={(from, to) => { }}
             />
-            {/* <MultiFilter
+            <MultiFilter
                 title="Language"
                 placeholder="Choose Language"
                 options={optionLanguage}
-            /> */}
+            />
             <MultiFilter
                 title="Skill"
                 placeholder="Choose Skill"
@@ -137,7 +136,7 @@ const List_business = () => {
                 }))}
                 setFilterCategories={setFilterCategories}
             />
-            {/* <MultiFilter
+            <MultiFilter
                 title="Place"
                 placeholder="Choose Place"
                 options={optionPlace}
@@ -151,7 +150,7 @@ const List_business = () => {
                 title="Payment"
                 placeholder="Choose Payment"
                 options={optionPayment}
-            /> */}
+            />
         </div>
     )
 

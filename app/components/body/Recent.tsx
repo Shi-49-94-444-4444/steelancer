@@ -3,8 +3,10 @@ import { FormatCusSm } from "../modal"
 import { BsArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs"
 import { recents } from "@/app/constants"
 import RecentBox from "../RecentBox"
+import { useTranslation } from "react-i18next"
 
 const Recent = () => {
+    const { t } = useTranslation()
     return (
         <FormatCusSm>
             <Container>
@@ -27,15 +29,15 @@ const Recent = () => {
                                     text-gray-cus
                                 "
                             >
-                                The latest freelance work!
+                                {t("The latest freelance work!")}
                             </h1>
                             <h1 className="
                                     text-5xl
                                     font-semibold
                                 "
                             >
-                                Recently Posted
-                                <span className="text-pink-cus-tx"> Works</span>
+                                {t("Recently Posted")}
+                                <span className="text-pink-cus-tx"> {t("Works")}</span>
                             </h1>
                         </section>
                         <div className="
