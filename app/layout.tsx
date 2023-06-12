@@ -1,5 +1,5 @@
 import "./globals.css"
-import { Navbar, ClientOnly, Background, ModalEdit, QrMomo, ModalCreate } from "./components"
+import { Navbar, ClientOnly, Background, ModalEdit, QrMomo, ModalCreate, ModalPayment } from "./components"
 import ToasterProvider from "./providers/ToasterProvider"
 import { createContext, useContext, useEffect, useState } from "react"
 import FreelancerResponse from "@/models/freelancerResponse"
@@ -70,7 +70,7 @@ export default function Layout({
         console.log(error);
       })
     try {
-      let userInfo = AuthService.getUserInfo();
+      const userInfo = AuthService.getUserInfo();
       console.log(userInfo)
     } catch (error) {
       console.log(error)
@@ -92,14 +92,16 @@ export default function Layout({
           setCurrentUser
         }}>
           <ToasterProvider />
-          <Navbar />
-          {children}
+          <QrMomo />
           <ModalEdit
             onSave={handleEditModalSubmit}
             initialData={freelancerProfile}
             categories={getCategoriesStrings(freelancerProfile)}
           />
-          <QrMomo />
+          <ModalCreate />
+          <ModalPayment />
+          <Navbar />
+          {children}
         </MyContext.Provider>
       </Background>
     </ClientOnly>

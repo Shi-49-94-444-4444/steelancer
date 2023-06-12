@@ -8,13 +8,14 @@ interface RecentBoxProps {
     price: string
 }
 
-const { t } = useTranslation()
 const RecentBox: React.FC<RecentBoxProps> = ({
     src,
     label,
     description,
     price
 }) => {
+    const { t } = useTranslation()
+
     return (
         <div className="
                 flex 
@@ -83,7 +84,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                         cursor-pointer
                     "
                 >
-                    {t("Apply now")}   
+                    {t("Apply now")}
                 </h1>
             </section>
         </div>

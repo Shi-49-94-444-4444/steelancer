@@ -144,7 +144,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                         </h2>
                         <Input
                             id="offer"
-                            placeholder="Your offer"
+                            placeholder={t("Your offer") ?? ""}
                             type="text"
                             register={register}
                             errors={errors}

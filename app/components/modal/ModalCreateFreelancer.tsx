@@ -36,7 +36,7 @@ const ModalCreate = () => {
         <CustomModal
             isOpen={createModal.isOpen}
             onClose={createModal.onClose}
-            title="Create Item"
+            title={t("Create Item") ?? ""}
             width={"w-2/4"}
             height={"h-3/4"}
         >
@@ -44,7 +44,7 @@ const ModalCreate = () => {
                 <Input
                     id="src"
                     label="ImageURL"
-                    placeholder="Enter imageURL"
+                    placeholder={t("Enter imageURL") ?? ""} 
                     register={register}
                     errors={errors}
                 />

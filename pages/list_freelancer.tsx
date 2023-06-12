@@ -114,24 +114,24 @@ const List_freelancer = () => {
                 onTimeChange={(from, to) => { }}
             />
             <MultiFilter
-                title="Skill"
-                placeholder="Choose skill"
+                title={t("Skill") ?? ""}
+                placeholder={t("Choose skill") ?? ""}
                 options={optionSkill}
                 setFilterCategories={setFilterCategories}
             />
             <MultiFilter
-                title="What job do you need?"
-                placeholder="Choose field of work"
+                title={t("What job do you need?") ?? ""}
+                placeholder={t("Choose field of work") ?? ""}
                 options={optionJob}
             />
             <MultiFilter
-                title="Prior experience"
-                placeholder="Choose Experience"
+                title={t("Prior experience") ?? ""}
+                placeholder={t("Choose Experience") ?? ""}
                 options={optionExperience}
             />
             <MultiFilter
-                title="Hourly Rate (USD)"
-                placeholder="Choose Price/Hour"
+                title={t("Hourly Rate (USD)") ?? ""}
+                placeholder={t("Choose Price/Hour") ?? ""}
                 options={optionPrice}
             />
             <div className="

@@ -10,7 +10,6 @@ import AuthService, { UserInfo } from '../../../services/auth';
 import { useContext, createContext, useState, useEffect } from "react";
 import { error } from "console";
 import { MyContext } from "@/app/layout";
-import useQrModal from "@/hooks/useQrModal";
 import { useTranslation } from "react-i18next"
 
 interface PerformanceItem {
@@ -52,7 +51,8 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     skill
 }) => {
     const { t } = useTranslation()
-    const qrModal = useQrModal();
+    
+
     const { currentUser, setCurrentUser } = useContext(MyContext);
 
     useEffect(() => {
@@ -65,10 +65,6 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     }, [])
 
     const isBusinessRole = currentUser.Role === 'Business';
-
-    const handleQrButtonClick = () => {
-        qrModal.onOpen();
-    };
 
     return (
         <div className="
@@ -102,7 +98,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         {isBusinessRole && (
                             <div>
                                 <button
-                                    onClick={handleQrButtonClick}
+                                    // onClick={() => {}}
                                     className="
                                         bg-pink-cus-bt 
                                         text-white 

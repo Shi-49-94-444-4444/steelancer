@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 import AuthService, { UserInfo } from '../../../services/auth'
 import { MyContext } from "@/app/layout";
 import useCreateModal from "@/hooks/useCreateModal";
+import useQrModal from "@/hooks/useQrModal";
+import usePaymentModal from "@/hooks/usePaymentModal";
 
 const NavLink = () => {
     const { t } = useTranslation();
@@ -14,6 +16,10 @@ const NavLink = () => {
     const [isMoreOpen, setIsMoreOpen] = useState(false);
     const [isFreelancerOpen, setIsFreelancerOpen] = useState(false);
     const [isBusinessOpen, setIsBusinessOpen] = useState(false);
+
+    const qrModal = useQrModal();
+    const paymentModal = usePaymentModal();
+    const createModal = useCreateModal()
 
     const handleMouseEnter = () => {
         setIsMoreOpen(true);
@@ -47,10 +53,17 @@ const NavLink = () => {
         })
     }
 
-    const createModal = useCreateModal()
-
     const handleCreateButtonClick = () => {
         createModal.onOpen();
+    };
+
+    
+    const handleQrButtonClick = () => {
+        qrModal.onOpen();
+    };
+
+    const handlePaymentButtonClick = () => {
+        paymentModal.onOpen();
     };
 
     return (
@@ -165,7 +178,7 @@ const NavLink = () => {
                 )}
                 <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <button
-                        onClick={handleCreateButtonClick}
+                        onClick={handlePaymentButtonClick}
                         className="
                             px-6
                             hover:text-pink-cus-bt

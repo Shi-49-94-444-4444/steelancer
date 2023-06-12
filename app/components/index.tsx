@@ -10,7 +10,8 @@ import {
     Modal,
     ModalEdit,
     QrMomo,
-    ModalCreate
+    ModalCreate,
+    ModalPayment
 } from './modal'
 import { Navbar } from './navbar'
 import {
@@ -91,5 +92,6 @@ export {
     Modal,
     ModalEdit,
     QrMomo,
-    ModalCreate
+    ModalCreate,
+    ModalPayment
 }
