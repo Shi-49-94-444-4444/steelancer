@@ -1,3 +1,4 @@
+import axios from "axios";
 import axiosInstance from "../connectionConfigs/axiosInstance";
 import config from "../connectionConfigs/config.json";
 const baseUrl = config.api.base + config.api.job;
@@ -44,6 +45,10 @@ const getDetail = async (id: number) => {
    return response.data;
 }
 
+const postJob = async (data: JobPost) => {
+   const response = await axios.post(baseUrl, data);
+   return response.data;
+} 
 export interface JobFilter {
    skip: number,
    offerFrom?: number,
@@ -51,11 +56,22 @@ export interface JobFilter {
    categories: number[]
 }
 
+export interface JobPost {
+   ApplyExpireDate: Date,
+   BusinessProfileId: number,
+   Categories: number[],
+   CreatedDate: Date,
+   Description: string,
+   Name: string,
+   Offer: number
+}
+
 const exportObject: any = {
    getOpenJob,
    getCount,
    getDetail,
-   getJobByBusiness
+   getJobByBusiness,
+   postJob
 };
 
 export default exportObject;

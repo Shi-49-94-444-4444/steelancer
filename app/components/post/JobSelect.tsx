@@ -19,12 +19,20 @@ const JobSelect: React.FC<JobSelectProps> = ({
     title,
     description,
     name,
-    onChange
+    value,
+    onChange,
+    setSelectedCat
 }) => {
     // const [selectedSkills, setSelectedSkills] = useState<{ value: string; label: string }[]>([]);
     const [cats, setCats] = useState<{ value: string; label: string }[]>([]);
 
     const handleSkillChange = (selectedOptions: any) => {
+        var chosenCats = selectedOptions.map((c: any) => ({
+            Id: c.value,
+            Name: c.label
+        }));
+        console.log(chosenCats);
+        setSelectedCat(chosenCats);
         // setSelectedSkills(selectedOptions.map(x => x.value));
         // const skills = selectedOptions ? selectedOptions.map((option: any) => option.value) : [];
         // onChange(skills);

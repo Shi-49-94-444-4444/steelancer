@@ -21,10 +21,13 @@ import BusinessProfileResponse from '@/models/businessProfileResponse';
 import { MyContext } from '@/app/layout';
 import BusinessProfileService from '../services/businessProfiles';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import JobService from '../services/jobs';
 
 const Post_job = () => {
-    const { t } = useTranslation() 
-
+    const { t } = useTranslation()
+    const router = useRouter();
     const schema = Yup.object({
         Name: Yup.string().required('Name is required'),
         Description: Yup.string().required('Description is required'),
@@ -64,15 +67,27 @@ const Post_job = () => {
     useEffect(() => {
         BusinessProfileService.getByUserId(context.currentUser.Id)
             .then(businessProfileResponse => {
-                console.log(businessProfileResponse.value[0])
                 setBusiness(businessProfileResponse.value[0])
+            })
+            .catch(err => {
+                toast.error("You dont have an business profile")
+                router.push("/");
             })
     }, [])
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         data.CreatedDate = new Date();
+        data.BusinessProfileId = business?.Id;
+        data.Categories = selectedCat.map(c => c.Id);
         console.log(data);
-        // console.log(formData)
+        JobService.postJob(data)
+            .then((response: any) => {
+                toast.success("Create new job successfully");
+                router.push("/")
+            })
+            .catch((error: any) => {
+                toast.error("Create job unsuccessfully");
+            })
     }
 
     const handlePaymentTypeChange = (paymentType: string) => {
