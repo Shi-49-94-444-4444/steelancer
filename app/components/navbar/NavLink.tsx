@@ -187,7 +187,7 @@ const NavLink = ({ currentUser }: NavLinkProps) => {
                                 "
                             >
                                 <>
-                                    <MenuItem href="/" label={t("Policy")} />
+                                    <MenuItem href="/management_job" label={t("Policy")} />
                                     <MenuItem href="/" label={t("FAQ")} />
                                     <MenuItem href="/" label={t("Contract")} />
                                     <MenuItem href="/" label={t("Price list")} />
