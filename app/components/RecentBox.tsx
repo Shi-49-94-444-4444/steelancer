@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useTranslation } from "react-i18next"
 
 interface RecentBoxProps {
     src: string;
@@ -7,6 +8,7 @@ interface RecentBoxProps {
     price: string
 }
 
+const { t } = useTranslation()
 const RecentBox: React.FC<RecentBoxProps> = ({
     src,
     label,
@@ -70,7 +72,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                         text-gray-cus 
                     "
                 >
-                    Highest bid
+                    {t("Highest bid")}
                     <br />
                     ${price}
                 </h1>
@@ -81,7 +83,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                         cursor-pointer
                     "
                 >
-                    Apply now
+                    {t("Apply now")}   
                 </h1>
             </section>
         </div>

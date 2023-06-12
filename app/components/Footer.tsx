@@ -5,8 +5,10 @@ import { BsTwitter } from "react-icons/bs"
 import { GrFacebookOption, GrLocation } from "react-icons/gr"
 import { TbPhoneCall } from "react-icons/tb"
 import { TfiEmail } from "react-icons/tfi"
+import { useTranslation } from "react-i18next"
 
 const Footer = () => {
+    const { t } = useTranslation()
     return (
         <div className="
                 w-full 
@@ -34,9 +36,9 @@ const Footer = () => {
                             </div>
                             <section className="mt-[250px] w-[300px]">
                                 <h1>
-                                    Powerful freelance marketplace system with an aim of
-                                    connecting users (Freelancers & Clients) in a secure
-                                    and simple way.
+                                    {t("Powerful freelance marketplace system with an aim of")}
+                                    {t("connecting users")} (Freelancers & Clients) {t("in a secure")}
+                                    {t("and simple way.")}
                                 </h1>
                             </section>
                             <div className="
@@ -70,19 +72,19 @@ const Footer = () => {
                                             text-xl 
                                         "
                                     >
-                                        For Clients
+                                        {t("For Clients")}
                                     </h2>
                                     <div>
-                                        Find Freelancers
+                                        {t("Find Freelancers")}
                                     </div>
                                     <div>
-                                        Post Project
+                                        {t("Post Project")}
                                     </div>
                                     <div>
-                                        Refund Policy
+                                        {t("Refund Policy")}
                                     </div>
                                     <div>
-                                        Privacy Policy
+                                        {t("Privacy Policy")}
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-4">
@@ -91,13 +93,13 @@ const Footer = () => {
                                             text-xl 
                                         "
                                     >
-                                        For Freelancers
+                                        {t("For Freelancers")}
                                     </h2>
                                     <div>
-                                        Find Work
+                                        {t("Find Work")}
                                     </div>
                                     <div>
-                                        Create Account
+                                        {t("Create Account")}
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-4">
@@ -106,7 +108,7 @@ const Footer = () => {
                                             text-xl 
                                         "
                                     >
-                                        Contact Us
+                                        {t("Contact Us")}
                                     </h2>
                                     <div className="
                                             flex 
@@ -115,7 +117,7 @@ const Footer = () => {
                                         "
                                     >
                                         <GrLocation className="mt-1" />
-                                        <span>Ho Chi Minh City</span>
+                                        <span>{t("Ho Chi Minh City")}</span>
                                     </div>
                                     <div className="
                                             flex 

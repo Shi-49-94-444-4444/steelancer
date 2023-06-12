@@ -6,12 +6,14 @@ import useQrModal from "@/hooks/useQrModal"
 import { UserInfo } from "@/services/auth"
 import { useRouter } from "next/router"
 import React, { useContext } from "react"
+import { useTranslation } from "react-i18next"
 
 const ButtonCus: React.FC = () => {
     const context = useContext(MyContext);
     const router = useRouter()
     const editModal = useEditModal();
     const qrModal = useQrModal();
+    const { t } = useTranslation()
 
     const handleEditButtonClick = () => {
         if (context.currentUser.IsPremium) {
@@ -21,7 +23,7 @@ const ButtonCus: React.FC = () => {
             qrModal.onOpen();
         }
     };
-
+    
     return (
         <div className="relative">
             <div className="
@@ -50,7 +52,7 @@ const ButtonCus: React.FC = () => {
                     "
                     style={{ width: 'fit-content' }}
                 >
-                    {context.currentUser.Role === "Business" ? "Post a project" : "Your freelancer profile"}
+                    {context.currentUser.Role === "Business" ? `${t("Post a project")}` : `${t("Your freelancer profile")}`}
                 </button>
             </div>
         </div>
