@@ -1,29 +1,45 @@
 'use client'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import CategoryService from '../../../services/category';
+import CategoryResponse from '@/models/categoryResponse';
+
 
 interface JobSelectProps {
     title?: string;
     description?: string;
     name?: string;
-    value: string[];
-    onChange: (skills: string[]) => void;
+    value?: string[];
+    onChange?: any;
+    setSelectedCat: any
 }
 
-const JobSelect: React.FC<JobSelectProps> = ({ 
-    title, 
-    description, 
-    name, 
-    onChange 
+const JobSelect: React.FC<JobSelectProps> = ({
+    title,
+    description,
+    name,
+    onChange
 }) => {
-    const [selectedSkills, setSelectedSkills] = useState<{ value: string; label: string }[]>([]);
+    // const [selectedSkills, setSelectedSkills] = useState<{ value: string; label: string }[]>([]);
+    const [cats, setCats] = useState<{ value: string; label: string }[]>([]);
 
     const handleSkillChange = (selectedOptions: any) => {
-        setSelectedSkills(selectedOptions);
-        const skills = selectedOptions ? selectedOptions.map((option: any) => option.value) : [];
-        onChange(skills);
+        // setSelectedSkills(selectedOptions.map(x => x.value));
+        // const skills = selectedOptions ? selectedOptions.map((option: any) => option.value) : [];
+        // onChange(skills);
     };
+
+    useEffect(() => {
+        CategoryService.get()
+            .then(catsResponse => {
+                console.log(catsResponse)
+                setCats(catsResponse.value.map((c: CategoryResponse) => ({
+                    value: c.Id,
+                    label: c.Name
+                })))
+            })
+    }, [])
 
     return (
         <>
@@ -33,16 +49,9 @@ const JobSelect: React.FC<JobSelectProps> = ({
             </h2>
             <Select
                 name={name}
-                value={selectedSkills}
                 onChange={handleSkillChange}
                 placeholder="..."
-                options={[
-                    { value: 'skill1', label: 'Skill 1' },
-                    { value: 'skill2', label: 'Skill 2' },
-                    { value: 'skill3', label: 'Skill 3' },
-                    { value: 'skill4', label: 'Skill 4' },
-                    { value: 'skill5', label: 'Skill 5' },
-                ]}
+                options={cats}
                 className="
                     w-full 
                     border-[1px] 

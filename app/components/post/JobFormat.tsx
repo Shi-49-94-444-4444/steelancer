@@ -1,25 +1,34 @@
 'use client'
 
+import { ReactElement } from "react";
+import { FieldValues, SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
+
 interface JobFormatProps {
     title: string;
     label: string;
     jobName: React.ReactElement;
+    jobExpireDate: React.ReactElement;
     jobDescription: React.ReactElement;
     jobSelect: React.ReactElement;
     jobPayment: React.ReactElement;
     jobPrice: React.ReactElement | null;
     jobInformation: React.ReactElement | null;
+    handleSubmit: UseFormHandleSubmit<FieldValues, undefined>
+    onSubmit: SubmitHandler<FieldValues>
 }
 
 const JobFormat: React.FC<JobFormatProps> = ({
     title,
     label,
     jobName,
+    jobExpireDate,
     jobDescription,
     jobPayment,
     jobSelect,
     jobPrice,
-    jobInformation
+    jobInformation,
+    handleSubmit,
+    onSubmit
 }) => {
     return (
         <div className="
@@ -47,9 +56,13 @@ const JobFormat: React.FC<JobFormatProps> = ({
                     border-pink-cus-tx 
                     rounded-[5px]
                 "
+                onSubmit={handleSubmit(onSubmit)}
             >
                 <div className="space-y-3">
                     {jobName}
+                </div>
+                <div className="space-y-3">
+                    {jobExpireDate}
                 </div>
                 <div className="space-y-3">
                     {jobDescription}

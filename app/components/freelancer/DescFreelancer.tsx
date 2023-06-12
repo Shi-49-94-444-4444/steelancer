@@ -51,7 +51,6 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     skill
 }) => {
     const qrModal = useQrModal();
-    const editModal = useEditModal();
     const {currentUser, setCurrentUser} = useContext(MyContext);
     
     useEffect(() => {
@@ -62,19 +61,11 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
             console.log(err)
         }
     }, [])
-    // const UserContext = createContext({
-    //     role: 'business',
-    //     userId: undefined,
-    // });
-    // const { role, userId } = useContext(UserContext);
+
     const isBusinessRole = currentUser.Role === 'Business';
 
     const handleHireButtonClick = () => {
         qrModal.onOpen();
-    };
-
-    const handleEditButtonClick = () => {
-        editModal.onOpen();
     };
 
     return (
@@ -109,7 +100,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         {isBusinessRole && (
                             <div>
                                 <button
-                                    onClick={handleEditButtonClick}
+                                    onClick={handleHireButtonClick}
                                     className="
                                         bg-pink-cus-bt 
                                         text-white 

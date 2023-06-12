@@ -31,12 +31,14 @@ const decodeJwtToken = () => {
       const decodedPayload = atob(base64); // Decode the base64-encoded payload
       const claims = JSON.parse(decodedPayload);
 
+      console.log(claims)
+
       const user: UserInfo = {
          Id: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid"],
          Username: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"],
          Email: claims["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
          Role: claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"],
-         IsPremium: claims["IsPremium"] === "true"
+         IsPremium: claims["IsPremium"] === "True"
       }
 
       localStorage.setItem("user", JSON.stringify(user));

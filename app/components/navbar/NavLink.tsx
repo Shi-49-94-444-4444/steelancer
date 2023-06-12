@@ -84,7 +84,7 @@ const NavLink = () => {
                         <Link href="/username" className="px-6 hover:text-pink-cus-bt" replace>
                             {currentUser.Username}
                         </Link>
-                        {currentUser.Role === "Freelancer" && isFreelancerOpen && (
+                        {/* {currentUser.Role === "Freelancer" && isFreelancerOpen && (
                             <>
                                 <div
                                     className="
@@ -110,7 +110,7 @@ const NavLink = () => {
                                 </div>
 
                             </>
-                        )}
+                        )} */}
                         {currentUser.Role === "Business" && isBusinessOpen && (
                             <>
                                 <div

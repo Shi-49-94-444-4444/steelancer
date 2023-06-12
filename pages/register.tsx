@@ -84,6 +84,7 @@ const Register = () => {
       <Input
         icon={FaUserEdit}
         id="firstName"
+        name="firstName"
         placeholder="First Name"
         disabled={isLoading}
         register={register}
@@ -92,6 +93,7 @@ const Register = () => {
       <Input
         icon={FaUserEdit}
         id="lastName"
+        name="lastName"
         placeholder="Last Name"
         disabled={isLoading}
         register={register}
@@ -100,6 +102,7 @@ const Register = () => {
       <Input
         icon={IoMail}
         id="email"
+        name="email"
         placeholder="Mail"
         type="Email"
         disabled={isLoading}
@@ -109,6 +112,7 @@ const Register = () => {
       <Input
         icon={RiLockPasswordFill}
         id="password"
+        name="password"
         placeholder="Password"
         type="password"
         disabled={isLoading}
@@ -118,6 +122,7 @@ const Register = () => {
       <Input
         icon={RiLockPasswordFill}
         id="confirmPassword"
+        name="confirmPassword"
         placeholder="Confirm Password"
         type="password"
         disabled={isLoading}

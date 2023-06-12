@@ -10,6 +10,13 @@ const get = async () => {
    return response.data;
 };
 
+const getByUserId = async (id: number) => {
+   const url = `${baseUrl}?filter=AppUserId eq ${id}`;
+   console.log(url);
+   const response = await axiosInstance.get(url);
+   return response.data;
+};
+
 const getOne = async (id: number) => {
    const url = `${baseUrl}(${id})`;
    console.log(url);
@@ -18,7 +25,8 @@ const getOne = async (id: number) => {
 };
 
 const exportObject = {
-   get
+   get,
+   getByUserId
 };
 
 export default exportObject;

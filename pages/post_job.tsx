@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Select from 'react-select';
 import {
     Container,
@@ -12,55 +12,107 @@ import {
     JobSelect,
 } from '@/app/components';
 import { optionSkill } from '@/app/constants';
+import JobDateInput from '@/app/components/post/JobDateInput';
+import * as Yup from 'yup';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import CategoryResponse from '@/models/categoryResponse';
+import BusinessProfileResponse from '@/models/businessProfileResponse';
+import { MyContext } from '@/app/layout';
+import BusinessProfileService from '../services/businessProfiles';
 
 const Post_job = () => {
-    const [formData, setFormData] = useState({
-        projectName: '',
-        projectDescription: '',
-        projectSkills: [],
-        paymentType: '',
-        budget: '',
+    const schema = Yup.object({
+        Name: Yup.string().required('Name is required'),
+        Description: Yup.string().required('Description is required'),
+        Offer: Yup.number().required('').positive().min(1),
+        ApplyExpireDate: Yup.date().required('Expire date is required').min(new Date().toISOString().split('T')[0]),
     });
 
+    // const [formData, setFormData] = useState({
+    //     projectName: '',
+    //     projectDescription: '',
+    //     projectSkills: [],
+    //     paymentType: '',
+    //     budget: '',
+    // })
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: {
+            errors,
+        },
+    } = useForm<FieldValues>({
+        defaultValues: {
+            Name: '',
+            Description: '',
+            Offer: 0,
+            ApplyExpireDate: new Date(),
+        },
+        resolver: yupResolver(schema)
+    });
+    const [selectedCat, setSelectedCats] = useState<CategoryResponse[]>([]);
+    const [paymentType, setPaymentType] = useState('hour');
+    const [business, setBusiness] = useState<BusinessProfileResponse>();
+    const context = useContext(MyContext);
+
+    useEffect(() => {
+        BusinessProfileService.getByUserId(context.currentUser.Id)
+            .then(businessProfileResponse => {
+                console.log(businessProfileResponse.value[0])
+                setBusiness(businessProfileResponse.value[0])
+            })
+    }, [])
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        data.CreatedDate = new Date();
+        console.log(data);
+        // console.log(formData)
+    }
+
     const handlePaymentTypeChange = (paymentType: string) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            paymentType,
-            budget: '',
-        }));
+        // setFormData((prevData) => ({
+        //     ...prevData,
+        //     paymentType,
+        //     budget: '',
+        // }));
+        setPaymentType(paymentType);
     };
 
-    const handleInputChange = (name: string, value: string) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+    // const handleInputChange = (name: string, value: string) => {
+    //     setFormData((prevData) => ({
+    //         ...prevData,
+    //         [name]: value,
+    //     }));
+    // };
 
-    const handleProjectSkillsChange = (skills: string[]) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        setFormData((prevData: any) => ({
-            ...prevData,
-            projectSkills: skills,
-        }));
-    };
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleBudgetChange = (selectedOption: any) => {
-        const budget = selectedOption ? selectedOption.label : '';
-        setFormData((prevData) => ({
-            ...prevData,
-            budget: budget,
-        }));
-    };
+    // const handleProjectSkillsChange = (skills: string[]) => {
+    //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    //     setFormData((prevData: any) => ({
+    //         ...prevData,
+    //         projectSkills: skills,
+    //     }));
+    // };
 
     const jobNameContent = (
         <JobInput
             label="Choose a name for your project"
             number={1}
-            name="projectName"
-            value={formData.projectName}
-            onChange={(value) => handleInputChange('projectName', value)}
+            name="Name"
+            register={register}
+            errors={errors}
+        />
+    );
+
+    const expireDateContent = (
+        <JobDateInput
+            label="Application expire date"
+            name="ApplyExpireDate"
+            min={new Date().toISOString().split('T')[0]}
+            register={register}
+            errors={errors}
         />
     );
 
@@ -68,9 +120,9 @@ const Post_job = () => {
         <JobInput
             label="Tell us more about your project"
             number={5}
-            name="projectDescription"
-            value={formData.projectDescription}
-            onChange={(value) => handleInputChange('projectDescription', value)}
+            name="Description"
+            register={register}
+            errors={errors}
         />
     );
 
@@ -79,56 +131,50 @@ const Post_job = () => {
             title="What skills are needed?"
             description="Fill in up to 5 skills to best describe your project. Freelancers will use these skills to find projects that interest them and have the most experience."
             name="projectSkills"
-            value={formData.projectSkills}
-            onChange={handleProjectSkillsChange}
+            // value={formData.projectSkills}
+            // onChange={handleProjectSkillsChange}
+            setSelectedCat={setSelectedCats}
         />
     );
 
     const JobPaymentContent = (
         <JobPayment
             title="How do you want to pay?"
-            paymentType={formData.paymentType}
+            paymentType={paymentType}
             onChange={handlePaymentTypeChange}
         />
     );
 
-    const JobPriceContent = formData.paymentType && (
+    const JobPriceContent = (
         <div className="space-y-3">
             <label htmlFor="budget">What is your expected budget?</label>
-            {formData.paymentType === 'hour' ? (
-                <Select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleBudgetChange}
-                    placeholder="..."
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    options={optionSkill as any}
-                    className="w-full border-[1px] border-pink-cus-tx rounded-[5px]"
-                    isClearable
-                />
-            ) : (
-                <input
-                    type="text"
-                    name="budget"
-                    value={formData.budget}
-                    onChange={(e) => handleInputChange('budget', e.target.value)}
-                    placeholder="Enter money"
-                    className="w-full border-[1px] border-pink-cus-tx rounded-[5px] p-2"
-                />
+
+            <input
+                type="number"
+                // value={formData.budget}
+                {...register("Offer")}
+                // onChange={(e) => handleInputChange('budget', e.target.value)}
+                placeholder="Enter money"
+                className="w-full border-[1px] border-pink-cus-tx rounded-[5px] p-2"
+            />
+            {errors && (
+                <p className="text-red-600 font-semibold h-2">
+                    {errors["Offer"]?.message?.toString()}
+                </p>
             )}
         </div>
     );
 
-    const JobInformationContent = formData.paymentType && (
+    const JobInformationContent = (
         <>
             <div className="space-y-3">
                 <JobInformation
                     title="Is this information accurate?"
-                    paymentType={formData.paymentType}
-                    budget={formData.budget}
-                    projectName={formData.projectName}
-                    projectDescription={formData.projectDescription}
-                    projectSkills={formData.projectSkills}
+                    paymentType={paymentType}
+                    budget={watch("Offer")}
+                    projectName={watch("Name")}
+                    projectDescription={watch("Description")}
+                    projectSkills={selectedCat.map(c => c.Name)}
                 />
             </div>
             <div>
@@ -138,6 +184,7 @@ const Post_job = () => {
                         p-4 
                         rounded-15
                     "
+                    type='submit'
                 >
                     YES, Post the project!
                 </button>
@@ -152,11 +199,14 @@ const Post_job = () => {
                     title="Let us know what you need to get done"
                     label="Contact skilled freelancers in minutes. View profiles, reviews, portfolio and chat with them. Only pay freelancers when you are 100% satisfied with their work."
                     jobName={jobNameContent}
+                    jobExpireDate={expireDateContent}
                     jobDescription={JobDescriptionContent}
                     jobSelect={JobSelectContent}
                     jobPayment={JobPaymentContent}
                     jobPrice={JobPriceContent || null}
                     jobInformation={JobInformationContent || null}
+                    onSubmit={onSubmit}
+                    handleSubmit={handleSubmit}
                 />
             </Container>
         </FormatCusMd>
