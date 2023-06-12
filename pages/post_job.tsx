@@ -65,6 +65,9 @@ const Post_job = () => {
     const context = useContext(MyContext);
 
     useEffect(() => {
+        if (context.currentUser.Id === 0) {
+            router.push("/");
+        }
         BusinessProfileService.getByUserId(context.currentUser.Id)
             .then(businessProfileResponse => {
                 setBusiness(businessProfileResponse.value[0])
