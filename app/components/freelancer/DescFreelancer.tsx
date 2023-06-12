@@ -8,6 +8,7 @@ import SkillFreelancer from "./SkillFreelancer";
 import useEditModal from "@/hooks/useEditModal";
 import { useContext, createContext } from "react";
 import useQrModal from "@/hooks/useQrModal";
+import { useTranslation } from "react-i18next"
 
 interface PerformanceItem {
     title: string;
@@ -47,8 +48,10 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     detail,
     skill
 }) => {
+
     const editModal = useEditModal();
     const qrModal = useQrModal();
+    const { t } = useTranslation()
 
     const UserContext = createContext({
         role: 'business',
@@ -111,7 +114,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                         font-semibold
                                     "
                                 >
-                                    Hire now
+                                    {t("Hire now")}
                                 </button>
                             </div>
                         )}
@@ -130,13 +133,13 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                                             font-semibold
                                         "
                                     >
-                                        Edit Profile
+                                        {t("Edit Profile")}
                                     </button>
                                 </div>
                             )
                         )}
                     </div>
-                </div>
+                </div >
                 <h2 className="text-2xl">
                     {label}
                 </h2>
@@ -149,7 +152,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                 >
                     <Rating rating={star} maxStars={5} sizeCus={30} />
                     <div className="text-xl">
-                        {rateStar} ({numberCmt} Comment)
+                        {rateStar} ({numberCmt} {t("Comment")})
                     </div>
                 </div> */}
                 {/* <div className="
@@ -179,7 +182,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                     >
                         <div className="col-span-2">
                             <h3 className="text-gray-400">
-                                Skill
+                                {t("Skill")}
                             </h3>
                         </div>
                         <div className="col-span-10">
@@ -200,8 +203,8 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

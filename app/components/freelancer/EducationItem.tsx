@@ -1,5 +1,5 @@
 'use client'
-
+import { useTranslation } from "react-i18next"
 interface EducationItemProps {
     title?: string;
     place?: string;
@@ -11,6 +11,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
     place,
     date
 }) => {
+    const { t } = useTranslation()
     return (
         <section className="p-4 gap-2 text-xl">
             <h1 className="font-medium mb-2">
@@ -20,7 +21,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
                 {place}
             </h2>
             <h2>
-                Date {date}
+            {t("Date")} {date}
             </h2>
         </section>
     )
