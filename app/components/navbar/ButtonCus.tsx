@@ -15,7 +15,7 @@ const ButtonCus: React.FC = () => {
     const qrModal = useQrModal();
     const { t } = useTranslation()
 
-    const handleEditButtonClick = () => {
+    const handleProfileButtonClick = () => {
         if (context.currentUser.IsPremium) {
             editModal.onOpen();
         }
@@ -23,6 +23,15 @@ const ButtonCus: React.FC = () => {
             qrModal.onOpen();
         }
     };
+
+    const handlePostJobButtonClick = () => {
+        if (context.currentUser.IsPremium) {
+            router.push('/post_job');
+        }
+        else {
+            qrModal.onOpen();
+        }
+    } 
     
     return (
         <div className="relative">
@@ -34,7 +43,7 @@ const ButtonCus: React.FC = () => {
                 "
             >
                 <button
-                    onClick={context.currentUser.Role === "Business"? () => router.push('/post_job') : handleEditButtonClick}
+                    onClick={context.currentUser.Role === "Business"? handlePostJobButtonClick  : handleProfileButtonClick}
                     className="
                         hidden
                         w-full

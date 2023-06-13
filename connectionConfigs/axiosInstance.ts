@@ -10,6 +10,7 @@ const getToken = () => {
    //       localStorage.setItem("auth", "none");
    //    }
    // }
+   console.log(`Bearer ${token?.toString()}`);
    return token !== "none" ? `Bearer ${token?.toString()}` : null;
 }
 

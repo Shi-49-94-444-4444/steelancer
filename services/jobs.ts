@@ -46,7 +46,7 @@ const getDetail = async (id: number) => {
 }
 
 const postJob = async (data: JobPost) => {
-   const response = await axios.post(baseUrl, data);
+   const response = await axiosInstance.post(baseUrl, data);
    return response.data;
 } 
 export interface JobFilter {
