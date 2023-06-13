@@ -56,7 +56,7 @@ const Footer = () => {
                         <div className="
                                 col-span-8 
                                 mt-20
-                                px-20 
+                                px-10 
                                 py-10
                             "
                         >

@@ -82,6 +82,7 @@ const RecentBox: React.FC<RecentBoxProps> = ({
                         text-pink-cus-tx 
                         underline
                         cursor-pointer
+                        text-center
                     "
                 >
                     {t("Apply now")}

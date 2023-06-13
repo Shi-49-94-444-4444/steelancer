@@ -30,7 +30,7 @@ const AboutUs = () => {
                             "
                         >
                             <span>{t("ABOUT")}</span>
-                            <span className="text-pink-cus-tx">{t("US")}</span>
+                            <span className="text-pink-cus-tx"> {t("US")}</span>
                         </h1>
                     </div>
                     <div className="

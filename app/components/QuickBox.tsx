@@ -17,7 +17,7 @@ const QuickBox: React.FC<QuickBoxProps> = ({
                 flex-col
                 items-center
                 w-auto
-                md:w-[250px]
+                md:w-[350px]
                 h-60
                 shadow-sm
                 rounded-12
@@ -37,6 +37,7 @@ const QuickBox: React.FC<QuickBoxProps> = ({
             <div className="
                     font-semibold
                     text-3xl
+                    text-center
                 "
             >
                 {label}
