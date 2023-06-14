@@ -26,18 +26,39 @@ export const navlinks = [
 export const quicks = [
     {
         icon: RiLockPasswordLine,
-        label: "Create Account",
-        description: "First create an account & update your profile"
+        label: "Tạo tài khoản",
+        description: "Đầu tiên hãy tạo và cập nhật thông tin tài khoản"
     },
     {
         icon: AiOutlineFileSearch,
-        label: "Search work ",
-        description: "Search the best freelance work"
+        label: "Tìm việc ",
+        description: "Tìm kiếm công việc freelance tốt nhất"
     },
     {
         icon: MdOutlineSecurity,
-        label: "Save and apply",
-        description: "Apply or save and & working today"
+        label: "Lưu và ứng tuyển",
+        description: "Lưu thay đổi hoặc ứng tuyển ngay"
+    },
+]
+
+export const recents = [
+    {
+        src: "/images/recent_1.png",
+        label: "Lập trình giao diện React",
+        description: "Tìm kiếm lập trình viên React có kinh nghiệm. Kỹ năng sử dụng redux và material UI là lợi thế.",
+        price: "500",
+    },
+    {
+        src: "/images/recent_2.png",
+        label: "Thiết kế giao diện",
+        description: "Chúng tôi cần một lập trình viên thiết kế giao diện web với kỹ năng sử dụng UI/UX cho công ty nội thất THC",
+        price: "500",
+    },
+    {
+        src: "/images/recent_3.png",
+        label: "Tuyển SEO",
+        description: "Tuyển SEO có khả năng nhằm nâng cao năng suất làm việc của công ty ABC.",
+        price: "300",
     },
 ]
 
@@ -73,27 +94,6 @@ export const categories = [
     {
         src: "/images/category_8.png",
         label: "ReactJs",
-    },
-]
-
-export const recents = [
-    {
-        src: "/images/recent_1.png",
-        label: "React Frontend",
-        description: "Experienced React developer. Big plus for redux and material UI",
-        price: "500",
-    },
-    {
-        src: "/images/recent_2.png",
-        label: "Web interface design",
-        description: "We need a front end designer with UI/UX skills for our Furniture company",
-        price: "500",
-    },
-    {
-        src: "/images/recent_3.png",
-        label: "SEO wanted",
-        description: "Looking for a SEO for ABC enterprise who will lead our company to a higher level",
-        price: "300",
     },
 ]
 

@@ -24,7 +24,7 @@ const Register = () => {
   const { t } = useTranslation()
   const options = [
     { value: "Click Choose Role", label: "Click Choose Role", isDisabled: true },
-    { value: "Business", label: "Business" },
+    { value: "Business", label: "Doanh Ngiệp" },
     { value: "Freelancer", label: "Freelancer" },
   ];
 
@@ -133,6 +133,7 @@ const Register = () => {
       <Select
         options={options}
         className="text-xl"
+        placeholder={t("Select...")}
         isClearable
         onChange={(input) => {
           setIsFreelancer(input?.value)
