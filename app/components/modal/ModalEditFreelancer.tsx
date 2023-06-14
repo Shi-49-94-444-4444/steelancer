@@ -60,7 +60,8 @@ const ModalEdit: React.FC<ModalEditProps> = ({
         Fullname: yup.string().required("Name is required"),
         Title: yup.string().required("Title is required"),
         Address: yup.string().required("Address is required"),
-        Description: yup.string().required("Description is required")
+        Description: yup.string().required("Description is required"),
+        Price: yup.number().required("Price is required").min(1, "Price must be more than 1").typeError("Price must be a number"),
     }).required();
 
     const {
@@ -76,7 +77,8 @@ const ModalEdit: React.FC<ModalEditProps> = ({
             Fullname: currentFreelancer.Fullname,
             Title: currentFreelancer.Title,
             Address: currentFreelancer.Address,
-            Description: currentFreelancer.Description
+            Description: currentFreelancer.Description,
+            Price: currentFreelancer.Price
         },
         resolver: yupResolver(schema)
     });
@@ -158,6 +160,10 @@ const ModalEdit: React.FC<ModalEditProps> = ({
             });
     }
 
+    const onErrors = (err: any) => {
+        console.log(err);
+    }
+
     return (
         <CustomModal
             isOpen={editModal.isOpen}
@@ -166,7 +172,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
             width={"w-2/4"}
             height={"h-3/4"}
         >
-            <form className="w-full px-10" onSubmit={handleSubmit(onSubmit)}>
+            <form className="w-full px-10" onSubmit={handleSubmit(onSubmit, onErrors)}>
                 <Input
                     id='ImageUrl'
                     label="ImageURL"
@@ -223,9 +229,10 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                 <textarea
                     id='Description'
                     rows={5}
-                    name="Description"
                     placeholder={t("Enter description") ?? ""}
-                    value={currentFreelancer.Description}
+                    defaultValue={currentFreelancer.Description}
+                    {...register("Description")}
+                    // value={currentFreelancer.Description}
                     // onChange={handleTextareaChange}
                     className="
                         w-full 
@@ -236,6 +243,11 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                         text-xl
                     "
                 ></textarea>
+                {errors && (
+                <p className="text-red-600 font-semibold h-2">
+                    {errors["Description"]?.message?.toString()}
+                </p>
+            )}
                 {/* <Input
                     label="Language"
                     name="language"

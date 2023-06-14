@@ -19,12 +19,7 @@ const ButtonCus: React.FC = () => {
 
     const handleProfileButtonClick = () => {
         if (context.currentUser.IsPremium) {
-            if (context.currentFreelancer.Id !== 0) {
-                editModal.onOpen();
-            }
-            else {
-                createModel.onOpen();
-            }
+            editModal.onOpen();
         }
         else {
             qrModal.onOpen();

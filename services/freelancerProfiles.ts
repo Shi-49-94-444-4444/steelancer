@@ -54,9 +54,17 @@ const getThisUserFreelancerProfile = async (id: number) => {
 }
 
 const edit = async (id: number, data: any) => {
-   const url = `${baseUrl}/${id}`;
-   const response = await axiosInstance.put(url, data);
-   return response.data;
+   const url = `${baseUrl}`;
+   if (id === 0) {
+      console.log("posting")
+      const response = await axiosInstance.post(url, data);
+      return response.data;
+   }
+   else {
+      console.log("putting")
+      const response = await axiosInstance.put(url + `/${id}`, data);
+      return response.data;
+   }
 }
 
 const exportObject = {

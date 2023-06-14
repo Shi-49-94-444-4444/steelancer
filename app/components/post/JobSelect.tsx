@@ -66,7 +66,7 @@ const JobSelect: React.FC<JobSelectProps> = ({
                 onChange={handleSkillChange}
                 placeholder="..."
                 options={cats}
-                value={getSelectedCats()}
+                value={value ? getSelectedCats() : []}
                 className="
                     w-full 
                     border-[1px] 
