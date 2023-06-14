@@ -2,10 +2,18 @@
 
 import useEditModal from '@/hooks/useEditModal';
 import CustomModal from './Modal';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Input from './Input';
 import FreelancerResponse from '@/models/freelancerResponse';
 import { useTranslation } from "react-i18next"
+import { MyContext } from '@/app/layout';
+import * as yup from "yup";
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { JobSelect } from '../post';
+import CategoryResponse from '@/models/categoryResponse';
+import FreelancerService from '../../../services/freelancerProfiles';
+import { toast } from 'react-toastify';
 
 // interface Skill {
 //     title: string;
@@ -32,28 +40,60 @@ import { useTranslation } from "react-i18next"
 
 interface ModalEditProps {
     onSave: (value: FreelancerResponse) => void;
-    initialData: FreelancerResponse,
     categories: string[]
 }
 
 const ModalEdit: React.FC<ModalEditProps> = ({
     onSave,
-    initialData,
     categories
 }) => {
-    const editModal = useEditModal()
-    const { t } = useTranslation()
-    const [formData, setFormData] = useState(initialData);
+    const editModal = useEditModal();
+    const { t } = useTranslation();
+    const [selectedCat, setSelectedCats] = useState<CategoryResponse[]>([]);
+    let { currentUser, currentFreelancer, setCurrentFreelancer } = useContext(MyContext);
 
-    const handleSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault()
-        const { value } = e.target;
-        const skillArr = value.split(",").map((item) => ({ title: item.trim() }));
-        setFormData((prevData) => ({
-            ...prevData,
-            skill: skillArr
-        }));
-    };
+    useEffect(() => {
+    })
+
+    const schema = yup.object({
+        ImageUrl: yup.string().url().required("Image url is required"),
+        Fullname: yup.string().required("Name is required"),
+        Title: yup.string().required("Title is required"),
+        Address: yup.string().required("Address is required"),
+        Description: yup.string().required("Description is required")
+    }).required();
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: {
+            errors,
+        },
+    } = useForm<FieldValues>({
+        defaultValues: {
+            ImageUrl: currentFreelancer.ImageUrl,
+            Fullname: currentFreelancer.Fullname,
+            Title: currentFreelancer.Title,
+            Address: currentFreelancer.Address,
+            Description: currentFreelancer.Description
+        },
+        resolver: yupResolver(schema)
+    });
+
+    useEffect(() => {
+        reset(currentFreelancer);
+    }, [currentFreelancer]);
+
+    // const handleSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     e.preventDefault()
+    //     const { value } = e.target;
+    //     const skillArr = value.split(",").map((item) => ({ title: item.trim() }));
+    //     setCurrentFreelancer((prevData) => ({
+    //         ...prevData,
+    //         skill: skillArr
+    //     }));
+    // };
 
     // const handleProductTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     e.preventDefault()
@@ -85,26 +125,38 @@ const ModalEdit: React.FC<ModalEditProps> = ({
     //     }));
     // };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value
-        }));
-    };
+    // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const { name, value } = e.target;
+    //     setCurrentFreelancer((prevData) => ({
+    //         ...prevData,
+    //         [name]: value
+    //     }));
+    // };
 
-    const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value
-        }));
-    };
+    // const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    //     const { name, value } = e.target;
+    //     setCurrentFreelancer((prevData) => ({
+    //         ...prevData,
+    //         [name]: value
+    //     }));
+    // };
 
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        data.Id = currentFreelancer.Id
+        data.Categories = selectedCat.map(c => c.Id);
+        data.AppUserId = currentUser.Id;
+        console.log(data);
 
-    const handleSubmit = () => {
-        onSave(formData);
-    };
+        FreelancerService.edit(currentFreelancer.Id, data)
+            .then((data) => {
+                setCurrentFreelancer(data);
+                toast.success("Profile updated");
+                editModal.onClose();
+            })
+            .catch(err => {
+                toast.error("Profile update fail");
+            });
+    }
 
     return (
         <CustomModal
@@ -114,30 +166,43 @@ const ModalEdit: React.FC<ModalEditProps> = ({
             width={"w-2/4"}
             height={"h-3/4"}
         >
-            <form className="w-full px-10">
+            <form className="w-full px-10" onSubmit={handleSubmit(onSubmit)}>
                 <Input
+                    id='ImageUrl'
                     label="ImageURL"
-                    name="src"
-                    value={formData.ImageUrl}
-                    onChange={handleInputChange}
+                    name="ImageUrl"
+                    placeholder=''
+                    value={currentFreelancer.ImageUrl}
+                    register={register}
+                    errors={errors}
+                // onChange={handleInputChange}
                 />
                 <Input
-                    label={t("Name") ?? ""} 
-                    name="Name"
-                    value={formData.Fullname}
-                    onChange={handleInputChange}
+                    id='Fullname'
+                    label={t("Name") ?? ""}
+                    name="Fullname"
+                    value={currentFreelancer.Fullname}
+                    register={register}
+                    errors={errors}
+                // onChange={handleInputChange}
                 />
                 <Input
-                    label={t("Review") ?? ""} 
+                    id='Title'
+                    label={t("Title") ?? ""}
                     name="Title"
-                    value={formData.Title}
-                    onChange={handleInputChange}
+                    value={currentFreelancer.Title}
+                    register={register}
+                    errors={errors}
+                // onChange={handleInputChange}
                 />
                 <Input
-                    label={t("Address") ?? ""} 
+                    id='Address'
+                    label={t("Address") ?? ""}
                     name="Address"
-                    value={formData.Address}
-                    onChange={handleInputChange}
+                    value={currentFreelancer.Address}
+                    register={register}
+                    errors={errors}
+                // onChange={handleInputChange}
                 />
                 {/* <Input
                     label="Country"
@@ -146,18 +211,22 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                     onChange={handleInputChange}
                 /> */}
                 <Input
-                    label={t("Price") ?? ""} 
-                    name="price"
-                    value={formData.Price}
-                    onChange={handleInputChange}
+                    id='Price'
+                    label={t("Price") ?? ""}
+                    name="Price"
+                    value={currentFreelancer.Price}
+                    register={register}
+                    errors={errors}
+                // onChange={handleInputChange}
                 />
                 <label htmlFor="description" className='block text-xl font-semibold text-left'>{t("Description")}</label>
                 <textarea
+                    id='Description'
                     rows={5}
-                    name="description"
-                    placeholder={t("Enter description") ?? ""} 
-                    value={formData.Description}
-                    onChange={handleTextareaChange}
+                    name="Description"
+                    placeholder={t("Enter description") ?? ""}
+                    value={currentFreelancer.Description}
+                    // onChange={handleTextareaChange}
                     className="
                         w-full 
                         border-[1px] 
@@ -188,11 +257,14 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                         text-xl
                     "
                 ></textarea> */}
-                <Input
-                    label={t("Skill") ?? ""} 
-                    name="skill"
-                    value={categories ? categories.join(", ") : ""}
-                    onChange={handleSkillChange}
+                <JobSelect
+                    // title={t("What skills are needed?") ?? ""}
+                    description="Skill"
+                    name="projectSkills"
+                    value={currentFreelancer.Categories}
+                    // value={formData.projectSkills}
+                    // onChange={handleProjectSkillsChange}
+                    setSelectedCat={setSelectedCats}
                 />
                 {/* {formData.product &&
                     formData.product.map((item, index) => (
@@ -211,7 +283,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
                             />
                         </div>
                     ))} */}
-                <button onClick={handleSubmit} className='mt-4 text-pink-cus-tx hover:underline'>{t("Save")}</button>
+                <button type='submit' className='mt-4 text-pink-cus-tx hover:underline'>{t("Save")}</button>
             </form>
         </CustomModal>
     );

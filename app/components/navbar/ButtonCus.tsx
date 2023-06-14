@@ -1,6 +1,7 @@
 'use client'
 
 import { MyContext } from "@/app/layout"
+import useCreateModal from "@/hooks/useCreateModal"
 import useEditModal from "@/hooks/useEditModal"
 import useQrModal from "@/hooks/useQrModal"
 import { UserInfo } from "@/services/auth"
@@ -12,12 +13,18 @@ const ButtonCus: React.FC = () => {
     const context = useContext(MyContext);
     const router = useRouter()
     const editModal = useEditModal();
+    const createModel = useCreateModal();
     const qrModal = useQrModal();
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     const handleProfileButtonClick = () => {
         if (context.currentUser.IsPremium) {
-            editModal.onOpen();
+            if (context.currentFreelancer.Id !== 0) {
+                editModal.onOpen();
+            }
+            else {
+                createModel.onOpen();
+            }
         }
         else {
             qrModal.onOpen();
@@ -31,8 +38,8 @@ const ButtonCus: React.FC = () => {
         else {
             qrModal.onOpen();
         }
-    } 
-    
+    }
+
     return (
         <div className="relative">
             <div className="
@@ -43,7 +50,7 @@ const ButtonCus: React.FC = () => {
                 "
             >
                 <button
-                    onClick={context.currentUser.Role === "Business"? handlePostJobButtonClick  : handleProfileButtonClick}
+                    onClick={context.currentUser.Role === "Business" ? handlePostJobButtonClick : handleProfileButtonClick}
                     className="
                         hidden
                         w-full

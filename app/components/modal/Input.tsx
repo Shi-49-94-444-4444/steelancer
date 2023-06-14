@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
     FieldErrors,
     FieldValues,
@@ -51,7 +52,8 @@ const Input: React.FC<InputProps> = ({
                     id={id}
                     type={type}
                     name={name}
-                    value={value}
+                    // value={value}
+                    defaultValue={value}
                     placeholder={placeholder}
                     {...(register && register(id))}
                     disabled={disabled}

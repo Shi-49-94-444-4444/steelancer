@@ -14,15 +14,30 @@ export const metadata = {
   description: 'Steelancer clone',
 }
 
+const defaultUser = {
+  Id: 0,
+  Username: "",
+  Email: "",
+  Role: "",
+  IsPremium: false
+}
+
+const defaultFreelancer = {
+  Id: 0,
+  Title: "",
+  Description: "",
+  Categories: [],
+  Price: 0,
+  Fullname: "",
+  ImageUrl: "",
+  Address: ""
+};
+
 export const MyContext = createContext<ContextValue>({
-  currentUser: {
-    Id: 0,
-    Username: "",
-    Email: "",
-    Role: "",
-    IsPremium: false
-  },
-  setCurrentUser: null
+  currentUser: defaultUser,
+  setCurrentUser: null,
+  currentFreelancer: defaultFreelancer,
+  setCurrentFreelancer: null
 });
 
 export default function Layout({
@@ -31,25 +46,11 @@ export default function Layout({
   children: React.ReactNode
 }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [currentUser, setCurrentUser] = useState<UserInfo>({
-    Id: 0,
-    Username: "",
-    Email: "",
-    Role: "",
-    IsPremium: false
-  });
+  const [currentUser, setCurrentUser] = useState<UserInfo>(defaultUser);
   const [, setShowEditModal] = useState(false);
   const [categories, setCategories] = useState<CategoryResponse[]>([]);
-  const [freelancerProfile, setFreelancerProfile] = useState<FreelancerResponse>({
-    Id: 0,
-    Title: "",
-    Description: "",
-    Categories: [],
-    Price: 0,
-    Fullname: "",
-    ImageUrl: "",
-    Address: ""
-  });
+  const [currentFreelancer, setCurrentFreelancer] = useState<FreelancerResponse>(defaultFreelancer);
+
 
   const getCategoriesStrings = (freelancer: FreelancerResponse): string[] => {
     const categoryIds = freelancer.Categories;
@@ -57,11 +58,6 @@ export default function Layout({
   }
 
   useEffect(() => {
-    // FreelancerService.getDetail(id)
-    //   .then(freelancerDetailResponse => {
-    //     console.log(freelancerDetailResponse)
-    //     setFreelancer(freelancerDetailResponse)
-    //   })
     CategoryService.get()
       .then(categoriesResponse => {
         setCategories(categoriesResponse.value);
@@ -71,13 +67,30 @@ export default function Layout({
       })
     try {
       const userInfo = AuthService.getUserInfo();
-      console.log(userInfo)
+      setCurrentUser(userInfo);
     } catch (error) {
       console.log(error)
     }
   }, [])
 
-  type ModalEditData = Partial<typeof freelancerProfile>;
+  useEffect(() => {
+    console.log("Current user: ", currentUser)
+    if (currentUser.Role === "Freelancer") {
+      console.log("Get user freelancer profile")
+      FreelancerService.getThisUserFreelancerProfile(currentUser.Id)
+        .then(freelancerProfileResponse => {
+          if (freelancerProfileResponse.value.length > 0) {
+            console.log(freelancerProfileResponse.value[0]);
+            setCurrentFreelancer(freelancerProfileResponse.value[0]);
+          }
+        })
+        .catch(error => {
+          console.log(error.response.data)
+        })
+    }
+  }, [currentUser])
+
+  type ModalEditData = Partial<typeof currentFreelancer>;
 
   const handleEditModalSubmit = (formData: ModalEditData = {}) => {
     console.log(formData);
@@ -89,14 +102,15 @@ export default function Layout({
       <Background>
         <MyContext.Provider value={{
           currentUser,
-          setCurrentUser
+          setCurrentUser,
+          currentFreelancer,
+          setCurrentFreelancer
         }}>
           <ToasterProvider />
           <QrMomo />
           <ModalEdit
             onSave={handleEditModalSubmit}
-            initialData={freelancerProfile}
-            categories={getCategoriesStrings(freelancerProfile)}
+            categories={getCategoriesStrings(currentFreelancer)}
           />
           <ModalCreate />
           <ModalPayment />

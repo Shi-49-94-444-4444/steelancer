@@ -1,3 +1,4 @@
+import axios from "axios";
 import axiosInstance from "../connectionConfigs/axiosInstance";
 import config from "../connectionConfigs/config.json";
 const baseUrl = config.api.base + config.api.freelancerProfile;
@@ -40,16 +41,30 @@ export interface FreelancerFilter {
    categories: number[]
 }
 
-const getDetail = async (id: any) => {
+const getDetail = async (id: number) => {
    const url = `${baseUrl}/${id}`;
    const response = await axiosInstance.get(url);
+   return response.data;
+}
+
+const getThisUserFreelancerProfile = async (id: number) => {
+   const url = `${baseUrl}?$filter=AppUserId eq ${id}`;
+   const response = await axiosInstance.get(url);
+   return response.data;
+}
+
+const edit = async (id: number, data: any) => {
+   const url = `${baseUrl}/${id}`;
+   const response = await axiosInstance.put(url, data);
    return response.data;
 }
 
 const exportObject = {
    get,
    getCount,
-   getDetail
+   getDetail,
+   getThisUserFreelancerProfile,
+   edit
 };
 
 export default exportObject;

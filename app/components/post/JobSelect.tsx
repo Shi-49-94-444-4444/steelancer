@@ -10,7 +10,7 @@ interface JobSelectProps {
     title?: string;
     description?: string;
     name?: string;
-    value?: string[];
+    value?: number[];
     onChange?: any;
     setSelectedCat: any
 }
@@ -25,18 +25,24 @@ const JobSelect: React.FC<JobSelectProps> = ({
 }) => {
     // const [selectedSkills, setSelectedSkills] = useState<{ value: string; label: string }[]>([]);
     const [cats, setCats] = useState<{ value: string; label: string }[]>([]);
+    const [chosenCats, setChosenCats] = useState(value);
 
     const handleSkillChange = (selectedOptions: any) => {
         var chosenCats = selectedOptions.map((c: any) => ({
             Id: c.value,
             Name: c.label
         }));
+        setChosenCats(selectedOptions.map((c: any) => parseInt(c.value)));
         console.log(chosenCats);
         setSelectedCat(chosenCats);
         // setSelectedSkills(selectedOptions.map(x => x.value));
         // const skills = selectedOptions ? selectedOptions.map((option: any) => option.value) : [];
         // onChange(skills);
     };
+
+    const getSelectedCats = () => {
+        return cats.filter(c => chosenCats?.includes(parseInt(c.value)));
+    }
 
     useEffect(() => {
         CategoryService.get()
@@ -60,6 +66,7 @@ const JobSelect: React.FC<JobSelectProps> = ({
                 onChange={handleSkillChange}
                 placeholder="..."
                 options={cats}
+                value={getSelectedCats()}
                 className="
                     w-full 
                     border-[1px] 
