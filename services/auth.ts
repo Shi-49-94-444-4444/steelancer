@@ -61,6 +61,7 @@ const getUserInfo = (): UserInfo => {
 const logout = () => {
    localStorage.removeItem("auth");
    localStorage.removeItem("user");
+   localStorage.removeItem("profile");
 }
 
 const exportObject = {

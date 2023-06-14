@@ -151,7 +151,7 @@ const NavLink = () => {
                                     >
                                         <>
                                             <MenuItem href="/" label={t("Profile")} />
-                                            <MenuItem href="/" label={t("Manage job")} />
+                                            <MenuItem href="/management_job" label={t("Manage job")} />
                                         </>
                                     </div>
                                 </div>

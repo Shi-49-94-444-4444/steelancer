@@ -46,8 +46,7 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    AuthService
-      .authenticate(data)
+    AuthService.authenticate(data)
       .then(authResponse => {
         localStorage.setItem("auth", authResponse.token);
         AuthService.getUserProfile()

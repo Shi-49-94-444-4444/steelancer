@@ -65,22 +65,29 @@ export default function Layout({
       .catch(error => {
         console.log(error);
       })
-    try {
-      const userInfo = AuthService.getUserInfo();
-      setCurrentUser(userInfo);
-    } catch (error) {
-      console.log(error)
-    }
+    // try {
+    //   const userInfo = AuthService.getUserInfo();
+    //   setCurrentUser(userInfo);
+    // } catch (error) {
+    //   console.log(error)
+    // }
+
+    AuthService.getUserProfile()
+      .then(profileResponse => {
+        console.log(profileResponse);
+        setCurrentUser(profileResponse);
+      })
+      .catch(error => {
+        console.log("No user");
+      })
   }, [])
 
   useEffect(() => {
     console.log("Current user: ", currentUser)
     if (currentUser.Role === "Freelancer") {
-      console.log("Get user freelancer profile")
       FreelancerService.getThisUserFreelancerProfile(currentUser.Id)
         .then(freelancerProfileResponse => {
           if (freelancerProfileResponse.value.length > 0) {
-            console.log(freelancerProfileResponse.value[0]);
             setCurrentFreelancer(freelancerProfileResponse.value[0]);
           }
         })
@@ -93,7 +100,6 @@ export default function Layout({
   type ModalEditData = Partial<typeof currentFreelancer>;
 
   const handleEditModalSubmit = (formData: ModalEditData = {}) => {
-    console.log(formData);
     setShowEditModal(true);
   };
 

@@ -52,9 +52,6 @@ const ModalEdit: React.FC<ModalEditProps> = ({
     const [selectedCat, setSelectedCats] = useState<CategoryResponse[]>([]);
     let { currentUser, currentFreelancer, setCurrentFreelancer } = useContext(MyContext);
 
-    useEffect(() => {
-    })
-
     const schema = yup.object({
         ImageUrl: yup.string().url().required("Image url is required"),
         Fullname: yup.string().required("Name is required"),
