@@ -6,4 +6,5 @@ export default interface JobResponse {
    Categories: number[];
    Offer: number;
    BusinessName: string;
+   CreatedDate?: string;
 }

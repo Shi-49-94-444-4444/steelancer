@@ -2,13 +2,38 @@
 
 import { Container, FormatCusMd, OfferBusiness } from "@/app/components";
 import { freelancerList } from "@/app/constants";
-import { useState } from "react";
+import { MyContext } from "@/app/layout";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import JobService from "../services/jobs";
+import JobResponse from "@/models/jobResponse";
 
 const Management_job = () => {
-    const { t } = useTranslation()
+    const { t } = useTranslation();
+    const router = useRouter();
+    const { currentUser, currentBusiness } = useContext(MyContext);
+    const [jobs, setJobs] = useState<JobResponse[]>([]);
 
-    const renderDropdownContent = () => {
+    useEffect(() => {
+        if (currentUser.Role !== "Business" || !currentUser.IsPremium) {
+            router.push("/");
+        }
+
+        JobService.getJobByBusiness(currentBusiness.BusinessName)
+            .then((jobsResponse: any) => {
+                console.log(jobsResponse.value);
+                setJobs(jobsResponse.value);
+            })
+    }, [currentUser])
+
+    interface JobDisplayProps {
+        job: JobResponse
+    }
+
+    const JobDisplay: React.FC<JobDisplayProps> = ({
+        job
+    }) => {
         const [projectStatus, setProjectStatus] = useState("Open");
         const [savedStatus, setSavedStatus] = useState("");
 
@@ -24,7 +49,7 @@ const Management_job = () => {
             <>
                 <div className="flex flex-col p-6">
                     <div className="flex flex-row justify-between items-center">
-                        <h2 className="text-xl font-medium">Frontend React Developer</h2>
+                        <h2 className="text-xl font-medium">{job.Name}</h2>
                         <div className="flex flex-row">
                             <button
                                 className={`flex items-center justify-center text-[15px] px-4 border border-pink-cus-tx font-semibold ${projectStatus === "Open" ? "bg-green-200 text-green-500" : ""
@@ -55,11 +80,11 @@ const Management_job = () => {
                     <div className="flex flex-row space-x-5">
                         <h2>
                             {("Posted on")}
-                            <span> 10/12/2001</span>
+                            <span> {job.CreatedDate}</span>
                         </h2>
                         <h2>
                             {t("Expiring on")}
-                            <span> 10/12/2001</span>
+                            <span> {job.ApplyExpireDate}</span>
                         </h2>
                     </div>
                     {projectStatus === "Open" && (
@@ -115,7 +140,7 @@ const Management_job = () => {
                 <div className="flex flex-col bg-white shadow-lg border-[1px] p-4 border-pink-cus-tx">
                     <h2 className="text-2xl font-medium py-2">{t("Project")}</h2>
                     <div className="border-b-2"></div>
-                    {renderDropdownContent()}
+                    {jobs.map(j => <JobDisplay job={j} />)}
                 </div>
             </Container>
         </FormatCusMd>

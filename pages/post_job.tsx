@@ -152,6 +152,7 @@ const Post_job = () => {
             title={t("What skills are needed?") ?? ""}
             description="Fill in up to 5 skills to best describe your project. Freelancers will use these skills to find projects that interest them and have the most experience."
             name="projectSkills"
+            value={[]}
             // value={formData.projectSkills}
             // onChange={handleProjectSkillsChange}
             setSelectedCat={setSelectedCats}

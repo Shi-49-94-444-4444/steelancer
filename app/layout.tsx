@@ -8,6 +8,8 @@ import FreelancerService from '../services/freelancerProfiles'
 import CategoryService from '../services/category'
 import AuthService, { UserInfo } from '../services/auth'
 import ContextValue from "@/models/contextValue"
+import BusinessProfileResponse from "@/models/businessProfileResponse"
+import BusinessService from "../services/businessProfiles";
 
 export const metadata = {
   title: 'Steelancer',
@@ -33,11 +35,19 @@ const defaultFreelancer = {
   Address: ""
 };
 
+const defaultBusiness = {
+  Id: 0,
+  AppUserId: 0,
+  BusinessName: ""
+}
+
 export const MyContext = createContext<ContextValue>({
   currentUser: defaultUser,
   setCurrentUser: null,
   currentFreelancer: defaultFreelancer,
-  setCurrentFreelancer: null
+  setCurrentFreelancer: null,
+  currentBusiness: defaultBusiness,
+  setCurrentBusiness: null
 });
 
 export default function Layout({
@@ -50,7 +60,7 @@ export default function Layout({
   const [, setShowEditModal] = useState(false);
   const [categories, setCategories] = useState<CategoryResponse[]>([]);
   const [currentFreelancer, setCurrentFreelancer] = useState<FreelancerResponse>(defaultFreelancer);
-
+  const [currentBusiness, setCurrentBusiness] = useState<BusinessProfileResponse>(defaultBusiness);
 
   const getCategoriesStrings = (freelancer: FreelancerResponse): string[] => {
     const categoryIds = freelancer.Categories;
@@ -95,6 +105,18 @@ export default function Layout({
           console.log(error.response.data)
         })
     }
+    if (currentUser.Role === "Business") {
+      BusinessService.getByUserId(currentUser.Id)
+        .then(businessProfileResponse => {
+          if (businessProfileResponse.value.length > 0) {
+            console.log(businessProfileResponse.value[0])
+            setCurrentBusiness(businessProfileResponse.value[0])
+          }
+        })
+        .catch(error => {
+          console.log(error.response.data)
+        })
+    }
   }, [currentUser])
 
   type ModalEditData = Partial<typeof currentFreelancer>;
@@ -110,7 +132,9 @@ export default function Layout({
           currentUser,
           setCurrentUser,
           currentFreelancer,
-          setCurrentFreelancer
+          setCurrentFreelancer,
+          currentBusiness,
+          setCurrentBusiness
         }}>
           <ToasterProvider />
           <QrMomo />

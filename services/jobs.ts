@@ -29,6 +29,7 @@ const getOpenJob = async (filter: JobFilter) => {
 const getJobByBusiness = async (businessName: string) => {
    let url = `${baseUrl}/GetOpenJobs()?$filter=BusinessName eq '${businessName}'`
 
+   console.log(url);
    const response = await axiosInstance.get(url);
    return response.data;
 }
@@ -48,7 +49,7 @@ const getDetail = async (id: number) => {
 const postJob = async (data: JobPost) => {
    const response = await axiosInstance.post(baseUrl, data);
    return response.data;
-} 
+}
 export interface JobFilter {
    skip: number,
    offerFrom?: number,
