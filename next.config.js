@@ -16,7 +16,9 @@ const nextConfig = {
   images: {
     domains: ['picsum.photos'],
   },
-  output: 'export',
+  output: {
+    exportTrailingSlash: true,
+  },
 };
 
 module.exports = nextConfig;
