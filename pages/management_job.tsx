@@ -7,7 +7,9 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import JobService from "../services/jobs";
+import FreelancerService from '../services/freelancerProfiles';
 import JobResponse from "@/models/jobResponse";
+import FreelancerResponse from "@/models/freelancerResponse";
 
 const Management_job = () => {
     const { t } = useTranslation();
@@ -36,6 +38,18 @@ const Management_job = () => {
     }) => {
         const [projectStatus, setProjectStatus] = useState("Open");
         const [savedStatus, setSavedStatus] = useState("");
+        const [freelancers, setFreelancer] = useState<FreelancerResponse[]>([]);
+
+        useEffect(() => {
+            FreelancerService.getByJob(job.Id)
+                .then(freelancersResponse => {
+                    console.log(freelancersResponse)
+                    setFreelancer(freelancersResponse)
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }, [])
 
         const handleStatusChange = (status: string) => {
             setProjectStatus(status);
@@ -140,7 +154,7 @@ const Management_job = () => {
                 <div className="flex flex-col bg-white shadow-lg border-[1px] p-4 border-pink-cus-tx">
                     <h2 className="text-2xl font-medium py-2">{t("Project")}</h2>
                     <div className="border-b-2"></div>
-                    {jobs.map(j => <JobDisplay job={j} />)}
+                    {jobs.map(j => <JobDisplay key={j.Id} job={j} />)}
                 </div>
             </Container>
         </FormatCusMd>

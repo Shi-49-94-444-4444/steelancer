@@ -50,7 +50,7 @@ const ModalEdit: React.FC<ModalEditProps> = ({
     const editModal = useEditModal();
     const { t } = useTranslation();
     const [selectedCat, setSelectedCats] = useState<CategoryResponse[]>([]);
-    let { currentUser, currentFreelancer, setCurrentFreelancer } = useContext(MyContext);
+    const { currentUser, currentFreelancer, setCurrentFreelancer } = useContext(MyContext);
 
     const schema = yup.object({
         ImageUrl: yup.string().url().required("Image url is required"),

@@ -10,11 +10,12 @@ import AuthService, { UserInfo } from '../services/auth'
 import ContextValue from "@/models/contextValue"
 import BusinessProfileResponse from "@/models/businessProfileResponse"
 import BusinessService from "../services/businessProfiles";
+import { profile } from "console"
 
-export const metadata = {
-  title: 'Steelancer',
-  description: 'Steelancer clone',
-}
+// export const metadata = {
+//   title: 'Steelancer',
+//   description: 'Steelancer clone',
+// }
 
 const defaultUser = {
   Id: 0,
@@ -85,7 +86,13 @@ export default function Layout({
     AuthService.getUserProfile()
       .then(profileResponse => {
         console.log(profileResponse);
-        setCurrentUser(profileResponse);
+        setCurrentUser({
+          Email: profileResponse.email,
+          Id: profileResponse.id,
+          Username: profileResponse.username,
+          IsPremium: profileResponse.isPremium,
+          Role: profileResponse.role
+        });
       })
       .catch(error => {
         console.log("No user");

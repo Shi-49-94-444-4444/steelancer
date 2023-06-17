@@ -28,7 +28,7 @@ const JobSelect: React.FC<JobSelectProps> = ({
     const [chosenCats, setChosenCats] = useState(value);
 
     const handleSkillChange = (selectedOptions: any) => {
-        var chosenCats = selectedOptions.map((c: any) => ({
+        const chosenCats = selectedOptions.map((c: any) => ({
             Id: c.value,
             Name: c.label
         }));

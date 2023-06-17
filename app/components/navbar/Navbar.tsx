@@ -23,16 +23,16 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    useEffect(() => {
-        try {
-            console.log(AuthService.getUserInfo());
-            setCurrentUser(AuthService.getUserInfo());
-            setIsLoggedIn(true);
-        }
-        catch (error) {
-            console.log("No login")
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         console.log(AuthService.getUserInfo());
+    //         setCurrentUser(AuthService.getUserInfo());
+    //         setIsLoggedIn(true);
+    //     }
+    //     catch (error) {
+    //         console.log("No login")
+    //     }
+    // }, [])
 
     return (
         <div

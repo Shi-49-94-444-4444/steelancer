@@ -21,25 +21,33 @@ import { SkillItem } from "@/app/components/freelancer/DescFreelancer";
 
 const DetailFreelancerPage = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const id = parseInt(router.query.id as string, 0)
 
   const [freelancer, setFreelancer] = useState<FreelancerResponse>();
   const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
 
   useEffect(() => {
     console.log("id: ", id);
-    FreelancerService.getDetail(id)
-      .then(freelancerDetailResponse => {
-        console.log(freelancerDetailResponse)
-        setFreelancer(freelancerDetailResponse)
-      })
-    CategoryService.get()
-      .then(categoriesResponse => {
-        setCategories(categoriesResponse.value);
-      })
-      .catch(error => {
-        console.log(error);
-      })
+    if (!id) {
+      router.push("/list_freelancer");
+    }
+    else {
+      FreelancerService.getDetail(id)
+        .then(freelancerDetailResponse => {
+          console.log(freelancerDetailResponse)
+          setFreelancer(freelancerDetailResponse)
+        })
+        .catch(err => {
+          router.push("/list_freelancer");
+        })
+      CategoryService.get()
+        .then(categoriesResponse => {
+          setCategories(categoriesResponse.value);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
   }, [])
 
   const getCategories = (freelancer: FreelancerResponse): SkillItem[] => {

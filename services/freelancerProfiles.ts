@@ -53,6 +53,12 @@ const getThisUserFreelancerProfile = async (id: number) => {
    return response.data;
 }
 
+const getByJob = async (id: number) => {
+   const url = `${baseUrl}byJob/${id}`;
+   const response = await axiosInstance.get(url);
+   return response.data;
+}
+
 const edit = async (id: number, data: any) => {
    const url = `${baseUrl}`;
    if (id === 0) {
@@ -71,6 +77,7 @@ const exportObject = {
    get,
    getCount,
    getDetail,
+   getByJob,
    getThisUserFreelancerProfile,
    edit
 };

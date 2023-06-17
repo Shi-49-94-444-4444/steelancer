@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MenuItem } from "../navbar";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -20,6 +20,10 @@ const NavLink = () => {
     const qrModal = useQrModal();
     const paymentModal = usePaymentModal();
     const createModal = useCreateModal()
+
+    useEffect(() => {
+        console.log(currentUser);
+    }, [currentUser])
 
     const handleMouseEnter = () => {
         setIsMoreOpen(true);
