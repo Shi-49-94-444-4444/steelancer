@@ -1,3 +1,5 @@
+'use client'
+
 import "./globals.css"
 import { Navbar, ClientOnly, Background, ModalEdit, QrMomo, ModalCreate, ModalPayment } from "./components"
 import ToasterProvider from "./providers/ToasterProvider"
