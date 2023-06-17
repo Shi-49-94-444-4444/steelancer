@@ -9,12 +9,14 @@ const nextConfig = {
   //     },
   //   ];
   // },
-  i18n: {
-    locales: ["en", "vi"],
-    defaultLocale: "en",
-  },
+  // i18n: {
+  //   locales: ["en", "vi"],
+  //   defaultLocale: "en",
+  // },
+  output: 'export',
   images: {
-    domains: ['picsum.photos'],
+    unoptimized: true,
+    // domains: ['picsum.photos'],
   },
 };
 
