@@ -17,7 +17,7 @@ import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { toast } from "react-toastify"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 
 const Register = () => {
   const router = useRouter();

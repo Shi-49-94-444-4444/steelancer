@@ -8,7 +8,7 @@ import {
     // SubmitHandler,
     useForm
 } from "react-hook-form"
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next";
 import { ta } from "date-fns/locale";
 
 interface DetailBusinessProps {

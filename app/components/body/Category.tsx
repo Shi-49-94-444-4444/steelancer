@@ -5,7 +5,7 @@ import Container from "../Container"
 import { FormatCusMd } from "../modal"
 import { categories } from "@/app/constants"
 import { ButtonCus } from "../body"
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 
 const Category = () => {
     const { t } = useTranslation()

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 
 const TimeFilter = () => {
     const { t } = useTranslation()

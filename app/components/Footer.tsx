@@ -5,7 +5,7 @@ import { BsTwitter } from "react-icons/bs"
 import { GrFacebookOption, GrLocation } from "react-icons/gr"
 import { TbPhoneCall } from "react-icons/tb"
 import { TfiEmail } from "react-icons/tfi"
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 
 const Footer = () => {
     const { t } = useTranslation()

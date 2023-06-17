@@ -21,7 +21,7 @@ import {
 import { toast } from "react-toastify"
 import { useContext, useEffect, useState } from "react"
 // import { json } from "stream/consumers"
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 import { MyContext } from "@/app/layout"
 import { useRouter } from "next/router"
 

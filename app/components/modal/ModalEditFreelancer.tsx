@@ -5,7 +5,7 @@ import CustomModal from './Modal';
 import { useState } from 'react';
 import Input from './Input';
 import FreelancerResponse from '@/models/freelancerResponse';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 
 // interface Skill {
 //     title: string;

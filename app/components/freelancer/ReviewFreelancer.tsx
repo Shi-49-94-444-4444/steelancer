@@ -4,7 +4,7 @@ import Image from "next/image"
 import Rating from "../Rating"
 import { FcMoneyTransfer } from "react-icons/fc"
 import { AiFillLike } from "react-icons/ai";
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 
 interface ReviewFreelancer {
     src: string;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ProductItem from "./ProductItem";
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "react-i18next"
 
 interface ProductItem {
     src: string;
