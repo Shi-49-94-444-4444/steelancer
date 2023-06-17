@@ -9,12 +9,12 @@ const nextConfig = {
   //     },
   //   ];
   // },
-  i18n: {
-    locales: ["en", "vi"],
-    defaultLocale: "en",
+  output: 'export',
+  experimental: {
+    appDir: true,
   },
   images: {
-    domains: ['picsum.photos'],
+    unoptimized: true,
   },
 };
 

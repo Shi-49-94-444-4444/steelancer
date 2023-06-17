@@ -3,7 +3,7 @@
 import { useContext, useState } from "react";
 import { MenuItem } from "../navbar";
 import Link from "next/link";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'next-i18next';
 import AuthService, { UserInfo } from '../../../services/auth'
 import { MyContext } from "@/app/layout";
 import useCreateModal from "@/hooks/useCreateModal";

@@ -3,7 +3,7 @@
 import { Container, FormatCusMd, OfferBusiness } from "@/app/components";
 import { freelancerList } from "@/app/constants";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'next-i18next';
 
 const Management_job = () => {
     const { t } = useTranslation() 

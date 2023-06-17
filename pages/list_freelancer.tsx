@@ -26,7 +26,7 @@ import JobResponse from "@/models/jobResponse"
 import FreelancerService from '../services/freelancerProfiles';
 import CategoryService from '../services/category'
 import FreelancerResponse from "@/models/freelancerResponse"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next';
 
 // interface FreelancerItem {
 //     id: string;

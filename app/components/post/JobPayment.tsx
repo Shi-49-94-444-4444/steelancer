@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { LuFolderClock } from 'react-icons/lu'
 import { RiFolderShield2Line } from 'react-icons/ri'
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next';
 
 interface JobPaymentProps {
   title?: string;

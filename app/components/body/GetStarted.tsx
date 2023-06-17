@@ -1,7 +1,7 @@
 'use client'
 import { BiSearch } from "react-icons/bi"
 import { FormatCusSm } from "../modal"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next';
 
 const GetStarted = () => {
     const { t } = useTranslation()

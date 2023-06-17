@@ -10,7 +10,7 @@ import AuthService, { UserInfo } from '../../../services/auth';
 import { useContext, createContext, useState, useEffect } from "react";
 import { error } from "console";
 import { MyContext } from "@/app/layout";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next';
 
 interface PerformanceItem {
     title: string;

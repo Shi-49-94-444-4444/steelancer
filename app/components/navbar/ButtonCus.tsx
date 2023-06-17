@@ -6,7 +6,7 @@ import useQrModal from "@/hooks/useQrModal"
 import { UserInfo } from "@/services/auth"
 import { useRouter } from "next/router"
 import React, { useContext } from "react"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next';
 
 const ButtonCus: React.FC = () => {
     const context = useContext(MyContext);

@@ -3,7 +3,7 @@ import { FormatCusSm } from "../modal"
 import { BsArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs"
 import { recents } from "@/app/constants"
 import RecentBox from "../RecentBox"
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next';
 
 const Recent = () => {
     const { t } = useTranslation()
