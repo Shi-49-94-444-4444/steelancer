@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const withOptimizedImages = require('next-optimized-images');
-
 const nextConfig = {
   // async redirects() {
   //   return [
@@ -16,13 +14,10 @@ const nextConfig = {
   //   defaultLocale: "en",
   // },
   output: 'export',
-  // images: {
-    // unoptimized: true,
+  images: {
+    unoptimized: true,
     // domains: ['picsum.photos'],
-  // },
-  withOptimizedImages({
-    optimizeImages: true,
-  })
+  },
 };
 
 module.exports = nextConfig;
