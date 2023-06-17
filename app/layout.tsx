@@ -1,5 +1,3 @@
-'use client'
-
 import "./globals.css"
 import { Navbar, ClientOnly, Background, ModalEdit, QrMomo, ModalCreate, ModalPayment } from "./components"
 import ToasterProvider from "./providers/ToasterProvider"
@@ -11,10 +9,10 @@ import CategoryService from '../services/category'
 import AuthService, { UserInfo } from '../services/auth'
 import ContextValue from "@/models/contextValue"
 
-export const metadata = {
-  title: 'Steelancer',
-  description: 'Steelancer clone',
-}
+// export const metadata = {
+//   title: 'Steelancer',
+//   description: 'Steelancer clone',
+// }
 
 export const MyContext = createContext<ContextValue>({
   currentUser: {
