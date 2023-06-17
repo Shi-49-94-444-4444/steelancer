@@ -41,9 +41,9 @@ const ModalPayment: React.FC<ModelPaymentProps> = ({ freelancer }) => {
             title="Payment"
             width={"w-2/4"}
         >
-            <label className="block mb-1 text-left text-xl font-semibold">
+            <div className="block mb-1 text-left text-xl font-semibold">
                 Email
-            </label>
+            </div>
             <div
                 className={`
                             pr-2 h-10 pl-4
@@ -56,9 +56,9 @@ const ModalPayment: React.FC<ModelPaymentProps> = ({ freelancer }) => {
                         `
                 }
             >{freelancer.Email}</div>
-            <label className="block mb-1 text-left text-xl font-semibold">
+            <div className="block mb-1 text-left text-xl font-semibold">
                 Phone
-            </label>
+            </div>
             <div
                 className={`
                             pr-2 h-10 pl-4

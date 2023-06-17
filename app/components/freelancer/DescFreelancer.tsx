@@ -39,7 +39,7 @@ interface DescFreelancerProps {
     detail?: string;
     skill?: SkillItem[];
     usePayment: any,
-    isPremium: Boolean,
+    isPremium: boolean,
     useQr: any
 }
 

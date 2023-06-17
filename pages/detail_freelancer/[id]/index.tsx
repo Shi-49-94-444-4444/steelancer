@@ -103,7 +103,7 @@ const DetailFreelancerPage = () => {
         // performance={performance}
         detail={freelancer.Description}
         skill={getCategories(freelancer)}
-        isPremium={currentUser.IsPremium}
+        isPremium={currentUser.IsPremium.valueOf()}
         useQr={useQr}
       />
 
