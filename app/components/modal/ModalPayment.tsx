@@ -7,8 +7,14 @@ import {
     useForm
 } from "react-hook-form";
 import { useTranslation } from "react-i18next"
+import FreelancerResponse from '@/models/freelancerResponse';
+import { useEffect } from 'react';
 
-const ModalPayment = () => {
+interface ModelPaymentProps {
+    freelancer?: FreelancerResponse
+}
+
+const ModalPayment: React.FC<ModelPaymentProps> = ({ freelancer }) => {
     const paymentModal = usePaymentModal();
     const { t } = useTranslation()
 
@@ -23,9 +29,10 @@ const ModalPayment = () => {
         }
     });
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        console.log(data);
-    };
+
+    if (!freelancer) {
+        return <></>
+    }
 
     return (
         <CustomModal
@@ -34,23 +41,36 @@ const ModalPayment = () => {
             title="Payment"
             width={"w-2/4"}
         >
-            <form className="w-full px-10" onSubmit={handleSubmit(onSubmit)}>
-                <Input
-                    id="email"
-                    label="Mail"
-                    placeholder={t("Enter mail") ?? ""} 
-                    register={register}
-                    errors={errors}
-                />
-                <Input
-                    id="phone"
-                    label={t("Phone") ?? ""}
-                    placeholder={t("Enter phone") ?? ""} 
-                    register={register}
-                    errors={errors}
-                />
-                <button type="submit" className='mt-4 text-pink-cus-tx hover:underline'>{t("Payment")}</button>
-            </form>
+            <label className="block mb-1 text-left text-xl font-semibold">
+                Email
+            </label>
+            <div
+                className={`
+                            pr-2 h-10 pl-4
+                            w-full 
+                            rounded-15 
+                            border-[1px] 
+                            border-pink-cus-tx
+                            hover:border-pink-cus-bt  
+                            text-xl 
+                        `
+                }
+            >{freelancer.Email}</div>
+            <label className="block mb-1 text-left text-xl font-semibold">
+                Phone
+            </label>
+            <div
+                className={`
+                            pr-2 h-10 pl-4
+                            w-full 
+                            rounded-15 
+                            border-[1px] 
+                            border-pink-cus-tx
+                            hover:border-pink-cus-bt  
+                            text-xl 
+                        `
+                }
+            >{freelancer.Phone}</div>
         </CustomModal>
     );
 };

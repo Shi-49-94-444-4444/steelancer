@@ -7,4 +7,6 @@ export default interface FreelancerResponse {
    Fullname: string;
    ImageUrl: string;
    Address: string
+   Email?: string,
+   Phone?: string
 }

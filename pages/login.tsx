@@ -53,8 +53,8 @@ const Login = () => {
           .then(profileResponse => {
             localStorage.setItem("profile", JSON.stringify(profileResponse))
             AuthService.decodeJwtToken();
-            const username = `${profileResponse.firstname} ${profileResponse.lastname}`;
-            toast.success(`Welcome ${username}`);
+            // const username = `${profileResponse.firstname} ${profileResponse.lastname}`;
+            toast.success(`Welcome ${profileResponse.username}`);
             context.setCurrentUser(AuthService.getUserInfo());
             reset(defaultValues)
             router.push("/");

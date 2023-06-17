@@ -10,6 +10,7 @@ import JobService from "../services/jobs";
 import FreelancerService from '../services/freelancerProfiles';
 import JobResponse from "@/models/jobResponse";
 import FreelancerResponse from "@/models/freelancerResponse";
+import { toast } from "react-toastify";
 
 const Management_job = () => {
     const { t } = useTranslation();
@@ -18,6 +19,7 @@ const Management_job = () => {
     const [jobs, setJobs] = useState<JobResponse[]>([]);
 
     useEffect(() => {
+        console.log(currentUser)
         if (currentUser.Role !== "Business" || !currentUser.IsPremium) {
             router.push("/");
         }
@@ -37,27 +39,43 @@ const Management_job = () => {
         job
     }) => {
         const [projectStatus, setProjectStatus] = useState("Open");
-        const [savedStatus, setSavedStatus] = useState("");
+        const [showApplications, setShowApplications] = useState(false);
         const [freelancers, setFreelancer] = useState<FreelancerResponse[]>([]);
 
         useEffect(() => {
             FreelancerService.getByJob(job.Id)
                 .then(freelancersResponse => {
-                    console.log(freelancersResponse)
-                    setFreelancer(freelancersResponse)
+                    setFreelancer(freelancersResponse.map((f: FreelancerResponse) => f))
                 })
                 .catch(err => {
                     console.log(err);
                 })
         }, [])
 
-        const handleStatusChange = (status: string) => {
-            setProjectStatus(status);
+        const handleOpenJob = () => {
+            setProjectStatus("Open");
+        }
+
+        const handleCloseJob = () => {
+            setProjectStatus("Complete");
+            setShowApplications(false);
         };
 
         const handleSaveStatus = () => {
-            setSavedStatus(projectStatus);
+            if (projectStatus === "Complete") {
+                JobService.toggleJob(job.Id)
+                    .then((response: any) => {
+                        toast.success("Đóng việc thành công");
+                    })
+                    .catch((err: any) => {
+                        toast.error("Không thể đóng việc");
+                    })
+            }
         };
+
+        const handleShowApplication = () => {
+            setShowApplications(!showApplications);
+        }
 
         return (
             <>
@@ -68,7 +86,7 @@ const Management_job = () => {
                             <button
                                 className={`flex items-center justify-center text-[15px] px-4 border border-pink-cus-tx font-semibold ${projectStatus === "Open" ? "bg-green-200 text-green-500" : ""
                                     }`}
-                                onClick={() => handleStatusChange("Open")}
+                                onClick={() => handleOpenJob()}
                                 style={{ width: "calc(100% / 3)" }}
                             >
                                 {t("Open")}
@@ -76,18 +94,18 @@ const Management_job = () => {
                             <button
                                 className={`flex items-center justify-center text-[15px] px-4 border border-pink-cus-tx font-semibold ${projectStatus === "Complete" ? "bg-gray-400 text-blue-cus" : ""
                                     }`}
-                                onClick={() => handleStatusChange("Complete")}
+                                onClick={() => handleCloseJob()}
                                 style={{ width: "calc(100% / 3)" }}
                             >
-                                {("Project complete")}
+                                {("Complete")}
                             </button>
                             <button
                                 className={`flex items-center justify-center text-[15px] px-4 border border-pink-cus-tx font-semibold ${projectStatus === "Close" ? "bg-gray-cus text-blue-cus" : ""
                                     }`}
-                                onClick={() => handleStatusChange("Close")}
+                                onClick={() => handleShowApplication()}
                                 style={{ width: "calc(100% / 3)" }}
                             >
-                                {("Project Close")}
+                                {("View Application")}
                             </button>
                         </div>
                     </div>
@@ -101,18 +119,15 @@ const Management_job = () => {
                             <span> {job.ApplyExpireDate}</span>
                         </h2>
                     </div>
-                    {projectStatus === "Open" && (
+                    {showApplications && projectStatus === "Open" && (
                         <div className="m-8">
-                            {freelancerList
-                                .filter(item => item.offer) // Filter out items without an offer
+                            {freelancers
                                 .slice(0, 100) // Limit the list to the first 100 items
                                 .map((item) => (
                                     <>
                                         <OfferBusiness
-                                            key={item.id}
-                                            src={item.src}
-                                            title={item.title}
-                                            offer={item.offer}
+                                            key={item.Id}
+                                            freelancer={item}
                                             showButton={true}
                                         />
                                     </>

@@ -10,7 +10,7 @@ import React, { useContext } from "react"
 import { useTranslation } from "react-i18next"
 
 const ButtonCus: React.FC = () => {
-    const context = useContext(MyContext);
+    const { currentUser } = useContext(MyContext);
     const router = useRouter()
     const editModal = useEditModal();
     const createModel = useCreateModal();
@@ -18,7 +18,7 @@ const ButtonCus: React.FC = () => {
     const { t } = useTranslation();
 
     const handleProfileButtonClick = () => {
-        if (context.currentUser.IsPremium) {
+        if (currentUser.IsPremium) {
             editModal.onOpen();
         }
         else {
@@ -27,7 +27,7 @@ const ButtonCus: React.FC = () => {
     };
 
     const handlePostJobButtonClick = () => {
-        if (context.currentUser.IsPremium) {
+        if (currentUser.IsPremium) {
             router.push('/post_job');
         }
         else {
@@ -44,9 +44,10 @@ const ButtonCus: React.FC = () => {
                     gap-3
                 "
             >
-                <button
-                    onClick={context.currentUser.Role === "Business" ? handlePostJobButtonClick : handleProfileButtonClick}
-                    className="
+                {currentUser.Id !== 0 ? (
+                    <button
+                        onClick={currentUser.Role === "Business" ? handlePostJobButtonClick : handleProfileButtonClick}
+                        className="
                         hidden
                         w-full
                         md:block
@@ -61,10 +62,33 @@ const ButtonCus: React.FC = () => {
                         cursor-pointer
                         hover:bg-pink-600
                     "
-                    style={{ width: 'fit-content' }}
-                >
-                    {context.currentUser.Role === "Business" ? `${t("Post a project")}` : `${t("Your freelancer profile")}`}
-                </button>
+                        style={{ width: 'fit-content' }}
+                    >
+                        {currentUser.Role === "Business" ? `${t("Post a project")}` : `${t("Your freelancer profile")}`}
+                    </button>
+                ) : (
+                    <button
+                        onClick={() => router.push("/login")}
+                        className="
+                        hidden
+                        w-full
+                        md:block
+                        text-sm
+                        py-3
+                        px-4
+                        bg-pink-cus-bt
+                        text-white
+                        font-semibold
+                        rounded-full
+                        transition
+                        cursor-pointer
+                        hover:bg-pink-600
+                    "
+                        style={{ width: 'fit-content' }}
+                    >
+                        Bắt đầu
+                    </button>
+                )}
             </div>
         </div>
     )

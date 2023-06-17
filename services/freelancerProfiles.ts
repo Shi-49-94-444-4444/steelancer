@@ -54,7 +54,7 @@ const getThisUserFreelancerProfile = async (id: number) => {
 }
 
 const getByJob = async (id: number) => {
-   const url = `${baseUrl}byJob/${id}`;
+   const url = `${baseUrl}/byJob/${id}`;
    const response = await axiosInstance.get(url);
    return response.data;
 }
@@ -73,11 +73,18 @@ const edit = async (id: number, data: any) => {
    }
 }
 
+const applyToJob = async (jobId: number) => {
+   const url = `${baseUrl}/${jobId}/apply`;
+   const response = await axiosInstance.post(url);
+   return response.data;
+}
+
 const exportObject = {
    get,
    getCount,
    getDetail,
    getByJob,
+   applyToJob,
    getThisUserFreelancerProfile,
    edit
 };

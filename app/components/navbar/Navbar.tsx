@@ -73,7 +73,7 @@ const Navbar = () => {
                     >
                         <Logo />
                         <NavLink />
-                        {currentUser.Id !== 0 && <ButtonCus />}
+                        <ButtonCus />
                     </div>
                 </Container>
             </div>

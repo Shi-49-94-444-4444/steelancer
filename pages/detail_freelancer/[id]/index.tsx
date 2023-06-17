@@ -1,6 +1,6 @@
 'use client'
 
-import { FormatCusMd, Container, Footer, ModalEdit } from "@/app/components";
+import { FormatCusMd, Container, Footer, ModalEdit, ModalPayment } from "@/app/components";
 import {
   DegreeFreelancer,
   DescFreelancer,
@@ -12,19 +12,25 @@ import {
 } from "@/app/components/freelancer";
 import { useRouter } from "next/router";
 import { freelancerList } from "@/app/constants";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FreelancerResponse from "@/models/freelancerResponse";
 import FreelancerService from '../../../services/freelancerProfiles'
 import CategoryService from '../../../services/category';
 import CategoryResponse from "@/models/categoryResponse";
 import { SkillItem } from "@/app/components/freelancer/DescFreelancer";
+import { MyContext } from "@/app/layout";
+import editQrModal from "@/hooks/useEditModal";
+import usePaymentModal from "@/hooks/usePaymentModal";
+import useQrModal from "@/hooks/useQrModal";
 
 const DetailFreelancerPage = () => {
   const router = useRouter();
   const id = parseInt(router.query.id as string, 0)
-
   const [freelancer, setFreelancer] = useState<FreelancerResponse>();
   const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
+  const { currentUser } = useContext(MyContext)
+  const usePayment = usePaymentModal();
+  const useQr = useQrModal();
 
   useEffect(() => {
     console.log("id: ", id);
@@ -88,6 +94,7 @@ const DetailFreelancerPage = () => {
   const bodyContent = (
     <>
       <DescFreelancer
+        usePayment={usePayment}
         title={freelancer.Fullname}
         label={freelancer.Title}
         // star={star}
@@ -96,6 +103,8 @@ const DetailFreelancerPage = () => {
         // performance={performance}
         detail={freelancer.Description}
         skill={getCategories(freelancer)}
+        isPremium={currentUser.IsPremium}
+        useQr={useQr}
       />
 
       {/* <SectionFreelancer
@@ -125,6 +134,7 @@ const DetailFreelancerPage = () => {
           />
         </Container>
       </FormatCusMd >
+      <ModalPayment freelancer={freelancer} />
       <Footer />
     </>
   );

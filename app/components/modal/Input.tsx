@@ -57,7 +57,7 @@ const Input: React.FC<InputProps> = ({
                     placeholder={placeholder}
                     {...(register && register(id))}
                     disabled={disabled}
-                    onChange={onChange}
+                    // onChange={onChange}
                     className={`
                             ${hasIcon ? 'pl-14 pr-6 py-2 h-14' : 'pr-2 h-10 pl-4'} 
                             w-full 

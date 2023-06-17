@@ -116,7 +116,10 @@ const List_freelancer = () => {
             <MultiFilter
                 title={t("Skill") ?? ""}
                 placeholder={t("Choose skill") ?? ""}
-                options={optionSkill}
+                options={categories.map(c => ({
+                    value: c.Id,
+                    label: c.Name
+                }))}
                 setFilterCategories={setFilterCategories}
             />
             <MultiFilter

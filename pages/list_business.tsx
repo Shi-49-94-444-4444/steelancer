@@ -126,17 +126,17 @@ const List_business = () => {
                 onTimeChange={(from, to) => { }}
             />
             <MultiFilter
-                title={t("Language") ?? ""}
-                placeholder={t("Choose Language") ?? ""}
-                options={optionLanguage}
-            />
-            <MultiFilter
                 title={t("Skill") ?? ""}
                 placeholder={t("Choose Skill") ?? ""}
                 options={categories.map(c => ({
                     value: c.Id, label: c.Name
                 }))}
                 setFilterCategories={setFilterCategories}
+            />
+            <MultiFilter
+                title={t("Language") ?? ""}
+                placeholder={t("Choose Language") ?? ""}
+                options={optionLanguage}
             />
             <MultiFilter
                 title={t("Place") ?? ""}

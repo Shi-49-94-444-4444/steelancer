@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import { Input } from "../modal";
+import { Input, QrMomo } from "../modal";
 import {
     // FieldValue,
     FieldValues,
@@ -10,12 +10,17 @@ import {
 } from "react-hook-form"
 import { useTranslation } from "react-i18next";
 import { ta } from "date-fns/locale";
+import { UserInfo } from "@/services/auth";
+import FreelancerService from '../../../services/freelancerProfiles';
+import { toast } from "react-toastify";
 
 interface DetailBusinessProps {
     id: string;
     description?: string;
     skills?: string;
     openDateLeft: number;
+    currentUser: UserInfo;
+    useQr: any
 }
 
 const DetailBusiness: React.FC<DetailBusinessProps> = ({
@@ -23,6 +28,8 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
     openDateLeft,
     description,
     skills,
+    currentUser,
+    useQr
 }) => {
     const [projectStatus, setProjectStatus] = useState("Complete");
     const { t } = useTranslation()
@@ -43,6 +50,22 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
             setProjectStatus("Open")
         }
     }, [openDateLeft])
+
+    const handleApply = (e: any) => {
+        e.preventDefault();
+        if (!currentUser.IsPremium) {
+            useQr.onOpen();
+        }
+        else {
+            FreelancerService.applyToJob(parseInt(id))
+                .then(response => {
+                    toast.success(response);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+    }
 
     return (
         <div className="
@@ -138,7 +161,7 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                     gap-3
                 "
                 >
-                    <div className="w-full">
+                    {/* <div className="w-full">
                         <h2 className="text-[15px] font-semibold">
                             {t("Offer your price")}
                         </h2>
@@ -161,9 +184,11 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                             register={register}
                             errors={errors}
                         />
-                    </div >
+                    </div > */}
                     <div className="w-full">
-                        <button className="
+                        <button
+                            onClick={handleApply}
+                            className="
                             bg-pink-cus-bt 
                             text-white 
                             font-semibold
@@ -172,7 +197,8 @@ const DetailBusiness: React.FC<DetailBusinessProps> = ({
                             py-4
                         "
                         >
-                            {t("Offer for Job")}
+                            {/* {t("Offer for Job")} */}
+                            Ứng tuyển
                         </button>
                     </div>
                 </form >

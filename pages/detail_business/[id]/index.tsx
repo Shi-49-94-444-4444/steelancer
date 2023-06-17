@@ -11,9 +11,11 @@ import { businessList, freelancerList } from "@/app/constants";
 import CategoryResponse from "@/models/categoryResponse";
 import JobResponse from "@/models/jobResponse";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CategoryService from '../../../services/category';
 import JobService from '../../../services/jobs';
+import { MyContext } from "@/app/layout";
+import useQrModal from "@/hooks/useQrModal";
 // import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 
 interface Offer {
@@ -28,6 +30,8 @@ const DetailBusinessPage = () => {
   const [job, setJob] = useState<JobResponse>();
   const [categories, setCategories] = useState<CategoryResponse[]>([]); // Các category
   const [businessJobs, setBusinessJobs] = useState<JobResponse[]>([]);
+  const { currentUser } = useContext(MyContext);
+  const useQr = useQrModal();
 
   useEffect(() => {
     CategoryService.get()
@@ -102,33 +106,35 @@ const DetailBusinessPage = () => {
       description={job.Description}
       skills={getCategories(job)}
       openDateLeft={getDurationLeft(job)}
+      currentUser={currentUser}
+      useQr={useQr}
     />
   )
 
-  const offerContent = (
-    <div className="flex flex-col text-xl bg-white shadow-lg p-6">
-      <h1 className="font-bold py-2">
-        {freelancerList.filter(item => item.offer).length} freelancer offer average price of{" "}
-        {freelancerList
-          .filter(item => item.offer)
-          .reduce((total, item) => total + calculateAveragePrice(item.offer), 0) /
-          freelancerList.filter(item => item.offer).length}
-        $ for this Job
-      </h1>
-      <div className="border-b-2"></div>
-      {freelancerList
-        .filter(item => item.offer) // Filter out items without an offer
-        .slice(0, 100) // Limit the list to the first 100 items
-        .map((item) => (
-          <OfferBusiness
-            key={item.id}
-            src={item.src}
-            title={item.title}
-            offer={item.offer}
-          />
-        ))}
-    </div>
-  )
+  // const offerContent = (
+  //   <div className="flex flex-col text-xl bg-white shadow-lg p-6">
+  //     <h1 className="font-bold py-2">
+  //       {freelancerList.filter(item => item.offer).length} freelancer offer average price of{" "}
+  //       {freelancerList
+  //         .filter(item => item.offer)
+  //         .reduce((total, item) => total + calculateAveragePrice(item.offer), 0) /
+  //         freelancerList.filter(item => item.offer).length}
+  //       $ for this Job
+  //     </h1>
+  //     <div className="border-b-2"></div>
+  //     {freelancerList
+  //       .filter(item => item.offer) // Filter out items without an offer
+  //       .slice(0, 100) // Limit the list to the first 100 items
+  //       .map((item) => (
+  //         <OfferBusiness
+  //           key={item.id}
+  //           src={item.src}
+  //           title={item.title}
+  //           offer={item.offer}
+  //         />
+  //       ))}
+  //   </div>
+  // )
 
   const jobCompanyContent = (
     <div className="flex flex-col text-xl bg-white shadow-lg p-6">

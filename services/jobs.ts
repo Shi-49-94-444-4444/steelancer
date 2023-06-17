@@ -46,6 +46,12 @@ const getDetail = async (id: number) => {
    return response.data;
 }
 
+const toggleJob = async (id: number) => {
+   const url = `${baseUrl}/status/${id}`;
+   const response = await axiosInstance.put(url);
+   return response.data;
+}
+
 const postJob = async (data: JobPost) => {
    const response = await axiosInstance.post(baseUrl, data);
    return response.data;
@@ -71,6 +77,7 @@ const exportObject: any = {
    getOpenJob,
    getCount,
    getDetail,
+   toggleJob,
    getJobByBusiness,
    postJob
 };

@@ -11,6 +11,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { error } from "console";
 import { MyContext } from "@/app/layout";
 import { useTranslation } from "react-i18next"
+import editQrModal from "@/hooks/useEditModal";
 
 interface PerformanceItem {
     title: string;
@@ -37,6 +38,9 @@ interface DescFreelancerProps {
     // detail?: DetailItem[];
     detail?: string;
     skill?: SkillItem[];
+    usePayment: any,
+    isPremium: Boolean,
+    useQr: any
 }
 
 const DescFreelancer: React.FC<DescFreelancerProps> = ({
@@ -48,11 +52,12 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
     // numberCmt,
     // performance,
     detail,
-    skill
+    skill,
+    usePayment,
+    isPremium,
+    useQr
 }) => {
     const { t } = useTranslation()
-    
-
     const { currentUser, setCurrentUser } = useContext(MyContext);
 
     useEffect(() => {
@@ -98,7 +103,7 @@ const DescFreelancer: React.FC<DescFreelancerProps> = ({
                         {isBusinessRole && (
                             <div>
                                 <button
-                                    // onClick={() => {}}
+                                    onClick={() => {usePayment.onOpen()}}
                                     className="
                                         bg-pink-cus-bt 
                                         text-white 

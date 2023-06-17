@@ -65,35 +65,35 @@ export const recents = [
 export const categories = [
     {
         src: "/images/category_1.png",
-        label: "Website Design",
+        label: "Lập trình Web",
     },
     {
         src: "/images/category_2.png",
-        label: "Commercial Website Bundle",
+        label: "Khoa học dữ liệu",
     },
     {
         src: "/images/category_3.png",
-        label: "Administration Website Bundle",
+        label: "Kỹ sư phần mềm",
     },
     {
         src: "/images/category_4.png",
-        label: "Unity",
+        label: "Kỹ sư đám mây",
     },
     {
         src: "/images/category_5.png",
-        label: ".NET",
+        label: "Thiết kế giao diện",
     },
     {
         src: "/images/category_6.png",
-        label: "Java",
+        label: "Kỹ sư mạng",
     },
     {
         src: "/images/category_7.png",
-        label: "PHP",
+        label: "Phân tích hệ thống",
     },
     {
         src: "/images/category_8.png",
-        label: "ReactJs",
+        label: "An ninh phần mềm",
     },
 ]
 
